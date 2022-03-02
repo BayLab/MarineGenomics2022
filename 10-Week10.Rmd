@@ -1,36 +1,386 @@
 ---
-title: "Week 10 wrap up"
-author: "Serena Caplins"
-date: "5/31/2021"
+title: 
+author: 
+date: 
 output:
   bookdown::html_book:
     toc: yes
     css: toc.css
 ---
 
-```{r setup10, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+```{r setupweek11, include=FALSE}
+knitr::opts_chunk$set(fig.width = 8, echo=F, error=T, message=F)
+knitr::opts_knit$set(root.dir = "/Users/ericaspotswoodnielsen/Desktop/PD_stuffies/teaching/MarineGenomics/data/Week10_gea/")
 ```
 
-# Week 10- Genomics is a BLAST
+# Genome Environment Association
+
+The lecture for this week can be found [here](https://github.com/BayLab/MarineGenomicsSemester/blob/main/ppt/MarineGenomics_Lecture_w11.pdf).
+
+All of the code presented in this weeks class comes modified from a former Marine Genomics student and recent UC Davis graduate, Camille Rumberger! Thank you Camille!
+
+## Download the data
+
+For this week we are again using data from the wonderful Xuereb et al. 2018 paper [here](https://onlinelibrary.wiley.com/doi/abs/10.1111/mec.14589?casa_token=aBVeQUaZ6UEAAAAA:vt9cQFbQ-65F1erD-1Uq0DAWEaZ75fDhepkPomc4RMPAqQgntIcm0btk842SxvaraM2VdlZ5nwoHUhCy)
+And consistes of a vcf file with 3966 Snps from 685 pacific sea cucumbers. 
+
+```html
+
+wget https://raw.githubusercontent.com/BayLab/MarineGenomicsData/main/week11_semester.tar.gz
+tar -xzvf week11_semester.tar.gz
+
+```
+
+## install a compiler for Unix/bash
+
+Run this command below in the terminal. It's necesary to install several R packages.
+
+```html
+sudo apt install libgdal-dev
+
+```
 
 
-Through this course we've taken genomic data in the form of whole genome sequences or reduced representation sequences (i.e., RADtags) and searched for correlations between phenotypes (via GWAS) and population structure (Fst Outliers) to identify "candidate SNP" that may have some role in producing the phenotypes we're interested in. 
+## install R packages
 
-The next logical step when you've identified a candidate SNP is to ask "what's the function of the gene region near the candidate SNP?" This seems like a straight forward question, as the main goal of many of these studies is to identify the genetic basis of a given phenotype. However, as we dig into this question we will see that it is rather opaque. First we need to consider whether the SNP we identified is "the" SNP itself that is under selection or is the SNP associated through physical linkage (aka hitchhiking), with the gene or gene region that is under selection?
 
-## Genome Annotation and BLAST searches
-This question can be addressed through whole genome resequencing and identification of regions with reduced heterozygosity which indicate patterns of linked-selection. This is reviewed more fully [here](http://cooplab.github.io/popgen-notes/#the-effect-of-linked-selection-on-patterns-of-neutral-diversity)
+```{r echo=T, message=FALSE, warning=F}
 
-Once a region under selection is identified we can refer to a genome annotation to determine whether this gene region is a coding or non-coding sequence (does it produce a protein or not?) and make some guesses as to the functionalization of this region. Your ability to do this is heavily influenced by the species you're working on and the degree to which your genome is successfully annotated (if at all). This is described in more detail in the lecture for the week [here]()
+#devtools::install_github("bcm-uga/lfmm")
 
-For this weeks exercise we'll go through a brief illustration of the difficulties in "assigning" putative function to a region surrounding a candidate SNP, using the Fst outliers that we identified in week 7 with the sea cucumber (**Parastichipus californicus**) data published by [Xuereb et al.](http://www2.bio.ulaval.ca/louisbernatchez/pdf/(417)%20Xuereb_Molecular_Ecology_2018.pdf) 
 
-For this data we found 17 Fst outliers (see the pink open circles in the plot below). 
+# get packages
+#install.packages(c('lfmm','psych','vegan','ggplot2','data.table','sdmpredictors','rgdal','raster'), dependencies = T)
+#install.packages("BiocManager")
+#BiocManager::install("LEA", force=T)
 
-I selected a region spanning 20kb around each SNP from the closely related Parastichipus parvimensis genome.This is a relatively large region which should capture any coding sequences that may occur near our SNP. For these regions we will performed a "small scale" annotation by identifying coding regions with the program transdecoder and then running these regions through ncbi-blast which will provide us with a list of similar sequences in other organisms and their gene ids.     
+# call programs
+library(lfmm)
+library(psych)
+library(vegan)
+library(LEA)
+library(data.table)
+library(sdmpredictors)
+library(leaflet)
+library(ggplot2)
+library(rgdal)
+library(raster)
 
-![](figs/week10_figure.png)
+```
+
+
+## Get the Environmental Data
+
+
+now we need to download the environmental data for our study. We're just going to look at a few variables but there are many others that you could choose from here: https://www.bio-oracle.org/explore-data.php
+
+Note that this step is rather time consuming, thus it's best to download the data once and save it as an environment file, which you can upload each time you want to modify your script.
+
+```{r echo=T, message=FALSE, warning=FALSE, results=F}
+
+#load the environmental data and store it as objects that we can use later
+
+environ <- load_layers(layercodes = c("BO_chlomean","BO_ph", "BO_salinity","BO_sstmax","BO_sstmean"))
+
+#now put each layer into it's own object
+
+chlomean<-load_layers("BO_chlomean")
+ph<-load_layers("BO_ph")
+salinity<-load_layers("BO_salinity")
+sst_max<-load_layers("BO_sstmax")
+sst_mean<-load_layers("BO_sstmean")
+
+
+```
+
+
+Now we'll read in our metadata, which has lat and lon for each sample
+
+
+```{r, echo=T}
+meta<-read.csv("californicus_metadata.csv")
+
+#make a new dataframe that just contains the lat and lon and label them "lat" and "long"
+#notice that the original metafile mislabels lat and lon, oops!
+
+sites<-cbind("lat" =  meta$LONG, "lon" = meta$LAT)
+
+head(sites)
+
+```
+
+
+## Extract Site Specific Information from our Envirornmental Layers
+
+The data we downloaded 
+```{r, echo=T}
+
+sites_environ <- data.frame(Name=sites, extract(environ,sites))
+head(sites_environ)
+
+```
+
+That produces for us a site specific environment file. We now need to convert this file into a format that we can save it as a matrix and export it as an environment file (i.e., in the format that the next step need it to be in which we do below)
+
+
+```{r, echo=T}
+
+#remove lat and lon and convert to matrix
+
+sites_environ_matrix<-as.matrix(sites_environ[,-c(1,2)])
+
+#remove any Na's
+
+sites_environ_matrix_nas<-na.omit(sites_environ_matrix)
+
+#write the file to an env file
+
+write.env(sites_environ_matrix_nas, "sites_environ_matrix.env")
+
+```
+
+
+
+## Make a Map of our environmental data
+
+We now have enough information to make a pretty plot of one of our environmental parameters.
+
+```{r, label='geamap', echo=T}
+library(sdmpredictors)
+
+#download a raster file for env variable that we want to look at
+
+#what are are min amd max lat and lon
+
+range(sites_environ$Name.lon)
+
+#crop file to fit the area we want
+ne.pacific<-extent(-140, -120, 40, 60)
+
+sst_max.crop<-crop(sst_max, ne.pacific)
+
+
+#make a nice color ramp and plot the map
+
+my.colors = colorRampPalette(c("#5E85B8","#EDF0C0","#C13127"))
+plot(sst_max.crop,col=my.colors(1000),axes=FALSE, box=FALSE)
+title(cex.sub = 1.25, sub = "Maximum temperature at the sea surface (ºC)")
+
+
+```
+
+
+
+## Load in genetic data
+
+
+Now we need to load in our genetic data. We have data in a vcf file format and the first few steps will be to convert it to the format needed by the lfmm package.
+
+
+
+```{r, echo=T, message=FALSE, warning=FALSE}
+
+#convert our vcf file to lfmm
+
+vcf2lfmm('filtered_3699snps_californicus_685inds.recode.vcf', 'filtered_3699snps_californicus.lfmm')
+
+sea_cuc_lfmm<-read.lfmm('filtered_3699snps_californicus_685inds.recode.lfmm')
+
+#and convert to geno
+
+lfmm2geno('filtered_3699snps_californicus_685inds.recode.lfmm', 'filtered_3699snps_californicus_685inds.recode.geno')
+
+#read in geno file
+
+sea_cuc_geno<-read.geno('filtered_3699snps_californicus_685inds.recode.geno')
+
+
+
+
+```
+
+
+
+```{r, label='gea1', echo=T, message=F}
+
+
+# create a snmf object
+
+sea_cuc200.snmf <- snmf("filtered_3699snps_californicus_685.geno", K = 1:10, entropy=T, ploidy = 2, project = "new")
+project=load.snmfProject("filtered_3699snps_californicus.snmfProject")
+
+#plot values of cross-entropy criteron of k
+plot(sea_cuc200.snmf)
+
+
+```
+
+
+This plot tells us which value of K we should use when running the next analyses. We're looking for a region where the cross-entropy is lowest and ideally it plateaus. We don't get a plateau in our case but you can see our lowest value is at 3. So we would use a K of 3 in the next step. 
+
+However, for the purposes of time we're going to do the next step with a k=1 and a rep=1. 
+
+```{r, echo=T, message=FALSE}
+
+# Genome scan for selection using environmental variables 
+#remove.lfmmProject('Spurp.prelim.snps24.lfmmProject')
+
+sea_cuc_lfmm <- lfmm("filtered_3699snps_californicus_685inds.recode.lfmm", "sites_environ_matrix.env", K=1, rep=1, project = "new")
+
+# load project
+project = load.lfmmProject("filtered_3699snps_californicus_685inds.lfmmProject")
+
+```
+
+Now we can check and see which of our environmental variables is association with genomic variation
+
+```{r, label="histograms", echo=T}
+#get the z scores from each run
+
+zs1 <- z.scores(sea_cuc_lfmm, K=1, d=1)
+zs2 <- z.scores(sea_cuc_lfmm, K=1, d=2)
+zs3 <- z.scores(sea_cuc_lfmm, K=1, d=3)
+zs4 <- z.scores(sea_cuc_lfmm, K=1, d=4)
+zs5 <- z.scores(sea_cuc_lfmm, K=1, d=5)
+
+# compute the genomic inflation factor lambda
+
+lambda1=median(zs1^2)/qchisq(0.5, df=1)
+lambda2=median(zs2^2)/qchisq(0.5, df=1)
+lambda3=median(zs3^2)/qchisq(0.5, df=1)
+lambda4=median(zs4^2)/qchisq(0.5, df=1)
+lambda5=median(zs5^2)/qchisq(0.5, df=1)
+
+#then compute adjusted p-values
+
+adj.p.val1<-pchisq(zs1^2/lambda1, df=1, lower=F)
+adj.p.val2<-pchisq(zs2^2/lambda2, df=1, lower=F)
+adj.p.val3<-pchisq(zs3^2/lambda3, df=1, lower=F)
+adj.p.val4<-pchisq(zs4^2/lambda4, df=1, lower=F)
+adj.p.val5<-pchisq(zs5^2/lambda5, df=1, lower=F)
+
+#then plot that p-value
+
+hist(adj.p.val1, col="blue")
+hist(adj.p.val2, col="blue")
+hist(adj.p.val3, col="blue")
+hist(adj.p.val4, col="blue")
+hist(adj.p.val5, col="blue")
+
+
+# control of false discoveries
+# to correct for multiple testing, we can apply the Benjamini-Hochberg algorithm
+# L is number of loci
+L=3699
+#fdr level q
+q = 0.1
+w = which(sort(adj.p.val1) < q * (1:L)/L)
+# candidates are then
+candidates.1 = order(adj.p.val1)[w]
+
+length(candidates.1)
+
+#this is for our first variable Mean Chlorphyl
+
+
+```
+
+
+## Exercises
+
+
+1. Pick your favorite environmental variable from the bio-oracle website. For marine variables you can use the command `list_layers(c("Bio-ORACLE","MARSPEC"))$layer_code` to view the different Bio-Oracle and MARSPEC environmental layers. For Terrestrial layers use: `list_layers("WorldClim")$layer_code` Then download the layer you choose and store it as an object with `load_layers()`
+Now decide which region you want to plot. If you're interested in getting most of California you can use these coords with the function extent(-125, -115, 30, 40), and then use that to crop your environmental layers and make a plot similiar to the one we made in class.
+
+
+<details><summary><span style="color: DarkCyan;">Solution</span></summary>
+<p>
+
+```{r, echo=T, warning=F, message=F}
+library(sdmpredictors)
+
+#get env data
+precip_seasonality<-load_layers("WC_bio15")
+
+precip_wettest<-load_layers("WC_bio13")
+
+#make range to crop for california
+cali<-extent(-130, -116, 30, 40)
+
+#crop it
+
+precip_w.crop<-crop(precip_wettest, cali)
+
+
+#plot it
+
+my.colors = colorRampPalette(c("#5E85B8","#EDF0C0","#C13127"))
+plot(precip_w.crop,col=my.colors(1000),axes=FALSE, box=FALSE)
+  title(cex.sub = 1.25, sub = "Precipitation of the Wettest Month")
+
+```
+</p>
+</details>
+
+
+
+2. Use the script for determining the number of candidates for the first environmental variable, find the number of candidates for the other four variables. Are these the same or different SNPs? (hint use merge() or intersect() to find out if the lists of candidates overlap) 
+
+
+<details><summary><span style="color: DarkCyan;">Solution</span></summary>
+<p>
+
+```{r, echo=T}
+
+#We'll use this script below
+
+#for variable 2 (PH)
+# L is number of loci
+L=3699
+#fdr level q
+q = 0.1
+w = which(sort(adj.p.val2) < q * (1:L)/L)
+# candidates are then
+candidates.2 = order(adj.p.val2)[w]
+
+length(candidates.2)
+
+
+#variable 3 
+w = which(sort(adj.p.val3) < q * (1:L)/L)
+# candidates are then
+candidates.3 = order(adj.p.val3)[w]
+
+length(candidates.3)
+
+#variable 4
+
+w = which(sort(adj.p.val4) < q * (1:L)/L)
+# candidates are then
+candidates.4 = order(adj.p.val4)[w]
+
+length(candidates.4)
+
+
+#variable 5
+
+w = which(sort(adj.p.val5) < q * (1:L)/L)
+# candidates are then
+candidates.5 = order(adj.p.val5)[w]
+
+length(candidates.5)
+
+
+```
+
+</p>
+</details>
+
+
+
+
+
+
 
 ## Download the data
 

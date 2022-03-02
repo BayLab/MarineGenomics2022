@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>11 Genome Environment Association | Test</title>
+  <meta name="description" content="" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="11 Genome Environment Association | Test" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="11 Genome Environment Association | Test" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="week-8-genome-wide-association-study-gwas.html"/>
+
+<script src="libs/header-attrs-2.11.16/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Marine Genomics 2021</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction to Marine Genomics<span></span></a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#cloud-computing-versus-individual-laptops"><i class="fa fa-check"></i><b>1.1</b> Cloud computing versus individual laptops<span></span></a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#meet-our-instructors"><i class="fa fa-check"></i><b>1.2</b> Meet our instructors!<span></span></a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#schedule"><i class="fa fa-check"></i><b>1.3</b> Schedule<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="week-1--welcome.html"><a href="week-1--welcome.html"><i class="fa fa-check"></i><b>2</b> Week 1- Welcome!<span></span></a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="week-1--welcome.html"><a href="week-1--welcome.html#introduction-to-shell-computing-via-the-data-carpentry-tutorial"><i class="fa fa-check"></i><b>2.1</b> Introduction to shell computing via the data carpentry tutorial<span></span></a></li>
+<li class="chapter" data-level="2.2" data-path="week-1--welcome.html"><a href="week-1--welcome.html#how-to-access-the-shell"><i class="fa fa-check"></i><b>2.2</b> How to access the shell<span></span></a></li>
+<li class="chapter" data-level="2.3" data-path="week-1--welcome.html"><a href="week-1--welcome.html#best-practices-for-jetstream"><i class="fa fa-check"></i><b>2.3</b> Best practices for Jetstream<span></span></a></li>
+<li class="chapter" data-level="2.4" data-path="week-1--welcome.html"><a href="week-1--welcome.html#week-1-objectives"><i class="fa fa-check"></i><b>2.4</b> Week 1 Objectives<span></span></a></li>
+<li class="chapter" data-level="2.5" data-path="week-1--welcome.html"><a href="week-1--welcome.html#navigating-your-file-system"><i class="fa fa-check"></i><b>2.5</b> Navigating your file system<span></span></a></li>
+<li class="chapter" data-level="2.6" data-path="week-1--welcome.html"><a href="week-1--welcome.html#shortcut-tab-completion"><i class="fa fa-check"></i><b>2.6</b> Shortcut: Tab Completion<span></span></a></li>
+<li class="chapter" data-level="2.7" data-path="week-1--welcome.html"><a href="week-1--welcome.html#summary-key-points"><i class="fa fa-check"></i><b>2.7</b> Summary &amp; Key Points<span></span></a></li>
+<li class="chapter" data-level="2.8" data-path="week-1--welcome.html"><a href="week-1--welcome.html#navigating-files-and-directories"><i class="fa fa-check"></i><b>2.8</b> Navigating Files and Directories<span></span></a></li>
+<li class="chapter" data-level="2.9" data-path="week-1--welcome.html"><a href="week-1--welcome.html#moving-around-the-file-system"><i class="fa fa-check"></i><b>2.9</b> Moving around the file system<span></span></a></li>
+<li class="chapter" data-level="2.10" data-path="week-1--welcome.html"><a href="week-1--welcome.html#navigating-practice-and-finding-hidden-directories"><i class="fa fa-check"></i><b>2.10</b> Navigating practice and finding hidden directories<span></span></a></li>
+<li class="chapter" data-level="2.11" data-path="week-1--welcome.html"><a href="week-1--welcome.html#examining-the-contents-of-other-directories"><i class="fa fa-check"></i><b>2.11</b> Examining the contents of other directories<span></span></a></li>
+<li class="chapter" data-level="2.12" data-path="week-1--welcome.html"><a href="week-1--welcome.html#full-vs-relative-paths"><i class="fa fa-check"></i><b>2.12</b> Full vs Relative Paths<span></span></a></li>
+<li class="chapter" data-level="2.13" data-path="week-1--welcome.html"><a href="week-1--welcome.html#navigational-shortcuts"><i class="fa fa-check"></i><b>2.13</b> Navigational shortcuts<span></span></a></li>
+<li class="chapter" data-level="2.14" data-path="week-1--welcome.html"><a href="week-1--welcome.html#key-points"><i class="fa fa-check"></i><b>2.14</b> Key Points<span></span></a></li>
+<li class="chapter" data-level="2.15" data-path="week-1--welcome.html"><a href="week-1--welcome.html#creature-of-the-week"><i class="fa fa-check"></i><b>2.15</b> Creature of the Week!<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="week-2-working-with-files.html"><a href="week-2-working-with-files.html"><i class="fa fa-check"></i><b>3</b> Week 2-Working With Files<span></span></a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="week-2-working-with-files.html"><a href="week-2-working-with-files.html#our-data-set-fastq-files"><i class="fa fa-check"></i><b>3.1</b> Our data set: FASTQ files<span></span></a></li>
+<li class="chapter" data-level="3.2" data-path="week-2-working-with-files.html"><a href="week-2-working-with-files.html#wildcards"><i class="fa fa-check"></i><b>3.2</b> Wildcards<span></span></a></li>
+<li class="chapter" data-level="3.3" data-path="week-2-working-with-files.html"><a href="week-2-working-with-files.html#command-history"><i class="fa fa-check"></i><b>3.3</b> Command History<span></span></a></li>
+<li class="chapter" data-level="3.4" data-path="week-2-working-with-files.html"><a href="week-2-working-with-files.html#examining-files"><i class="fa fa-check"></i><b>3.4</b> Examining Files<span></span></a></li>
+<li class="chapter" data-level="3.5" data-path="week-2-working-with-files.html"><a href="week-2-working-with-files.html#details-on-the-fastq-format"><i class="fa fa-check"></i><b>3.5</b> Details on the FASTQ format<span></span></a></li>
+<li class="chapter" data-level="3.6" data-path="week-2-working-with-files.html"><a href="week-2-working-with-files.html#creating-moving-copying-and-removing"><i class="fa fa-check"></i><b>3.6</b> Creating, moving, copying, and removing<span></span></a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="week-2-working-with-files.html"><a href="week-2-working-with-files.html#copying-files"><i class="fa fa-check"></i><b>3.6.1</b> Copying Files<span></span></a></li>
+<li class="chapter" data-level="3.6.2" data-path="week-2-working-with-files.html"><a href="week-2-working-with-files.html#creating-directories"><i class="fa fa-check"></i><b>3.6.2</b> Creating Directories<span></span></a></li>
+<li class="chapter" data-level="3.6.3" data-path="week-2-working-with-files.html"><a href="week-2-working-with-files.html#moving-renaming"><i class="fa fa-check"></i><b>3.6.3</b> Moving / Renaming<span></span></a></li>
+<li class="chapter" data-level="3.6.4" data-path="week-2-working-with-files.html"><a href="week-2-working-with-files.html#file-permissions"><i class="fa fa-check"></i><b>3.6.4</b> File Permissions<span></span></a></li>
+<li class="chapter" data-level="3.6.5" data-path="week-2-working-with-files.html"><a href="week-2-working-with-files.html#removing"><i class="fa fa-check"></i><b>3.6.5</b> Removing<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="week-2-working-with-files.html"><a href="week-2-working-with-files.html#redirections"><i class="fa fa-check"></i><b>3.7</b> Redirections<span></span></a></li>
+<li class="chapter" data-level="3.8" data-path="week-2-working-with-files.html"><a href="week-2-working-with-files.html#searching-files"><i class="fa fa-check"></i><b>3.8</b> Searching files<span></span></a></li>
+<li class="chapter" data-level="3.9" data-path="week-2-working-with-files.html"><a href="week-2-working-with-files.html#redirecting-output"><i class="fa fa-check"></i><b>3.9</b> Redirecting output<span></span></a></li>
+<li class="chapter" data-level="3.10" data-path="week-2-working-with-files.html"><a href="week-2-working-with-files.html#writing-for-loops"><i class="fa fa-check"></i><b>3.10</b> Writing for loops<span></span></a></li>
+<li class="chapter" data-level="3.11" data-path="week-2-working-with-files.html"><a href="week-2-working-with-files.html#using-basename-in-for-loops"><i class="fa fa-check"></i><b>3.11</b> Using Basename in for loops<span></span></a></li>
+<li class="chapter" data-level="3.12" data-path="week-2-working-with-files.html"><a href="week-2-working-with-files.html#writing-scripts-and-working-with-data"><i class="fa fa-check"></i><b>3.12</b> Writing Scripts and Working with Data<span></span></a></li>
+<li class="chapter" data-level="3.13" data-path="week-2-working-with-files.html"><a href="week-2-working-with-files.html#writing-files"><i class="fa fa-check"></i><b>3.13</b> Writing files<span></span></a></li>
+<li class="chapter" data-level="3.14" data-path="week-2-working-with-files.html"><a href="week-2-working-with-files.html#writing-scripts"><i class="fa fa-check"></i><b>3.14</b> Writing scripts<span></span></a></li>
+<li class="chapter" data-level="3.15" data-path="week-2-working-with-files.html"><a href="week-2-working-with-files.html#moving-and-downloading-data"><i class="fa fa-check"></i><b>3.15</b> Moving and Downloading Data<span></span></a>
+<ul>
+<li class="chapter" data-level="3.15.1" data-path="week-2-working-with-files.html"><a href="week-2-working-with-files.html#getting-data-from-the-cloud"><i class="fa fa-check"></i><b>3.15.1</b> Getting data from the cloud<span></span></a></li>
+<li class="chapter" data-level="3.15.2" data-path="week-2-working-with-files.html"><a href="week-2-working-with-files.html#uploading-and-downloading-data-to-your-virtual-machine-with-scp---unix"><i class="fa fa-check"></i><b>3.15.2</b> Uploading and Downloading Data to your Virtual Machine with scp - UNIX<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3.16" data-path="week-2-working-with-files.html"><a href="week-2-working-with-files.html#awk"><i class="fa fa-check"></i><b>3.16</b> Awk<span></span></a></li>
+<li class="chapter" data-level="3.17" data-path="week-2-working-with-files.html"><a href="week-2-working-with-files.html#creature-of-the-week-1"><i class="fa fa-check"></i><b>3.17</b> Creature of the Week!<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="week-3--what-is-a-genetic-variant.html"><a href="week-3--what-is-a-genetic-variant.html"><i class="fa fa-check"></i><b>4</b> Week 3- What is a Genetic Variant?<span></span></a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="week-3--what-is-a-genetic-variant.html"><a href="week-3--what-is-a-genetic-variant.html#to-get-started-lets-dowload-the-data-and-install-a-few-programs"><i class="fa fa-check"></i><b>4.1</b> To get started lets dowload the data and install a few programs<span></span></a></li>
+<li class="chapter" data-level="4.2" data-path="week-3--what-is-a-genetic-variant.html"><a href="week-3--what-is-a-genetic-variant.html#raw-read-quality-control"><i class="fa fa-check"></i><b>4.2</b> Raw read quality control<span></span></a></li>
+<li class="chapter" data-level="4.3" data-path="week-3--what-is-a-genetic-variant.html"><a href="week-3--what-is-a-genetic-variant.html#trimming-to-remove-adapters"><i class="fa fa-check"></i><b>4.3</b> Trimming to remove adapters<span></span></a></li>
+<li class="chapter" data-level="4.4" data-path="week-3--what-is-a-genetic-variant.html"><a href="week-3--what-is-a-genetic-variant.html#building-an-index-of-our-genome"><i class="fa fa-check"></i><b>4.4</b> Building an index of our genome<span></span></a></li>
+<li class="chapter" data-level="4.5" data-path="week-3--what-is-a-genetic-variant.html"><a href="week-3--what-is-a-genetic-variant.html#map-reads-to-the-genome"><i class="fa fa-check"></i><b>4.5</b> Map reads to the genome<span></span></a></li>
+<li class="chapter" data-level="4.6" data-path="week-3--what-is-a-genetic-variant.html"><a href="week-3--what-is-a-genetic-variant.html#sam-to-bam-file-conversion"><i class="fa fa-check"></i><b>4.6</b> sam to bam file conversion<span></span></a></li>
+<li class="chapter" data-level="4.7" data-path="week-3--what-is-a-genetic-variant.html"><a href="week-3--what-is-a-genetic-variant.html#genotype-likelihoods"><i class="fa fa-check"></i><b>4.7</b> Genotype likelihoods<span></span></a></li>
+<li class="chapter" data-level="4.8" data-path="week-3--what-is-a-genetic-variant.html"><a href="week-3--what-is-a-genetic-variant.html#creature-of-the-week-2"><i class="fa fa-check"></i><b>4.8</b> Creature of the Week!<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="week-4--the-r-environment.html"><a href="week-4--the-r-environment.html"><i class="fa fa-check"></i><b>5</b> Week 4- The R environment<span></span></a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="week-4--the-r-environment.html"><a href="week-4--the-r-environment.html#lesson-1-orientation-to-r"><i class="fa fa-check"></i><b>5.1</b> Lesson 1: Orientation to R<span></span></a></li>
+<li class="chapter" data-level="5.2" data-path="week-4--the-r-environment.html"><a href="week-4--the-r-environment.html#manipulating-a-vector-object"><i class="fa fa-check"></i><b>5.2</b> Manipulating a vector object<span></span></a></li>
+<li class="chapter" data-level="5.3" data-path="week-4--the-r-environment.html"><a href="week-4--the-r-environment.html#operations-act-on-each-element-of-a-vector"><i class="fa fa-check"></i><b>5.3</b> Operations act on each element of a vector:<span></span></a></li>
+<li class="chapter" data-level="5.4" data-path="week-4--the-r-environment.html"><a href="week-4--the-r-environment.html#operations-can-also-work-with-two-vectors"><i class="fa fa-check"></i><b>5.4</b> Operations can also work with two vectors:<span></span></a></li>
+<li class="chapter" data-level="5.5" data-path="week-4--the-r-environment.html"><a href="week-4--the-r-environment.html#a-few-tips-below-for-working-with-objects"><i class="fa fa-check"></i><b>5.5</b> A few tips below for working with objects:<span></span></a></li>
+<li class="chapter" data-level="5.6" data-path="week-4--the-r-environment.html"><a href="week-4--the-r-environment.html#practice-r-operations"><i class="fa fa-check"></i><b>5.6</b> Practice R Operations<span></span></a></li>
+<li class="chapter" data-level="5.7" data-path="week-4--the-r-environment.html"><a href="week-4--the-r-environment.html#characterizing-a-dataframe"><i class="fa fa-check"></i><b>5.7</b> 1.2 Characterizing a dataframe<span></span></a></li>
+<li class="chapter" data-level="5.8" data-path="week-4--the-r-environment.html"><a href="week-4--the-r-environment.html#how-to-access-parts-of-the-data"><i class="fa fa-check"></i><b>5.8</b> How to access parts of the data:<span></span></a></li>
+<li class="chapter" data-level="5.9" data-path="week-4--the-r-environment.html"><a href="week-4--the-r-environment.html#data-manipulation"><i class="fa fa-check"></i><b>5.9</b> Data Manipulation<span></span></a></li>
+<li class="chapter" data-level="5.10" data-path="week-4--the-r-environment.html"><a href="week-4--the-r-environment.html#practice-exploring-a-dataframe"><i class="fa fa-check"></i><b>5.10</b> Practice exploring a dataframe<span></span></a></li>
+<li class="chapter" data-level="5.11" data-path="week-4--the-r-environment.html"><a href="week-4--the-r-environment.html#subsetting-datasets-logicals"><i class="fa fa-check"></i><b>5.11</b> 1.3 Subsetting datasets &amp; logicals<span></span></a></li>
+<li class="chapter" data-level="5.12" data-path="week-4--the-r-environment.html"><a href="week-4--the-r-environment.html#practice-subsetting-datasetslogicals"><i class="fa fa-check"></i><b>5.12</b> Practice Subsetting datasets/logicals<span></span></a></li>
+<li class="chapter" data-level="5.13" data-path="week-4--the-r-environment.html"><a href="week-4--the-r-environment.html#creature-of-the-week-3"><i class="fa fa-check"></i><b>5.13</b> Creature of the Week!<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="week-5--r-continued.html"><a href="week-5--r-continued.html"><i class="fa fa-check"></i><b>6</b> Week 5- R Continued<span></span></a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="week-5--r-continued.html"><a href="week-5--r-continued.html#plotting"><i class="fa fa-check"></i><b>6.1</b> 2.1 Plotting<span></span></a></li>
+<li class="chapter" data-level="6.2" data-path="week-5--r-continued.html"><a href="week-5--r-continued.html#scatterplots"><i class="fa fa-check"></i><b>6.2</b> Scatterplots<span></span></a></li>
+<li class="chapter" data-level="6.3" data-path="week-5--r-continued.html"><a href="week-5--r-continued.html#customizing-your-plot"><i class="fa fa-check"></i><b>6.3</b> Customizing your plot<span></span></a></li>
+<li class="chapter" data-level="6.4" data-path="week-5--r-continued.html"><a href="week-5--r-continued.html#practice-problems-2.1"><i class="fa fa-check"></i><b>6.4</b> Practice Problems 2.1<span></span></a></li>
+<li class="chapter" data-level="6.5" data-path="week-5--r-continued.html"><a href="week-5--r-continued.html#plotting-with-ggplot2"><i class="fa fa-check"></i><b>6.5</b> 2.2 plotting with ggplot2<span></span></a></li>
+<li class="chapter" data-level="6.6" data-path="week-5--r-continued.html"><a href="week-5--r-continued.html#practice-problems-2.2"><i class="fa fa-check"></i><b>6.6</b> Practice Problems 2.2<span></span></a></li>
+<li class="chapter" data-level="6.7" data-path="week-5--r-continued.html"><a href="week-5--r-continued.html#for-loops-and-the-apply-family-of-functions"><i class="fa fa-check"></i><b>6.7</b> For loops and the apply family of functions<span></span></a></li>
+<li class="chapter" data-level="6.8" data-path="week-5--r-continued.html"><a href="week-5--r-continued.html#apply-family"><i class="fa fa-check"></i><b>6.8</b> apply family<span></span></a>
+<ul>
+<li class="chapter" data-level="6.8.1" data-path="week-5--r-continued.html"><a href="week-5--r-continued.html#sapply"><i class="fa fa-check"></i><b>6.8.1</b> sapply<span></span></a></li>
+<li class="chapter" data-level="6.8.2" data-path="week-5--r-continued.html"><a href="week-5--r-continued.html#apply"><i class="fa fa-check"></i><b>6.8.2</b> apply<span></span></a></li>
+<li class="chapter" data-level="6.8.3" data-path="week-5--r-continued.html"><a href="week-5--r-continued.html#lapply-list-apply"><i class="fa fa-check"></i><b>6.8.3</b> lapply – “list” apply<span></span></a></li>
+<li class="chapter" data-level="6.8.4" data-path="week-5--r-continued.html"><a href="week-5--r-continued.html#tapply---per-type-apply"><i class="fa fa-check"></i><b>6.8.4</b> tapply - “per Type” apply<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="6.9" data-path="week-5--r-continued.html"><a href="week-5--r-continued.html#exercise-2.3-apply-and-tapply"><i class="fa fa-check"></i><b>6.9</b> Exercise 2.3 apply and tapply<span></span></a></li>
+<li class="chapter" data-level="6.10" data-path="week-5--r-continued.html"><a href="week-5--r-continued.html#creature-of-the-week-4"><i class="fa fa-check"></i><b>6.10</b> Creature of the Week!<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="population-structure-via-construct.html"><a href="population-structure-via-construct.html"><i class="fa fa-check"></i><b>7</b> Population Structure via conStruct<span></span></a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="population-structure-via-construct.html"><a href="population-structure-via-construct.html#download-the-data"><i class="fa fa-check"></i><b>7.1</b> Download the data<span></span></a></li>
+<li class="chapter" data-level="7.2" data-path="population-structure-via-construct.html"><a href="population-structure-via-construct.html#update-our-compiler-in-bashunix-and-install-everything-for-r-in-the-terminal-in-bashunix-not-in-rstudio"><i class="fa fa-check"></i><b>7.2</b> update our compiler in bash/UNIX and install everything for R in the terminal (in bash/UNIX, NOT in Rstudio)<span></span></a></li>
+<li class="chapter" data-level="7.3" data-path="population-structure-via-construct.html"><a href="population-structure-via-construct.html#install-construct-in-r"><i class="fa fa-check"></i><b>7.3</b> install conStruct in R<span></span></a></li>
+<li class="chapter" data-level="7.4" data-path="population-structure-via-construct.html"><a href="population-structure-via-construct.html#read-in-the-data"><i class="fa fa-check"></i><b>7.4</b> read in the data<span></span></a></li>
+<li class="chapter" data-level="7.5" data-path="population-structure-via-construct.html"><a href="population-structure-via-construct.html#get-our-meta-data-read-into-r-and-ready-to-use"><i class="fa fa-check"></i><b>7.5</b> Get our meta data read into R and ready to use<span></span></a></li>
+<li class="chapter" data-level="7.6" data-path="population-structure-via-construct.html"><a href="population-structure-via-construct.html#run-a-structure-analysis"><i class="fa fa-check"></i><b>7.6</b> Run a structure analysis<span></span></a></li>
+<li class="chapter" data-level="7.7" data-path="population-structure-via-construct.html"><a href="population-structure-via-construct.html#incoorporate-geographic-distances-in-a-spatial-model"><i class="fa fa-check"></i><b>7.7</b> Incoorporate geographic distances in a spatial model<span></span></a></li>
+<li class="chapter" data-level="7.8" data-path="population-structure-via-construct.html"><a href="population-structure-via-construct.html#comparisons-across-different-values-of-k"><i class="fa fa-check"></i><b>7.8</b> Comparisons across different values of K<span></span></a></li>
+<li class="chapter" data-level="7.9" data-path="population-structure-via-construct.html"><a href="population-structure-via-construct.html#exercises"><i class="fa fa-check"></i><b>7.9</b> Exercises<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="week-6--principle-component-analyses.html"><a href="week-6--principle-component-analyses.html"><i class="fa fa-check"></i><b>8</b> Week 6- Principle Component Analyses<span></span></a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="week-6--principle-component-analyses.html"><a href="week-6--principle-component-analyses.html#download-the-data-1"><i class="fa fa-check"></i><b>8.1</b> Download the data<span></span></a></li>
+<li class="chapter" data-level="8.2" data-path="week-6--principle-component-analyses.html"><a href="week-6--principle-component-analyses.html#installing-programs"><i class="fa fa-check"></i><b>8.2</b> Installing programs<span></span></a></li>
+<li class="chapter" data-level="8.3" data-path="week-6--principle-component-analyses.html"><a href="week-6--principle-component-analyses.html#run-pcangsd-on-our-data"><i class="fa fa-check"></i><b>8.3</b> Run pcangsd on our data<span></span></a></li>
+<li class="chapter" data-level="8.4" data-path="week-6--principle-component-analyses.html"><a href="week-6--principle-component-analyses.html#setting-up-a-new-project-in-r"><i class="fa fa-check"></i><b>8.4</b> Setting up a new project in R<span></span></a></li>
+<li class="chapter" data-level="8.5" data-path="week-6--principle-component-analyses.html"><a href="week-6--principle-component-analyses.html#reading-data-into-r"><i class="fa fa-check"></i><b>8.5</b> Reading data into R<span></span></a></li>
+<li class="chapter" data-level="8.6" data-path="week-6--principle-component-analyses.html"><a href="week-6--principle-component-analyses.html#exercises-1"><i class="fa fa-check"></i><b>8.6</b> Exercises<span></span></a></li>
+<li class="chapter" data-level="8.7" data-path="week-6--principle-component-analyses.html"><a href="week-6--principle-component-analyses.html#creature-of-the-week-5"><i class="fa fa-check"></i><b>8.7</b> Creature of the Week!<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="week-8--fst-and-outlier-analysis.html"><a href="week-8--fst-and-outlier-analysis.html"><i class="fa fa-check"></i><b>9</b> Week 8- F<sub>st</sub> and outlier analysis<span></span></a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="week-8--fst-and-outlier-analysis.html"><a href="week-8--fst-and-outlier-analysis.html#download-the-data-2"><i class="fa fa-check"></i><b>9.1</b> Download the data<span></span></a></li>
+<li class="chapter" data-level="9.2" data-path="week-8--fst-and-outlier-analysis.html"><a href="week-8--fst-and-outlier-analysis.html#getting-r-set-up"><i class="fa fa-check"></i><b>9.2</b> Getting R set up<span></span></a></li>
+<li class="chapter" data-level="9.3" data-path="week-8--fst-and-outlier-analysis.html"><a href="week-8--fst-and-outlier-analysis.html#finding-outliers-using-pcadapt"><i class="fa fa-check"></i><b>9.3</b> Finding outliers using pcadapt<span></span></a></li>
+<li class="chapter" data-level="9.4" data-path="week-8--fst-and-outlier-analysis.html"><a href="week-8--fst-and-outlier-analysis.html#pcadapt-exercises"><i class="fa fa-check"></i><b>9.4</b> pcadapt Exercises<span></span></a></li>
+<li class="chapter" data-level="9.5" data-path="week-8--fst-and-outlier-analysis.html"><a href="week-8--fst-and-outlier-analysis.html#using-fst-to-find-outliers"><i class="fa fa-check"></i><b>9.5</b> Using F<sub>st</sub> to find outliers<span></span></a></li>
+<li class="chapter" data-level="9.6" data-path="week-8--fst-and-outlier-analysis.html"><a href="week-8--fst-and-outlier-analysis.html#outflank-practice"><i class="fa fa-check"></i><b>9.6</b> OutFLANK Practice<span></span></a></li>
+<li class="chapter" data-level="9.7" data-path="week-8--fst-and-outlier-analysis.html"><a href="week-8--fst-and-outlier-analysis.html#creature-of-the-week-6"><i class="fa fa-check"></i><b>9.7</b> Creature of the Week!<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="week-8-genome-wide-association-study-gwas.html"><a href="week-8-genome-wide-association-study-gwas.html"><i class="fa fa-check"></i><b>10</b> Week 8: Genome wide association study (GWAS)<span></span></a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="week-8-genome-wide-association-study-gwas.html"><a href="week-8-genome-wide-association-study-gwas.html#load-in-the-data"><i class="fa fa-check"></i><b>10.1</b> load in the data<span></span></a></li>
+<li class="chapter" data-level="10.2" data-path="week-8-genome-wide-association-study-gwas.html"><a href="week-8-genome-wide-association-study-gwas.html#install-packages-in-r"><i class="fa fa-check"></i><b>10.2</b> install packages in R<span></span></a></li>
+<li class="chapter" data-level="10.3" data-path="week-8-genome-wide-association-study-gwas.html"><a href="week-8-genome-wide-association-study-gwas.html#install-angsd-and-pcangsd-again"><i class="fa fa-check"></i><b>10.3</b> install angsd and pcangsd (again?)<span></span></a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="week-8-genome-wide-association-study-gwas.html"><a href="week-8-genome-wide-association-study-gwas.html#install-angsd"><i class="fa fa-check"></i><b>10.3.1</b> install angsd<span></span></a></li>
+<li class="chapter" data-level="10.3.2" data-path="week-8-genome-wide-association-study-gwas.html"><a href="week-8-genome-wide-association-study-gwas.html#for-pcangsd"><i class="fa fa-check"></i><b>10.3.2</b> for pcangsd<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="week-8-genome-wide-association-study-gwas.html"><a href="week-8-genome-wide-association-study-gwas.html#the-data"><i class="fa fa-check"></i><b>10.4</b> The data<span></span></a></li>
+<li class="chapter" data-level="10.5" data-path="week-8-genome-wide-association-study-gwas.html"><a href="week-8-genome-wide-association-study-gwas.html#take-beagle-file-and-generate-lrt-file"><i class="fa fa-check"></i><b>10.5</b> take Beagle file and generate lrt file<span></span></a></li>
+<li class="chapter" data-level="10.6" data-path="week-8-genome-wide-association-study-gwas.html"><a href="week-8-genome-wide-association-study-gwas.html#take-lrt-file-and-make-a-manhattan-plot"><i class="fa fa-check"></i><b>10.6</b> take lrt file and make a manhattan plot<span></span></a></li>
+<li class="chapter" data-level="10.7" data-path="week-8-genome-wide-association-study-gwas.html"><a href="week-8-genome-wide-association-study-gwas.html#exercises-2"><i class="fa fa-check"></i><b>10.7</b> Exercises<span></span></a></li>
+<li class="chapter" data-level="10.8" data-path="week-8-genome-wide-association-study-gwas.html"><a href="week-8-genome-wide-association-study-gwas.html#creature-of-the-week-7"><i class="fa fa-check"></i><b>10.8</b> Creature of the Week!<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="genome-environment-association.html"><a href="genome-environment-association.html"><i class="fa fa-check"></i><b>11</b> Genome Environment Association<span></span></a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="genome-environment-association.html"><a href="genome-environment-association.html#download-the-data-3"><i class="fa fa-check"></i><b>11.1</b> Download the data<span></span></a></li>
+<li class="chapter" data-level="11.2" data-path="genome-environment-association.html"><a href="genome-environment-association.html#install-a-compiler-for-unixbash"><i class="fa fa-check"></i><b>11.2</b> install a compiler for Unix/bash<span></span></a></li>
+<li class="chapter" data-level="11.3" data-path="genome-environment-association.html"><a href="genome-environment-association.html#install-r-packages"><i class="fa fa-check"></i><b>11.3</b> install R packages<span></span></a></li>
+<li class="chapter" data-level="11.4" data-path="genome-environment-association.html"><a href="genome-environment-association.html#get-the-environmental-data"><i class="fa fa-check"></i><b>11.4</b> Get the Environmental Data<span></span></a></li>
+<li class="chapter" data-level="11.5" data-path="genome-environment-association.html"><a href="genome-environment-association.html#extract-site-specific-information-from-our-envirornmental-layers"><i class="fa fa-check"></i><b>11.5</b> Extract Site Specific Information from our Envirornmental Layers<span></span></a></li>
+<li class="chapter" data-level="11.6" data-path="genome-environment-association.html"><a href="genome-environment-association.html#make-a-map-of-our-environmental-data"><i class="fa fa-check"></i><b>11.6</b> Make a Map of our environmental data<span></span></a></li>
+<li class="chapter" data-level="11.7" data-path="genome-environment-association.html"><a href="genome-environment-association.html#load-in-genetic-data"><i class="fa fa-check"></i><b>11.7</b> Load in genetic data<span></span></a></li>
+<li class="chapter" data-level="11.8" data-path="genome-environment-association.html"><a href="genome-environment-association.html#exercises-3"><i class="fa fa-check"></i><b>11.8</b> Exercises<span></span></a></li>
+<li class="chapter" data-level="11.9" data-path="genome-environment-association.html"><a href="genome-environment-association.html#download-the-data-4"><i class="fa fa-check"></i><b>11.9</b> Download the data<span></span></a></li>
+<li class="chapter" data-level="11.10" data-path="genome-environment-association.html"><a href="genome-environment-association.html#install-transdecoder"><i class="fa fa-check"></i><b>11.10</b> Install Transdecoder<span></span></a></li>
+<li class="chapter" data-level="11.11" data-path="genome-environment-association.html"><a href="genome-environment-association.html#run-transdecoder"><i class="fa fa-check"></i><b>11.11</b> Run Transdecoder<span></span></a></li>
+<li class="chapter" data-level="11.12" data-path="genome-environment-association.html"><a href="genome-environment-association.html#run-ncbi-blast"><i class="fa fa-check"></i><b>11.12</b> Run NCBI-BLAST<span></span></a></li>
+<li class="chapter" data-level="11.13" data-path="genome-environment-association.html"><a href="genome-environment-association.html#what-did-we-find"><i class="fa fa-check"></i><b>11.13</b> What did we find?<span></span></a></li>
+<li class="chapter" data-level="11.14" data-path="genome-environment-association.html"><a href="genome-environment-association.html#the-importance-of-genomic-architecture"><i class="fa fa-check"></i><b>11.14</b> The importance of Genomic Architecture<span></span></a></li>
+<li class="chapter" data-level="11.15" data-path="genome-environment-association.html"><a href="genome-environment-association.html#exercises-4"><i class="fa fa-check"></i><b>11.15</b> Exercises<span></span></a></li>
+<li class="chapter" data-level="11.16" data-path="genome-environment-association.html"><a href="genome-environment-association.html#creature-of-the-week-8"><i class="fa fa-check"></i><b>11.16</b> Creature of the Week!<span></span></a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="genome-environment-association" class="section level1 hasAnchor" number="11">
+<h1><span class="header-section-number">11</span> Genome Environment Association<a href="genome-environment-association.html#genome-environment-association" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>The lecture for this week can be found <a href="https://github.com/BayLab/MarineGenomicsSemester/blob/main/ppt/MarineGenomics_Lecture_w11.pdf">here</a>.</p>
+<p>All of the code presented in this weeks class comes modified from a former Marine Genomics student and recent UC Davis graduate, Camille Rumberger! Thank you Camille!</p>
+<div id="download-the-data-3" class="section level2 hasAnchor" number="11.1">
+<h2><span class="header-section-number">11.1</span> Download the data<a href="genome-environment-association.html#download-the-data-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>For this week we are again using data from the wonderful Xuereb et al. 2018 paper <a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/mec.14589?casa_token=aBVeQUaZ6UEAAAAA:vt9cQFbQ-65F1erD-1Uq0DAWEaZ75fDhepkPomc4RMPAqQgntIcm0btk842SxvaraM2VdlZ5nwoHUhCy">here</a>
+And consistes of a vcf file with 3966 Snps from 685 pacific sea cucumbers.</p>
+<div class="sourceCode" id="cb581"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb581-1"><a href="genome-environment-association.html#cb581-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb581-2"><a href="genome-environment-association.html#cb581-2" aria-hidden="true" tabindex="-1"></a>wget https://raw.githubusercontent.com/BayLab/MarineGenomicsData/main/week11_semester.tar.gz</span>
+<span id="cb581-3"><a href="genome-environment-association.html#cb581-3" aria-hidden="true" tabindex="-1"></a>tar -xzvf week11_semester.tar.gz</span></code></pre></div>
+</div>
+<div id="install-a-compiler-for-unixbash" class="section level2 hasAnchor" number="11.2">
+<h2><span class="header-section-number">11.2</span> install a compiler for Unix/bash<a href="genome-environment-association.html#install-a-compiler-for-unixbash" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Run this command below in the terminal. It’s necesary to install several R packages.</p>
+<div class="sourceCode" id="cb582"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb582-1"><a href="genome-environment-association.html#cb582-1" aria-hidden="true" tabindex="-1"></a>sudo apt install libgdal-dev</span></code></pre></div>
+</div>
+<div id="install-r-packages" class="section level2 hasAnchor" number="11.3">
+<h2><span class="header-section-number">11.3</span> install R packages<a href="genome-environment-association.html#install-r-packages" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb583"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb583-1"><a href="genome-environment-association.html#cb583-1" aria-hidden="true" tabindex="-1"></a><span class="co">#devtools::install_github(&quot;bcm-uga/lfmm&quot;)</span></span>
+<span id="cb583-2"><a href="genome-environment-association.html#cb583-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb583-3"><a href="genome-environment-association.html#cb583-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb583-4"><a href="genome-environment-association.html#cb583-4" aria-hidden="true" tabindex="-1"></a><span class="co"># get packages</span></span>
+<span id="cb583-5"><a href="genome-environment-association.html#cb583-5" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages(c(&#39;lfmm&#39;,&#39;psych&#39;,&#39;vegan&#39;,&#39;ggplot2&#39;,&#39;data.table&#39;,&#39;sdmpredictors&#39;,&#39;rgdal&#39;,&#39;raster&#39;), dependencies = T)</span></span>
+<span id="cb583-6"><a href="genome-environment-association.html#cb583-6" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages(&quot;BiocManager&quot;)</span></span>
+<span id="cb583-7"><a href="genome-environment-association.html#cb583-7" aria-hidden="true" tabindex="-1"></a><span class="co">#BiocManager::install(&quot;LEA&quot;, force=T)</span></span>
+<span id="cb583-8"><a href="genome-environment-association.html#cb583-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb583-9"><a href="genome-environment-association.html#cb583-9" aria-hidden="true" tabindex="-1"></a><span class="co"># call programs</span></span>
+<span id="cb583-10"><a href="genome-environment-association.html#cb583-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lfmm)</span>
+<span id="cb583-11"><a href="genome-environment-association.html#cb583-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
+<span id="cb583-12"><a href="genome-environment-association.html#cb583-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vegan)</span>
+<span id="cb583-13"><a href="genome-environment-association.html#cb583-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(LEA)</span></code></pre></div>
+<pre><code>## Error in library(LEA): there is no package called &#39;LEA&#39;</code></pre>
+<div class="sourceCode" id="cb585"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb585-1"><a href="genome-environment-association.html#cb585-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
+<span id="cb585-2"><a href="genome-environment-association.html#cb585-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sdmpredictors)</span>
+<span id="cb585-3"><a href="genome-environment-association.html#cb585-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(leaflet)</span>
+<span id="cb585-4"><a href="genome-environment-association.html#cb585-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb585-5"><a href="genome-environment-association.html#cb585-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rgdal)</span>
+<span id="cb585-6"><a href="genome-environment-association.html#cb585-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(raster)</span></code></pre></div>
+</div>
+<div id="get-the-environmental-data" class="section level2 hasAnchor" number="11.4">
+<h2><span class="header-section-number">11.4</span> Get the Environmental Data<a href="genome-environment-association.html#get-the-environmental-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>now we need to download the environmental data for our study. We’re just going to look at a few variables but there are many others that you could choose from here: <a href="https://www.bio-oracle.org/explore-data.php" class="uri">https://www.bio-oracle.org/explore-data.php</a></p>
+<p>Note that this step is rather time consuming, thus it’s best to download the data once and save it as an environment file, which you can upload each time you want to modify your script.</p>
+<div class="sourceCode" id="cb586"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb586-1"><a href="genome-environment-association.html#cb586-1" aria-hidden="true" tabindex="-1"></a><span class="co">#load the environmental data and store it as objects that we can use later</span></span>
+<span id="cb586-2"><a href="genome-environment-association.html#cb586-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb586-3"><a href="genome-environment-association.html#cb586-3" aria-hidden="true" tabindex="-1"></a>environ <span class="ot">&lt;-</span> <span class="fu">load_layers</span>(<span class="at">layercodes =</span> <span class="fu">c</span>(<span class="st">&quot;BO_chlomean&quot;</span>,<span class="st">&quot;BO_ph&quot;</span>, <span class="st">&quot;BO_salinity&quot;</span>,<span class="st">&quot;BO_sstmax&quot;</span>,<span class="st">&quot;BO_sstmean&quot;</span>))</span></code></pre></div>
+<pre><code>## Error in utils::download.file(layer_url, path, method = &quot;auto&quot;, quiet = FALSE, : cannot open URL &#39;https://bio-oracle.org/data/1.0/BO_chlomean.zip&#39;</code></pre>
+<div class="sourceCode" id="cb588"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb588-1"><a href="genome-environment-association.html#cb588-1" aria-hidden="true" tabindex="-1"></a><span class="co">#now put each layer into it&#39;s own object</span></span>
+<span id="cb588-2"><a href="genome-environment-association.html#cb588-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb588-3"><a href="genome-environment-association.html#cb588-3" aria-hidden="true" tabindex="-1"></a>chlomean<span class="ot">&lt;-</span><span class="fu">load_layers</span>(<span class="st">&quot;BO_chlomean&quot;</span>)</span></code></pre></div>
+<pre><code>## Error in utils::download.file(layer_url, path, method = &quot;auto&quot;, quiet = FALSE, : cannot open URL &#39;https://bio-oracle.org/data/1.0/BO_chlomean.zip&#39;</code></pre>
+<div class="sourceCode" id="cb590"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb590-1"><a href="genome-environment-association.html#cb590-1" aria-hidden="true" tabindex="-1"></a>ph<span class="ot">&lt;-</span><span class="fu">load_layers</span>(<span class="st">&quot;BO_ph&quot;</span>)</span></code></pre></div>
+<pre><code>## Error in utils::download.file(layer_url, path, method = &quot;auto&quot;, quiet = FALSE, : cannot open URL &#39;https://bio-oracle.org/data/1.0/BO_ph.zip&#39;</code></pre>
+<div class="sourceCode" id="cb592"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb592-1"><a href="genome-environment-association.html#cb592-1" aria-hidden="true" tabindex="-1"></a>salinity<span class="ot">&lt;-</span><span class="fu">load_layers</span>(<span class="st">&quot;BO_salinity&quot;</span>)</span></code></pre></div>
+<pre><code>## Error in utils::download.file(layer_url, path, method = &quot;auto&quot;, quiet = FALSE, : cannot open URL &#39;https://bio-oracle.org/data/1.0/BO_salinity.zip&#39;</code></pre>
+<div class="sourceCode" id="cb594"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb594-1"><a href="genome-environment-association.html#cb594-1" aria-hidden="true" tabindex="-1"></a>sst_max<span class="ot">&lt;-</span><span class="fu">load_layers</span>(<span class="st">&quot;BO_sstmax&quot;</span>)</span></code></pre></div>
+<pre><code>## Error in utils::download.file(layer_url, path, method = &quot;auto&quot;, quiet = FALSE, : cannot open URL &#39;https://bio-oracle.org/data/1.0/BO_sstmax.zip&#39;</code></pre>
+<div class="sourceCode" id="cb596"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb596-1"><a href="genome-environment-association.html#cb596-1" aria-hidden="true" tabindex="-1"></a>sst_mean<span class="ot">&lt;-</span><span class="fu">load_layers</span>(<span class="st">&quot;BO_sstmean&quot;</span>)</span></code></pre></div>
+<pre><code>## Error in utils::download.file(layer_url, path, method = &quot;auto&quot;, quiet = FALSE, : cannot open URL &#39;https://bio-oracle.org/data/1.0/BO_sstmean.zip&#39;</code></pre>
+<p>Now we’ll read in our metadata, which has lat and lon for each sample</p>
+<div class="sourceCode" id="cb598"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb598-1"><a href="genome-environment-association.html#cb598-1" aria-hidden="true" tabindex="-1"></a>meta<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;californicus_metadata.csv&quot;</span>)</span>
+<span id="cb598-2"><a href="genome-environment-association.html#cb598-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb598-3"><a href="genome-environment-association.html#cb598-3" aria-hidden="true" tabindex="-1"></a><span class="co">#make a new dataframe that just contains the lat and lon and label them &quot;lat&quot; and &quot;long&quot;</span></span>
+<span id="cb598-4"><a href="genome-environment-association.html#cb598-4" aria-hidden="true" tabindex="-1"></a><span class="co">#notice that the original metafile mislabels lat and lon, oops!</span></span>
+<span id="cb598-5"><a href="genome-environment-association.html#cb598-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb598-6"><a href="genome-environment-association.html#cb598-6" aria-hidden="true" tabindex="-1"></a>sites<span class="ot">&lt;-</span><span class="fu">cbind</span>(<span class="st">&quot;lat&quot;</span> <span class="ot">=</span>  meta<span class="sc">$</span>LONG, <span class="st">&quot;lon&quot;</span> <span class="ot">=</span> meta<span class="sc">$</span>LAT)</span>
+<span id="cb598-7"><a href="genome-environment-association.html#cb598-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb598-8"><a href="genome-environment-association.html#cb598-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(sites)</span></code></pre></div>
+<pre><code>##            lat     lon
+## [1,] -126.5646 50.5212
+## [2,] -126.5646 50.5212
+## [3,] -126.5646 50.5212
+## [4,] -126.5646 50.5212
+## [5,] -126.5646 50.5212
+## [6,] -126.5646 50.5212</code></pre>
+</div>
+<div id="extract-site-specific-information-from-our-envirornmental-layers" class="section level2 hasAnchor" number="11.5">
+<h2><span class="header-section-number">11.5</span> Extract Site Specific Information from our Envirornmental Layers<a href="genome-environment-association.html#extract-site-specific-information-from-our-envirornmental-layers" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The data we downloaded</p>
+<div class="sourceCode" id="cb600"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb600-1"><a href="genome-environment-association.html#cb600-1" aria-hidden="true" tabindex="-1"></a>sites_environ <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Name=</span>sites, <span class="fu">extract</span>(environ,sites))</span></code></pre></div>
+<pre><code>## Error in h(simpleError(msg, call)): error in evaluating the argument &#39;x&#39; in selecting a method for function &#39;extract&#39;: object &#39;environ&#39; not found</code></pre>
+<div class="sourceCode" id="cb602"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb602-1"><a href="genome-environment-association.html#cb602-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(sites_environ)</span></code></pre></div>
+<pre><code>## Error in h(simpleError(msg, call)): error in evaluating the argument &#39;x&#39; in selecting a method for function &#39;head&#39;: object &#39;sites_environ&#39; not found</code></pre>
+<p>That produces for us a site specific environment file. We now need to convert this file into a format that we can save it as a matrix and export it as an environment file (i.e., in the format that the next step need it to be in which we do below)</p>
+<div class="sourceCode" id="cb604"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb604-1"><a href="genome-environment-association.html#cb604-1" aria-hidden="true" tabindex="-1"></a><span class="co">#remove lat and lon and convert to matrix</span></span>
+<span id="cb604-2"><a href="genome-environment-association.html#cb604-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb604-3"><a href="genome-environment-association.html#cb604-3" aria-hidden="true" tabindex="-1"></a>sites_environ_matrix<span class="ot">&lt;-</span><span class="fu">as.matrix</span>(sites_environ[,<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)])</span></code></pre></div>
+<pre><code>## Error in h(simpleError(msg, call)): error in evaluating the argument &#39;x&#39; in selecting a method for function &#39;as.matrix&#39;: object &#39;sites_environ&#39; not found</code></pre>
+<div class="sourceCode" id="cb606"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb606-1"><a href="genome-environment-association.html#cb606-1" aria-hidden="true" tabindex="-1"></a><span class="co">#remove any Na&#39;s</span></span>
+<span id="cb606-2"><a href="genome-environment-association.html#cb606-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb606-3"><a href="genome-environment-association.html#cb606-3" aria-hidden="true" tabindex="-1"></a>sites_environ_matrix_nas<span class="ot">&lt;-</span><span class="fu">na.omit</span>(sites_environ_matrix)</span></code></pre></div>
+<pre><code>## Error in na.omit(sites_environ_matrix): object &#39;sites_environ_matrix&#39; not found</code></pre>
+<div class="sourceCode" id="cb608"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb608-1"><a href="genome-environment-association.html#cb608-1" aria-hidden="true" tabindex="-1"></a><span class="co">#write the file to an env file</span></span>
+<span id="cb608-2"><a href="genome-environment-association.html#cb608-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb608-3"><a href="genome-environment-association.html#cb608-3" aria-hidden="true" tabindex="-1"></a><span class="fu">write.env</span>(sites_environ_matrix_nas, <span class="st">&quot;sites_environ_matrix.env&quot;</span>)</span></code></pre></div>
+<pre><code>## Error in write.env(sites_environ_matrix_nas, &quot;sites_environ_matrix.env&quot;): could not find function &quot;write.env&quot;</code></pre>
+</div>
+<div id="make-a-map-of-our-environmental-data" class="section level2 hasAnchor" number="11.6">
+<h2><span class="header-section-number">11.6</span> Make a Map of our environmental data<a href="genome-environment-association.html#make-a-map-of-our-environmental-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We now have enough information to make a pretty plot of one of our environmental parameters.</p>
+<div class="sourceCode" id="cb610"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb610-1"><a href="genome-environment-association.html#cb610-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sdmpredictors)</span>
+<span id="cb610-2"><a href="genome-environment-association.html#cb610-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb610-3"><a href="genome-environment-association.html#cb610-3" aria-hidden="true" tabindex="-1"></a><span class="co">#download a raster file for env variable that we want to look at</span></span>
+<span id="cb610-4"><a href="genome-environment-association.html#cb610-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb610-5"><a href="genome-environment-association.html#cb610-5" aria-hidden="true" tabindex="-1"></a><span class="co">#what are are min amd max lat and lon</span></span>
+<span id="cb610-6"><a href="genome-environment-association.html#cb610-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb610-7"><a href="genome-environment-association.html#cb610-7" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(sites_environ<span class="sc">$</span>Name.lon)</span></code></pre></div>
+<pre><code>## Error in eval(expr, envir, enclos): object &#39;sites_environ&#39; not found</code></pre>
+<div class="sourceCode" id="cb612"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb612-1"><a href="genome-environment-association.html#cb612-1" aria-hidden="true" tabindex="-1"></a><span class="co">#crop file to fit the area we want</span></span>
+<span id="cb612-2"><a href="genome-environment-association.html#cb612-2" aria-hidden="true" tabindex="-1"></a>ne.pacific<span class="ot">&lt;-</span><span class="fu">extent</span>(<span class="sc">-</span><span class="dv">140</span>, <span class="sc">-</span><span class="dv">120</span>, <span class="dv">40</span>, <span class="dv">60</span>)</span>
+<span id="cb612-3"><a href="genome-environment-association.html#cb612-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb612-4"><a href="genome-environment-association.html#cb612-4" aria-hidden="true" tabindex="-1"></a>sst_max.crop<span class="ot">&lt;-</span><span class="fu">crop</span>(sst_max, ne.pacific)</span></code></pre></div>
+<pre><code>## Error in h(simpleError(msg, call)): error in evaluating the argument &#39;x&#39; in selecting a method for function &#39;crop&#39;: object &#39;sst_max&#39; not found</code></pre>
+<div class="sourceCode" id="cb614"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb614-1"><a href="genome-environment-association.html#cb614-1" aria-hidden="true" tabindex="-1"></a><span class="co">#make a nice color ramp and plot the map</span></span>
+<span id="cb614-2"><a href="genome-environment-association.html#cb614-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb614-3"><a href="genome-environment-association.html#cb614-3" aria-hidden="true" tabindex="-1"></a>my.colors <span class="ot">=</span> <span class="fu">colorRampPalette</span>(<span class="fu">c</span>(<span class="st">&quot;#5E85B8&quot;</span>,<span class="st">&quot;#EDF0C0&quot;</span>,<span class="st">&quot;#C13127&quot;</span>))</span>
+<span id="cb614-4"><a href="genome-environment-association.html#cb614-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(sst_max.crop,<span class="at">col=</span><span class="fu">my.colors</span>(<span class="dv">1000</span>),<span class="at">axes=</span><span class="cn">FALSE</span>, <span class="at">box=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>## Error in h(simpleError(msg, call)): error in evaluating the argument &#39;x&#39; in selecting a method for function &#39;plot&#39;: object &#39;sst_max.crop&#39; not found</code></pre>
+<div class="sourceCode" id="cb616"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb616-1"><a href="genome-environment-association.html#cb616-1" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="at">cex.sub =</span> <span class="fl">1.25</span>, <span class="at">sub =</span> <span class="st">&quot;Maximum temperature at the sea surface (ºC)&quot;</span>)</span></code></pre></div>
+<pre><code>## Error in title(cex.sub = 1.25, sub = &quot;Maximum temperature at the sea surface (ºC)&quot;): plot.new has not been called yet</code></pre>
+</div>
+<div id="load-in-genetic-data" class="section level2 hasAnchor" number="11.7">
+<h2><span class="header-section-number">11.7</span> Load in genetic data<a href="genome-environment-association.html#load-in-genetic-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Now we need to load in our genetic data. We have data in a vcf file format and the first few steps will be to convert it to the format needed by the lfmm package.</p>
+<div class="sourceCode" id="cb618"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb618-1"><a href="genome-environment-association.html#cb618-1" aria-hidden="true" tabindex="-1"></a><span class="co">#convert our vcf file to lfmm</span></span>
+<span id="cb618-2"><a href="genome-environment-association.html#cb618-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb618-3"><a href="genome-environment-association.html#cb618-3" aria-hidden="true" tabindex="-1"></a><span class="fu">vcf2lfmm</span>(<span class="st">&#39;filtered_3699snps_californicus_685inds.recode.vcf&#39;</span>, <span class="st">&#39;filtered_3699snps_californicus.lfmm&#39;</span>)</span></code></pre></div>
+<pre><code>## Error in vcf2lfmm(&quot;filtered_3699snps_californicus_685inds.recode.vcf&quot;, : could not find function &quot;vcf2lfmm&quot;</code></pre>
+<div class="sourceCode" id="cb620"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb620-1"><a href="genome-environment-association.html#cb620-1" aria-hidden="true" tabindex="-1"></a>sea_cuc_lfmm<span class="ot">&lt;-</span><span class="fu">read.lfmm</span>(<span class="st">&#39;filtered_3699snps_californicus_685inds.recode.lfmm&#39;</span>)</span></code></pre></div>
+<pre><code>## Error in read.lfmm(&quot;filtered_3699snps_californicus_685inds.recode.lfmm&quot;): could not find function &quot;read.lfmm&quot;</code></pre>
+<div class="sourceCode" id="cb622"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb622-1"><a href="genome-environment-association.html#cb622-1" aria-hidden="true" tabindex="-1"></a><span class="co">#and convert to geno</span></span>
+<span id="cb622-2"><a href="genome-environment-association.html#cb622-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb622-3"><a href="genome-environment-association.html#cb622-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lfmm2geno</span>(<span class="st">&#39;filtered_3699snps_californicus_685inds.recode.lfmm&#39;</span>, <span class="st">&#39;filtered_3699snps_californicus_685inds.recode.geno&#39;</span>)</span></code></pre></div>
+<pre><code>## Error in lfmm2geno(&quot;filtered_3699snps_californicus_685inds.recode.lfmm&quot;, : could not find function &quot;lfmm2geno&quot;</code></pre>
+<div class="sourceCode" id="cb624"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb624-1"><a href="genome-environment-association.html#cb624-1" aria-hidden="true" tabindex="-1"></a><span class="co">#read in geno file</span></span>
+<span id="cb624-2"><a href="genome-environment-association.html#cb624-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb624-3"><a href="genome-environment-association.html#cb624-3" aria-hidden="true" tabindex="-1"></a>sea_cuc_geno<span class="ot">&lt;-</span><span class="fu">read.geno</span>(<span class="st">&#39;filtered_3699snps_californicus_685inds.recode.geno&#39;</span>)</span></code></pre></div>
+<pre><code>## Error in read.geno(&quot;filtered_3699snps_californicus_685inds.recode.geno&quot;): could not find function &quot;read.geno&quot;</code></pre>
+<div class="sourceCode" id="cb626"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb626-1"><a href="genome-environment-association.html#cb626-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a snmf object</span></span>
+<span id="cb626-2"><a href="genome-environment-association.html#cb626-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb626-3"><a href="genome-environment-association.html#cb626-3" aria-hidden="true" tabindex="-1"></a>sea_cuc200.snmf <span class="ot">&lt;-</span> <span class="fu">snmf</span>(<span class="st">&quot;filtered_3699snps_californicus_685.geno&quot;</span>, <span class="at">K =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">entropy=</span>T, <span class="at">ploidy =</span> <span class="dv">2</span>, <span class="at">project =</span> <span class="st">&quot;new&quot;</span>)</span></code></pre></div>
+<pre><code>## Error in snmf(&quot;filtered_3699snps_californicus_685.geno&quot;, K = 1:10, entropy = T, : could not find function &quot;snmf&quot;</code></pre>
+<div class="sourceCode" id="cb628"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb628-1"><a href="genome-environment-association.html#cb628-1" aria-hidden="true" tabindex="-1"></a>project<span class="ot">=</span><span class="fu">load.snmfProject</span>(<span class="st">&quot;filtered_3699snps_californicus.snmfProject&quot;</span>)</span></code></pre></div>
+<pre><code>## Error in load.snmfProject(&quot;filtered_3699snps_californicus.snmfProject&quot;): could not find function &quot;load.snmfProject&quot;</code></pre>
+<div class="sourceCode" id="cb630"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb630-1"><a href="genome-environment-association.html#cb630-1" aria-hidden="true" tabindex="-1"></a><span class="co">#plot values of cross-entropy criteron of k</span></span>
+<span id="cb630-2"><a href="genome-environment-association.html#cb630-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(sea_cuc200.snmf)</span></code></pre></div>
+<pre><code>## Error in h(simpleError(msg, call)): error in evaluating the argument &#39;x&#39; in selecting a method for function &#39;plot&#39;: object &#39;sea_cuc200.snmf&#39; not found</code></pre>
+<p>This plot tells us which value of K we should use when running the next analyses. We’re looking for a region where the cross-entropy is lowest and ideally it plateaus. We don’t get a plateau in our case but you can see our lowest value is at 3. So we would use a K of 3 in the next step.</p>
+<p>However, for the purposes of time we’re going to do the next step with a k=1 and a rep=1.</p>
+<div class="sourceCode" id="cb632"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb632-1"><a href="genome-environment-association.html#cb632-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Genome scan for selection using environmental variables </span></span>
+<span id="cb632-2"><a href="genome-environment-association.html#cb632-2" aria-hidden="true" tabindex="-1"></a><span class="co">#remove.lfmmProject(&#39;Spurp.prelim.snps24.lfmmProject&#39;)</span></span>
+<span id="cb632-3"><a href="genome-environment-association.html#cb632-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb632-4"><a href="genome-environment-association.html#cb632-4" aria-hidden="true" tabindex="-1"></a>sea_cuc_lfmm <span class="ot">&lt;-</span> <span class="fu">lfmm</span>(<span class="st">&quot;filtered_3699snps_californicus_685inds.recode.lfmm&quot;</span>, <span class="st">&quot;sites_environ_matrix.env&quot;</span>, <span class="at">K=</span><span class="dv">1</span>, <span class="at">rep=</span><span class="dv">1</span>, <span class="at">project =</span> <span class="st">&quot;new&quot;</span>)</span></code></pre></div>
+<pre><code>## Error in lfmm(&quot;filtered_3699snps_californicus_685inds.recode.lfmm&quot;, &quot;sites_environ_matrix.env&quot;, : could not find function &quot;lfmm&quot;</code></pre>
+<div class="sourceCode" id="cb634"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb634-1"><a href="genome-environment-association.html#cb634-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load project</span></span>
+<span id="cb634-2"><a href="genome-environment-association.html#cb634-2" aria-hidden="true" tabindex="-1"></a>project <span class="ot">=</span> <span class="fu">load.lfmmProject</span>(<span class="st">&quot;filtered_3699snps_californicus_685inds.lfmmProject&quot;</span>)</span></code></pre></div>
+<pre><code>## Error in load.lfmmProject(&quot;filtered_3699snps_californicus_685inds.lfmmProject&quot;): could not find function &quot;load.lfmmProject&quot;</code></pre>
+<p>Now we can check and see which of our environmental variables is association with genomic variation</p>
+<div class="sourceCode" id="cb636"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb636-1"><a href="genome-environment-association.html#cb636-1" aria-hidden="true" tabindex="-1"></a><span class="co">#get the z scores from each run</span></span>
+<span id="cb636-2"><a href="genome-environment-association.html#cb636-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb636-3"><a href="genome-environment-association.html#cb636-3" aria-hidden="true" tabindex="-1"></a>zs1 <span class="ot">&lt;-</span> <span class="fu">z.scores</span>(sea_cuc_lfmm, <span class="at">K=</span><span class="dv">1</span>, <span class="at">d=</span><span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## Error in z.scores(sea_cuc_lfmm, K = 1, d = 1): could not find function &quot;z.scores&quot;</code></pre>
+<div class="sourceCode" id="cb638"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb638-1"><a href="genome-environment-association.html#cb638-1" aria-hidden="true" tabindex="-1"></a>zs2 <span class="ot">&lt;-</span> <span class="fu">z.scores</span>(sea_cuc_lfmm, <span class="at">K=</span><span class="dv">1</span>, <span class="at">d=</span><span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## Error in z.scores(sea_cuc_lfmm, K = 1, d = 2): could not find function &quot;z.scores&quot;</code></pre>
+<div class="sourceCode" id="cb640"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb640-1"><a href="genome-environment-association.html#cb640-1" aria-hidden="true" tabindex="-1"></a>zs3 <span class="ot">&lt;-</span> <span class="fu">z.scores</span>(sea_cuc_lfmm, <span class="at">K=</span><span class="dv">1</span>, <span class="at">d=</span><span class="dv">3</span>)</span></code></pre></div>
+<pre><code>## Error in z.scores(sea_cuc_lfmm, K = 1, d = 3): could not find function &quot;z.scores&quot;</code></pre>
+<div class="sourceCode" id="cb642"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb642-1"><a href="genome-environment-association.html#cb642-1" aria-hidden="true" tabindex="-1"></a>zs4 <span class="ot">&lt;-</span> <span class="fu">z.scores</span>(sea_cuc_lfmm, <span class="at">K=</span><span class="dv">1</span>, <span class="at">d=</span><span class="dv">4</span>)</span></code></pre></div>
+<pre><code>## Error in z.scores(sea_cuc_lfmm, K = 1, d = 4): could not find function &quot;z.scores&quot;</code></pre>
+<div class="sourceCode" id="cb644"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb644-1"><a href="genome-environment-association.html#cb644-1" aria-hidden="true" tabindex="-1"></a>zs5 <span class="ot">&lt;-</span> <span class="fu">z.scores</span>(sea_cuc_lfmm, <span class="at">K=</span><span class="dv">1</span>, <span class="at">d=</span><span class="dv">5</span>)</span></code></pre></div>
+<pre><code>## Error in z.scores(sea_cuc_lfmm, K = 1, d = 5): could not find function &quot;z.scores&quot;</code></pre>
+<div class="sourceCode" id="cb646"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb646-1"><a href="genome-environment-association.html#cb646-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compute the genomic inflation factor lambda</span></span>
+<span id="cb646-2"><a href="genome-environment-association.html#cb646-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb646-3"><a href="genome-environment-association.html#cb646-3" aria-hidden="true" tabindex="-1"></a>lambda1<span class="ot">=</span><span class="fu">median</span>(zs1<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span><span class="fu">qchisq</span>(<span class="fl">0.5</span>, <span class="at">df=</span><span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## Error in median(zs1^2): object &#39;zs1&#39; not found</code></pre>
+<div class="sourceCode" id="cb648"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb648-1"><a href="genome-environment-association.html#cb648-1" aria-hidden="true" tabindex="-1"></a>lambda2<span class="ot">=</span><span class="fu">median</span>(zs2<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span><span class="fu">qchisq</span>(<span class="fl">0.5</span>, <span class="at">df=</span><span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## Error in median(zs2^2): object &#39;zs2&#39; not found</code></pre>
+<div class="sourceCode" id="cb650"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb650-1"><a href="genome-environment-association.html#cb650-1" aria-hidden="true" tabindex="-1"></a>lambda3<span class="ot">=</span><span class="fu">median</span>(zs3<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span><span class="fu">qchisq</span>(<span class="fl">0.5</span>, <span class="at">df=</span><span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## Error in median(zs3^2): object &#39;zs3&#39; not found</code></pre>
+<div class="sourceCode" id="cb652"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb652-1"><a href="genome-environment-association.html#cb652-1" aria-hidden="true" tabindex="-1"></a>lambda4<span class="ot">=</span><span class="fu">median</span>(zs4<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span><span class="fu">qchisq</span>(<span class="fl">0.5</span>, <span class="at">df=</span><span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## Error in median(zs4^2): object &#39;zs4&#39; not found</code></pre>
+<div class="sourceCode" id="cb654"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb654-1"><a href="genome-environment-association.html#cb654-1" aria-hidden="true" tabindex="-1"></a>lambda5<span class="ot">=</span><span class="fu">median</span>(zs5<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span><span class="fu">qchisq</span>(<span class="fl">0.5</span>, <span class="at">df=</span><span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## Error in median(zs5^2): object &#39;zs5&#39; not found</code></pre>
+<div class="sourceCode" id="cb656"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb656-1"><a href="genome-environment-association.html#cb656-1" aria-hidden="true" tabindex="-1"></a><span class="co">#then compute adjusted p-values</span></span>
+<span id="cb656-2"><a href="genome-environment-association.html#cb656-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb656-3"><a href="genome-environment-association.html#cb656-3" aria-hidden="true" tabindex="-1"></a>adj.p.val1<span class="ot">&lt;-</span><span class="fu">pchisq</span>(zs1<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>lambda1, <span class="at">df=</span><span class="dv">1</span>, <span class="at">lower=</span>F)</span></code></pre></div>
+<pre><code>## Error in pchisq(zs1^2/lambda1, df = 1, lower = F): object &#39;zs1&#39; not found</code></pre>
+<div class="sourceCode" id="cb658"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb658-1"><a href="genome-environment-association.html#cb658-1" aria-hidden="true" tabindex="-1"></a>adj.p.val2<span class="ot">&lt;-</span><span class="fu">pchisq</span>(zs2<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>lambda2, <span class="at">df=</span><span class="dv">1</span>, <span class="at">lower=</span>F)</span></code></pre></div>
+<pre><code>## Error in pchisq(zs2^2/lambda2, df = 1, lower = F): object &#39;zs2&#39; not found</code></pre>
+<div class="sourceCode" id="cb660"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb660-1"><a href="genome-environment-association.html#cb660-1" aria-hidden="true" tabindex="-1"></a>adj.p.val3<span class="ot">&lt;-</span><span class="fu">pchisq</span>(zs3<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>lambda3, <span class="at">df=</span><span class="dv">1</span>, <span class="at">lower=</span>F)</span></code></pre></div>
+<pre><code>## Error in pchisq(zs3^2/lambda3, df = 1, lower = F): object &#39;zs3&#39; not found</code></pre>
+<div class="sourceCode" id="cb662"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb662-1"><a href="genome-environment-association.html#cb662-1" aria-hidden="true" tabindex="-1"></a>adj.p.val4<span class="ot">&lt;-</span><span class="fu">pchisq</span>(zs4<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>lambda4, <span class="at">df=</span><span class="dv">1</span>, <span class="at">lower=</span>F)</span></code></pre></div>
+<pre><code>## Error in pchisq(zs4^2/lambda4, df = 1, lower = F): object &#39;zs4&#39; not found</code></pre>
+<div class="sourceCode" id="cb664"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb664-1"><a href="genome-environment-association.html#cb664-1" aria-hidden="true" tabindex="-1"></a>adj.p.val5<span class="ot">&lt;-</span><span class="fu">pchisq</span>(zs5<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>lambda5, <span class="at">df=</span><span class="dv">1</span>, <span class="at">lower=</span>F)</span></code></pre></div>
+<pre><code>## Error in pchisq(zs5^2/lambda5, df = 1, lower = F): object &#39;zs5&#39; not found</code></pre>
+<div class="sourceCode" id="cb666"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb666-1"><a href="genome-environment-association.html#cb666-1" aria-hidden="true" tabindex="-1"></a><span class="co">#then plot that p-value</span></span>
+<span id="cb666-2"><a href="genome-environment-association.html#cb666-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb666-3"><a href="genome-environment-association.html#cb666-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(adj.p.val1, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<pre><code>## Error in h(simpleError(msg, call)): error in evaluating the argument &#39;x&#39; in selecting a method for function &#39;hist&#39;: object &#39;adj.p.val1&#39; not found</code></pre>
+<div class="sourceCode" id="cb668"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb668-1"><a href="genome-environment-association.html#cb668-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(adj.p.val2, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<pre><code>## Error in h(simpleError(msg, call)): error in evaluating the argument &#39;x&#39; in selecting a method for function &#39;hist&#39;: object &#39;adj.p.val2&#39; not found</code></pre>
+<div class="sourceCode" id="cb670"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb670-1"><a href="genome-environment-association.html#cb670-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(adj.p.val3, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<pre><code>## Error in h(simpleError(msg, call)): error in evaluating the argument &#39;x&#39; in selecting a method for function &#39;hist&#39;: object &#39;adj.p.val3&#39; not found</code></pre>
+<div class="sourceCode" id="cb672"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb672-1"><a href="genome-environment-association.html#cb672-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(adj.p.val4, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<pre><code>## Error in h(simpleError(msg, call)): error in evaluating the argument &#39;x&#39; in selecting a method for function &#39;hist&#39;: object &#39;adj.p.val4&#39; not found</code></pre>
+<div class="sourceCode" id="cb674"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb674-1"><a href="genome-environment-association.html#cb674-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(adj.p.val5, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<pre><code>## Error in h(simpleError(msg, call)): error in evaluating the argument &#39;x&#39; in selecting a method for function &#39;hist&#39;: object &#39;adj.p.val5&#39; not found</code></pre>
+<div class="sourceCode" id="cb676"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb676-1"><a href="genome-environment-association.html#cb676-1" aria-hidden="true" tabindex="-1"></a><span class="co"># control of false discoveries</span></span>
+<span id="cb676-2"><a href="genome-environment-association.html#cb676-2" aria-hidden="true" tabindex="-1"></a><span class="co"># to correct for multiple testing, we can apply the Benjamini-Hochberg algorithm</span></span>
+<span id="cb676-3"><a href="genome-environment-association.html#cb676-3" aria-hidden="true" tabindex="-1"></a><span class="co"># L is number of loci</span></span>
+<span id="cb676-4"><a href="genome-environment-association.html#cb676-4" aria-hidden="true" tabindex="-1"></a>L<span class="ot">=</span><span class="dv">3699</span></span>
+<span id="cb676-5"><a href="genome-environment-association.html#cb676-5" aria-hidden="true" tabindex="-1"></a><span class="co">#fdr level q</span></span>
+<span id="cb676-6"><a href="genome-environment-association.html#cb676-6" aria-hidden="true" tabindex="-1"></a>q <span class="ot">=</span> <span class="fl">0.1</span></span>
+<span id="cb676-7"><a href="genome-environment-association.html#cb676-7" aria-hidden="true" tabindex="-1"></a>w <span class="ot">=</span> <span class="fu">which</span>(<span class="fu">sort</span>(adj.p.val1) <span class="sc">&lt;</span> q <span class="sc">*</span> (<span class="dv">1</span><span class="sc">:</span>L)<span class="sc">/</span>L)</span></code></pre></div>
+<pre><code>## Error in sort(adj.p.val1): object &#39;adj.p.val1&#39; not found</code></pre>
+<div class="sourceCode" id="cb678"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb678-1"><a href="genome-environment-association.html#cb678-1" aria-hidden="true" tabindex="-1"></a><span class="co"># candidates are then</span></span>
+<span id="cb678-2"><a href="genome-environment-association.html#cb678-2" aria-hidden="true" tabindex="-1"></a>candidates<span class="fl">.1</span> <span class="ot">=</span> <span class="fu">order</span>(adj.p.val1)[w]</span></code></pre></div>
+<pre><code>## Error in order(adj.p.val1): object &#39;adj.p.val1&#39; not found</code></pre>
+<div class="sourceCode" id="cb680"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb680-1"><a href="genome-environment-association.html#cb680-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(candidates<span class="fl">.1</span>)</span></code></pre></div>
+<pre><code>## Error in eval(expr, envir, enclos): object &#39;candidates.1&#39; not found</code></pre>
+<div class="sourceCode" id="cb682"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb682-1"><a href="genome-environment-association.html#cb682-1" aria-hidden="true" tabindex="-1"></a><span class="co">#this is for our first variable Mean Chlorphyl</span></span></code></pre></div>
+</div>
+<div id="exercises-3" class="section level2 hasAnchor" number="11.8">
+<h2><span class="header-section-number">11.8</span> Exercises<a href="genome-environment-association.html#exercises-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li>Pick your favorite environmental variable from the bio-oracle website. For marine variables you can use the command <code>list_layers(c("Bio-ORACLE","MARSPEC"))$layer_code</code> to view the different Bio-Oracle and MARSPEC environmental layers. For Terrestrial layers use: <code>list_layers("WorldClim")$layer_code</code> Then download the layer you choose and store it as an object with <code>load_layers()</code>
+Now decide which region you want to plot. If you’re interested in getting most of California you can use these coords with the function extent(-125, -115, 30, 40), and then use that to crop your environmental layers and make a plot similiar to the one we made in class.</li>
+</ol>
+<details>
+<summary>
+<span style="color: DarkCyan;">Solution</span>
+</summary>
+<p>
+<div class="sourceCode" id="cb683"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb683-1"><a href="genome-environment-association.html#cb683-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sdmpredictors)</span>
+<span id="cb683-2"><a href="genome-environment-association.html#cb683-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb683-3"><a href="genome-environment-association.html#cb683-3" aria-hidden="true" tabindex="-1"></a><span class="co">#get env data</span></span>
+<span id="cb683-4"><a href="genome-environment-association.html#cb683-4" aria-hidden="true" tabindex="-1"></a>precip_seasonality<span class="ot">&lt;-</span><span class="fu">load_layers</span>(<span class="st">&quot;WC_bio15&quot;</span>)</span></code></pre></div>
+<pre><code>## Error in utils::download.file(layer_url, path, method = &quot;auto&quot;, quiet = FALSE, : cannot open URL &#39;https://www.lifewatch.be/sdmpredictors/WC_bio15_lonlat.tif&#39;</code></pre>
+<div class="sourceCode" id="cb685"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb685-1"><a href="genome-environment-association.html#cb685-1" aria-hidden="true" tabindex="-1"></a>precip_wettest<span class="ot">&lt;-</span><span class="fu">load_layers</span>(<span class="st">&quot;WC_bio13&quot;</span>)</span></code></pre></div>
+<pre><code>## Error in utils::download.file(layer_url, path, method = &quot;auto&quot;, quiet = FALSE, : cannot open URL &#39;https://www.lifewatch.be/sdmpredictors/WC_bio13_lonlat.tif&#39;</code></pre>
+<div class="sourceCode" id="cb687"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb687-1"><a href="genome-environment-association.html#cb687-1" aria-hidden="true" tabindex="-1"></a><span class="co">#make range to crop for california</span></span>
+<span id="cb687-2"><a href="genome-environment-association.html#cb687-2" aria-hidden="true" tabindex="-1"></a>cali<span class="ot">&lt;-</span><span class="fu">extent</span>(<span class="sc">-</span><span class="dv">130</span>, <span class="sc">-</span><span class="dv">116</span>, <span class="dv">30</span>, <span class="dv">40</span>)</span>
+<span id="cb687-3"><a href="genome-environment-association.html#cb687-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb687-4"><a href="genome-environment-association.html#cb687-4" aria-hidden="true" tabindex="-1"></a><span class="co">#crop it</span></span>
+<span id="cb687-5"><a href="genome-environment-association.html#cb687-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb687-6"><a href="genome-environment-association.html#cb687-6" aria-hidden="true" tabindex="-1"></a>precip_w.crop<span class="ot">&lt;-</span><span class="fu">crop</span>(precip_wettest, cali)</span></code></pre></div>
+<pre><code>## Error in h(simpleError(msg, call)): error in evaluating the argument &#39;x&#39; in selecting a method for function &#39;crop&#39;: object &#39;precip_wettest&#39; not found</code></pre>
+<div class="sourceCode" id="cb689"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb689-1"><a href="genome-environment-association.html#cb689-1" aria-hidden="true" tabindex="-1"></a><span class="co">#plot it</span></span>
+<span id="cb689-2"><a href="genome-environment-association.html#cb689-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb689-3"><a href="genome-environment-association.html#cb689-3" aria-hidden="true" tabindex="-1"></a>my.colors <span class="ot">=</span> <span class="fu">colorRampPalette</span>(<span class="fu">c</span>(<span class="st">&quot;#5E85B8&quot;</span>,<span class="st">&quot;#EDF0C0&quot;</span>,<span class="st">&quot;#C13127&quot;</span>))</span>
+<span id="cb689-4"><a href="genome-environment-association.html#cb689-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(precip_w.crop,<span class="at">col=</span><span class="fu">my.colors</span>(<span class="dv">1000</span>),<span class="at">axes=</span><span class="cn">FALSE</span>, <span class="at">box=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>## Error in h(simpleError(msg, call)): error in evaluating the argument &#39;x&#39; in selecting a method for function &#39;plot&#39;: object &#39;precip_w.crop&#39; not found</code></pre>
+<div class="sourceCode" id="cb691"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb691-1"><a href="genome-environment-association.html#cb691-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">title</span>(<span class="at">cex.sub =</span> <span class="fl">1.25</span>, <span class="at">sub =</span> <span class="st">&quot;Precipitation of the Wettest Month&quot;</span>)</span></code></pre></div>
+<pre><code>## Error in title(cex.sub = 1.25, sub = &quot;Precipitation of the Wettest Month&quot;): plot.new has not been called yet</code></pre>
+</p>
+</details>
+<ol start="2" style="list-style-type: decimal">
+<li>Use the script for determining the number of candidates for the first environmental variable, find the number of candidates for the other four variables. Are these the same or different SNPs? (hint use merge() or intersect() to find out if the lists of candidates overlap)</li>
+</ol>
+<details>
+<summary>
+<span style="color: DarkCyan;">Solution</span>
+</summary>
+<p>
+<div class="sourceCode" id="cb693"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb693-1"><a href="genome-environment-association.html#cb693-1" aria-hidden="true" tabindex="-1"></a><span class="co">#We&#39;ll use this script below</span></span>
+<span id="cb693-2"><a href="genome-environment-association.html#cb693-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb693-3"><a href="genome-environment-association.html#cb693-3" aria-hidden="true" tabindex="-1"></a><span class="co">#for variable 2 (PH)</span></span>
+<span id="cb693-4"><a href="genome-environment-association.html#cb693-4" aria-hidden="true" tabindex="-1"></a><span class="co"># L is number of loci</span></span>
+<span id="cb693-5"><a href="genome-environment-association.html#cb693-5" aria-hidden="true" tabindex="-1"></a>L<span class="ot">=</span><span class="dv">3699</span></span>
+<span id="cb693-6"><a href="genome-environment-association.html#cb693-6" aria-hidden="true" tabindex="-1"></a><span class="co">#fdr level q</span></span>
+<span id="cb693-7"><a href="genome-environment-association.html#cb693-7" aria-hidden="true" tabindex="-1"></a>q <span class="ot">=</span> <span class="fl">0.1</span></span>
+<span id="cb693-8"><a href="genome-environment-association.html#cb693-8" aria-hidden="true" tabindex="-1"></a>w <span class="ot">=</span> <span class="fu">which</span>(<span class="fu">sort</span>(adj.p.val2) <span class="sc">&lt;</span> q <span class="sc">*</span> (<span class="dv">1</span><span class="sc">:</span>L)<span class="sc">/</span>L)</span></code></pre></div>
+<pre><code>## Error in sort(adj.p.val2): object &#39;adj.p.val2&#39; not found</code></pre>
+<div class="sourceCode" id="cb695"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb695-1"><a href="genome-environment-association.html#cb695-1" aria-hidden="true" tabindex="-1"></a><span class="co"># candidates are then</span></span>
+<span id="cb695-2"><a href="genome-environment-association.html#cb695-2" aria-hidden="true" tabindex="-1"></a>candidates<span class="fl">.2</span> <span class="ot">=</span> <span class="fu">order</span>(adj.p.val2)[w]</span></code></pre></div>
+<pre><code>## Error in order(adj.p.val2): object &#39;adj.p.val2&#39; not found</code></pre>
+<div class="sourceCode" id="cb697"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb697-1"><a href="genome-environment-association.html#cb697-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(candidates<span class="fl">.2</span>)</span></code></pre></div>
+<pre><code>## Error in eval(expr, envir, enclos): object &#39;candidates.2&#39; not found</code></pre>
+<div class="sourceCode" id="cb699"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb699-1"><a href="genome-environment-association.html#cb699-1" aria-hidden="true" tabindex="-1"></a><span class="co">#variable 3 </span></span>
+<span id="cb699-2"><a href="genome-environment-association.html#cb699-2" aria-hidden="true" tabindex="-1"></a>w <span class="ot">=</span> <span class="fu">which</span>(<span class="fu">sort</span>(adj.p.val3) <span class="sc">&lt;</span> q <span class="sc">*</span> (<span class="dv">1</span><span class="sc">:</span>L)<span class="sc">/</span>L)</span></code></pre></div>
+<pre><code>## Error in sort(adj.p.val3): object &#39;adj.p.val3&#39; not found</code></pre>
+<div class="sourceCode" id="cb701"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb701-1"><a href="genome-environment-association.html#cb701-1" aria-hidden="true" tabindex="-1"></a><span class="co"># candidates are then</span></span>
+<span id="cb701-2"><a href="genome-environment-association.html#cb701-2" aria-hidden="true" tabindex="-1"></a>candidates<span class="fl">.3</span> <span class="ot">=</span> <span class="fu">order</span>(adj.p.val3)[w]</span></code></pre></div>
+<pre><code>## Error in order(adj.p.val3): object &#39;adj.p.val3&#39; not found</code></pre>
+<div class="sourceCode" id="cb703"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb703-1"><a href="genome-environment-association.html#cb703-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(candidates<span class="fl">.3</span>)</span></code></pre></div>
+<pre><code>## Error in eval(expr, envir, enclos): object &#39;candidates.3&#39; not found</code></pre>
+<div class="sourceCode" id="cb705"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb705-1"><a href="genome-environment-association.html#cb705-1" aria-hidden="true" tabindex="-1"></a><span class="co">#variable 4</span></span>
+<span id="cb705-2"><a href="genome-environment-association.html#cb705-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb705-3"><a href="genome-environment-association.html#cb705-3" aria-hidden="true" tabindex="-1"></a>w <span class="ot">=</span> <span class="fu">which</span>(<span class="fu">sort</span>(adj.p.val4) <span class="sc">&lt;</span> q <span class="sc">*</span> (<span class="dv">1</span><span class="sc">:</span>L)<span class="sc">/</span>L)</span></code></pre></div>
+<pre><code>## Error in sort(adj.p.val4): object &#39;adj.p.val4&#39; not found</code></pre>
+<div class="sourceCode" id="cb707"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb707-1"><a href="genome-environment-association.html#cb707-1" aria-hidden="true" tabindex="-1"></a><span class="co"># candidates are then</span></span>
+<span id="cb707-2"><a href="genome-environment-association.html#cb707-2" aria-hidden="true" tabindex="-1"></a>candidates<span class="fl">.4</span> <span class="ot">=</span> <span class="fu">order</span>(adj.p.val4)[w]</span></code></pre></div>
+<pre><code>## Error in order(adj.p.val4): object &#39;adj.p.val4&#39; not found</code></pre>
+<div class="sourceCode" id="cb709"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb709-1"><a href="genome-environment-association.html#cb709-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(candidates<span class="fl">.4</span>)</span></code></pre></div>
+<pre><code>## Error in eval(expr, envir, enclos): object &#39;candidates.4&#39; not found</code></pre>
+<div class="sourceCode" id="cb711"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb711-1"><a href="genome-environment-association.html#cb711-1" aria-hidden="true" tabindex="-1"></a><span class="co">#variable 5</span></span>
+<span id="cb711-2"><a href="genome-environment-association.html#cb711-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb711-3"><a href="genome-environment-association.html#cb711-3" aria-hidden="true" tabindex="-1"></a>w <span class="ot">=</span> <span class="fu">which</span>(<span class="fu">sort</span>(adj.p.val5) <span class="sc">&lt;</span> q <span class="sc">*</span> (<span class="dv">1</span><span class="sc">:</span>L)<span class="sc">/</span>L)</span></code></pre></div>
+<pre><code>## Error in sort(adj.p.val5): object &#39;adj.p.val5&#39; not found</code></pre>
+<div class="sourceCode" id="cb713"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb713-1"><a href="genome-environment-association.html#cb713-1" aria-hidden="true" tabindex="-1"></a><span class="co"># candidates are then</span></span>
+<span id="cb713-2"><a href="genome-environment-association.html#cb713-2" aria-hidden="true" tabindex="-1"></a>candidates<span class="fl">.5</span> <span class="ot">=</span> <span class="fu">order</span>(adj.p.val5)[w]</span></code></pre></div>
+<pre><code>## Error in order(adj.p.val5): object &#39;adj.p.val5&#39; not found</code></pre>
+<div class="sourceCode" id="cb715"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb715-1"><a href="genome-environment-association.html#cb715-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(candidates<span class="fl">.5</span>)</span></code></pre></div>
+<pre><code>## Error in eval(expr, envir, enclos): object &#39;candidates.5&#39; not found</code></pre>
+</p>
+</details>
+</div>
+<div id="download-the-data-4" class="section level2 hasAnchor" number="11.9">
+<h2><span class="header-section-number">11.9</span> Download the data<a href="genome-environment-association.html#download-the-data-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>You’ll download one fasta file that contains the 17 regions in which we found our Fst outlier SNPs.</p>
+<div class="sourceCode" id="cb717"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb717-1"><a href="genome-environment-association.html#cb717-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb717-2"><a href="genome-environment-association.html#cb717-2" aria-hidden="true" tabindex="-1"></a>wget https://raw.githubusercontent.com/BayLab/MarineGenomicsData/main/week10.tar.gz</span>
+<span id="cb717-3"><a href="genome-environment-association.html#cb717-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb717-4"><a href="genome-environment-association.html#cb717-4" aria-hidden="true" tabindex="-1"></a>tar -xzvf week10.tar.gz</span></code></pre></div>
+</div>
+<div id="install-transdecoder" class="section level2 hasAnchor" number="11.10">
+<h2><span class="header-section-number">11.10</span> Install Transdecoder<a href="genome-environment-association.html#install-transdecoder" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We’ll use transdecoder to identify coding regions in our nucleotide sequences.</p>
+<div class="sourceCode" id="cb718"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb718-1"><a href="genome-environment-association.html#cb718-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb718-2"><a href="genome-environment-association.html#cb718-2" aria-hidden="true" tabindex="-1"></a>sudo apt update #this just updates our currently installed packages</span>
+<span id="cb718-3"><a href="genome-environment-association.html#cb718-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb718-4"><a href="genome-environment-association.html#cb718-4" aria-hidden="true" tabindex="-1"></a>sudo apt install transdecoder</span></code></pre></div>
+</div>
+<div id="run-transdecoder" class="section level2 hasAnchor" number="11.11">
+<h2><span class="header-section-number">11.11</span> Run Transdecoder<a href="genome-environment-association.html#run-transdecoder" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Transdecoder is run in two parts, the first <code>TransDecoder.LongOrfs</code> identifies open read frames or regions that contain either a start or stop codon. This is followed by <code>TransDecoder.Predict</code> which</p>
+<div class="sourceCode" id="cb719"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb719-1"><a href="genome-environment-association.html#cb719-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb719-2"><a href="genome-environment-association.html#cb719-2" aria-hidden="true" tabindex="-1"></a>TransDecoder.LongOrfs -t candidate_fastas.fa</span>
+<span id="cb719-3"><a href="genome-environment-association.html#cb719-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb719-4"><a href="genome-environment-association.html#cb719-4" aria-hidden="true" tabindex="-1"></a>TransDecoder.Predict -t candidate_fastas.fa</span></code></pre></div>
+<p>This produces an output directory and pulls from that several files with different extensions (.gff3, .bed, .cds, .pep) which correspond to different formats specifically, <code>.gff3</code> is a general feature format file (version 3) and contains information about each of our sequences. The <code>.bed</code> format is a browser extensible data format which describes the chromosome, position and length of our sequences, the <code>.cds</code> contains the nucleotide sequences for the open reading frames, and finally the file we want is the <code>.pep</code> file which contains our open reading frames from our regions converted into protein codes.</p>
+</div>
+<div id="run-ncbi-blast" class="section level2 hasAnchor" number="11.12">
+<h2><span class="header-section-number">11.12</span> Run NCBI-BLAST<a href="genome-environment-association.html#run-ncbi-blast" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>NCBI-BLAST is commonly called “blast” and stands for Basic Local Alignment Search Tool. This program is often a part of the annotation process as it compares your sequences (or query) to those contained in a database. As such blast results are highly dependent on the database in which you search for results and whether your species of interest (or a close relative) is present in that database. This program can be run in the command line, but in my testing I found it to be incredibly slow on jetstream. So We’re going to run our file on the NCBI-BLAST web browser which should only take a few minutes as we only have 14 protein sequences.</p>
+<p>Once you have the <code>.pep</code> file from transdecoder, navigate to the web browser on jetstream (the default is firefox). Search for NCBI-Blast.</p>
+<p>We’ll do a protein to protein search (blastp) against the nr database, which contains protein sequences from a variety of taxa, but does not include SRA data (which would include the genome sequence for our sea cucumbers).</p>
+</div>
+<div id="what-did-we-find" class="section level2 hasAnchor" number="11.13">
+<h2><span class="header-section-number">11.13</span> What did we find?<a href="genome-environment-association.html#what-did-we-find" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Nine out of our 14 protein sequences came back with a blast hit. Many of those that found a hit in Blast were for the other sea cucumber species Parastichipus ja. Many of these sequences are listed as “uncharacterized” or “hypothetical” protein meaning that there has not yet been any downstream classification of these sequences. This is a pretty common result for marine organisms, as they are rarely as highly studied as model organisms such as Drosophila or zebra fish.</p>
+</div>
+<div id="the-importance-of-genomic-architecture" class="section level2 hasAnchor" number="11.14">
+<h2><span class="header-section-number">11.14</span> The importance of Genomic Architecture<a href="genome-environment-association.html#the-importance-of-genomic-architecture" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Even though we often don’t get satisfying answers about which genes are doing what in Marine Genomics, we can learn a lot about trait evolution from using Fst outliers and tests of Genome Wide Association. These tests give us some idea of the number of genes and their effect on a given trait and that in turn has big implications on how that trait can respond to evolution. And that in turn has implications for climate change, conservation, and biodiversity.</p>
+</div>
+<div id="exercises-4" class="section level2 hasAnchor" number="11.15">
+<h2><span class="header-section-number">11.15</span> Exercises<a href="genome-environment-association.html#exercises-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<blockquote>
+<h1 id="practice-questions-3" class="hasAnchor">Practice Questions:<a href="genome-environment-association.html#practice-questions-3" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+</blockquote>
+<blockquote>
+<ol style="list-style-type: decimal">
+<li>Instead of doing a blast search for the protein translated sequences, do one for the nucleotide sequences. Use the original `candidate_fastas.fa file, and do a blastn for somewhat similar sequences. How do these results differ from our search with the translated open reading frames? Why? Try again as a megablast for highly similar sequences (you can do this by editing your original search). How do these differ?</li>
+</ol>
+</blockquote>
+<details>
+<summary>
+<span style="color: SeaGreen;">Solution</span>
+</summary>
+<p>
+<div class="sourceCode" id="cb720"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb720-1"><a href="genome-environment-association.html#cb720-1" aria-hidden="true" tabindex="-1"></a><span class="co">#coming soon :) </span></span></code></pre></div>
+</p>
+</details>
+<blockquote>
+<ol start="2" style="list-style-type: decimal">
+<li>Now use the <code>.cds</code> file from transdecoder which contains the open reading frame as nucleotides.</li>
+</ol>
+</blockquote>
+<details>
+<summary>
+<span style="color: SeaGreen;">Solution</span>
+</summary>
+<p>
+<div class="sourceCode" id="cb721"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb721-1"><a href="genome-environment-association.html#cb721-1" aria-hidden="true" tabindex="-1"></a><span class="co">#coming soon :) </span></span></code></pre></div>
+</p>
+</details>
+</div>
+<div id="creature-of-the-week-8" class="section level2 hasAnchor" number="11.16">
+<h2><span class="header-section-number">11.16</span> Creature of the Week!<a href="genome-environment-association.html#creature-of-the-week-8" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="figure">
+<img src="figs/creatures/vaquitaporpoise.jpg" alt="" />
+<p class="caption">Vaquita Porpoise (image credit: Brendan Hunter)</p>
+</div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="week-8-genome-wide-association-study-gwas.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Test.pdf", "Test.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
