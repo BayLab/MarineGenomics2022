@@ -1,3 +1,161 @@
+--- 
+title: "Marine Genomics"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+description: ""
+---
+
+# Introduction to Marine Genomics
+
+Placeholder
+
+
+## Cloud computing versus individual laptops
+## Meet our instructors!
+## Schedule
+
+<!--chapter:end:index.Rmd-->
+
+
+# Week 1- Welcome!
+
+Placeholder
+
+
+## Introduction to shell computing via the data carpentry tutorial
+## How to access the shell
+## Best practices for Jetstream
+## Week 1 Objectives
+## Navigating your file system
+## Shortcut: Tab Completion
+## Summary & Key Points
+## Navigating Files and Directories
+## Moving around the file system
+## Navigating practice and finding hidden directories
+## Examining the contents of other directories
+## Full vs Relative Paths
+## Navigational shortcuts
+## Key Points
+## Creature of the Week!
+
+<!--chapter:end:01-Week1_intro.Rmd-->
+
+
+# Week 2-Working With Files
+
+Placeholder
+
+
+## Our data set: FASTQ files
+## Wildcards
+## Command History
+## Examining Files
+## Details on the FASTQ format
+## Creating, moving, copying, and removing
+### Copying Files
+### Creating Directories
+### Moving / Renaming 
+### File Permissions
+### Removing
+## Redirections
+## Searching files
+## Redirecting output
+## Writing for loops
+## Using Basename in for loops
+## Writing Scripts and Working with Data
+## Writing files
+## Writing scripts
+## Moving and Downloading Data
+### Getting data from the cloud
+### Uploading and Downloading Data to your Virtual Machine with scp - UNIX
+## Awk
+## Creature of the Week!
+
+<!--chapter:end:02-Week2.Rmd-->
+
+
+# Week 3- What is a Genetic Variant?
+
+Placeholder
+
+
+## To get started lets dowload the data and install a few programs
+## Raw read quality control
+## Trimming to remove adapters
+## Building an index of our genome
+## Map reads to the genome
+## sam to bam file conversion
+## Genotype likelihoods
+## Creature of the Week!
+
+<!--chapter:end:03-MarGeno_week3.Rmd-->
+
+
+# Week 4- The R environment
+
+Placeholder
+
+
+## Lesson 1: Orientation to R
+## Manipulating a vector object 
+## Operations act on each element of a vector:
+## Operations can also work with two vectors:
+## A few tips below for working with objects:
+## Practice R Operations
+## 1.2 Characterizing a dataframe
+## How to access parts of the data:
+## Data Manipulation
+## Practice exploring a dataframe
+## 1.3 Subsetting datasets & logicals
+## Practice Subsetting datasets/logicals
+## Creature of the Week!
+
+<!--chapter:end:04-Marine_genomics_week4.rmd-->
+
+
+# Week 5- R Continued
+
+Placeholder
+
+
+## 2.1 Plotting 
+## Scatterplots
+## Customizing your plot
+## Practice Problems 2.1
+## 2.2 plotting with ggplot2 
+## Practice Problems 2.2
+## For loops and the apply family of functions
+## apply family
+### sapply
+### apply 
+### lapply -- "list" apply
+### tapply - "per Type" apply 
+## Exercise 2.3 apply and tapply
+## Creature of the Week!
+
+<!--chapter:end:05-Week5_R_Introduction_continued.Rmd-->
+
+
+# Population Structure via conStruct
+
+Placeholder
+
+
+## Download the data
+## update our compiler in bash/UNIX and install everything for R in the terminal (in bash/UNIX, NOT in Rstudio)
+## install conStruct in R
+## read in the data
+## Get our meta data read into R and ready to use
+## Run a structure analysis
+## Incoorporate geographic distances in a spatial model
+## Comparisons across different values of K
+## Exercises
+
+<!--chapter:end:06_Week6.structure.Rmd-->
+
 ---
 title: "Week 6"
 author: "Serena Caplins"
@@ -11,7 +169,7 @@ output:
 ```{r setup6, include=FALSE}
 knitr::opts_chunk$set(fig.width = 8, collapse = TRUE)
 knitr::opts_chunk$set(echo = TRUE)
-knitr::opts_knit$set(root.dir = '/Users/ericaspotswoodnielsen/Desktop/PD_stuffies/teaching/MarineGenomics2022/data/Week7_pca/MarineGenomicsData/Week7')
+knitr::opts_knit$set(root.dir = '/Users/ericaspotswoodnielsen/Desktop/PD_stuffies/teaching/MarineGenomics/data/Week7_pca/MarineGenomicsData/Week7')
 ```
 
 # Week 6- Principle Component Analyses 
@@ -336,4 +494,67 @@ ggplot(data=M, aes(y=V1, x=V2, group=as.factor(names$V3), color=as.factor(names$
 ## Creature of the Week!
 ![Yellow Boring Sponge, the inspiration for Spongebob! (Image credit: Bernard Picton/Encyclopedia of Marine Life of Britain and Ireland)](./figs/creatures/boringsponge.jpg)
 
+
+
+<!--chapter:end:07-Week7.pca.Rmd-->
+
+
+# Week 8- F<sub>st</sub> and outlier analysis
+
+Placeholder
+
+
+## Download the data
+## Getting R set up
+## Finding outliers using pcadapt
+## pcadapt Exercises
+## Using F<sub>st</sub> to find outliers
+## OutFLANK Practice
+## Creature of the Week!
+
+<!--chapter:end:08-Week8.outlier.Rmd-->
+
+
+# Week 8: Genome wide association study (GWAS)
+
+Placeholder
+
+
+## load in the data 
+## install packages in R
+## install angsd and pcangsd (again?)
+### install angsd
+### for pcangsd
+## The data
+## take Beagle file and generate lrt file
+## take lrt file and make a manhattan plot
+## Exercises
+## Creature of the Week!
+
+<!--chapter:end:09-Week9.gwas.rmd-->
+
+
+# Genome Environment Association
+
+Placeholder
+
+
+## Download the data
+## install a compiler for Unix/bash
+## install R packages
+## Get the Environmental Data
+## Extract Site Specific Information from our Envirornmental Layers
+## Make a Map of our environmental data
+## Load in genetic data
+## Exercises
+## Download the data
+## Install Transdecoder
+## Run Transdecoder
+## Run NCBI-BLAST
+## What did we find?
+## The importance of Genomic Architecture
+## Exercises
+## Creature of the Week!
+
+<!--chapter:end:10-Week10.Rmd-->
 

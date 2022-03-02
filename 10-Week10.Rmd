@@ -10,7 +10,7 @@ output:
 
 ```{r setupweek11, include=FALSE}
 knitr::opts_chunk$set(fig.width = 8, echo=F, error=T, message=F)
-knitr::opts_knit$set(root.dir = "/Users/ericaspotswoodnielsen/Desktop/PD_stuffies/teaching/MarineGenomics/data/Week10_gea/")
+knitr::opts_knit$set(root.dir = "/Users/ericaspotswoodnielsen/Desktop/PD_stuffies/teaching/MarineGenomics2022/data/Week10_gea/")
 ```
 
 # Genome Environment Association

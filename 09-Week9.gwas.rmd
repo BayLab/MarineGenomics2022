@@ -10,7 +10,7 @@ output:
 
 ```{r setup8, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-knitr::opts_knit$set(root.dir = "/Users/ericaspotswoodnielsen/Desktop/PD_stuffies/teaching/MarineGenomics/data/Week9_gwas/MarineGenomicsData/Week9")
+knitr::opts_knit$set(root.dir = "/Users/ericaspotswoodnielsen/Desktop/PD_stuffies/teaching/MarineGenomics2022/data/Week9_gwas/MarineGenomicsData/Week9")
 ```
 
 # Week 8: Genome wide association study (GWAS)

@@ -10,7 +10,7 @@ output:
 
 ```{r setup7, include=FALSE}
 knitr::opts_chunk$set(echo = F)
-knitr::opts_knit$set(root.dir = "/Users/ericaspotswoodnielsen/Desktop/PD_stuffies/teaching/MarineGenomics/data/Week8_outlier/MarineGenomicsData/Week8")
+knitr::opts_knit$set(root.dir = "/Users/ericaspotswoodnielsen/Desktop/PD_stuffies/teaching/MarineGenomics2022/data/Week8_outlier/MarineGenomicsData/Week8")
 ```
 
 # Week 8- F<sub>st</sub> and outlier analysis
