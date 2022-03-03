@@ -36,11 +36,11 @@ In this lesson you will learn how to use the command line interface to move arou
 
 ## How to access the shell
 
-For this course we will be using the shell in our Jetstream allocation through xsede. Jetstream is a cloud computing resource for which we have been allocated resources for the purposes of this course. Below is a guide for accessing and using jetstream.
+For this course we will be using the shell in our Jetstream2 allocation through xsede. Jetstream2 is a cloud computing resource for which we have been allocated resources for the purposes of this course. Below is a guide for accessing and using jetstream.
 
 In jetstream we launch what they call an "instance" which is a small allocation that specifies how much memory you need and reflects how much computing you might do (we'll guide you through this).
 
-You'll find the jetstream login [here](https://use.jetstream-cloud.org/application) 
+You'll find the jetstream login [here](https://exosphere.jetstream-cloud.org/exosphere/loginpicker) 
 
 Navigate to the login with xsede tab in the upper right
 
