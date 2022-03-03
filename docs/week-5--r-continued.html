@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>6 Week 5- R Continued | Test.knit</title>
+  <title>6 Week 5- R Continued | MarGen2022</title>
   <meta name="description" content="" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="6 Week 5- R Continued | Test.knit" />
+  <meta property="og:title" content="6 Week 5- R Continued | MarGen2022" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="6 Week 5- R Continued | Test.knit" />
+  <meta name="twitter:title" content="6 Week 5- R Continued | MarGen2022" />
   
   
   
@@ -357,12 +357,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb409-3"><a href="week-5--r-continued.html#cb409-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(msleep)</span></code></pre></div>
 <div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb410-1"><a href="week-5--r-continued.html#cb410-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb410-2"><a href="week-5--r-continued.html#cb410-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(msleep<span class="sc">$</span>sleep_total,msleep<span class="sc">$</span>sleep_rem)</span></code></pre></div>
-<p><img src="Test_files/figure-html/5-1-1.png" width="768" /></p>
+<p><img src="05-Week5_R_Introduction_continued_files/figure-html/5-1-1.png" width="768" /></p>
 <div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb411-1"><a href="week-5--r-continued.html#cb411-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb411-2"><a href="week-5--r-continued.html#cb411-2" aria-hidden="true" tabindex="-1"></a><span class="co"># or plot response variable as a function &quot;~&quot; of the predictor variable</span></span></code></pre></div>
 <div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb412-1"><a href="week-5--r-continued.html#cb412-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb412-2"><a href="week-5--r-continued.html#cb412-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(msleep<span class="sc">$</span>sleep_total<span class="sc">~</span>msleep<span class="sc">$</span>sleep_rem) <span class="co">#you&#39;ll notice this swaps the x and y axis</span></span></code></pre></div>
-<p><img src="Test_files/figure-html/5-2-1.png" width="768" /></p>
+<p><img src="05-Week5_R_Introduction_continued_files/figure-html/5-2-1.png" width="768" /></p>
 </div>
 <div id="customizing-your-plot" class="section level2 hasAnchor" number="6.3">
 <h2><span class="header-section-number">6.3</span> Customizing your plot<a href="week-5--r-continued.html#customizing-your-plot" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -382,11 +382,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Let’s remake the total_sleep against sleep_rem plot and add-in some modifiers</p>
 <div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb413-1"><a href="week-5--r-continued.html#cb413-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Choose a pch and make the color blue and give it a bottom+left border</span></span>
 <span id="cb413-2"><a href="week-5--r-continued.html#cb413-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(msleep<span class="sc">$</span>sleep_total<span class="sc">~</span>msleep<span class="sc">$</span>sleep_rem, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>, <span class="at">bty=</span><span class="st">&quot;L&quot;</span>)</span></code></pre></div>
-<p><img src="Test_files/figure-html/5-3-1.png" width="768" /></p>
+<p><img src="05-Week5_R_Introduction_continued_files/figure-html/5-3-1.png" width="768" /></p>
 <p>We can change the axes and title labels using “xlab,” “ylab,” and “main” arguments. Let’s add labels to our plot.</p>
 <div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb414-1"><a href="week-5--r-continued.html#cb414-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Choose a pch and make the color blue and give it a bottom+left border</span></span>
 <span id="cb414-2"><a href="week-5--r-continued.html#cb414-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(msleep<span class="sc">$</span>sleep_total<span class="sc">~</span>msleep<span class="sc">$</span>sleep_rem, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>, <span class="at">bty=</span><span class="st">&quot;L&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;REM Sleep (hours)&quot;</span>, <span class="at">ylab=</span> <span class="st">&quot;Total Sleep (hours)&quot;</span>) </span></code></pre></div>
-<p><img src="Test_files/figure-html/5-4-1.png" width="768" /></p>
+<p><img src="05-Week5_R_Introduction_continued_files/figure-html/5-4-1.png" width="768" /></p>
 <p>You may want to find out which points are on a plot. You can use <code>identify()</code> in place of <code>plot()</code> to identify specific points within your plot. This function prints out the row numbers for the points that you selected.</p>
 <p>We can also add lines to an existing plot with <code>ablines()</code>. Let’s add a line fit from a linear model to our plot.</p>
 <div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb415-1"><a href="week-5--r-continued.html#cb415-1" aria-hidden="true" tabindex="-1"></a><span class="co">#first make a plot</span></span>
@@ -394,7 +394,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb415-3"><a href="week-5--r-continued.html#cb415-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb415-4"><a href="week-5--r-continued.html#cb415-4" aria-hidden="true" tabindex="-1"></a><span class="co">#then add a line. The function lm runs a linear model on our x, y values.</span></span>
 <span id="cb415-5"><a href="week-5--r-continued.html#cb415-5" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(msleep<span class="sc">$</span>sleep_total<span class="sc">~</span>msleep<span class="sc">$</span>sleep_rem))</span></code></pre></div>
-<p><img src="Test_files/figure-html/5-5-1.png" width="768" /></p>
+<p><img src="05-Week5_R_Introduction_continued_files/figure-html/5-5-1.png" width="768" /></p>
 <p>You can add a legend to a plot with <code>legend()</code> which needs you to specify the location.</p>
 <p>To do this, let’s make a cutoff for our points and color them by points above and below the cutoff. We’ll use our subsetting skills from last week. Feel free to review that section (1.3).</p>
 <div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb416-1"><a href="week-5--r-continued.html#cb416-1" aria-hidden="true" tabindex="-1"></a><span class="co">#start by defining points by whether they are greater than sleep_total 16 and storing</span></span>
@@ -405,14 +405,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb416-6"><a href="week-5--r-continued.html#cb416-6" aria-hidden="true" tabindex="-1"></a>msleep<span class="sc">$</span>colors[msleep<span class="sc">$</span>sleep_total <span class="sc">&gt;=</span> <span class="dv">17</span>] <span class="ot">&lt;-</span><span class="st">&quot;red&quot;</span></span>
 <span id="cb416-7"><a href="week-5--r-continued.html#cb416-7" aria-hidden="true" tabindex="-1"></a>msleep<span class="sc">$</span>colors[msleep<span class="sc">$</span>sleep_total <span class="sc">&lt;</span> <span class="dv">17</span>] <span class="ot">&lt;-</span><span class="st">&quot;black&quot;</span></span></code></pre></div>
 <div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb417-1"><a href="week-5--r-continued.html#cb417-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(msleep<span class="sc">$</span>sleep_total<span class="sc">~</span>msleep<span class="sc">$</span>sleep_rem, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">col=</span>msleep<span class="sc">$</span>colors, <span class="at">bty=</span><span class="st">&quot;L&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;REM Sleep (hours)&quot;</span>, <span class="at">ylab=</span> <span class="st">&quot;Total Sleep (hours)&quot;</span>) </span></code></pre></div>
-<p><img src="Test_files/figure-html/5-6-1.png" width="768" /></p>
+<p><img src="05-Week5_R_Introduction_continued_files/figure-html/5-6-1.png" width="768" /></p>
 <p>In addition to scatterplots you can make histograms and boxplots in base R. The same parameter options (pch, col, ylab, xlab, etc) apply for these plots as well as scatterplots.</p>
 <p>R will automatically plot a barplot if you give to the <code>plot()</code> function a continuous variable and a factor. If you have a vector stored as a character converting it to a factor via <code>as.factor</code> will make a boxplot.</p>
 <div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb418-1"><a href="week-5--r-continued.html#cb418-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb418-2"><a href="week-5--r-continued.html#cb418-2" aria-hidden="true" tabindex="-1"></a><span class="co">#let&#39;s make a histogram of sleep_total and fill it with the color palette rainbow() which needs to know how many colors to use</span></span>
 <span id="cb418-3"><a href="week-5--r-continued.html#cb418-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb418-4"><a href="week-5--r-continued.html#cb418-4" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(msleep<span class="sc">$</span>sleep_total, <span class="at">col=</span><span class="fu">rainbow</span>(<span class="dv">10</span>))</span></code></pre></div>
-<p><img src="Test_files/figure-html/5-7-1.png" width="768" /></p>
+<p><img src="05-Week5_R_Introduction_continued_files/figure-html/5-7-1.png" width="768" /></p>
 <div class="sourceCode" id="cb419"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb419-1"><a href="week-5--r-continued.html#cb419-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb419-2"><a href="week-5--r-continued.html#cb419-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb419-3"><a href="week-5--r-continued.html#cb419-3" aria-hidden="true" tabindex="-1"></a><span class="co">#let&#39;s make a boxplot of sleep_total and order making eachone a different color (how would you find out how many unique orders are in msleep?)</span></span>
@@ -420,10 +420,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb419-5"><a href="week-5--r-continued.html#cb419-5" aria-hidden="true" tabindex="-1"></a><span class="co">#plot(msleep$sleep_total~as.factor(msleep$order), col=rainbow(19)) #this is commented out simply to avoid ploting the same plot twice</span></span></code></pre></div>
 <div class="sourceCode" id="cb420"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb420-1"><a href="week-5--r-continued.html#cb420-1" aria-hidden="true" tabindex="-1"></a><span class="co">#or boxplot</span></span>
 <span id="cb420-2"><a href="week-5--r-continued.html#cb420-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(msleep<span class="sc">$</span>sleep_total<span class="sc">~</span><span class="fu">as.factor</span>(msleep<span class="sc">$</span>order), <span class="at">col=</span><span class="fu">rainbow</span>(<span class="dv">19</span>)) </span></code></pre></div>
-<p><img src="Test_files/figure-html/5-8-1.png" width="768" />
+<p><img src="05-Week5_R_Introduction_continued_files/figure-html/5-8-1.png" width="768" />
 Another example looking at sleep variation across the different types of consumers (carnivore, herbivore, insectivore and omnivore):</p>
 <div class="sourceCode" id="cb421"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb421-1"><a href="week-5--r-continued.html#cb421-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(msleep<span class="sc">$</span>sleep_total<span class="sc">~</span><span class="fu">as.factor</span>(msleep<span class="sc">$</span>vore),<span class="at">col=</span><span class="fu">rainbow</span>(<span class="dv">4</span>), <span class="at">xlab=</span><span class="st">&quot;REM Sleep (hours)&quot;</span>, <span class="at">ylab=</span> <span class="st">&quot;Total Sleep (hours)&quot;</span>)</span></code></pre></div>
-<p><img src="Test_files/figure-html/5-9-1.png" width="768" /></p>
+<p><img src="05-Week5_R_Introduction_continued_files/figure-html/5-9-1.png" width="768" /></p>
 </div>
 <div id="practice-problems-2.1" class="section level2 hasAnchor" number="6.4">
 <h2><span class="header-section-number">6.4</span> Practice Problems 2.1<a href="week-5--r-continued.html#practice-problems-2.1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -447,9 +447,9 @@ How many different diets are in the experiment?</li>
 </summary>
 <p>
 <div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb423-1"><a href="week-5--r-continued.html#cb423-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(ChickWeight<span class="sc">$</span>Chick))</span>
-<span id="cb423-2"><a href="week-5--r-continued.html#cb423-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 50</span></span>
+<span id="cb423-2"><a href="week-5--r-continued.html#cb423-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 50</span></span>
 <span id="cb423-3"><a href="week-5--r-continued.html#cb423-3" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(ChickWeight<span class="sc">$</span>Diet))</span>
-<span id="cb423-4"><a href="week-5--r-continued.html#cb423-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4</span></span></code></pre></div>
+<span id="cb423-4"><a href="week-5--r-continued.html#cb423-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 4</span></span></code></pre></div>
 </p>
 </details>
 <blockquote>
@@ -465,7 +465,7 @@ How many different diets are in the experiment?</li>
 <div class="sourceCode" id="cb424"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb424-1"><a href="week-5--r-continued.html#cb424-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ChickWeight<span class="sc">$</span>weight <span class="sc">~</span> ChickWeight<span class="sc">$</span>Time, </span>
 <span id="cb424-2"><a href="week-5--r-continued.html#cb424-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Time (days)&quot;</span>, </span>
 <span id="cb424-3"><a href="week-5--r-continued.html#cb424-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Weight (gm)&quot;</span>)</span></code></pre></div>
-<img src="Test_files/figure-html/5-10-1.png" width="768" />
+<img src="05-Week5_R_Introduction_continued_files/figure-html/5-10-1.png" width="768" />
 </p>
 </details>
 <blockquote>
@@ -483,7 +483,7 @@ How many different diets are in the experiment?</li>
 <span id="cb425-3"><a href="week-5--r-continued.html#cb425-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Weight (gm)&quot;</span>, </span>
 <span id="cb425-4"><a href="week-5--r-continued.html#cb425-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Weights at final day of experiment&quot;</span>, </span>
 <span id="cb425-5"><a href="week-5--r-continued.html#cb425-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="fu">rainbow</span>(<span class="dv">10</span>))</span></code></pre></div>
-<img src="Test_files/figure-html/5-11-1.png" width="768" />
+<img src="05-Week5_R_Introduction_continued_files/figure-html/5-11-1.png" width="768" />
 </p>
 </details>
 <blockquote>
@@ -503,7 +503,7 @@ How many different diets are in the experiment?</li>
 <span id="cb426-5"><a href="week-5--r-continued.html#cb426-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">&quot;Weight (gm)&quot;</span>, </span>
 <span id="cb426-6"><a href="week-5--r-continued.html#cb426-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">&quot;Final weights given diet type&quot;</span>, </span>
 <span id="cb426-7"><a href="week-5--r-continued.html#cb426-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;orange&quot;</span>, <span class="st">&quot;green&quot;</span>))</span></code></pre></div>
-<img src="Test_files/figure-html/5-12-1.png" width="768" />
+<img src="05-Week5_R_Introduction_continued_files/figure-html/5-12-1.png" width="768" />
 </p>
 </details>
 <blockquote>
@@ -526,7 +526,7 @@ Note: if histogram has n breaks and n is less than 10, it will just use first n 
 <div class="sourceCode" id="cb428"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb428-1"><a href="week-5--r-continued.html#cb428-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RColorBrewer)</span>
 <span id="cb428-2"><a href="week-5--r-continued.html#cb428-2" aria-hidden="true" tabindex="-1"></a>my.colors <span class="ot">=</span> <span class="fu">brewer.pal</span>(<span class="dv">10</span>, <span class="st">&quot;Paired&quot;</span>)</span>
 <span id="cb428-3"><a href="week-5--r-continued.html#cb428-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(ChickWeight<span class="sc">$</span>weight[ChickWeight<span class="sc">$</span>Time <span class="sc">==</span> <span class="fu">max</span>(ChickWeight<span class="sc">$</span>Time)], <span class="at">xlab =</span> <span class="st">&quot;Weight (gm)&quot;</span>,<span class="at">main =</span> <span class="st">&quot;Weights at final day of experiment&quot;</span>, <span class="at">col =</span> my.colors)</span></code></pre></div>
-<img src="Test_files/figure-html/5-13-1.png" width="768" />
+<img src="05-Week5_R_Introduction_continued_files/figure-html/5-13-1.png" width="768" />
 </p>
 </details>
 </div>
@@ -539,48 +539,48 @@ Note: if histogram has n breaks and n is less than 10, it will just use first n 
 <span id="cb429-2"><a href="week-5--r-continued.html#cb429-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(state)</span>
 <span id="cb429-3"><a href="week-5--r-continued.html#cb429-3" aria-hidden="true" tabindex="-1"></a>states <span class="ot">=</span> <span class="fu">as.data.frame</span>(state.x77) <span class="co"># convert data to a familiar format - data frame</span></span>
 <span id="cb429-4"><a href="week-5--r-continued.html#cb429-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(states) <span class="co"># let&#39;s take a look at the dataframe</span></span>
-<span id="cb429-5"><a href="week-5--r-continued.html#cb429-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &#39;data.frame&#39;:    50 obs. of  8 variables:</span></span>
-<span id="cb429-6"><a href="week-5--r-continued.html#cb429-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Population: num  3615 365 2212 2110 21198 ...</span></span>
-<span id="cb429-7"><a href="week-5--r-continued.html#cb429-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Income    : num  3624 6315 4530 3378 5114 ...</span></span>
-<span id="cb429-8"><a href="week-5--r-continued.html#cb429-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Illiteracy: num  2.1 1.5 1.8 1.9 1.1 0.7 1.1 0.9 1.3 2 ...</span></span>
-<span id="cb429-9"><a href="week-5--r-continued.html#cb429-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Life Exp  : num  69 69.3 70.5 70.7 71.7 ...</span></span>
-<span id="cb429-10"><a href="week-5--r-continued.html#cb429-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Murder    : num  15.1 11.3 7.8 10.1 10.3 6.8 3.1 6.2 10.7 13.9 ...</span></span>
-<span id="cb429-11"><a href="week-5--r-continued.html#cb429-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ HS Grad   : num  41.3 66.7 58.1 39.9 62.6 63.9 56 54.6 52.6 40.6 ...</span></span>
-<span id="cb429-12"><a href="week-5--r-continued.html#cb429-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Frost     : num  20 152 15 65 20 166 139 103 11 60 ...</span></span>
-<span id="cb429-13"><a href="week-5--r-continued.html#cb429-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Area      : num  50708 566432 113417 51945 156361 ...</span></span>
+<span id="cb429-5"><a href="week-5--r-continued.html#cb429-5" aria-hidden="true" tabindex="-1"></a><span class="do">## &#39;data.frame&#39;:    50 obs. of  8 variables:</span></span>
+<span id="cb429-6"><a href="week-5--r-continued.html#cb429-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ Population: num  3615 365 2212 2110 21198 ...</span></span>
+<span id="cb429-7"><a href="week-5--r-continued.html#cb429-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ Income    : num  3624 6315 4530 3378 5114 ...</span></span>
+<span id="cb429-8"><a href="week-5--r-continued.html#cb429-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ Illiteracy: num  2.1 1.5 1.8 1.9 1.1 0.7 1.1 0.9 1.3 2 ...</span></span>
+<span id="cb429-9"><a href="week-5--r-continued.html#cb429-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ Life Exp  : num  69 69.3 70.5 70.7 71.7 ...</span></span>
+<span id="cb429-10"><a href="week-5--r-continued.html#cb429-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ Murder    : num  15.1 11.3 7.8 10.1 10.3 6.8 3.1 6.2 10.7 13.9 ...</span></span>
+<span id="cb429-11"><a href="week-5--r-continued.html#cb429-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ HS Grad   : num  41.3 66.7 58.1 39.9 62.6 63.9 56 54.6 52.6 40.6 ...</span></span>
+<span id="cb429-12"><a href="week-5--r-continued.html#cb429-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ Frost     : num  20 152 15 65 20 166 139 103 11 60 ...</span></span>
+<span id="cb429-13"><a href="week-5--r-continued.html#cb429-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ Area      : num  50708 566432 113417 51945 156361 ...</span></span>
 <span id="cb429-14"><a href="week-5--r-continued.html#cb429-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb429-15"><a href="week-5--r-continued.html#cb429-15" aria-hidden="true" tabindex="-1"></a><span class="co">#make an initial ggplot</span></span>
 <span id="cb429-16"><a href="week-5--r-continued.html#cb429-16" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>states) </span></code></pre></div>
-<p><img src="Test_files/figure-html/5-14-1.png" width="768" /></p>
+<p><img src="05-Week5_R_Introduction_continued_files/figure-html/5-14-1.png" width="768" /></p>
 <p>We just see a grey box. In order to tell ggplot what to put in the box we use the <code>aes()</code>. The <code>aes()</code> function stands for aesthetics and will be used to specify our axes and how we want the data grouped.</p>
 <div class="sourceCode" id="cb430"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb430-1"><a href="week-5--r-continued.html#cb430-1" aria-hidden="true" tabindex="-1"></a><span class="co">#lets make a scatterplot of population and income</span></span>
 <span id="cb430-2"><a href="week-5--r-continued.html#cb430-2" aria-hidden="true" tabindex="-1"></a><span class="co">#we specify which axes we want to be x and y with aes()</span></span>
 <span id="cb430-3"><a href="week-5--r-continued.html#cb430-3" aria-hidden="true" tabindex="-1"></a><span class="co">#we&#39;ll then use geom_point to tell it to make a scatterplot using the data we specified in the first command</span></span>
 <span id="cb430-4"><a href="week-5--r-continued.html#cb430-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>states, <span class="fu">aes</span>(<span class="at">x=</span>Population, <span class="at">y=</span>Income))<span class="sc">+</span><span class="fu">geom_point</span>() </span></code></pre></div>
-<p><img src="Test_files/figure-html/5-15-1.png" width="768" /></p>
+<p><img src="05-Week5_R_Introduction_continued_files/figure-html/5-15-1.png" width="768" /></p>
 <p>There are many types of plots in ggplot that can be called with <code>geom_</code> including <code>geom_line</code>, <code>geom_boxplot</code> <code>geom_bar</code> and many others!</p>
 <p>Let’s add a line to our plot that of best fit for Population ~ Income. Each time we add something to our plot we use the <code>+</code> sign. We’ll use <code>geom_smooth()</code> to draw a line with the method for <code>lm</code> which stands for linear model.</p>
 <div class="sourceCode" id="cb431"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb431-1"><a href="week-5--r-continued.html#cb431-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb431-2"><a href="week-5--r-continued.html#cb431-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>states, <span class="fu">aes</span>(<span class="at">x=</span>Population, <span class="at">y=</span>Income))<span class="sc">+</span><span class="fu">geom_point</span>()<span class="sc">+</span><span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>) </span>
-<span id="cb431-3"><a href="week-5--r-continued.html#cb431-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; `geom_smooth()` using formula &#39;y ~ x&#39;</span></span></code></pre></div>
-<p><img src="Test_files/figure-html/5-16-1.png" width="768" /></p>
+<span id="cb431-3"><a href="week-5--r-continued.html#cb431-3" aria-hidden="true" tabindex="-1"></a><span class="do">## `geom_smooth()` using formula &#39;y ~ x&#39;</span></span></code></pre></div>
+<p><img src="05-Week5_R_Introduction_continued_files/figure-html/5-16-1.png" width="768" /></p>
 <p>As you can already see ggplot works with many more parameters drawn in default than plotting in base R. For example, the background of our plot is grey the confidence interval of our line is drawn for us and is shaded dark grey and the line of best fit is in blue. All of these things can be modified if we wish. Many of these options can easily be changed with the <code>theme_</code> functions.</p>
 <p>Let’s change to a minimal theme which removes the gray backgroun in the back of the plot. Play around with the other themes to see what they change.</p>
 <div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb432-1"><a href="week-5--r-continued.html#cb432-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb432-2"><a href="week-5--r-continued.html#cb432-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>states, <span class="fu">aes</span>(<span class="at">x=</span>Population, <span class="at">y=</span>Income))<span class="sc">+</span><span class="fu">geom_point</span>()<span class="sc">+</span><span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>)<span class="sc">+</span><span class="fu">theme_minimal</span>() </span>
-<span id="cb432-3"><a href="week-5--r-continued.html#cb432-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; `geom_smooth()` using formula &#39;y ~ x&#39;</span></span></code></pre></div>
-<p><img src="Test_files/figure-html/5-17-1.png" width="768" /></p>
+<span id="cb432-3"><a href="week-5--r-continued.html#cb432-3" aria-hidden="true" tabindex="-1"></a><span class="do">## `geom_smooth()` using formula &#39;y ~ x&#39;</span></span></code></pre></div>
+<p><img src="05-Week5_R_Introduction_continued_files/figure-html/5-17-1.png" width="768" /></p>
 <p>Another plot example:</p>
 <div class="sourceCode" id="cb433"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb433-1"><a href="week-5--r-continued.html#cb433-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>states, <span class="fu">aes</span>(<span class="at">x=</span>Income, <span class="at">y=</span>Illiteracy, <span class="at">color=</span>Population)) <span class="sc">+</span><span class="fu">geom_point</span>()<span class="sc">+</span><span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>, <span class="at">color=</span><span class="st">&quot;red&quot;</span>)<span class="sc">+</span><span class="fu">theme_classic</span>() </span>
-<span id="cb433-2"><a href="week-5--r-continued.html#cb433-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; `geom_smooth()` using formula &#39;y ~ x&#39;</span></span></code></pre></div>
-<p><img src="Test_files/figure-html/5-18-1.png" width="768" /></p>
+<span id="cb433-2"><a href="week-5--r-continued.html#cb433-2" aria-hidden="true" tabindex="-1"></a><span class="do">## `geom_smooth()` using formula &#39;y ~ x&#39;</span></span></code></pre></div>
+<p><img src="05-Week5_R_Introduction_continued_files/figure-html/5-18-1.png" width="768" /></p>
 <p>Let’s use the <code>msleep</code> data set to explore what ggplot can do with character vectors. Make a plot of total sleep against REM sleep and then group by “vore.”</p>
 <div class="sourceCode" id="cb434"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb434-1"><a href="week-5--r-continued.html#cb434-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb434-2"><a href="week-5--r-continued.html#cb434-2" aria-hidden="true" tabindex="-1"></a><span class="co"># because our vore vector is a character vector we must convert it to a factor before we can use it to group or color</span></span>
 <span id="cb434-3"><a href="week-5--r-continued.html#cb434-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb434-4"><a href="week-5--r-continued.html#cb434-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(msleep, <span class="fu">aes</span>(<span class="at">y=</span>sleep_total, <span class="at">x=</span>sleep_rem, <span class="at">group=</span><span class="fu">as.factor</span>(vore), <span class="at">color=</span><span class="fu">as.factor</span>(vore))) <span class="sc">+</span><span class="fu">geom_point</span>()</span>
-<span id="cb434-5"><a href="week-5--r-continued.html#cb434-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning: Removed 22 rows containing missing values (geom_point).</span></span></code></pre></div>
-<p><img src="Test_files/figure-html/5-19-1.png" width="768" /></p>
+<span id="cb434-5"><a href="week-5--r-continued.html#cb434-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: Removed 22 rows containing missing values (geom_point).</span></span></code></pre></div>
+<p><img src="05-Week5_R_Introduction_continued_files/figure-html/5-19-1.png" width="768" /></p>
 <p>That looks fine, but we may want to add axis labels and change the legend. The code below does just that and changes the theme.</p>
 <div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb435-1"><a href="week-5--r-continued.html#cb435-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as we add things to the plot the line can get really long, you can hit enter after the plus sign to start a new line</span></span>
 <span id="cb435-2"><a href="week-5--r-continued.html#cb435-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -599,8 +599,8 @@ Note: if histogram has n breaks and n is less than 10, it will just use first n 
 <span id="cb435-15"><a href="week-5--r-continued.html#cb435-15" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">&quot;insecti&quot;</span><span class="ot">=</span><span class="st">&quot;green&quot;</span>, </span>
 <span id="cb435-16"><a href="week-5--r-continued.html#cb435-16" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">&quot;omni&quot;</span><span class="ot">=</span><span class="st">&quot;brown&quot;</span>, </span>
 <span id="cb435-17"><a href="week-5--r-continued.html#cb435-17" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">&quot;NA&quot;</span><span class="ot">=</span><span class="st">&quot;orange&quot;</span>))</span>
-<span id="cb435-18"><a href="week-5--r-continued.html#cb435-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning: Removed 22 rows containing missing values (geom_point).</span></span></code></pre></div>
-<p><img src="Test_files/figure-html/5-20-1.png" width="768" />
+<span id="cb435-18"><a href="week-5--r-continued.html#cb435-18" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: Removed 22 rows containing missing values (geom_point).</span></span></code></pre></div>
+<p><img src="05-Week5_R_Introduction_continued_files/figure-html/5-20-1.png" width="768" />
 Our plot at this point is getting very clunky. You can assign what we have so far to an object and continue to add parameters without having to copy and paste the whole plot.</p>
 <div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb436-1"><a href="week-5--r-continued.html#cb436-1" aria-hidden="true" tabindex="-1"></a><span class="co">#assign to an object</span></span>
 <span id="cb436-2"><a href="week-5--r-continued.html#cb436-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -621,16 +621,16 @@ Our plot at this point is getting very clunky. You can assign what we have so fa
 <span id="cb436-17"><a href="week-5--r-continued.html#cb436-17" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">&quot;NA&quot;</span><span class="ot">=</span><span class="st">&quot;orange&quot;</span>))</span>
 <span id="cb436-18"><a href="week-5--r-continued.html#cb436-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb436-19"><a href="week-5--r-continued.html#cb436-19" aria-hidden="true" tabindex="-1"></a>g</span>
-<span id="cb436-20"><a href="week-5--r-continued.html#cb436-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning: Removed 22 rows containing missing values (geom_point).</span></span></code></pre></div>
-<p><img src="Test_files/figure-html/5-21-1.png" width="768" /></p>
+<span id="cb436-20"><a href="week-5--r-continued.html#cb436-20" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: Removed 22 rows containing missing values (geom_point).</span></span></code></pre></div>
+<p><img src="05-Week5_R_Introduction_continued_files/figure-html/5-21-1.png" width="768" /></p>
 <p>One final example to share. I use ggplot often with data sets that have multiple character vectors and I want to see how they relate to my continuous variables. For example in the iris dataframe we may be interested in looking at the relationship between Sepal.Length and Sepal.Width for each species. You can look at all of these together with <code>facet_wrap</code> or <code>facet_grid</code>.</p>
 <div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb437-1"><a href="week-5--r-continued.html#cb437-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb437-2"><a href="week-5--r-continued.html#cb437-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">y=</span>Sepal.Length, <span class="at">x=</span>Sepal.Width, <span class="at">group=</span>Species, <span class="at">color=</span>Species))<span class="sc">+</span></span>
 <span id="cb437-3"><a href="week-5--r-continued.html#cb437-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
 <span id="cb437-4"><a href="week-5--r-continued.html#cb437-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Species)<span class="sc">+</span></span>
 <span id="cb437-5"><a href="week-5--r-continued.html#cb437-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>)</span>
-<span id="cb437-6"><a href="week-5--r-continued.html#cb437-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; `geom_smooth()` using formula &#39;y ~ x&#39;</span></span></code></pre></div>
-<p><img src="Test_files/figure-html/5-22-1.png" width="768" />
+<span id="cb437-6"><a href="week-5--r-continued.html#cb437-6" aria-hidden="true" tabindex="-1"></a><span class="do">## `geom_smooth()` using formula &#39;y ~ x&#39;</span></span></code></pre></div>
+<p><img src="05-Week5_R_Introduction_continued_files/figure-html/5-22-1.png" width="768" />
 Finally in ggplot we may be interested in seeing the mean values plotted with error bars for several groups. You can use the function <code>stat_summary</code> to find the mean and error around that mean for the given grouping.</p>
 <p>Here’s a plot looking at the mean chickweight by diet.</p>
 <div class="sourceCode" id="cb438"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb438-1"><a href="week-5--r-continued.html#cb438-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(ChickWeight, <span class="fu">aes</span>(<span class="at">x=</span>Time, <span class="at">y=</span>weight, <span class="at">group=</span>Diet, <span class="at">color=</span>Diet))<span class="sc">+</span></span>
@@ -638,7 +638,7 @@ Finally in ggplot we may be interested in seeing the mean values plotted with er
 <span id="cb438-3"><a href="week-5--r-continued.html#cb438-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun=</span>mean, <span class="at">geom=</span><span class="st">&quot;line&quot;</span>, <span class="at">size=</span><span class="dv">1</span>)<span class="sc">+</span></span>
 <span id="cb438-4"><a href="week-5--r-continued.html#cb438-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> mean_se, <span class="at">geom =</span> <span class="st">&quot;errorbar&quot;</span>, </span>
 <span id="cb438-5"><a href="week-5--r-continued.html#cb438-5" aria-hidden="true" tabindex="-1"></a>               <span class="fu">aes</span>(<span class="at">width=</span><span class="fl">0.1</span>), <span class="at">size=</span><span class="fl">0.5</span>)</span></code></pre></div>
-<p><img src="Test_files/figure-html/5-23-1.png" width="768" /></p>
+<p><img src="05-Week5_R_Introduction_continued_files/figure-html/5-23-1.png" width="768" /></p>
 </div>
 <div id="practice-problems-2.2" class="section level2 hasAnchor" number="6.6">
 <h2><span class="header-section-number">6.6</span> Practice Problems 2.2<a href="week-5--r-continued.html#practice-problems-2.2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -658,10 +658,10 @@ Finally in ggplot we may be interested in seeing the mean values plotted with er
 <div class="sourceCode" id="cb439"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb439-1"><a href="week-5--r-continued.html#cb439-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we can just use the geom_smooth command from above and ggplot takes care of the rest!</span></span>
 <span id="cb439-2"><a href="week-5--r-continued.html#cb439-2" aria-hidden="true" tabindex="-1"></a><span class="co"># The code below will only work if you stored your plot in object g.</span></span>
 <span id="cb439-3"><a href="week-5--r-continued.html#cb439-3" aria-hidden="true" tabindex="-1"></a>g<span class="sc">+</span><span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>)</span>
-<span id="cb439-4"><a href="week-5--r-continued.html#cb439-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; `geom_smooth()` using formula &#39;y ~ x&#39;</span></span>
-<span id="cb439-5"><a href="week-5--r-continued.html#cb439-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning: Removed 22 rows containing non-finite values (stat_smooth).</span></span>
-<span id="cb439-6"><a href="week-5--r-continued.html#cb439-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning: Removed 22 rows containing missing values (geom_point).</span></span></code></pre></div>
-<img src="Test_files/figure-html/5-24-1.png" width="768" />
+<span id="cb439-4"><a href="week-5--r-continued.html#cb439-4" aria-hidden="true" tabindex="-1"></a><span class="do">## `geom_smooth()` using formula &#39;y ~ x&#39;</span></span>
+<span id="cb439-5"><a href="week-5--r-continued.html#cb439-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: Removed 22 rows containing non-finite values (stat_smooth).</span></span>
+<span id="cb439-6"><a href="week-5--r-continued.html#cb439-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: Removed 22 rows containing missing values (geom_point).</span></span></code></pre></div>
+<img src="05-Week5_R_Introduction_continued_files/figure-html/5-24-1.png" width="768" />
 </p>
 </details>
 <blockquote>
@@ -676,7 +676,7 @@ Finally in ggplot we may be interested in seeing the mean values plotted with er
 <p>
 <div class="sourceCode" id="cb440"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb440-1"><a href="week-5--r-continued.html#cb440-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb440-2"><a href="week-5--r-continued.html#cb440-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(msleep, <span class="fu">aes</span>(<span class="at">y=</span>sleep_total, <span class="at">x=</span><span class="fu">as.factor</span>(vore), <span class="at">fill=</span><span class="fu">as.factor</span>(vore)))<span class="sc">+</span><span class="fu">geom_boxplot</span>()</span></code></pre></div>
-<img src="Test_files/figure-html/5-25-1.png" width="768" />
+<img src="05-Week5_R_Introduction_continued_files/figure-html/5-25-1.png" width="768" />
 </p>
 </details>
 <blockquote>
@@ -691,7 +691,7 @@ Finally in ggplot we may be interested in seeing the mean values plotted with er
 <p>
 <div class="sourceCode" id="cb441"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb441-1"><a href="week-5--r-continued.html#cb441-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb441-2"><a href="week-5--r-continued.html#cb441-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(midwest, <span class="fu">aes</span>(<span class="at">y=</span>area, <span class="at">x=</span>popdensity, <span class="at">col=</span><span class="fu">as.factor</span>(state)))<span class="sc">+</span><span class="fu">geom_point</span>()<span class="sc">+</span><span class="fu">facet_grid</span>(<span class="sc">~</span>state)</span></code></pre></div>
-<img src="Test_files/figure-html/5-26-1.png" width="768" />
+<img src="05-Week5_R_Introduction_continued_files/figure-html/5-26-1.png" width="768" />
 </p>
 </details>
 <blockquote>
@@ -710,7 +710,7 @@ Finally in ggplot we may be interested in seeing the mean values plotted with er
 <span id="cb442-4"><a href="week-5--r-continued.html#cb442-4" aria-hidden="true" tabindex="-1"></a>il<span class="ot">&lt;-</span>midwest[midwest<span class="sc">$</span>state <span class="sc">==</span> <span class="st">&quot;IL&quot;</span>,]</span>
 <span id="cb442-5"><a href="week-5--r-continued.html#cb442-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb442-6"><a href="week-5--r-continued.html#cb442-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(il, <span class="fu">aes</span>(<span class="at">x=</span>popdensity, <span class="at">y=</span>poptotal))<span class="sc">+</span><span class="fu">geom_point</span>() </span></code></pre></div>
-<p><img src="Test_files/figure-html/5-27-1.png" width="768" /></p>
+<p><img src="05-Week5_R_Introduction_continued_files/figure-html/5-27-1.png" width="768" /></p>
 </p>
 </details>
 <blockquote>
@@ -730,11 +730,11 @@ Finally in ggplot we may be interested in seeing the mean values plotted with er
 <span id="cb443-5"><a href="week-5--r-continued.html#cb443-5" aria-hidden="true" tabindex="-1"></a>               <span class="fu">aes</span>(<span class="at">width=</span><span class="fl">0.1</span>), <span class="at">size=</span><span class="fl">0.5</span>)<span class="sc">+</span></span>
 <span id="cb443-6"><a href="week-5--r-continued.html#cb443-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
 <span id="cb443-7"><a href="week-5--r-continued.html#cb443-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values=</span><span class="fu">rainbow</span>(<span class="dv">5</span>))</span>
-<span id="cb443-8"><a href="week-5--r-continued.html#cb443-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning: `fun.y` is deprecated. Use `fun` instead.</span></span>
-<span id="cb443-9"><a href="week-5--r-continued.html#cb443-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; `fun.y` is deprecated. Use `fun` instead.</span></span>
-<span id="cb443-10"><a href="week-5--r-continued.html#cb443-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; geom_path: Each group consists of only one observation. Do you need to adjust the group</span></span>
-<span id="cb443-11"><a href="week-5--r-continued.html#cb443-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; aesthetic?</span></span></code></pre></div>
-<img src="Test_files/figure-html/5-28-1.png" width="768" />
+<span id="cb443-8"><a href="week-5--r-continued.html#cb443-8" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: `fun.y` is deprecated. Use `fun` instead.</span></span>
+<span id="cb443-9"><a href="week-5--r-continued.html#cb443-9" aria-hidden="true" tabindex="-1"></a><span class="do">## `fun.y` is deprecated. Use `fun` instead.</span></span>
+<span id="cb443-10"><a href="week-5--r-continued.html#cb443-10" aria-hidden="true" tabindex="-1"></a><span class="do">## geom_path: Each group consists of only one observation. Do you need to adjust</span></span>
+<span id="cb443-11"><a href="week-5--r-continued.html#cb443-11" aria-hidden="true" tabindex="-1"></a><span class="do">## the group aesthetic?</span></span></code></pre></div>
+<img src="05-Week5_R_Introduction_continued_files/figure-html/5-28-1.png" width="768" />
 </p>
 </details>
 </div>
@@ -750,7 +750,7 @@ For example, we could square each number 1 to 10</p>
 <span id="cb444-3"><a href="week-5--r-continued.html#cb444-3" aria-hidden="true" tabindex="-1"></a>  squares[i] <span class="ot">=</span> i<span class="sc">^</span><span class="dv">2</span></span>
 <span id="cb444-4"><a href="week-5--r-continued.html#cb444-4" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb444-5"><a href="week-5--r-continued.html#cb444-5" aria-hidden="true" tabindex="-1"></a>squares</span>
-<span id="cb444-6"><a href="week-5--r-continued.html#cb444-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1]   1   4   9  16  25  36  49  64  81 100</span></span></code></pre></div>
+<span id="cb444-6"><a href="week-5--r-continued.html#cb444-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1]   1   4   9  16  25  36  49  64  81 100</span></span></code></pre></div>
 <p>An alternative to for-loops in R is using the ‘apply’ family, while for-loops apply a function to one item at a time and then go on to the next one, “apply” applies functions to every item at once</p>
 </div>
 <div id="apply-family" class="section level2 hasAnchor" number="6.8">
@@ -764,7 +764,7 @@ For example, we could square each number 1 to 10</p>
 <span id="cb445-4"><a href="week-5--r-continued.html#cb445-4" aria-hidden="true" tabindex="-1"></a><span class="co"># simple example of sapply over a vector</span></span>
 <span id="cb445-5"><a href="week-5--r-continued.html#cb445-5" aria-hidden="true" tabindex="-1"></a><span class="co"># we can use an in-line function definition</span></span>
 <span id="cb445-6"><a href="week-5--r-continued.html#cb445-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="cf">function</span>(x)  x<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb445-7"><a href="week-5--r-continued.html#cb445-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1]   1   4   9  16  25  36  49  64  81 100</span></span>
+<span id="cb445-7"><a href="week-5--r-continued.html#cb445-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1]   1   4   9  16  25  36  49  64  81 100</span></span>
 <span id="cb445-8"><a href="week-5--r-continued.html#cb445-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb445-9"><a href="week-5--r-continued.html#cb445-9" aria-hidden="true" tabindex="-1"></a><span class="co"># equivalently, we can define our own functions separately for sapply</span></span>
 <span id="cb445-10"><a href="week-5--r-continued.html#cb445-10" aria-hidden="true" tabindex="-1"></a><span class="co"># e.g. a function that calculates the area of a circle radius r, pi*r^2</span></span>
@@ -773,29 +773,29 @@ For example, we could square each number 1 to 10</p>
 <span id="cb445-13"><a href="week-5--r-continued.html#cb445-13" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb445-14"><a href="week-5--r-continued.html#cb445-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb445-15"><a href="week-5--r-continued.html#cb445-15" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, areaCircle)</span>
-<span id="cb445-16"><a href="week-5--r-continued.html#cb445-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1]   3.141593  12.566371  28.274334  50.265482  78.539816 113.097336 153.938040 201.061930</span></span>
-<span id="cb445-17"><a href="week-5--r-continued.html#cb445-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [9] 254.469005 314.159265</span></span>
+<span id="cb445-16"><a href="week-5--r-continued.html#cb445-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1]   3.141593  12.566371  28.274334  50.265482  78.539816 113.097336</span></span>
+<span id="cb445-17"><a href="week-5--r-continued.html#cb445-17" aria-hidden="true" tabindex="-1"></a><span class="do">##  [7] 153.938040 201.061930 254.469005 314.159265</span></span>
 <span id="cb445-18"><a href="week-5--r-continued.html#cb445-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb445-19"><a href="week-5--r-continued.html#cb445-19" aria-hidden="true" tabindex="-1"></a><span class="co"># in R, we can also just use short-hand for simple vector calculations:</span></span>
 <span id="cb445-20"><a href="week-5--r-continued.html#cb445-20" aria-hidden="true" tabindex="-1"></a>pi<span class="sc">*</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb445-21"><a href="week-5--r-continued.html#cb445-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1]   3.141593  12.566371  28.274334  50.265482  78.539816 113.097336 153.938040 201.061930</span></span>
-<span id="cb445-22"><a href="week-5--r-continued.html#cb445-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [9] 254.469005 314.159265</span></span>
+<span id="cb445-21"><a href="week-5--r-continued.html#cb445-21" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1]   3.141593  12.566371  28.274334  50.265482  78.539816 113.097336</span></span>
+<span id="cb445-22"><a href="week-5--r-continued.html#cb445-22" aria-hidden="true" tabindex="-1"></a><span class="do">##  [7] 153.938040 201.061930 254.469005 314.159265</span></span>
 <span id="cb445-23"><a href="week-5--r-continued.html#cb445-23" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb445-24"><a href="week-5--r-continued.html#cb445-24" aria-hidden="true" tabindex="-1"></a><span class="co"># but unlike the short-hand, sapply can also iterate over elements in a list</span></span>
 <span id="cb445-25"><a href="week-5--r-continued.html#cb445-25" aria-hidden="true" tabindex="-1"></a>listy <span class="ot">=</span> <span class="fu">list</span>(<span class="at">a =</span> <span class="cn">TRUE</span>, <span class="at">b =</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>), <span class="at">c =</span> <span class="dv">10</span><span class="sc">:</span><span class="dv">100</span>)</span>
 <span id="cb445-26"><a href="week-5--r-continued.html#cb445-26" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(listy) <span class="co"># look at the structure of &#39;listy&#39;</span></span>
-<span id="cb445-27"><a href="week-5--r-continued.html#cb445-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; List of 3</span></span>
-<span id="cb445-28"><a href="week-5--r-continued.html#cb445-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ a: logi TRUE</span></span>
-<span id="cb445-29"><a href="week-5--r-continued.html#cb445-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ b: chr [1:3] &quot;a&quot; &quot;b&quot; &quot;c&quot;</span></span>
-<span id="cb445-30"><a href="week-5--r-continued.html#cb445-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ c: int [1:91] 10 11 12 13 14 15 16 17 18 19 ...</span></span>
+<span id="cb445-27"><a href="week-5--r-continued.html#cb445-27" aria-hidden="true" tabindex="-1"></a><span class="do">## List of 3</span></span>
+<span id="cb445-28"><a href="week-5--r-continued.html#cb445-28" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ a: logi TRUE</span></span>
+<span id="cb445-29"><a href="week-5--r-continued.html#cb445-29" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ b: chr [1:3] &quot;a&quot; &quot;b&quot; &quot;c&quot;</span></span>
+<span id="cb445-30"><a href="week-5--r-continued.html#cb445-30" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ c: int [1:91] 10 11 12 13 14 15 16 17 18 19 ...</span></span>
 <span id="cb445-31"><a href="week-5--r-continued.html#cb445-31" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(listy) <span class="co"># look at the length of &#39;listy&#39;</span></span>
-<span id="cb445-32"><a href="week-5--r-continued.html#cb445-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 3</span></span>
+<span id="cb445-32"><a href="week-5--r-continued.html#cb445-32" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 3</span></span>
 <span id="cb445-33"><a href="week-5--r-continued.html#cb445-33" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb445-34"><a href="week-5--r-continued.html#cb445-34" aria-hidden="true" tabindex="-1"></a><span class="co"># use sapply to return a vector for length of each object within the list</span></span>
 <span id="cb445-35"><a href="week-5--r-continued.html#cb445-35" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb445-36"><a href="week-5--r-continued.html#cb445-36" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(listy, <span class="at">FUN =</span> length) </span>
-<span id="cb445-37"><a href="week-5--r-continued.html#cb445-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  a  b  c </span></span>
-<span id="cb445-38"><a href="week-5--r-continued.html#cb445-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1  3 91</span></span></code></pre></div>
+<span id="cb445-37"><a href="week-5--r-continued.html#cb445-37" aria-hidden="true" tabindex="-1"></a><span class="do">##  a  b  c </span></span>
+<span id="cb445-38"><a href="week-5--r-continued.html#cb445-38" aria-hidden="true" tabindex="-1"></a><span class="do">##  1  3 91</span></span></code></pre></div>
 <p>You can also use sapply to create plots! For example, use sapply to plot these 4 dataframes at once:</p>
 <div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb446-1"><a href="week-5--r-continued.html#cb446-1" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x1 =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">y1 =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
 <span id="cb446-2"><a href="week-5--r-continued.html#cb446-2" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x2 =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">y2 =</span> <span class="sc">-</span><span class="dv">1</span><span class="sc">:-</span><span class="dv">10</span>)</span>
@@ -806,18 +806,18 @@ For example, we could square each number 1 to 10</p>
 <span id="cb446-7"><a href="week-5--r-continued.html#cb446-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb446-8"><a href="week-5--r-continued.html#cb446-8" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>)) <span class="co"># set up frame for 4 plots</span></span>
 <span id="cb446-9"><a href="week-5--r-continued.html#cb446-9" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(my_list, plot) <span class="co"># plot my_list with sapply</span></span></code></pre></div>
-<p><img src="Test_files/figure-html/5-33-1.png" width="768" /></p>
-<pre><code>#&gt; [[1]]
-#&gt; NULL
-#&gt; 
-#&gt; [[2]]
-#&gt; NULL
-#&gt; 
-#&gt; [[3]]
-#&gt; NULL
-#&gt; 
-#&gt; [[4]]
-#&gt; NULL</code></pre>
+<p><img src="05-Week5_R_Introduction_continued_files/figure-html/5-33-1.png" width="768" /></p>
+<pre><code>## [[1]]
+## NULL
+## 
+## [[2]]
+## NULL
+## 
+## [[3]]
+## NULL
+## 
+## [[4]]
+## NULL</code></pre>
 </div>
 <div id="apply" class="section level3 hasAnchor" number="6.8.2">
 <h3><span class="header-section-number">6.8.2</span> apply<a href="week-5--r-continued.html#apply" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -829,143 +829,147 @@ Example syntax for the dataframe or matrix X:
 <span id="cb448-2"><a href="week-5--r-continued.html#cb448-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(state)</span>
 <span id="cb448-3"><a href="week-5--r-continued.html#cb448-3" aria-hidden="true" tabindex="-1"></a>states <span class="ot">=</span> <span class="fu">as.data.frame</span>(state.x77) <span class="co"># convert data to a familiar format - data frame</span></span>
 <span id="cb448-4"><a href="week-5--r-continued.html#cb448-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(states) <span class="co"># let&#39;s take a look at the dataframe</span></span>
-<span id="cb448-5"><a href="week-5--r-continued.html#cb448-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &#39;data.frame&#39;:    50 obs. of  8 variables:</span></span>
-<span id="cb448-6"><a href="week-5--r-continued.html#cb448-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Population: num  3615 365 2212 2110 21198 ...</span></span>
-<span id="cb448-7"><a href="week-5--r-continued.html#cb448-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Income    : num  3624 6315 4530 3378 5114 ...</span></span>
-<span id="cb448-8"><a href="week-5--r-continued.html#cb448-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Illiteracy: num  2.1 1.5 1.8 1.9 1.1 0.7 1.1 0.9 1.3 2 ...</span></span>
-<span id="cb448-9"><a href="week-5--r-continued.html#cb448-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Life Exp  : num  69 69.3 70.5 70.7 71.7 ...</span></span>
-<span id="cb448-10"><a href="week-5--r-continued.html#cb448-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Murder    : num  15.1 11.3 7.8 10.1 10.3 6.8 3.1 6.2 10.7 13.9 ...</span></span>
-<span id="cb448-11"><a href="week-5--r-continued.html#cb448-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ HS Grad   : num  41.3 66.7 58.1 39.9 62.6 63.9 56 54.6 52.6 40.6 ...</span></span>
-<span id="cb448-12"><a href="week-5--r-continued.html#cb448-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Frost     : num  20 152 15 65 20 166 139 103 11 60 ...</span></span>
-<span id="cb448-13"><a href="week-5--r-continued.html#cb448-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Area      : num  50708 566432 113417 51945 156361 ...</span></span>
+<span id="cb448-5"><a href="week-5--r-continued.html#cb448-5" aria-hidden="true" tabindex="-1"></a><span class="do">## &#39;data.frame&#39;:    50 obs. of  8 variables:</span></span>
+<span id="cb448-6"><a href="week-5--r-continued.html#cb448-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ Population: num  3615 365 2212 2110 21198 ...</span></span>
+<span id="cb448-7"><a href="week-5--r-continued.html#cb448-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ Income    : num  3624 6315 4530 3378 5114 ...</span></span>
+<span id="cb448-8"><a href="week-5--r-continued.html#cb448-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ Illiteracy: num  2.1 1.5 1.8 1.9 1.1 0.7 1.1 0.9 1.3 2 ...</span></span>
+<span id="cb448-9"><a href="week-5--r-continued.html#cb448-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ Life Exp  : num  69 69.3 70.5 70.7 71.7 ...</span></span>
+<span id="cb448-10"><a href="week-5--r-continued.html#cb448-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ Murder    : num  15.1 11.3 7.8 10.1 10.3 6.8 3.1 6.2 10.7 13.9 ...</span></span>
+<span id="cb448-11"><a href="week-5--r-continued.html#cb448-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ HS Grad   : num  41.3 66.7 58.1 39.9 62.6 63.9 56 54.6 52.6 40.6 ...</span></span>
+<span id="cb448-12"><a href="week-5--r-continued.html#cb448-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ Frost     : num  20 152 15 65 20 166 139 103 11 60 ...</span></span>
+<span id="cb448-13"><a href="week-5--r-continued.html#cb448-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ Area      : num  50708 566432 113417 51945 156361 ...</span></span>
 <span id="cb448-14"><a href="week-5--r-continued.html#cb448-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb448-15"><a href="week-5--r-continued.html#cb448-15" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate the mean for each column</span></span>
 <span id="cb448-16"><a href="week-5--r-continued.html#cb448-16" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(states, <span class="dv">2</span>, mean)</span>
-<span id="cb448-17"><a href="week-5--r-continued.html#cb448-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Population     Income Illiteracy   Life Exp     Murder    HS Grad      Frost       Area </span></span>
-<span id="cb448-18"><a href="week-5--r-continued.html#cb448-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4246.4200  4435.8000     1.1700    70.8786     7.3780    53.1080   104.4600 70735.8800</span></span>
-<span id="cb448-19"><a href="week-5--r-continued.html#cb448-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb448-20"><a href="week-5--r-continued.html#cb448-20" aria-hidden="true" tabindex="-1"></a><span class="co"># note you could get this with colMeans() or summary(), along with the min and max and other values, but there may be instances where you only want the mean</span></span>
+<span id="cb448-17"><a href="week-5--r-continued.html#cb448-17" aria-hidden="true" tabindex="-1"></a><span class="do">## Population     Income Illiteracy   Life Exp     Murder    HS Grad      Frost </span></span>
+<span id="cb448-18"><a href="week-5--r-continued.html#cb448-18" aria-hidden="true" tabindex="-1"></a><span class="do">##  4246.4200  4435.8000     1.1700    70.8786     7.3780    53.1080   104.4600 </span></span>
+<span id="cb448-19"><a href="week-5--r-continued.html#cb448-19" aria-hidden="true" tabindex="-1"></a><span class="do">##       Area </span></span>
+<span id="cb448-20"><a href="week-5--r-continued.html#cb448-20" aria-hidden="true" tabindex="-1"></a><span class="do">## 70735.8800</span></span>
 <span id="cb448-21"><a href="week-5--r-continued.html#cb448-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb448-22"><a href="week-5--r-continued.html#cb448-22" aria-hidden="true" tabindex="-1"></a><span class="co"># you could also plot each column against Population in ggplot</span></span></code></pre></div>
+<span id="cb448-22"><a href="week-5--r-continued.html#cb448-22" aria-hidden="true" tabindex="-1"></a><span class="co"># note you could get this with colMeans() or summary(), along with the min and max and other values, but there may be instances where you only want the mean</span></span>
+<span id="cb448-23"><a href="week-5--r-continued.html#cb448-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb448-24"><a href="week-5--r-continued.html#cb448-24" aria-hidden="true" tabindex="-1"></a><span class="co"># you could also plot each column against Population in ggplot</span></span></code></pre></div>
 <div class="sourceCode" id="cb449"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb449-1"><a href="week-5--r-continued.html#cb449-1" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(states, <span class="dv">2</span>, <span class="at">FUN =</span> <span class="cf">function</span>(i) <span class="fu">ggplot</span>(states, <span class="fu">aes</span>(<span class="at">x=</span>Population, <span class="at">y =</span> i))<span class="sc">+</span><span class="fu">geom_point</span>()<span class="sc">+</span><span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>)<span class="sc">+</span><span class="fu">theme_classic</span>())</span>
-<span id="cb449-2"><a href="week-5--r-continued.html#cb449-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $Population</span></span>
-<span id="cb449-3"><a href="week-5--r-continued.html#cb449-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; `geom_smooth()` using formula &#39;y ~ x&#39;</span></span></code></pre></div>
-<p><img src="Test_files/figure-html/5-29-1.png" width="768" /></p>
-<pre><code>#&gt; 
-#&gt; $Income
-#&gt; `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
-<p><img src="Test_files/figure-html/5-29-2.png" width="768" /></p>
-<pre><code>#&gt; 
-#&gt; $Illiteracy
-#&gt; `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
-<p><img src="Test_files/figure-html/5-29-3.png" width="768" /></p>
-<pre><code>#&gt; 
-#&gt; $`Life Exp`
-#&gt; `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
-<p><img src="Test_files/figure-html/5-29-4.png" width="768" /></p>
-<pre><code>#&gt; 
-#&gt; $Murder
-#&gt; `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
-<p><img src="Test_files/figure-html/5-29-5.png" width="768" /></p>
-<pre><code>#&gt; 
-#&gt; $`HS Grad`
-#&gt; `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
-<p><img src="Test_files/figure-html/5-29-6.png" width="768" /></p>
-<pre><code>#&gt; 
-#&gt; $Frost
-#&gt; `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
-<p><img src="Test_files/figure-html/5-29-7.png" width="768" /></p>
-<pre><code>#&gt; 
-#&gt; $Area
-#&gt; `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
-<p><img src="Test_files/figure-html/5-29-8.png" width="768" /></p>
+<span id="cb449-2"><a href="week-5--r-continued.html#cb449-2" aria-hidden="true" tabindex="-1"></a><span class="do">## $Population</span></span>
+<span id="cb449-3"><a href="week-5--r-continued.html#cb449-3" aria-hidden="true" tabindex="-1"></a><span class="do">## `geom_smooth()` using formula &#39;y ~ x&#39;</span></span></code></pre></div>
+<p><img src="05-Week5_R_Introduction_continued_files/figure-html/5-29-1.png" width="768" /></p>
+<pre><code>## 
+## $Income
+## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<p><img src="05-Week5_R_Introduction_continued_files/figure-html/5-29-2.png" width="768" /></p>
+<pre><code>## 
+## $Illiteracy
+## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<p><img src="05-Week5_R_Introduction_continued_files/figure-html/5-29-3.png" width="768" /></p>
+<pre><code>## 
+## $`Life Exp`
+## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<p><img src="05-Week5_R_Introduction_continued_files/figure-html/5-29-4.png" width="768" /></p>
+<pre><code>## 
+## $Murder
+## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<p><img src="05-Week5_R_Introduction_continued_files/figure-html/5-29-5.png" width="768" /></p>
+<pre><code>## 
+## $`HS Grad`
+## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<p><img src="05-Week5_R_Introduction_continued_files/figure-html/5-29-6.png" width="768" /></p>
+<pre><code>## 
+## $Frost
+## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<p><img src="05-Week5_R_Introduction_continued_files/figure-html/5-29-7.png" width="768" /></p>
+<pre><code>## 
+## $Area
+## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<p><img src="05-Week5_R_Introduction_continued_files/figure-html/5-29-8.png" width="768" /></p>
 <p>We can do the same things across all rows. But if you want to plot all the rows as we did the columns above, I suggest you do that with a smaller dataset than the states dataframe.</p>
 <div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb457-1"><a href="week-5--r-continued.html#cb457-1" aria-hidden="true" tabindex="-1"></a><span class="co">#calculate the sum across each row in states</span></span>
 <span id="cb457-2"><a href="week-5--r-continued.html#cb457-2" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(states, <span class="dv">1</span>, sum)</span>
-<span id="cb457-3"><a href="week-5--r-continued.html#cb457-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;        Alabama         Alaska        Arizona       Arkansas     California       Colorado </span></span>
-<span id="cb457-4"><a href="week-5--r-continued.html#cb457-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       58094.55      573412.81      120312.25       57620.56      182838.71      111500.46 </span></span>
-<span id="cb457-5"><a href="week-5--r-continued.html#cb457-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    Connecticut       Delaware        Florida        Georgia         Hawaii          Idaho </span></span>
-<span id="cb457-6"><a href="week-5--r-continued.html#cb457-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       13581.68        7604.76       67328.26       67280.04       12399.60       87872.27 </span></span>
-<span id="cb457-7"><a href="week-5--r-continued.html#cb457-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       Illinois        Indiana           Iowa         Kansas       Kentucky      Louisiana </span></span>
-<span id="cb457-8"><a href="week-5--r-continued.html#cb457-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       72312.94       46121.58       63704.36       88987.58       46964.80       52419.96 </span></span>
-<span id="cb457-9"><a href="week-5--r-continued.html#cb457-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;          Maine       Maryland  Massachusetts       Michigan      Minnesota    Mississippi </span></span>
-<span id="cb457-10"><a href="week-5--r-continued.html#cb457-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       35961.49       19544.92       18632.73       70939.43       88178.46       52908.99 </span></span>
-<span id="cb457-11"><a href="week-5--r-continued.html#cb457-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       Missouri        Montana       Nebraska         Nevada  New Hampshire     New Jersey </span></span>
-<span id="cb457-12"><a href="week-5--r-continued.html#cb457-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       78253.59      150970.36       82809.40      115962.23       14426.83       20335.73 </span></span>
-<span id="cb457-13"><a href="week-5--r-continued.html#cb457-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     New Mexico       New York North Carolina   North Dakota           Ohio       Oklahoma </span></span>
-<span id="cb457-14"><a href="week-5--r-continued.html#cb457-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      126414.42       71027.55       58314.61       75308.28       56527.22       75692.52 </span></span>
-<span id="cb457-15"><a href="week-5--r-continued.html#cb457-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;         Oregon   Pennsylvania   Rhode Island South Carolina   South Dakota      Tennessee </span></span>
-<span id="cb457-16"><a href="week-5--r-continued.html#cb457-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      103308.93       61528.73        6787.00       36860.66       81102.58       49516.61 </span></span>
-<span id="cb457-17"><a href="week-5--r-continued.html#cb457-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;          Texas           Utah        Vermont       Virginia     Washington  West Virginia </span></span>
-<span id="cb457-18"><a href="week-5--r-continued.html#cb457-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      278726.70       87603.30       13948.84       49675.78       75165.12       29705.18 </span></span>
-<span id="cb457-19"><a href="week-5--r-continued.html#cb457-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      Wisconsin        Wyoming </span></span>
-<span id="cb457-20"><a href="week-5--r-continued.html#cb457-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       63800.68      102458.69</span></span></code></pre></div>
+<span id="cb457-3"><a href="week-5--r-continued.html#cb457-3" aria-hidden="true" tabindex="-1"></a><span class="do">##        Alabama         Alaska        Arizona       Arkansas     California </span></span>
+<span id="cb457-4"><a href="week-5--r-continued.html#cb457-4" aria-hidden="true" tabindex="-1"></a><span class="do">##       58094.55      573412.81      120312.25       57620.56      182838.71 </span></span>
+<span id="cb457-5"><a href="week-5--r-continued.html#cb457-5" aria-hidden="true" tabindex="-1"></a><span class="do">##       Colorado    Connecticut       Delaware        Florida        Georgia </span></span>
+<span id="cb457-6"><a href="week-5--r-continued.html#cb457-6" aria-hidden="true" tabindex="-1"></a><span class="do">##      111500.46       13581.68        7604.76       67328.26       67280.04 </span></span>
+<span id="cb457-7"><a href="week-5--r-continued.html#cb457-7" aria-hidden="true" tabindex="-1"></a><span class="do">##         Hawaii          Idaho       Illinois        Indiana           Iowa </span></span>
+<span id="cb457-8"><a href="week-5--r-continued.html#cb457-8" aria-hidden="true" tabindex="-1"></a><span class="do">##       12399.60       87872.27       72312.94       46121.58       63704.36 </span></span>
+<span id="cb457-9"><a href="week-5--r-continued.html#cb457-9" aria-hidden="true" tabindex="-1"></a><span class="do">##         Kansas       Kentucky      Louisiana          Maine       Maryland </span></span>
+<span id="cb457-10"><a href="week-5--r-continued.html#cb457-10" aria-hidden="true" tabindex="-1"></a><span class="do">##       88987.58       46964.80       52419.96       35961.49       19544.92 </span></span>
+<span id="cb457-11"><a href="week-5--r-continued.html#cb457-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  Massachusetts       Michigan      Minnesota    Mississippi       Missouri </span></span>
+<span id="cb457-12"><a href="week-5--r-continued.html#cb457-12" aria-hidden="true" tabindex="-1"></a><span class="do">##       18632.73       70939.43       88178.46       52908.99       78253.59 </span></span>
+<span id="cb457-13"><a href="week-5--r-continued.html#cb457-13" aria-hidden="true" tabindex="-1"></a><span class="do">##        Montana       Nebraska         Nevada  New Hampshire     New Jersey </span></span>
+<span id="cb457-14"><a href="week-5--r-continued.html#cb457-14" aria-hidden="true" tabindex="-1"></a><span class="do">##      150970.36       82809.40      115962.23       14426.83       20335.73 </span></span>
+<span id="cb457-15"><a href="week-5--r-continued.html#cb457-15" aria-hidden="true" tabindex="-1"></a><span class="do">##     New Mexico       New York North Carolina   North Dakota           Ohio </span></span>
+<span id="cb457-16"><a href="week-5--r-continued.html#cb457-16" aria-hidden="true" tabindex="-1"></a><span class="do">##      126414.42       71027.55       58314.61       75308.28       56527.22 </span></span>
+<span id="cb457-17"><a href="week-5--r-continued.html#cb457-17" aria-hidden="true" tabindex="-1"></a><span class="do">##       Oklahoma         Oregon   Pennsylvania   Rhode Island South Carolina </span></span>
+<span id="cb457-18"><a href="week-5--r-continued.html#cb457-18" aria-hidden="true" tabindex="-1"></a><span class="do">##       75692.52      103308.93       61528.73        6787.00       36860.66 </span></span>
+<span id="cb457-19"><a href="week-5--r-continued.html#cb457-19" aria-hidden="true" tabindex="-1"></a><span class="do">##   South Dakota      Tennessee          Texas           Utah        Vermont </span></span>
+<span id="cb457-20"><a href="week-5--r-continued.html#cb457-20" aria-hidden="true" tabindex="-1"></a><span class="do">##       81102.58       49516.61      278726.70       87603.30       13948.84 </span></span>
+<span id="cb457-21"><a href="week-5--r-continued.html#cb457-21" aria-hidden="true" tabindex="-1"></a><span class="do">##       Virginia     Washington  West Virginia      Wisconsin        Wyoming </span></span>
+<span id="cb457-22"><a href="week-5--r-continued.html#cb457-22" aria-hidden="true" tabindex="-1"></a><span class="do">##       49675.78       75165.12       29705.18       63800.68      102458.69</span></span></code></pre></div>
 </div>
 <div id="lapply-list-apply" class="section level3 hasAnchor" number="6.8.3">
 <h3><span class="header-section-number">6.8.3</span> lapply – “list” apply<a href="week-5--r-continued.html#lapply-list-apply" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We’ll just show a quick example of lapply. It works in the same way as sapply, but returns a list instead of a vector.</p>
 <div class="sourceCode" id="cb458"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb458-1"><a href="week-5--r-continued.html#cb458-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="cf">function</span>(x)  x<span class="sc">^</span><span class="dv">2</span>) <span class="co"># lapply returns list</span></span>
-<span id="cb458-2"><a href="week-5--r-continued.html#cb458-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
-<span id="cb458-3"><a href="week-5--r-continued.html#cb458-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1</span></span>
-<span id="cb458-4"><a href="week-5--r-continued.html#cb458-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb458-5"><a href="week-5--r-continued.html#cb458-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[2]]</span></span>
-<span id="cb458-6"><a href="week-5--r-continued.html#cb458-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4</span></span>
-<span id="cb458-7"><a href="week-5--r-continued.html#cb458-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb458-8"><a href="week-5--r-continued.html#cb458-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[3]]</span></span>
-<span id="cb458-9"><a href="week-5--r-continued.html#cb458-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 9</span></span>
-<span id="cb458-10"><a href="week-5--r-continued.html#cb458-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb458-11"><a href="week-5--r-continued.html#cb458-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[4]]</span></span>
-<span id="cb458-12"><a href="week-5--r-continued.html#cb458-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 16</span></span>
-<span id="cb458-13"><a href="week-5--r-continued.html#cb458-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb458-14"><a href="week-5--r-continued.html#cb458-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[5]]</span></span>
-<span id="cb458-15"><a href="week-5--r-continued.html#cb458-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 25</span></span>
-<span id="cb458-16"><a href="week-5--r-continued.html#cb458-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb458-17"><a href="week-5--r-continued.html#cb458-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[6]]</span></span>
-<span id="cb458-18"><a href="week-5--r-continued.html#cb458-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 36</span></span>
-<span id="cb458-19"><a href="week-5--r-continued.html#cb458-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb458-20"><a href="week-5--r-continued.html#cb458-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[7]]</span></span>
-<span id="cb458-21"><a href="week-5--r-continued.html#cb458-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 49</span></span>
-<span id="cb458-22"><a href="week-5--r-continued.html#cb458-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb458-23"><a href="week-5--r-continued.html#cb458-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[8]]</span></span>
-<span id="cb458-24"><a href="week-5--r-continued.html#cb458-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 64</span></span>
-<span id="cb458-25"><a href="week-5--r-continued.html#cb458-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb458-26"><a href="week-5--r-continued.html#cb458-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[9]]</span></span>
-<span id="cb458-27"><a href="week-5--r-continued.html#cb458-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 81</span></span>
-<span id="cb458-28"><a href="week-5--r-continued.html#cb458-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb458-29"><a href="week-5--r-continued.html#cb458-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[10]]</span></span>
-<span id="cb458-30"><a href="week-5--r-continued.html#cb458-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 100</span></span>
+<span id="cb458-2"><a href="week-5--r-continued.html#cb458-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [[1]]</span></span>
+<span id="cb458-3"><a href="week-5--r-continued.html#cb458-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1</span></span>
+<span id="cb458-4"><a href="week-5--r-continued.html#cb458-4" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb458-5"><a href="week-5--r-continued.html#cb458-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [[2]]</span></span>
+<span id="cb458-6"><a href="week-5--r-continued.html#cb458-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 4</span></span>
+<span id="cb458-7"><a href="week-5--r-continued.html#cb458-7" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb458-8"><a href="week-5--r-continued.html#cb458-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [[3]]</span></span>
+<span id="cb458-9"><a href="week-5--r-continued.html#cb458-9" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 9</span></span>
+<span id="cb458-10"><a href="week-5--r-continued.html#cb458-10" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb458-11"><a href="week-5--r-continued.html#cb458-11" aria-hidden="true" tabindex="-1"></a><span class="do">## [[4]]</span></span>
+<span id="cb458-12"><a href="week-5--r-continued.html#cb458-12" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 16</span></span>
+<span id="cb458-13"><a href="week-5--r-continued.html#cb458-13" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb458-14"><a href="week-5--r-continued.html#cb458-14" aria-hidden="true" tabindex="-1"></a><span class="do">## [[5]]</span></span>
+<span id="cb458-15"><a href="week-5--r-continued.html#cb458-15" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 25</span></span>
+<span id="cb458-16"><a href="week-5--r-continued.html#cb458-16" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb458-17"><a href="week-5--r-continued.html#cb458-17" aria-hidden="true" tabindex="-1"></a><span class="do">## [[6]]</span></span>
+<span id="cb458-18"><a href="week-5--r-continued.html#cb458-18" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 36</span></span>
+<span id="cb458-19"><a href="week-5--r-continued.html#cb458-19" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb458-20"><a href="week-5--r-continued.html#cb458-20" aria-hidden="true" tabindex="-1"></a><span class="do">## [[7]]</span></span>
+<span id="cb458-21"><a href="week-5--r-continued.html#cb458-21" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 49</span></span>
+<span id="cb458-22"><a href="week-5--r-continued.html#cb458-22" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb458-23"><a href="week-5--r-continued.html#cb458-23" aria-hidden="true" tabindex="-1"></a><span class="do">## [[8]]</span></span>
+<span id="cb458-24"><a href="week-5--r-continued.html#cb458-24" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 64</span></span>
+<span id="cb458-25"><a href="week-5--r-continued.html#cb458-25" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb458-26"><a href="week-5--r-continued.html#cb458-26" aria-hidden="true" tabindex="-1"></a><span class="do">## [[9]]</span></span>
+<span id="cb458-27"><a href="week-5--r-continued.html#cb458-27" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 81</span></span>
+<span id="cb458-28"><a href="week-5--r-continued.html#cb458-28" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb458-29"><a href="week-5--r-continued.html#cb458-29" aria-hidden="true" tabindex="-1"></a><span class="do">## [[10]]</span></span>
+<span id="cb458-30"><a href="week-5--r-continued.html#cb458-30" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 100</span></span>
 <span id="cb458-31"><a href="week-5--r-continued.html#cb458-31" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="cf">function</span>(x)  x<span class="sc">^</span><span class="dv">2</span>, <span class="at">simplify =</span> <span class="cn">FALSE</span>) <span class="co"># same as an lapply</span></span>
-<span id="cb458-32"><a href="week-5--r-continued.html#cb458-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
-<span id="cb458-33"><a href="week-5--r-continued.html#cb458-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1</span></span>
-<span id="cb458-34"><a href="week-5--r-continued.html#cb458-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb458-35"><a href="week-5--r-continued.html#cb458-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[2]]</span></span>
-<span id="cb458-36"><a href="week-5--r-continued.html#cb458-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4</span></span>
-<span id="cb458-37"><a href="week-5--r-continued.html#cb458-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb458-38"><a href="week-5--r-continued.html#cb458-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[3]]</span></span>
-<span id="cb458-39"><a href="week-5--r-continued.html#cb458-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 9</span></span>
-<span id="cb458-40"><a href="week-5--r-continued.html#cb458-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb458-41"><a href="week-5--r-continued.html#cb458-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[4]]</span></span>
-<span id="cb458-42"><a href="week-5--r-continued.html#cb458-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 16</span></span>
-<span id="cb458-43"><a href="week-5--r-continued.html#cb458-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb458-44"><a href="week-5--r-continued.html#cb458-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[5]]</span></span>
-<span id="cb458-45"><a href="week-5--r-continued.html#cb458-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 25</span></span>
-<span id="cb458-46"><a href="week-5--r-continued.html#cb458-46" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb458-47"><a href="week-5--r-continued.html#cb458-47" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[6]]</span></span>
-<span id="cb458-48"><a href="week-5--r-continued.html#cb458-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 36</span></span>
-<span id="cb458-49"><a href="week-5--r-continued.html#cb458-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb458-50"><a href="week-5--r-continued.html#cb458-50" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[7]]</span></span>
-<span id="cb458-51"><a href="week-5--r-continued.html#cb458-51" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 49</span></span>
-<span id="cb458-52"><a href="week-5--r-continued.html#cb458-52" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb458-53"><a href="week-5--r-continued.html#cb458-53" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[8]]</span></span>
-<span id="cb458-54"><a href="week-5--r-continued.html#cb458-54" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 64</span></span>
-<span id="cb458-55"><a href="week-5--r-continued.html#cb458-55" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb458-56"><a href="week-5--r-continued.html#cb458-56" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[9]]</span></span>
-<span id="cb458-57"><a href="week-5--r-continued.html#cb458-57" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 81</span></span>
-<span id="cb458-58"><a href="week-5--r-continued.html#cb458-58" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb458-59"><a href="week-5--r-continued.html#cb458-59" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[10]]</span></span>
-<span id="cb458-60"><a href="week-5--r-continued.html#cb458-60" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 100</span></span>
+<span id="cb458-32"><a href="week-5--r-continued.html#cb458-32" aria-hidden="true" tabindex="-1"></a><span class="do">## [[1]]</span></span>
+<span id="cb458-33"><a href="week-5--r-continued.html#cb458-33" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1</span></span>
+<span id="cb458-34"><a href="week-5--r-continued.html#cb458-34" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb458-35"><a href="week-5--r-continued.html#cb458-35" aria-hidden="true" tabindex="-1"></a><span class="do">## [[2]]</span></span>
+<span id="cb458-36"><a href="week-5--r-continued.html#cb458-36" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 4</span></span>
+<span id="cb458-37"><a href="week-5--r-continued.html#cb458-37" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb458-38"><a href="week-5--r-continued.html#cb458-38" aria-hidden="true" tabindex="-1"></a><span class="do">## [[3]]</span></span>
+<span id="cb458-39"><a href="week-5--r-continued.html#cb458-39" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 9</span></span>
+<span id="cb458-40"><a href="week-5--r-continued.html#cb458-40" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb458-41"><a href="week-5--r-continued.html#cb458-41" aria-hidden="true" tabindex="-1"></a><span class="do">## [[4]]</span></span>
+<span id="cb458-42"><a href="week-5--r-continued.html#cb458-42" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 16</span></span>
+<span id="cb458-43"><a href="week-5--r-continued.html#cb458-43" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb458-44"><a href="week-5--r-continued.html#cb458-44" aria-hidden="true" tabindex="-1"></a><span class="do">## [[5]]</span></span>
+<span id="cb458-45"><a href="week-5--r-continued.html#cb458-45" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 25</span></span>
+<span id="cb458-46"><a href="week-5--r-continued.html#cb458-46" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb458-47"><a href="week-5--r-continued.html#cb458-47" aria-hidden="true" tabindex="-1"></a><span class="do">## [[6]]</span></span>
+<span id="cb458-48"><a href="week-5--r-continued.html#cb458-48" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 36</span></span>
+<span id="cb458-49"><a href="week-5--r-continued.html#cb458-49" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb458-50"><a href="week-5--r-continued.html#cb458-50" aria-hidden="true" tabindex="-1"></a><span class="do">## [[7]]</span></span>
+<span id="cb458-51"><a href="week-5--r-continued.html#cb458-51" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 49</span></span>
+<span id="cb458-52"><a href="week-5--r-continued.html#cb458-52" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb458-53"><a href="week-5--r-continued.html#cb458-53" aria-hidden="true" tabindex="-1"></a><span class="do">## [[8]]</span></span>
+<span id="cb458-54"><a href="week-5--r-continued.html#cb458-54" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 64</span></span>
+<span id="cb458-55"><a href="week-5--r-continued.html#cb458-55" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb458-56"><a href="week-5--r-continued.html#cb458-56" aria-hidden="true" tabindex="-1"></a><span class="do">## [[9]]</span></span>
+<span id="cb458-57"><a href="week-5--r-continued.html#cb458-57" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 81</span></span>
+<span id="cb458-58"><a href="week-5--r-continued.html#cb458-58" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb458-59"><a href="week-5--r-continued.html#cb458-59" aria-hidden="true" tabindex="-1"></a><span class="do">## [[10]]</span></span>
+<span id="cb458-60"><a href="week-5--r-continued.html#cb458-60" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 100</span></span>
 <span id="cb458-61"><a href="week-5--r-continued.html#cb458-61" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="cf">function</span>(x)  x<span class="sc">^</span><span class="dv">2</span>) <span class="co"># default is simplify = TRUE which retuns a vector</span></span>
-<span id="cb458-62"><a href="week-5--r-continued.html#cb458-62" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1]   1   4   9  16  25  36  49  64  81 100</span></span></code></pre></div>
+<span id="cb458-62"><a href="week-5--r-continued.html#cb458-62" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1]   1   4   9  16  25  36  49  64  81 100</span></span></code></pre></div>
 </div>
 <div id="tapply---per-type-apply" class="section level3 hasAnchor" number="6.8.4">
 <h3><span class="header-section-number">6.8.4</span> tapply - “per Type” apply<a href="week-5--r-continued.html#tapply---per-type-apply" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -975,32 +979,37 @@ Example syntax for the dataframe or matrix X:
 <span id="cb459-3"><a href="week-5--r-continued.html#cb459-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb459-4"><a href="week-5--r-continued.html#cb459-4" aria-hidden="true" tabindex="-1"></a>states <span class="ot">=</span> <span class="fu">as.data.frame</span>(state.x77) <span class="co"># convert data to a familiar format - data frame</span></span>
 <span id="cb459-5"><a href="week-5--r-continued.html#cb459-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(states) <span class="co"># let&#39;s take a look at the dataframe</span></span>
-<span id="cb459-6"><a href="week-5--r-continued.html#cb459-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &#39;data.frame&#39;:    50 obs. of  8 variables:</span></span>
-<span id="cb459-7"><a href="week-5--r-continued.html#cb459-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Population: num  3615 365 2212 2110 21198 ...</span></span>
-<span id="cb459-8"><a href="week-5--r-continued.html#cb459-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Income    : num  3624 6315 4530 3378 5114 ...</span></span>
-<span id="cb459-9"><a href="week-5--r-continued.html#cb459-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Illiteracy: num  2.1 1.5 1.8 1.9 1.1 0.7 1.1 0.9 1.3 2 ...</span></span>
-<span id="cb459-10"><a href="week-5--r-continued.html#cb459-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Life Exp  : num  69 69.3 70.5 70.7 71.7 ...</span></span>
-<span id="cb459-11"><a href="week-5--r-continued.html#cb459-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Murder    : num  15.1 11.3 7.8 10.1 10.3 6.8 3.1 6.2 10.7 13.9 ...</span></span>
-<span id="cb459-12"><a href="week-5--r-continued.html#cb459-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ HS Grad   : num  41.3 66.7 58.1 39.9 62.6 63.9 56 54.6 52.6 40.6 ...</span></span>
-<span id="cb459-13"><a href="week-5--r-continued.html#cb459-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Frost     : num  20 152 15 65 20 166 139 103 11 60 ...</span></span>
-<span id="cb459-14"><a href="week-5--r-continued.html#cb459-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Area      : num  50708 566432 113417 51945 156361 ...</span></span>
+<span id="cb459-6"><a href="week-5--r-continued.html#cb459-6" aria-hidden="true" tabindex="-1"></a><span class="do">## &#39;data.frame&#39;:    50 obs. of  8 variables:</span></span>
+<span id="cb459-7"><a href="week-5--r-continued.html#cb459-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ Population: num  3615 365 2212 2110 21198 ...</span></span>
+<span id="cb459-8"><a href="week-5--r-continued.html#cb459-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ Income    : num  3624 6315 4530 3378 5114 ...</span></span>
+<span id="cb459-9"><a href="week-5--r-continued.html#cb459-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ Illiteracy: num  2.1 1.5 1.8 1.9 1.1 0.7 1.1 0.9 1.3 2 ...</span></span>
+<span id="cb459-10"><a href="week-5--r-continued.html#cb459-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ Life Exp  : num  69 69.3 70.5 70.7 71.7 ...</span></span>
+<span id="cb459-11"><a href="week-5--r-continued.html#cb459-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ Murder    : num  15.1 11.3 7.8 10.1 10.3 6.8 3.1 6.2 10.7 13.9 ...</span></span>
+<span id="cb459-12"><a href="week-5--r-continued.html#cb459-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ HS Grad   : num  41.3 66.7 58.1 39.9 62.6 63.9 56 54.6 52.6 40.6 ...</span></span>
+<span id="cb459-13"><a href="week-5--r-continued.html#cb459-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ Frost     : num  20 152 15 65 20 166 139 103 11 60 ...</span></span>
+<span id="cb459-14"><a href="week-5--r-continued.html#cb459-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ Area      : num  50708 566432 113417 51945 156361 ...</span></span>
 <span id="cb459-15"><a href="week-5--r-continued.html#cb459-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb459-16"><a href="week-5--r-continued.html#cb459-16" aria-hidden="true" tabindex="-1"></a><span class="co"># example syntax --- tapply(variable of interest, grouping variable, function)</span></span>
 <span id="cb459-17"><a href="week-5--r-continued.html#cb459-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb459-18"><a href="week-5--r-continued.html#cb459-18" aria-hidden="true" tabindex="-1"></a><span class="co"># for each US region in our dataset, finds the mean of Frost for states in that region</span></span>
 <span id="cb459-19"><a href="week-5--r-continued.html#cb459-19" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(states<span class="sc">$</span>Frost, state.region, mean) <span class="co"># state.region contains the region information for each state</span></span>
-<span id="cb459-20"><a href="week-5--r-continued.html#cb459-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     Northeast         South North Central          West </span></span>
-<span id="cb459-21"><a href="week-5--r-continued.html#cb459-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      132.7778       64.6250      138.8333      102.1538</span></span>
+<span id="cb459-20"><a href="week-5--r-continued.html#cb459-20" aria-hidden="true" tabindex="-1"></a><span class="do">##     Northeast         South North Central          West </span></span>
+<span id="cb459-21"><a href="week-5--r-continued.html#cb459-21" aria-hidden="true" tabindex="-1"></a><span class="do">##      132.7778       64.6250      138.8333      102.1538</span></span>
 <span id="cb459-22"><a href="week-5--r-continued.html#cb459-22" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb459-23"><a href="week-5--r-continued.html#cb459-23" aria-hidden="true" tabindex="-1"></a><span class="co"># you can nest apply statements! Let&#39;s find the region average for all the variables in the states dataset</span></span>
 <span id="cb459-24"><a href="week-5--r-continued.html#cb459-24" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(states,</span>
 <span id="cb459-25"><a href="week-5--r-continued.html#cb459-25" aria-hidden="true" tabindex="-1"></a>      <span class="dv">2</span>, <span class="co"># apply over columns of my_states</span></span>
 <span id="cb459-26"><a href="week-5--r-continued.html#cb459-26" aria-hidden="true" tabindex="-1"></a>      <span class="cf">function</span>(x) <span class="fu">tapply</span>(x, state.region, mean)) <span class="co"># each column = variable of interest for tapply</span></span>
-<span id="cb459-27"><a href="week-5--r-continued.html#cb459-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;               Population   Income Illiteracy Life Exp    Murder  HS Grad    Frost      Area</span></span>
-<span id="cb459-28"><a href="week-5--r-continued.html#cb459-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Northeast       5495.111 4570.222   1.000000 71.26444  4.722222 53.96667 132.7778  18141.00</span></span>
-<span id="cb459-29"><a href="week-5--r-continued.html#cb459-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; South           4208.125 4011.938   1.737500 69.70625 10.581250 44.34375  64.6250  54605.12</span></span>
-<span id="cb459-30"><a href="week-5--r-continued.html#cb459-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; North Central   4803.000 4611.083   0.700000 71.76667  5.275000 54.51667 138.8333  62652.00</span></span>
-<span id="cb459-31"><a href="week-5--r-continued.html#cb459-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; West            2915.308 4702.615   1.023077 71.23462  7.215385 62.00000 102.1538 134463.00</span></span></code></pre></div>
+<span id="cb459-27"><a href="week-5--r-continued.html#cb459-27" aria-hidden="true" tabindex="-1"></a><span class="do">##               Population   Income Illiteracy Life Exp    Murder  HS Grad</span></span>
+<span id="cb459-28"><a href="week-5--r-continued.html#cb459-28" aria-hidden="true" tabindex="-1"></a><span class="do">## Northeast       5495.111 4570.222   1.000000 71.26444  4.722222 53.96667</span></span>
+<span id="cb459-29"><a href="week-5--r-continued.html#cb459-29" aria-hidden="true" tabindex="-1"></a><span class="do">## South           4208.125 4011.938   1.737500 69.70625 10.581250 44.34375</span></span>
+<span id="cb459-30"><a href="week-5--r-continued.html#cb459-30" aria-hidden="true" tabindex="-1"></a><span class="do">## North Central   4803.000 4611.083   0.700000 71.76667  5.275000 54.51667</span></span>
+<span id="cb459-31"><a href="week-5--r-continued.html#cb459-31" aria-hidden="true" tabindex="-1"></a><span class="do">## West            2915.308 4702.615   1.023077 71.23462  7.215385 62.00000</span></span>
+<span id="cb459-32"><a href="week-5--r-continued.html#cb459-32" aria-hidden="true" tabindex="-1"></a><span class="do">##                  Frost      Area</span></span>
+<span id="cb459-33"><a href="week-5--r-continued.html#cb459-33" aria-hidden="true" tabindex="-1"></a><span class="do">## Northeast     132.7778  18141.00</span></span>
+<span id="cb459-34"><a href="week-5--r-continued.html#cb459-34" aria-hidden="true" tabindex="-1"></a><span class="do">## South          64.6250  54605.12</span></span>
+<span id="cb459-35"><a href="week-5--r-continued.html#cb459-35" aria-hidden="true" tabindex="-1"></a><span class="do">## North Central 138.8333  62652.00</span></span>
+<span id="cb459-36"><a href="week-5--r-continued.html#cb459-36" aria-hidden="true" tabindex="-1"></a><span class="do">## West          102.1538 134463.00</span></span></code></pre></div>
 </div>
 </div>
 <div id="exercise-2.3-apply-and-tapply" class="section level2 hasAnchor" number="6.9">
@@ -1027,13 +1036,15 @@ Example syntax for the dataframe or matrix X:
 <span id="cb460-6"><a href="week-5--r-continued.html#cb460-6" aria-hidden="true" tabindex="-1"></a>states <span class="ot">=</span> <span class="fu">as.data.frame</span>(state.x77) <span class="co"># run this line of code to avoid later confusion</span></span>
 <span id="cb460-7"><a href="week-5--r-continued.html#cb460-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb460-8"><a href="week-5--r-continued.html#cb460-8" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(states,<span class="dv">2</span>,mean)</span>
-<span id="cb460-9"><a href="week-5--r-continued.html#cb460-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Population     Income Illiteracy   Life Exp     Murder    HS Grad      Frost       Area </span></span>
-<span id="cb460-10"><a href="week-5--r-continued.html#cb460-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4246.4200  4435.8000     1.1700    70.8786     7.3780    53.1080   104.4600 70735.8800</span></span>
-<span id="cb460-11"><a href="week-5--r-continued.html#cb460-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb460-12"><a href="week-5--r-continued.html#cb460-12" aria-hidden="true" tabindex="-1"></a><span class="co">#or an alternative that will get you only the columns requested</span></span>
-<span id="cb460-13"><a href="week-5--r-continued.html#cb460-13" aria-hidden="true" tabindex="-1"></a><span class="fu">colMeans</span>(states[,<span class="fu">c</span>(<span class="st">&quot;Population&quot;</span>, <span class="st">&quot;Income&quot;</span>, <span class="st">&quot;Area&quot;</span>)])</span>
-<span id="cb460-14"><a href="week-5--r-continued.html#cb460-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Population     Income       Area </span></span>
-<span id="cb460-15"><a href="week-5--r-continued.html#cb460-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    4246.42    4435.80   70735.88</span></span></code></pre></div>
+<span id="cb460-9"><a href="week-5--r-continued.html#cb460-9" aria-hidden="true" tabindex="-1"></a><span class="do">## Population     Income Illiteracy   Life Exp     Murder    HS Grad      Frost </span></span>
+<span id="cb460-10"><a href="week-5--r-continued.html#cb460-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  4246.4200  4435.8000     1.1700    70.8786     7.3780    53.1080   104.4600 </span></span>
+<span id="cb460-11"><a href="week-5--r-continued.html#cb460-11" aria-hidden="true" tabindex="-1"></a><span class="do">##       Area </span></span>
+<span id="cb460-12"><a href="week-5--r-continued.html#cb460-12" aria-hidden="true" tabindex="-1"></a><span class="do">## 70735.8800</span></span>
+<span id="cb460-13"><a href="week-5--r-continued.html#cb460-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb460-14"><a href="week-5--r-continued.html#cb460-14" aria-hidden="true" tabindex="-1"></a><span class="co">#or an alternative that will get you only the columns requested</span></span>
+<span id="cb460-15"><a href="week-5--r-continued.html#cb460-15" aria-hidden="true" tabindex="-1"></a><span class="fu">colMeans</span>(states[,<span class="fu">c</span>(<span class="st">&quot;Population&quot;</span>, <span class="st">&quot;Income&quot;</span>, <span class="st">&quot;Area&quot;</span>)])</span>
+<span id="cb460-16"><a href="week-5--r-continued.html#cb460-16" aria-hidden="true" tabindex="-1"></a><span class="do">## Population     Income       Area </span></span>
+<span id="cb460-17"><a href="week-5--r-continued.html#cb460-17" aria-hidden="true" tabindex="-1"></a><span class="do">##    4246.42    4435.80   70735.88</span></span></code></pre></div>
 </p>
 </details>
 <blockquote>
@@ -1049,8 +1060,8 @@ Hint: use the object state.region in your environment</li>
 <p>
 <div class="sourceCode" id="cb461"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb461-1"><a href="week-5--r-continued.html#cb461-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb461-2"><a href="week-5--r-continued.html#cb461-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(states<span class="sc">$</span>Area, state.region, mean)</span>
-<span id="cb461-3"><a href="week-5--r-continued.html#cb461-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     Northeast         South North Central          West </span></span>
-<span id="cb461-4"><a href="week-5--r-continued.html#cb461-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      18141.00      54605.12      62652.00     134463.00</span></span></code></pre></div>
+<span id="cb461-3"><a href="week-5--r-continued.html#cb461-3" aria-hidden="true" tabindex="-1"></a><span class="do">##     Northeast         South North Central          West </span></span>
+<span id="cb461-4"><a href="week-5--r-continued.html#cb461-4" aria-hidden="true" tabindex="-1"></a><span class="do">##      18141.00      54605.12      62652.00     134463.00</span></span></code></pre></div>
 </p>
 </details>
 <blockquote>
@@ -1065,185 +1076,185 @@ Hint: use the object state.region in your environment</li>
 <p>
 <div class="sourceCode" id="cb462"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb462-1"><a href="week-5--r-continued.html#cb462-1" aria-hidden="true" tabindex="-1"></a><span class="co">#how many columns do we have? </span></span>
 <span id="cb462-2"><a href="week-5--r-continued.html#cb462-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(states)</span>
-<span id="cb462-3"><a href="week-5--r-continued.html#cb462-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 50  8</span></span>
+<span id="cb462-3"><a href="week-5--r-continued.html#cb462-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 50  8</span></span>
 <span id="cb462-4"><a href="week-5--r-continued.html#cb462-4" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>)) <span class="co"># make your plot window show 2 rows and 2 columns at once</span></span>
 <span id="cb462-5"><a href="week-5--r-continued.html#cb462-5" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(states, <span class="dv">2</span>, hist)</span></code></pre></div>
-<p><img src="Test_files/figure-html/5-32-1.png" width="768" /><img src="Test_files/figure-html/5-32-2.png" width="768" /></p>
-<pre><code>#&gt; $Population
-#&gt; $breaks
-#&gt; [1]     0  5000 10000 15000 20000 25000
-#&gt; 
-#&gt; $counts
-#&gt; [1] 38  6  4  1  1
-#&gt; 
-#&gt; $density
-#&gt; [1] 0.000152 0.000024 0.000016 0.000004 0.000004
-#&gt; 
-#&gt; $mids
-#&gt; [1]  2500  7500 12500 17500 22500
-#&gt; 
-#&gt; $xname
-#&gt; [1] &quot;newX[, i]&quot;
-#&gt; 
-#&gt; $equidist
-#&gt; [1] TRUE
-#&gt; 
-#&gt; attr(,&quot;class&quot;)
-#&gt; [1] &quot;histogram&quot;
-#&gt; 
-#&gt; $Income
-#&gt; $breaks
-#&gt; [1] 3000 3500 4000 4500 5000 5500 6000 6500
-#&gt; 
-#&gt; $counts
-#&gt; [1]  2 11 11 18  7  0  1
-#&gt; 
-#&gt; $density
-#&gt; [1] 0.00008 0.00044 0.00044 0.00072 0.00028 0.00000 0.00004
-#&gt; 
-#&gt; $mids
-#&gt; [1] 3250 3750 4250 4750 5250 5750 6250
-#&gt; 
-#&gt; $xname
-#&gt; [1] &quot;newX[, i]&quot;
-#&gt; 
-#&gt; $equidist
-#&gt; [1] TRUE
-#&gt; 
-#&gt; attr(,&quot;class&quot;)
-#&gt; [1] &quot;histogram&quot;
-#&gt; 
-#&gt; $Illiteracy
-#&gt; $breaks
-#&gt; [1] 0.5 1.0 1.5 2.0 2.5 3.0
-#&gt; 
-#&gt; $counts
-#&gt; [1] 26 11  7  5  1
-#&gt; 
-#&gt; $density
-#&gt; [1] 1.04 0.44 0.28 0.20 0.04
-#&gt; 
-#&gt; $mids
-#&gt; [1] 0.75 1.25 1.75 2.25 2.75
-#&gt; 
-#&gt; $xname
-#&gt; [1] &quot;newX[, i]&quot;
-#&gt; 
-#&gt; $equidist
-#&gt; [1] TRUE
-#&gt; 
-#&gt; attr(,&quot;class&quot;)
-#&gt; [1] &quot;histogram&quot;
-#&gt; 
-#&gt; $`Life Exp`
-#&gt; $breaks
-#&gt; [1] 67 68 69 70 71 72 73 74
-#&gt; 
-#&gt; $counts
-#&gt; [1]  1  3  5 21  8 11  1
-#&gt; 
-#&gt; $density
-#&gt; [1] 0.02 0.06 0.10 0.42 0.16 0.22 0.02
-#&gt; 
-#&gt; $mids
-#&gt; [1] 67.5 68.5 69.5 70.5 71.5 72.5 73.5
-#&gt; 
-#&gt; $xname
-#&gt; [1] &quot;newX[, i]&quot;
-#&gt; 
-#&gt; $equidist
-#&gt; [1] TRUE
-#&gt; 
-#&gt; attr(,&quot;class&quot;)
-#&gt; [1] &quot;histogram&quot;
-#&gt; 
-#&gt; $Murder
-#&gt; $breaks
-#&gt; [1]  0  2  4  6  8 10 12 14 16
-#&gt; 
-#&gt; $counts
-#&gt; [1]  2  9  8 10  4 12  4  1
-#&gt; 
-#&gt; $density
-#&gt; [1] 0.02 0.09 0.08 0.10 0.04 0.12 0.04 0.01
-#&gt; 
-#&gt; $mids
-#&gt; [1]  1  3  5  7  9 11 13 15
-#&gt; 
-#&gt; $xname
-#&gt; [1] &quot;newX[, i]&quot;
-#&gt; 
-#&gt; $equidist
-#&gt; [1] TRUE
-#&gt; 
-#&gt; attr(,&quot;class&quot;)
-#&gt; [1] &quot;histogram&quot;
-#&gt; 
-#&gt; $`HS Grad`
-#&gt; $breaks
-#&gt; [1] 35 40 45 50 55 60 65 70
-#&gt; 
-#&gt; $counts
-#&gt; [1]  4  6  4 15 13  5  3
-#&gt; 
-#&gt; $density
-#&gt; [1] 0.016 0.024 0.016 0.060 0.052 0.020 0.012
-#&gt; 
-#&gt; $mids
-#&gt; [1] 37.5 42.5 47.5 52.5 57.5 62.5 67.5
-#&gt; 
-#&gt; $xname
-#&gt; [1] &quot;newX[, i]&quot;
-#&gt; 
-#&gt; $equidist
-#&gt; [1] TRUE
-#&gt; 
-#&gt; attr(,&quot;class&quot;)
-#&gt; [1] &quot;histogram&quot;
-#&gt; 
-#&gt; $Frost
-#&gt; $breaks
-#&gt;  [1]   0  20  40  60  80 100 120 140 160 180 200
-#&gt; 
-#&gt; $counts
-#&gt;  [1]  6  2  3  4  5  7 11  4  6  2
-#&gt; 
-#&gt; $density
-#&gt;  [1] 0.006 0.002 0.003 0.004 0.005 0.007 0.011 0.004 0.006 0.002
-#&gt; 
-#&gt; $mids
-#&gt;  [1]  10  30  50  70  90 110 130 150 170 190
-#&gt; 
-#&gt; $xname
-#&gt; [1] &quot;newX[, i]&quot;
-#&gt; 
-#&gt; $equidist
-#&gt; [1] TRUE
-#&gt; 
-#&gt; attr(,&quot;class&quot;)
-#&gt; [1] &quot;histogram&quot;
-#&gt; 
-#&gt; $Area
-#&gt; $breaks
-#&gt; [1] 0e+00 1e+05 2e+05 3e+05 4e+05 5e+05 6e+05
-#&gt; 
-#&gt; $counts
-#&gt; [1] 42  6  1  0  0  1
-#&gt; 
-#&gt; $density
-#&gt; [1] 8.4e-06 1.2e-06 2.0e-07 0.0e+00 0.0e+00 2.0e-07
-#&gt; 
-#&gt; $mids
-#&gt; [1]  50000 150000 250000 350000 450000 550000
-#&gt; 
-#&gt; $xname
-#&gt; [1] &quot;newX[, i]&quot;
-#&gt; 
-#&gt; $equidist
-#&gt; [1] TRUE
-#&gt; 
-#&gt; attr(,&quot;class&quot;)
-#&gt; [1] &quot;histogram&quot;</code></pre>
+<p><img src="05-Week5_R_Introduction_continued_files/figure-html/5-32-1.png" width="768" /><img src="05-Week5_R_Introduction_continued_files/figure-html/5-32-2.png" width="768" /></p>
+<pre><code>## $Population
+## $breaks
+## [1]     0  5000 10000 15000 20000 25000
+## 
+## $counts
+## [1] 38  6  4  1  1
+## 
+## $density
+## [1] 0.000152 0.000024 0.000016 0.000004 0.000004
+## 
+## $mids
+## [1]  2500  7500 12500 17500 22500
+## 
+## $xname
+## [1] &quot;newX[, i]&quot;
+## 
+## $equidist
+## [1] TRUE
+## 
+## attr(,&quot;class&quot;)
+## [1] &quot;histogram&quot;
+## 
+## $Income
+## $breaks
+## [1] 3000 3500 4000 4500 5000 5500 6000 6500
+## 
+## $counts
+## [1]  2 11 11 18  7  0  1
+## 
+## $density
+## [1] 0.00008 0.00044 0.00044 0.00072 0.00028 0.00000 0.00004
+## 
+## $mids
+## [1] 3250 3750 4250 4750 5250 5750 6250
+## 
+## $xname
+## [1] &quot;newX[, i]&quot;
+## 
+## $equidist
+## [1] TRUE
+## 
+## attr(,&quot;class&quot;)
+## [1] &quot;histogram&quot;
+## 
+## $Illiteracy
+## $breaks
+## [1] 0.5 1.0 1.5 2.0 2.5 3.0
+## 
+## $counts
+## [1] 26 11  7  5  1
+## 
+## $density
+## [1] 1.04 0.44 0.28 0.20 0.04
+## 
+## $mids
+## [1] 0.75 1.25 1.75 2.25 2.75
+## 
+## $xname
+## [1] &quot;newX[, i]&quot;
+## 
+## $equidist
+## [1] TRUE
+## 
+## attr(,&quot;class&quot;)
+## [1] &quot;histogram&quot;
+## 
+## $`Life Exp`
+## $breaks
+## [1] 67 68 69 70 71 72 73 74
+## 
+## $counts
+## [1]  1  3  5 21  8 11  1
+## 
+## $density
+## [1] 0.02 0.06 0.10 0.42 0.16 0.22 0.02
+## 
+## $mids
+## [1] 67.5 68.5 69.5 70.5 71.5 72.5 73.5
+## 
+## $xname
+## [1] &quot;newX[, i]&quot;
+## 
+## $equidist
+## [1] TRUE
+## 
+## attr(,&quot;class&quot;)
+## [1] &quot;histogram&quot;
+## 
+## $Murder
+## $breaks
+## [1]  0  2  4  6  8 10 12 14 16
+## 
+## $counts
+## [1]  2  9  8 10  4 12  4  1
+## 
+## $density
+## [1] 0.02 0.09 0.08 0.10 0.04 0.12 0.04 0.01
+## 
+## $mids
+## [1]  1  3  5  7  9 11 13 15
+## 
+## $xname
+## [1] &quot;newX[, i]&quot;
+## 
+## $equidist
+## [1] TRUE
+## 
+## attr(,&quot;class&quot;)
+## [1] &quot;histogram&quot;
+## 
+## $`HS Grad`
+## $breaks
+## [1] 35 40 45 50 55 60 65 70
+## 
+## $counts
+## [1]  4  6  4 15 13  5  3
+## 
+## $density
+## [1] 0.016 0.024 0.016 0.060 0.052 0.020 0.012
+## 
+## $mids
+## [1] 37.5 42.5 47.5 52.5 57.5 62.5 67.5
+## 
+## $xname
+## [1] &quot;newX[, i]&quot;
+## 
+## $equidist
+## [1] TRUE
+## 
+## attr(,&quot;class&quot;)
+## [1] &quot;histogram&quot;
+## 
+## $Frost
+## $breaks
+##  [1]   0  20  40  60  80 100 120 140 160 180 200
+## 
+## $counts
+##  [1]  6  2  3  4  5  7 11  4  6  2
+## 
+## $density
+##  [1] 0.006 0.002 0.003 0.004 0.005 0.007 0.011 0.004 0.006 0.002
+## 
+## $mids
+##  [1]  10  30  50  70  90 110 130 150 170 190
+## 
+## $xname
+## [1] &quot;newX[, i]&quot;
+## 
+## $equidist
+## [1] TRUE
+## 
+## attr(,&quot;class&quot;)
+## [1] &quot;histogram&quot;
+## 
+## $Area
+## $breaks
+## [1] 0e+00 1e+05 2e+05 3e+05 4e+05 5e+05 6e+05
+## 
+## $counts
+## [1] 42  6  1  0  0  1
+## 
+## $density
+## [1] 8.4e-06 1.2e-06 2.0e-07 0.0e+00 0.0e+00 2.0e-07
+## 
+## $mids
+## [1]  50000 150000 250000 350000 450000 550000
+## 
+## $xname
+## [1] &quot;newX[, i]&quot;
+## 
+## $equidist
+## [1] TRUE
+## 
+## attr(,&quot;class&quot;)
+## [1] &quot;histogram&quot;</code></pre>
 </p>
 </details>
 <blockquote>
@@ -1259,10 +1270,10 @@ What 10 states should we avoid? # hint use prod(); and maybe order()</li>
 <p>
 <div class="sourceCode" id="cb464"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb464-1"><a href="week-5--r-continued.html#cb464-1" aria-hidden="true" tabindex="-1"></a>livability <span class="ot">&lt;-</span> <span class="fu">apply</span>(states[,<span class="fu">c</span>(<span class="st">&quot;Illiteracy&quot;</span>, <span class="st">&quot;Murder&quot;</span>, <span class="st">&quot;Frost&quot;</span>)], <span class="dv">1</span>, prod) <span class="co"># subset to variables of interest</span></span>
 <span id="cb464-2"><a href="week-5--r-continued.html#cb464-2" aria-hidden="true" tabindex="-1"></a>livability[<span class="fu">order</span>(livability, <span class="at">decreasing =</span> T)][<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>] <span class="co"># top ten least livable states</span></span>
-<span id="cb464-3"><a href="week-5--r-continued.html#cb464-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;         Alaska     New Mexico South Carolina        Georgia       Kentucky North Carolina </span></span>
-<span id="cb464-4"><a href="week-5--r-continued.html#cb464-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;        2576.40        2560.80        1734.20        1668.00        1611.20        1598.40 </span></span>
-<span id="cb464-5"><a href="week-5--r-continued.html#cb464-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    Mississippi      Tennessee       New York       Michigan </span></span>
-<span id="cb464-6"><a href="week-5--r-continued.html#cb464-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;        1500.00        1309.00        1251.32        1248.75</span></span></code></pre></div>
+<span id="cb464-3"><a href="week-5--r-continued.html#cb464-3" aria-hidden="true" tabindex="-1"></a><span class="do">##         Alaska     New Mexico South Carolina        Georgia       Kentucky </span></span>
+<span id="cb464-4"><a href="week-5--r-continued.html#cb464-4" aria-hidden="true" tabindex="-1"></a><span class="do">##        2576.40        2560.80        1734.20        1668.00        1611.20 </span></span>
+<span id="cb464-5"><a href="week-5--r-continued.html#cb464-5" aria-hidden="true" tabindex="-1"></a><span class="do">## North Carolina    Mississippi      Tennessee       New York       Michigan </span></span>
+<span id="cb464-6"><a href="week-5--r-continued.html#cb464-6" aria-hidden="true" tabindex="-1"></a><span class="do">##        1598.40        1500.00        1309.00        1251.32        1248.75</span></span></code></pre></div>
 </p>
 </details>
 <blockquote>
@@ -1283,14 +1294,14 @@ For extra style, title the plot by it’s color, e.g. the red plot is titled �
 <span id="cb466-2"><a href="week-5--r-continued.html#cb466-2" aria-hidden="true" tabindex="-1"></a>my_colors <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;deeppink&quot;</span>, <span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;darkgreen&quot;</span>)</span>
 <span id="cb466-3"><a href="week-5--r-continued.html#cb466-3" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>)) <span class="co"># extra styling, plots in a 2x2 grid</span></span>
 <span id="cb466-4"><a href="week-5--r-continued.html#cb466-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(my_colors, <span class="at">FUN =</span> <span class="cf">function</span>(i) <span class="fu">hist</span>(data_to_plot, <span class="at">main =</span> i, <span class="at">col =</span> i))</span></code></pre></div>
-<p><img src="Test_files/figure-html/5-30-1.png" width="768" /></p>
-<pre><code>#&gt;          deeppink       red            blue           darkgreen     
-#&gt; breaks   Integer,6      Integer,6      Integer,6      Integer,6     
-#&gt; counts   Integer,5      Integer,5      Integer,5      Integer,5     
-#&gt; density  Numeric,5      Numeric,5      Numeric,5      Numeric,5     
-#&gt; mids     Numeric,5      Numeric,5      Numeric,5      Numeric,5     
-#&gt; xname    &quot;data_to_plot&quot; &quot;data_to_plot&quot; &quot;data_to_plot&quot; &quot;data_to_plot&quot;
-#&gt; equidist TRUE           TRUE           TRUE           TRUE</code></pre>
+<p><img src="05-Week5_R_Introduction_continued_files/figure-html/5-30-1.png" width="768" /></p>
+<pre><code>##          deeppink       red            blue           darkgreen     
+## breaks   Integer,6      Integer,6      Integer,6      Integer,6     
+## counts   Integer,5      Integer,5      Integer,5      Integer,5     
+## density  Numeric,5      Numeric,5      Numeric,5      Numeric,5     
+## mids     Numeric,5      Numeric,5      Numeric,5      Numeric,5     
+## xname    &quot;data_to_plot&quot; &quot;data_to_plot&quot; &quot;data_to_plot&quot; &quot;data_to_plot&quot;
+## equidist TRUE           TRUE           TRUE           TRUE</code></pre>
 </p>
 </details>
 <blockquote>
@@ -1308,23 +1319,30 @@ Hint: to standardize a variable, you subtract the mean and divide by the standar
 <span id="cb468-2"><a href="week-5--r-continued.html#cb468-2" aria-hidden="true" tabindex="-1"></a>states_standardized <span class="ot">=</span> <span class="fu">apply</span>(states, <span class="dv">2</span>, <span class="cf">function</span>(x) (x<span class="sc">-</span><span class="fu">mean</span>(x))<span class="sc">/</span><span class="fu">sd</span>(x))</span>
 <span id="cb468-3"><a href="week-5--r-continued.html#cb468-3" aria-hidden="true" tabindex="-1"></a><span class="co"># original:</span></span>
 <span id="cb468-4"><a href="week-5--r-continued.html#cb468-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(states)</span>
-<span id="cb468-5"><a href="week-5--r-continued.html#cb468-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;            Population Income Illiteracy Life Exp Murder HS Grad Frost   Area</span></span>
-<span id="cb468-6"><a href="week-5--r-continued.html#cb468-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Alabama          3615   3624        2.1    69.05   15.1    41.3    20  50708</span></span>
-<span id="cb468-7"><a href="week-5--r-continued.html#cb468-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Alaska            365   6315        1.5    69.31   11.3    66.7   152 566432</span></span>
-<span id="cb468-8"><a href="week-5--r-continued.html#cb468-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Arizona          2212   4530        1.8    70.55    7.8    58.1    15 113417</span></span>
-<span id="cb468-9"><a href="week-5--r-continued.html#cb468-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Arkansas         2110   3378        1.9    70.66   10.1    39.9    65  51945</span></span>
-<span id="cb468-10"><a href="week-5--r-continued.html#cb468-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; California      21198   5114        1.1    71.71   10.3    62.6    20 156361</span></span>
-<span id="cb468-11"><a href="week-5--r-continued.html#cb468-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Colorado         2541   4884        0.7    72.06    6.8    63.9   166 103766</span></span>
+<span id="cb468-5"><a href="week-5--r-continued.html#cb468-5" aria-hidden="true" tabindex="-1"></a><span class="do">##            Population Income Illiteracy Life Exp Murder HS Grad Frost   Area</span></span>
+<span id="cb468-6"><a href="week-5--r-continued.html#cb468-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Alabama          3615   3624        2.1    69.05   15.1    41.3    20  50708</span></span>
+<span id="cb468-7"><a href="week-5--r-continued.html#cb468-7" aria-hidden="true" tabindex="-1"></a><span class="do">## Alaska            365   6315        1.5    69.31   11.3    66.7   152 566432</span></span>
+<span id="cb468-8"><a href="week-5--r-continued.html#cb468-8" aria-hidden="true" tabindex="-1"></a><span class="do">## Arizona          2212   4530        1.8    70.55    7.8    58.1    15 113417</span></span>
+<span id="cb468-9"><a href="week-5--r-continued.html#cb468-9" aria-hidden="true" tabindex="-1"></a><span class="do">## Arkansas         2110   3378        1.9    70.66   10.1    39.9    65  51945</span></span>
+<span id="cb468-10"><a href="week-5--r-continued.html#cb468-10" aria-hidden="true" tabindex="-1"></a><span class="do">## California      21198   5114        1.1    71.71   10.3    62.6    20 156361</span></span>
+<span id="cb468-11"><a href="week-5--r-continued.html#cb468-11" aria-hidden="true" tabindex="-1"></a><span class="do">## Colorado         2541   4884        0.7    72.06    6.8    63.9   166 103766</span></span>
 <span id="cb468-12"><a href="week-5--r-continued.html#cb468-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb468-13"><a href="week-5--r-continued.html#cb468-13" aria-hidden="true" tabindex="-1"></a><span class="co"># standardized</span></span>
 <span id="cb468-14"><a href="week-5--r-continued.html#cb468-14" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(states_standardized)</span>
-<span id="cb468-15"><a href="week-5--r-continued.html#cb468-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;            Population     Income Illiteracy   Life Exp     Murder    HS Grad      Frost       Area</span></span>
-<span id="cb468-16"><a href="week-5--r-continued.html#cb468-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Alabama    -0.1414316 -1.3211387   1.525758 -1.3621937  2.0918101 -1.4619293 -1.6248292 -0.2347183</span></span>
-<span id="cb468-17"><a href="week-5--r-continued.html#cb468-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Alaska     -0.8693980  3.0582456   0.541398 -1.1685098  1.0624293  1.6828035  0.9145676  5.8093497</span></span>
-<span id="cb468-18"><a href="week-5--r-continued.html#cb468-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Arizona    -0.4556891  0.1533029   1.033578 -0.2447866  0.1143154  0.6180514 -1.7210185  0.5002047</span></span>
-<span id="cb468-19"><a href="week-5--r-continued.html#cb468-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Arkansas   -0.4785360 -1.7214837   1.197638 -0.1628435  0.7373617 -1.6352611 -0.7591257 -0.2202212</span></span>
-<span id="cb468-20"><a href="week-5--r-continued.html#cb468-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; California  3.7969790  1.1037155  -0.114842  0.6193415  0.7915396  1.1751891 -1.6248292  1.0034903</span></span>
-<span id="cb468-21"><a href="week-5--r-continued.html#cb468-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Colorado   -0.3819965  0.7294092  -0.771082  0.8800698 -0.1565742  1.3361400  1.1838976  0.3870991</span></span></code></pre></div>
+<span id="cb468-15"><a href="week-5--r-continued.html#cb468-15" aria-hidden="true" tabindex="-1"></a><span class="do">##            Population     Income Illiteracy   Life Exp     Murder    HS Grad</span></span>
+<span id="cb468-16"><a href="week-5--r-continued.html#cb468-16" aria-hidden="true" tabindex="-1"></a><span class="do">## Alabama    -0.1414316 -1.3211387   1.525758 -1.3621937  2.0918101 -1.4619293</span></span>
+<span id="cb468-17"><a href="week-5--r-continued.html#cb468-17" aria-hidden="true" tabindex="-1"></a><span class="do">## Alaska     -0.8693980  3.0582456   0.541398 -1.1685098  1.0624293  1.6828035</span></span>
+<span id="cb468-18"><a href="week-5--r-continued.html#cb468-18" aria-hidden="true" tabindex="-1"></a><span class="do">## Arizona    -0.4556891  0.1533029   1.033578 -0.2447866  0.1143154  0.6180514</span></span>
+<span id="cb468-19"><a href="week-5--r-continued.html#cb468-19" aria-hidden="true" tabindex="-1"></a><span class="do">## Arkansas   -0.4785360 -1.7214837   1.197638 -0.1628435  0.7373617 -1.6352611</span></span>
+<span id="cb468-20"><a href="week-5--r-continued.html#cb468-20" aria-hidden="true" tabindex="-1"></a><span class="do">## California  3.7969790  1.1037155  -0.114842  0.6193415  0.7915396  1.1751891</span></span>
+<span id="cb468-21"><a href="week-5--r-continued.html#cb468-21" aria-hidden="true" tabindex="-1"></a><span class="do">## Colorado   -0.3819965  0.7294092  -0.771082  0.8800698 -0.1565742  1.3361400</span></span>
+<span id="cb468-22"><a href="week-5--r-continued.html#cb468-22" aria-hidden="true" tabindex="-1"></a><span class="do">##                 Frost       Area</span></span>
+<span id="cb468-23"><a href="week-5--r-continued.html#cb468-23" aria-hidden="true" tabindex="-1"></a><span class="do">## Alabama    -1.6248292 -0.2347183</span></span>
+<span id="cb468-24"><a href="week-5--r-continued.html#cb468-24" aria-hidden="true" tabindex="-1"></a><span class="do">## Alaska      0.9145676  5.8093497</span></span>
+<span id="cb468-25"><a href="week-5--r-continued.html#cb468-25" aria-hidden="true" tabindex="-1"></a><span class="do">## Arizona    -1.7210185  0.5002047</span></span>
+<span id="cb468-26"><a href="week-5--r-continued.html#cb468-26" aria-hidden="true" tabindex="-1"></a><span class="do">## Arkansas   -0.7591257 -0.2202212</span></span>
+<span id="cb468-27"><a href="week-5--r-continued.html#cb468-27" aria-hidden="true" tabindex="-1"></a><span class="do">## California -1.6248292  1.0034903</span></span>
+<span id="cb468-28"><a href="week-5--r-continued.html#cb468-28" aria-hidden="true" tabindex="-1"></a><span class="do">## Colorado    1.1838976  0.3870991</span></span></code></pre></div>
 </p>
 </details>
 <blockquote>
@@ -1340,21 +1358,21 @@ Hint: instead of using apply to iterate over the columns themselves, you can oft
 <p>
 <div class="sourceCode" id="cb469"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb469-1"><a href="week-5--r-continued.html#cb469-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
 <span id="cb469-2"><a href="week-5--r-continued.html#cb469-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(<span class="fu">colnames</span>(states), <span class="cf">function</span>(x)<span class="fu">hist</span>(states[ , x],<span class="at">main =</span> x, <span class="at">xlab =</span> x,<span class="at">col =</span> <span class="st">&quot;darkblue&quot;</span>))</span></code></pre></div>
-<p><img src="Test_files/figure-html/5-31-1.png" width="768" /><img src="Test_files/figure-html/5-31-2.png" width="768" /></p>
-<pre><code>#&gt;          Population    Income        Illiteracy    Life Exp      Murder        HS Grad      
-#&gt; breaks   Numeric,6     Integer,8     Numeric,6     Integer,8     Numeric,9     Integer,8    
-#&gt; counts   Integer,5     Integer,7     Integer,5     Integer,7     Integer,8     Integer,7    
-#&gt; density  Numeric,5     Numeric,7     Numeric,5     Numeric,7     Numeric,8     Numeric,7    
-#&gt; mids     Numeric,5     Numeric,7     Numeric,5     Numeric,7     Numeric,8     Numeric,7    
-#&gt; xname    &quot;states[, x]&quot; &quot;states[, x]&quot; &quot;states[, x]&quot; &quot;states[, x]&quot; &quot;states[, x]&quot; &quot;states[, x]&quot;
-#&gt; equidist TRUE          TRUE          TRUE          TRUE          TRUE          TRUE         
-#&gt;          Frost         Area         
-#&gt; breaks   Numeric,11    Numeric,7    
-#&gt; counts   Integer,10    Integer,6    
-#&gt; density  Numeric,10    Numeric,6    
-#&gt; mids     Numeric,10    Numeric,6    
-#&gt; xname    &quot;states[, x]&quot; &quot;states[, x]&quot;
-#&gt; equidist TRUE          TRUE</code></pre>
+<p><img src="05-Week5_R_Introduction_continued_files/figure-html/5-31-1.png" width="768" /><img src="05-Week5_R_Introduction_continued_files/figure-html/5-31-2.png" width="768" /></p>
+<pre><code>##          Population    Income        Illiteracy    Life Exp      Murder       
+## breaks   Numeric,6     Integer,8     Numeric,6     Integer,8     Numeric,9    
+## counts   Integer,5     Integer,7     Integer,5     Integer,7     Integer,8    
+## density  Numeric,5     Numeric,7     Numeric,5     Numeric,7     Numeric,8    
+## mids     Numeric,5     Numeric,7     Numeric,5     Numeric,7     Numeric,8    
+## xname    &quot;states[, x]&quot; &quot;states[, x]&quot; &quot;states[, x]&quot; &quot;states[, x]&quot; &quot;states[, x]&quot;
+## equidist TRUE          TRUE          TRUE          TRUE          TRUE         
+##          HS Grad       Frost         Area         
+## breaks   Integer,8     Numeric,11    Numeric,7    
+## counts   Integer,7     Integer,10    Integer,6    
+## density  Numeric,7     Numeric,10    Numeric,6    
+## mids     Numeric,7     Numeric,10    Numeric,6    
+## xname    &quot;states[, x]&quot; &quot;states[, x]&quot; &quot;states[, x]&quot;
+## equidist TRUE          TRUE          TRUE</code></pre>
 </p>
 </details>
 </div>
@@ -1415,7 +1433,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["Test.pdf", "Test.epub"],
+"download": ["MarGen2022.pdf", "MarGen2022.epub"],
 "search": {
 "engine": "fuse",
 "options": null
