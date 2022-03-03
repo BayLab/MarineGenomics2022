@@ -20,7 +20,7 @@ We provide all the data for the students to complete each weeks coding activies 
 
 ## Cloud computing versus individual laptops
 
-This course was designed to be carried out on the NSF funded Extreme Science and Engineering Discovery Environment (XSEDE) cloud computing resource [Jetstream](https://portal.xsede.org/jetstream). 
+This course was designed to be carried out on the NSF funded Extreme Science and Engineering Discovery Environment (XSEDE) cloud computing resource [Jetstream2](https://docs.jetstream-cloud.org/). 
 
 Jetstream is a unique user-friendly cloud computing resource in that it provides the students with an environment with root privileges, making program installation less complicated. Jetstream also provides a Desktop simulator which allows students to transition between bash and R using the same exact directory paths as the instructor, reducing the confusion of students having unique file paths and providing a more streamlined approach to what for many students is their first coding class. 
 
