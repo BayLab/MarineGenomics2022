@@ -40,12 +40,13 @@ For this course we will be using the shell in our Jetstream2 allocation through 
 
 In jetstream we launch what they call an "instance" which is a small allocation that specifies how much memory you need and reflects how much computing you might do (we'll guide you through this).
 
-You'll find the jetstream login [here](https://exosphere.jetstream-cloud.org/exosphere/loginpicker) 
+You'll find the Jetstream login [here](https://jetstream2.exosphere.app/exosphere/home) 
 
-Navigate to the login with xsede tab in the upper right
+To log in first click on the "add allocations" button
 
 <img src="./figs/jetstream/Fig1.png" width="100%" />
 
+Then click "add XSEDE account"
 
 <img src="./figs/jetstream/Fig2.png" width="100%" />
 
@@ -55,50 +56,62 @@ Click continue
 
 <img src="./figs/jetstream/Fig3.png" width="100%" />
 
-The username for our course is **margeno**. The password will be given out in class. If you missed it please contact Serena Caplins (sacaplins@ucdavis.edu) or Maddie Armstrong (mlarmstrong@ucdavis.edu)
+The username for our course is **margeno**. The password will be given out in class. If you missed it please contact Erica Nielsen (esnielsen@ucdavis.edu) 
 
 <img src="./figs/jetstream/Fig4.png" width="100%" />
 
-Once you've logged in you should be redirected to jetstream. 
-
-You now need to create your own projects folder. This is where you will carry out all of your analyses for the course. 
-Everyone will get one project folder. So please only make one. If you make a mistake you can delete it and start again.
+Once you've logged in you should be redirected to Jetstream2. You should now be able to join the allocation for the course. 
 
 <img src="./figs/jetstream/Fig5.png" width="100%" />
+
+#You now need to create your own projects folder. This is where you will carry out all of your analyses for the course. 
+#Everyone will get one project folder. So please only make one. If you make a mistake you can delete it and start again.
 
 <img src="./figs/jetstream/Fig6.png" width="100%" />
 
 <img src="./figs/jetstream/Fig7.png" width="100%" />
 
-Once you have a project folder we can create our first instance. Go to the "New" tab and select "instance".
+Once you have a project folder we can create our first instance. Go to the "Create" tab and select "instance".
 
 <img src="./figs/jetstream/Fig8.png" width="100%" />
 
-Select the RStudio Desktop Shiny Server instance
+Select the Ubuntu v.20.04 instance source.
 
 <img src="./figs/jetstream/Fig9.png" width="100%" />
 
-Select a small instance size if it isn't already selected (should be the default).
+This will automatically generate a name, which you can edit if you wish. Select a small instance size "m3.small"
 
 <img src="./figs/jetstream/Fig10.png" width="100%" />
 
-It will take several minutes (5-10) to build our instance. Once it says active it will take a few more minutes to deploy.
+Select "yes" for enabling web desktop. This will give a warning but that is okay. 
 
 <img src="./figs/jetstream/Fig11.png" width="100%" />
 
+It will take several minutes to build our instance. Once it says active it will take a few more minutes to deploy.
+
 <img src="./figs/jetstream/Fig12.png" width="100%" />
 
-Once it's ready to go you should see several actions on the right side of the screen including report, suspend, stop, etc. 
-
-Select open web desktop.
+Once it's ready to go you should see a green Ready sign.
 
 <img src="./figs/jetstream/Fig13.png" width="100%" />
 
-You should see something like the little desktop above. It's not pretty but this is where we'll be spending a lot of time. 
-
-Select the black box on the bottom menu bar to access the command line. It will open a new window that has the `$` prompt.
+Now we can go to the 'Connect to' tab, and select web desktop.
 
 <img src="./figs/jetstream/Fig14.png" width="100%" />
+
+You should see something like the little desktop below. It's not pretty but this is where we'll be spending a lot of time. 
+
+<img src="./figs/jetstream/Fig15.png" width="100%" />
+
+Follow the prompts, pressing next on the window. 
+
+Select the grid of boxes on the bottom of side bar to show applications. You can type "terminal" in the search bar at the top, or scroll to find the Terminal application. It will open a new window that has the `$` prompt.
+
+<img src="./figs/jetstream/Fig16.png" width="100%" />
+
+<img src="./figs/jetstream/Fig17.png" width="100%" />
+
+<img src="./figs/jetstream/Fig18.png" width="100%" />
 
 ## Best practices for Jetstream
 

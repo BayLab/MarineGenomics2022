@@ -346,36 +346,43 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">2.2</span> How to access the shell<a href="week-1--welcome.html#how-to-access-the-shell" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>For this course we will be using the shell in our Jetstream2 allocation through xsede. Jetstream2 is a cloud computing resource for which we have been allocated resources for the purposes of this course. Below is a guide for accessing and using jetstream.</p>
 <p>In jetstream we launch what they call an “instance” which is a small allocation that specifies how much memory you need and reflects how much computing you might do (we’ll guide you through this).</p>
-<p>You’ll find the jetstream login <a href="https://exosphere.jetstream-cloud.org/exosphere/loginpicker">here</a></p>
-<p>Navigate to the login with xsede tab in the upper right</p>
+<p>You’ll find the Jetstream login <a href="https://jetstream2.exosphere.app/exosphere/home">here</a></p>
+<p>To log in first click on the “add allocations” button</p>
 <p><img src="figs/jetstream/Fig1.png" width="100%" /></p>
+<p>Then click “add XSEDE account”</p>
 <p><img src="figs/jetstream/Fig2.png" width="100%" /></p>
 <p>This will redirect you to the xsede login page. Your organization should say xsede.</p>
 <p>Click continue</p>
 <p><img src="figs/jetstream/Fig3.png" width="100%" /></p>
-<p>The username for our course is <strong>margeno</strong>. The password will be given out in class. If you missed it please contact Serena Caplins (<a href="mailto:sacaplins@ucdavis.edu" class="email">sacaplins@ucdavis.edu</a>) or Maddie Armstrong (<a href="mailto:mlarmstrong@ucdavis.edu" class="email">mlarmstrong@ucdavis.edu</a>)</p>
+<p>The username for our course is <strong>margeno</strong>. The password will be given out in class. If you missed it please contact Erica Nielsen (<a href="mailto:esnielsen@ucdavis.edu" class="email">esnielsen@ucdavis.edu</a>)</p>
 <p><img src="figs/jetstream/Fig4.png" width="100%" /></p>
-<p>Once you’ve logged in you should be redirected to jetstream.</p>
-<p>You now need to create your own projects folder. This is where you will carry out all of your analyses for the course.
-Everyone will get one project folder. So please only make one. If you make a mistake you can delete it and start again.</p>
+<p>Once you’ve logged in you should be redirected to Jetstream2. You should now be able to join the allocation for the course.</p>
 <p><img src="figs/jetstream/Fig5.png" width="100%" /></p>
+<p>#You now need to create your own projects folder. This is where you will carry out all of your analyses for the course.
+#Everyone will get one project folder. So please only make one. If you make a mistake you can delete it and start again.</p>
 <p><img src="figs/jetstream/Fig6.png" width="100%" /></p>
 <p><img src="figs/jetstream/Fig7.png" width="100%" /></p>
-<p>Once you have a project folder we can create our first instance. Go to the “New” tab and select “instance.”</p>
+<p>Once you have a project folder we can create our first instance. Go to the “Create” tab and select “instance.”</p>
 <p><img src="figs/jetstream/Fig8.png" width="100%" /></p>
-<p>Select the RStudio Desktop Shiny Server instance</p>
+<p>Select the Ubuntu v.20.04 instance source.</p>
 <p><img src="figs/jetstream/Fig9.png" width="100%" /></p>
-<p>Select a small instance size if it isn’t already selected (should be the default).</p>
+<p>This will automatically generate a name, which you can edit if you wish. Select a small instance size “m3.small”</p>
 <p><img src="figs/jetstream/Fig10.png" width="100%" /></p>
-<p>It will take several minutes (5-10) to build our instance. Once it says active it will take a few more minutes to deploy.</p>
+<p>Select “yes” for enabling web desktop. This will give a warning but that is okay.</p>
 <p><img src="figs/jetstream/Fig11.png" width="100%" /></p>
-<p><img src="figs/jetstream/FIg12.png" width="100%" /></p>
-<p>Once it’s ready to go you should see several actions on the right side of the screen including report, suspend, stop, etc.</p>
-<p>Select open web desktop.</p>
+<p>It will take several minutes to build our instance. Once it says active it will take a few more minutes to deploy.</p>
+<p><img src="figs/jetstream/Fig12.png" width="100%" /></p>
+<p>Once it’s ready to go you should see a green Ready sign.</p>
 <p><img src="figs/jetstream/Fig13.png" width="100%" /></p>
-<p>You should see something like the little desktop above. It’s not pretty but this is where we’ll be spending a lot of time.</p>
-<p>Select the black box on the bottom menu bar to access the command line. It will open a new window that has the <code>$</code> prompt.</p>
+<p>Now we can go to the ‘Connect to’ tab, and select web desktop.</p>
 <p><img src="figs/jetstream/Fig14.png" width="100%" /></p>
+<p>You should see something like the little desktop below. It’s not pretty but this is where we’ll be spending a lot of time.</p>
+<p><img src="figs/jetstream/Fig15.png" width="100%" /></p>
+<p>Follow the prompts, pressing next on the window.</p>
+<p>Select the grid of boxes on the bottom of side bar to show applications. You can type “terminal” in the search bar at the top, or scroll to find the Terminal application. It will open a new window that has the <code>$</code> prompt.</p>
+<p><img src="figs/jetstream/Fig16.png" width="100%" /></p>
+<p><img src="figs/jetstream/Fig17.png" width="100%" /></p>
+<p><img src="figs/jetstream/Fig18.png" width="100%" /></p>
 </div>
 <div id="best-practices-for-jetstream" class="section level2 hasAnchor" number="2.3">
 <h2><span class="header-section-number">2.3</span> Best practices for Jetstream<a href="week-1--welcome.html#best-practices-for-jetstream" class="anchor-section" aria-label="Anchor link to header"></a></h2>
