@@ -14,7 +14,7 @@ description: ""
 
 <center>
 
-<img src="figs/margen.logo.jpg" width="300" height="300" />
+<img src="figs/margen.logo.jpg" width="300" height="400" />
 
 </center>
 
@@ -41,7 +41,7 @@ Alternatively, these course materials can be used on students and instructors in
 
 <center>
 
-<img src="figs/Erica.jpeg" width="300" height="300" />
+<img src="figs/Erica.jpeg" width="350" height="300" />
 
 </center>
 
@@ -59,7 +59,7 @@ Tali Magory, Postdoc, co-instructor (talimagory@gmail.com)
 
 <center>
 
-<img src="figs/Leslie.jpg" width="300" height="300" />
+<img src="figs/Leslie.jpg" width="250" height="300" />
 
 </center>
 
