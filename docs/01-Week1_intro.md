@@ -42,13 +42,16 @@ In jetstream we launch what they call an "instance" which is a small allocation 
 
 You'll find the Jetstream login [here](https://jetstream2.exosphere.app/exosphere/home) 
 
-To log in first click on the "add allocations" button
+
+To log in first click on the "add allocation" button
 
 <img src="./figs/jetstream/Fig1.png" width="100%" />
+
 
 Then click "add XSEDE account"
 
 <img src="./figs/jetstream/Fig2.png" width="100%" />
+
 
 This will redirect you to the xsede login page. Your organization should say xsede. 
 
@@ -56,52 +59,56 @@ Click continue
 
 <img src="./figs/jetstream/Fig3.png" width="100%" />
 
-The username for our course is **margeno**. The password will be given out in class. If you missed it please contact Erica Nielsen (esnielsen@ucdavis.edu) 
+
+Next it will ask for xsede login details. Everyone should have made an account in preparation for the course. If you still need to create an account, you can find instructions [here](https://docs.jetstream-cloud.org/alloc/overview/). For assistance with creating an xsede account contact [Erica Nielsen](esnielsen@ucdavis.edu)
 
 <img src="./figs/jetstream/Fig4.png" width="100%" />
 
+
 Once you've logged in you should be redirected to Jetstream2. You should now be able to join the allocation for the course. 
-
-<img src="./figs/jetstream/Fig5.png" width="100%" />
-
-#You now need to create your own projects folder. This is where you will carry out all of your analyses for the course. 
-#Everyone will get one project folder. So please only make one. If you make a mistake you can delete it and start again.
 
 <img src="./figs/jetstream/Fig6.png" width="100%" />
 
+
+Click on course allocation box on the left. 
+
 <img src="./figs/jetstream/Fig7.png" width="100%" />
 
-Once you have a project folder we can create our first instance. Go to the "Create" tab and select "instance".
+
+Once within the course allocation we can create our first instance. Go to the "Create" tab and select "instance".
 
 <img src="./figs/jetstream/Fig8.png" width="100%" />
+
 
 Select the Ubuntu v.20.04 instance source.
 
 <img src="./figs/jetstream/Fig9.png" width="100%" />
 
-This will automatically generate a name, which you can edit if you wish. Select a small instance size "m3.small"
+
+This will automatically generate a name, which we suggest you edit to something more meaningful, such as "MarGen2022_(yourname)". Select the small instance size "m3.small"
 
 <img src="./figs/jetstream/Fig10.png" width="100%" />
+
 
 Select "yes" for enabling web desktop. This will give a warning but that is okay. 
 
 <img src="./figs/jetstream/Fig11.png" width="100%" />
 
-It will take several minutes to build our instance. Once it says active it will take a few more minutes to deploy.
 
-<img src="./figs/jetstream/Fig12.png" width="100%" />
-
-Once it's ready to go you should see a green Ready sign.
+It will take several minutes to build our instance. Once it's ready to go you should see a green Ready sign.
 
 <img src="./figs/jetstream/Fig13.png" width="100%" />
+
 
 Now we can go to the 'Connect to' tab, and select web desktop.
 
 <img src="./figs/jetstream/Fig14.png" width="100%" />
 
+
 You should see something like the little desktop below. It's not pretty but this is where we'll be spending a lot of time. 
 
 <img src="./figs/jetstream/Fig15.png" width="100%" />
+
 
 Follow the prompts, pressing next on the window. 
 

@@ -14,13 +14,13 @@ Welcome to Marine Genomics 2022! This is a course on learning how to analyze gen
 
 The course consists of one 1.5 hour lecture per week. The lectures begin with a power point presentation where we introduce the weeks concept (for example, PCAs) and then are followed by a live coding demonstrations and exercises. 
 
-The first 5 weeks are primarily training in bash/UNIX and R basics. The remaining weeks are focused on performing a specific analysis (PCA, GWAS, Fst outlier analyses, etc). 
+The first 5 weeks are primarily training in bash/UNIX and R basics. The remaining weeks are focused on performing a specific analysis (PCA, GWAS, Fst-outlier analyses, etc). 
 
 We provide all the data for the students to complete each weeks coding activies along with instructions for how to download the data. 
 
 ## Cloud computing versus individual laptops
 
-This course was designed to be carried out on the NSF funded Extreme Science and Engineering Discovery Environment (XSEDE) cloud computing resource [Jetstream](https://portal.xsede.org/jetstream). 
+This course was designed to be carried out on the NSF funded Extreme Science and Engineering Discovery Environment (XSEDE) cloud computing resource [Jetstream2](https://docs.jetstream-cloud.org/). 
 
 Jetstream is a unique user-friendly cloud computing resource in that it provides the students with an environment with root privileges, making program installation less complicated. Jetstream also provides a Desktop simulator which allows students to transition between bash and R using the same exact directory paths as the instructor, reducing the confusion of students having unique file paths and providing a more streamlined approach to what for many students is their first coding class. 
 
@@ -51,7 +51,7 @@ Brooke Benson, Graduate student, teaching assistant (bebenson@ucdavis.edu)
 ## Schedule
 Lecture Thursdays 12:10-1:30
 
-Office hours: TBD
+Office hours: virtual - will be determined based on poll
 
 
 ![](./figs/urchins.jpg)

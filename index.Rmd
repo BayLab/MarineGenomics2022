@@ -14,7 +14,7 @@ Welcome to Marine Genomics 2022! This is a course on learning how to analyze gen
 
 The course consists of one 1.5 hour lecture per week. The lectures begin with a power point presentation where we introduce the weeks concept (for example, PCAs) and then are followed by a live coding demonstrations and exercises. 
 
-The first 5 weeks are primarily training in bash/UNIX and R basics. The remaining weeks are focused on performing a specific analysis (PCA, GWAS, Fst outlier analyses, etc). 
+The first 5 weeks are primarily training in bash/UNIX and R basics. The remaining weeks are focused on performing a specific analysis (PCA, GWAS, Fst-outlier analyses, etc). 
 
 We provide all the data for the students to complete each weeks coding activies along with instructions for how to download the data. 
 
@@ -51,7 +51,7 @@ Brooke Benson, Graduate student, teaching assistant (bebenson@ucdavis.edu)
 ## Schedule
 Lecture Thursdays 12:10-1:30
 
-Office hours: TBD
+Office hours: virtual - will be determined based on poll
 
 
 ![](./figs/urchins.jpg)
