@@ -8,9 +8,15 @@ link-citations: yes
 description: ""
 ---
 
-![](./figs/margen.logo.jpg)
+
 
 # Introduction to Marine Genomics
+
+<center>
+
+<img src="figs/margen.logo.jpg" width="300" height="300" />
+
+</center>
 
 Welcome to Marine Genomics 2022! This is a course on learning how to analyze genomic data for undergraduate students. We will focus on marine organisms but these lessons can easily be applied to any taxa. We required that students have a background in biology and have completed the general biology series. Additionally, it is helpful if students have taken a course in Evolution, though this was not a requirement. We do not require any coding experience in R or Bash/UNIX. 
 
@@ -33,21 +39,38 @@ Alternatively, these course materials can be used on students and instructors in
 
 ## Meet our instructors!
 
-![](./figs/Erica.jpeg)
+<center>
+
+<img src="figs/Erica.jpeg" width="300" height="300" />
+
+</center>
 
 Erica Nielsen, Postdoc, lead instructor (esnielsen@ucdavis.edu)-- [Website](https://esnielsen.github.io/).
 
-![](./figs/Tali.jpeg)
+
+<center>
+
+<img src="figs/Tali.jpeg" width="300" height="300" />
+
+</center>
 
 Tali Magory, Postdoc, co-instructor (talimagory@gmail.com)
 
-<img src="./figs/leslie.jpg" width="100%" />
+
+<center>
+
+<img src="figs/Leslie.jpg" width="300" height="300" />
+
+</center>
 
 Leslie Guerrero, Graduate student, co-instructor (leaguerrero@ucdavis.edu) 
 
 
-<img src="./figs/Brooke.jpg" width="100%" />
+<center>
 
+<img src="figs/Brooke.jpg" width="300" height="300" />
+
+</center>
 Brooke Benson, Graduate student, teaching assistant (bebenson@ucdavis.edu)
 
 
