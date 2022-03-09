@@ -80,7 +80,7 @@ Let's read in the genetic data from the VCF file. Because VCF is a common file f
 ## Summary:
 ## 
 ## 	- input file:				filtered_3699snps_californicus.vcf
-## 	- output file:				/var/folders/61/mrmzvfmj0jjbncnv31czp8lw0000gn/T//Rtmpn25ydS/file1e3e3b7a9833.pcadapt
+## 	- output file:				/var/folders/61/mrmzvfmj0jjbncnv31czp8lw0000gn/T//RtmpjlLhr4/file20996a2daec1.pcadapt
 ## 
 ## 	- number of individuals detected:	717
 ## 	- number of loci detected:		3699

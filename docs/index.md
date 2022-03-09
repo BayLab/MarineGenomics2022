@@ -8,6 +8,8 @@ link-citations: yes
 description: ""
 ---
 
+![](./figs/margen.logo.jpg)
+
 # Introduction to Marine Genomics
 
 Welcome to Marine Genomics 2022! This is a course on learning how to analyze genomic data for undergraduate students. We will focus on marine organisms but these lessons can easily be applied to any taxa. We required that students have a background in biology and have completed the general biology series. Additionally, it is helpful if students have taken a course in Evolution, though this was not a requirement. We do not require any coding experience in R or Bash/UNIX. 
@@ -39,11 +41,12 @@ Erica Nielsen, Postdoc, lead instructor (esnielsen@ucdavis.edu)-- [Website](http
 
 Tali Magory, Postdoc, co-instructor (talimagory@gmail.com)
 
-![](./figs/Leslie.jpg)
+<img src="./figs/leslie.jpg" width="100%" />
 
 Leslie Guerrero, Graduate student, co-instructor (leaguerrero@ucdavis.edu) 
 
-![](./figs/Brooke.jpg)
+
+<img src="./figs/Brooke.jpg" width="100%" />
 
 Brooke Benson, Graduate student, teaching assistant (bebenson@ucdavis.edu)
 
