@@ -395,7 +395,7 @@ $ cd MarineGenomics
 $ cd week1
 ```
 
-Make a new directory in week1 and name it after your favorite marine animal. Then navigate into that directory. Use the command line to prove to your neighbors that you are indeed within that directory.
+Make a new directory in week1 and name it after your favorite marine species. Then navigate into that directory. Use the command line to prove to your neighbors that you are indeed within that directory.
 
 Now we want to move back up and out of this directory into our top level directory. Can we type cd MarineGenomics? Try it and see what happens.
 
@@ -562,6 +562,34 @@ A relative path is like getting directions from someone on the street. They tell
 You can usually use either a full path or a relative path depending on what is most convenient. If we are in the home directory, it is more convenient to enter the full path. If we are in the working directory, it is more convenient to enter the relative path since it involves less typing.
 
 Over time, it will become easier for you to keep a mental note of the structure of the directories that you are using and how to quickly navigate amongst them.
+
+
+> ## Exercise
+> 1. Navigate to your home directory
+> 2. Use cd with the full path to go into the directory you named after your favorite marine taxa
+> 3. Within that directory examine the contents of MarineGenomics/week1
+> 4. Then navigate to the directory two levels above
+
+<details><summary><span style="color: orange;">Solution</span></summary>
+<p>
+
+```html
+$ cd
+$ pwd
+
+$ cd /home/exouser/MarineGenomics/week1/*your_unique_directory
+$ pwd
+
+$ ls ..
+
+$ cd ../../
+$ pwd
+
+```
+
+</p>
+</details>
+&nbsp;
 
 ## Navigational shortcuts
 
