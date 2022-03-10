@@ -60,7 +60,7 @@ Click continue
 <img src="./figs/jetstream/Fig3.png" width="100%" />
 
 
-Next it will ask for xsede login details. Everyone should have made an account in preparation for the course. If you still need to create an account, you can find instructions [here](https://docs.jetstream-cloud.org/alloc/overview/). For assistance with creating an xsede account contact [Erica Nielsen](esnielsen@ucdavis.edu)
+Next it will ask for xsede login details. Everyone should have made an account in preparation for the course. If you still need to create an account, you can find instructions [here](https://docs.jetstream-cloud.org/alloc/overview/). For assistance with creating an xsede account contact Erica Nielsen (esnielsen@ucdavis.edu)
 
 <img src="./figs/jetstream/Fig4.png" width="100%" />
 
@@ -112,7 +112,7 @@ You should see something like the little desktop below. It may ask you to authen
 
 Follow the prompts, pressing next and skip in the upper right on the window. 
 
-Select the grid of boxes on the bottom of side bar to show applications. You can type "terminal" in the search bar at the top, or scroll to find the Terminal application. It will open a new window that has the `$` prompt.
+We using the command line application called Terminal. Select the grid of boxes on the bottom of side bar to show applications. You can type "terminal" in the search bar at the top, or scroll to find the Terminal application. It will open a new window that has the `$` prompt.
 
 <img src="./figs/jetstream/Fig16.png" width="100%" />
 
