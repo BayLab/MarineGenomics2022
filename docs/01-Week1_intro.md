@@ -105,12 +105,12 @@ Now we can go to the 'Connect to' tab, and select web desktop.
 <img src="./figs/jetstream/Fig14.png" width="100%" />
 
 
-You should see something like the little desktop below. It's not pretty but this is where we'll be spending a lot of time. 
+You should see something like the little desktop below. It may ask you to authenticate to set the time zone, but you can just press cancel. 
 
 <img src="./figs/jetstream/Fig15.png" width="100%" />
 
 
-Follow the prompts, pressing next on the window. 
+Follow the prompts, pressing next and skip in the upper right on the window. 
 
 Select the grid of boxes on the bottom of side bar to show applications. You can type "terminal" in the search bar at the top, or scroll to find the Terminal application. It will open a new window that has the `$` prompt.
 
@@ -169,13 +169,13 @@ $
 
 The dollar sign is a prompt, which shows us that the shell is waiting for input; your shell may use a different character as a prompt and may add information before the prompt. When typing commands, either from these lessons or from other sources, do not type the prompt, only the commands that follow it.
 
-Let’s find out where we are by running a command called pwd (which stands for “print working directory”). At any moment, our current working directory is our current default directory, i.e., the directory that the computer assumes we want to run commands in, unless we explicitly specify something else. Here, the computer’s response is /home/margeno, which is the top level directory within our cloud system:
+Let’s find out where we are by running a command called 'pwd' (which stands for “print working directory”). At any moment, our current working directory is our current default directory, i.e., the directory that the computer assumes we want to run commands in, unless we explicitly specify something else. Here, the computer’s response is /home/margeno, which is the top level directory within our cloud system:
 
 ```html
 $ pwd
 ```
 ```html
-/home/margeno
+/home/exouser
 ```
 Let’s look at how our file system is organized. We can see what files and subdirectories are in this directory by running `ls`, which stands for “listing”:
 ```html
@@ -237,7 +237,7 @@ We now need to untar that file so we can access the contents
 tar -xzvf week1.tar.gz
 ```
 
-Now that we have something in our MarineGenomics directory we can use the `ls` command a bit more.
+Now that we have something in our MarineGenomics directory. Move back into that directory. We can now use the `ls` command a bit more.
 
 We can make the ls output more comprehensible by using the flag -F, which tells ls to add a trailing / to the names of directories:
 
@@ -247,17 +247,7 @@ $ ls -F
 ```html
 week1/
 ```
-
-Great, it's there! Let's cd into the data directory and then use ls to see what's in that directory.
-
-```html
-$ cd week1
-$ ls -F
-```
-```html
-Week1/
-```
-Anything with a “/” after it is a directory. Things with a “*” after them are programs. If there are no decorations, it’s a file.
+Anything with a “/” after it is a directory. Things with a “*” after them are executable. If there are no decorations, it’s a file.
 
 `ls` has lots of other options. To find out what they are, we can type:
 
@@ -275,18 +265,19 @@ $ ls -l
 
 No one can possibly learn all of these arguments, that’s what the manual page is for. You can (and should) refer to the manual page or other help files as needed.
 
-Let’s go into the Week1 directory and see what is in there.
+
+Now let's cd into the data directory and then use ls to see what's in that directory.
 
 ```html
 $ cd week1
 $ ls -F
 ```
-
 ```html
-SRR6805880_1.fastq SRR6805880_2.fastq
+SRR6805880_1.fastq  SRR6805880_2.fastq
 ```
-
 This directory contains two files with .fastq extensions. FASTQ is a format for storing information about sequencing reads and their quality. We will be learning more about FASTQ files in a later lesson.
+
+
 
 ## Shortcut: Tab Completion
 
@@ -305,12 +296,11 @@ $ cd Mar<tab>
 ```
 The shell will fill in the rest of the directory name for `MarineGenomics`.
 
-Now change directories to `Week1` in `data` in `MarineGenomics`
+Now change directories to `week1` in `MarineGenomics`
 
 ```html
 $ cd MarineGenomics
-$ cd data
-$ cd Week1
+$ cd week1
 ```
 
 Using tab complete can be very helpful. However, it will only autocomplete a file or directory name if you’ve typed enough characters to provide a unique identifier for the file or directory you are trying to access.
@@ -363,15 +353,17 @@ This continues the shell module from Data Carpentry's introduction to the shell,
 
 We’ve learned how to use `pwd` to find our current location within our file system. We’ve also learned how to use cd to change locations and ls to list the contents of a directory. Now we’re going to learn some additional commands for moving around within our file system.
 
-Use the commands we’ve learned so far to navigate to the `MarineGenomics/data/Week1` directory, if you’re not already there.
+Use the commands we’ve learned so far to navigate to the `MarineGenomics/week1` directory, if you’re not already there.
 
 ```html
 $ cd
 $ cd MarineGenomics
-$ cd Week1
+$ cd week1
 ```
 
-What if we want to move back up and out of this directory and to our top level directory? Can we type cd MarineGenomics? Try it and see what happens.
+Make a new directory in week1 and name it after your favorite marine animal. Then navigate into that directory. Use the command line to prove to your neighbors that you are indeed within that directory.
+
+Now we want to move back up and out of this directory into our top level directory. Can we type cd MarineGenomics? Try it and see what happens.
 
 ```html
 $ cd MarineGenomics
@@ -392,13 +384,13 @@ Now we can use `pwd` to make sure that we are in the directory we intended to na
 ```html
 $ pwd
 
-home/margeno/MarineGenomics
+home/exouser/MarineGenomics
 ```
 
 ```html
 $ ls
 
-data
+week1
 ```
 
 From this output, we can see that `..` did indeed take us back one level in our file system.
@@ -464,7 +456,7 @@ Then enter the command:
 ```html
 $ ls MarineGenomics
 
-data
+week1
 ```
 
 This will list the contents of the MarineGenomics directory without you needing to navigate there.
@@ -477,18 +469,22 @@ Try entering:
 $ cd
 $ cd MarineGenomics/week1
 ```
-This will take you to the MarineGenomics directory without having to go through the intermediate directory.
+This will take you to the MarineGenomics directory without having to go through an intermediate directory.
 
 Navigating practice
 
 Navigate to your home directory. From there, list the contents of the Week1 directory.
 
+<details><summary><span style="color: red;">Solution</span></summary>
+<p>
 ```html
 $ cd
-$ ls MarineGenomics/Week1
+$ ls MarineGenomics/week1
 
 SRR6805880_1.fastq SRR6805880_2.fastq
 ```
+</p>
+</details>
 
 ## Full vs Relative Paths
 
@@ -503,27 +499,27 @@ $ pwd
 You should see:
 
 ```html
-/home/margeno
+/home/exouser
 ```
 
-This is the full name of your home directory. This tells you that you are in a directory called `margeno`, which sits inside a directory called home which sits inside the very top directory in the hierarchy. The very top of the hierarchy is a directory called `/` which is usually referred to as the `root` directory. So, to summarize: margeno is a directory in `home` which is a directory in /. More on `root` and `home` in the next section.
+This is the full name of your home directory. This tells you that you are in a directory called `exouser`, which sits inside a directory called home which sits inside the very top directory in the hierarchy. The very top of the hierarchy is a directory called `/` which is usually referred to as the `root` directory. So, to summarize: exouser is a directory in `home` which is a directory in /. More on `root` and `home` in the next section.
 
 Now enter the following command:
 
 ```html
-$ cd /home/margeno/MarineGenomics/Week1
+$ cd /home/exouser/MarineGenomics/week1
 ```
 
-This jumps several levels to the `Week1` directory. Now go back to the home directory.
+This jumps several levels to the `week1` directory. Now go back to the home directory.
 
 ```html
 $ cd 
 ```
 
-You can also navigate to the `Week1` directory using:
+You can also navigate to the `week1` directory using:
 
 ```html
-$ cd MarineGenomics/Week1
+$ cd MarineGenomics/week1
 ```
 These two commands have the same effect, they both take us to the `Week1` directory. The first uses the absolute path, giving the full address from the home directory. The second uses a relative path, giving only the address from the working directory. A full path always starts with a /. A relative path does not.
 
@@ -535,7 +531,7 @@ Over time, it will become easier for you to keep a mental note of the structure 
 
 ## Navigational shortcuts
 
-The root directory is the highest level directory in your file system and contains files that are important for your computer to perform its daily work. While you will be using the root (/) at the beginning of your absolute paths, it is important that you avoid working with data in these higher-level directories, as your commands can permanently alter files that the operating system needs to function. In many cases, trying to run commands in root directories will require special permissions which will be discussed later, so it’s best to avoid them and work within your home directory. Dealing with the home directory is very common. The tilde character, ~, is a shortcut for your home directory. In our case, the root directory is two levels above our home directory, so cd or cd ~ will take you to `/home/margeno` and cd `/` will take you to `/`. 
+The root directory is the highest level directory in your file system and contains files that are important for your computer to perform its daily work. While you will be using the root (/) at the beginning of your absolute paths, it is important that you avoid working with data in these higher-level directories, as your commands can permanently alter files that the operating system needs to function. In many cases, trying to run commands in root directories will require special permissions which will be discussed later, so it’s best to avoid them and work within your home directory. Dealing with the home directory is very common. The tilde character, ~, is a shortcut for your home directory. In our case, the root directory is two levels above our home directory, so cd or cd ~ will take you to `/home/exouser` and cd `/` will take you to `/`. 
 
 Navigate to the MarineGenomics directory:
 ```html
