@@ -12,7 +12,7 @@ output:
 
 # Week 1- Welcome!
 
-Welcome to Marine Genomics Spring 2022 at UC Davis!
+Welcome to Marine Genomics Spring 2022 at UC Davis!!!!!
 
 You will find the lecture for week one [here](https://github.com/BayLab/MarineGenomicsSemester/blob/main/ppt/MarineGenomics_Lecture1.pdf)
 
