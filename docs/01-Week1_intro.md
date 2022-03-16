@@ -14,7 +14,7 @@ output:
 
 Welcome to Marine Genomics Spring 2022 at UC Davis!
 
-You will find the lecture for week one [here](https://github.com/BayLab/MarineGenomicsSemester/blob/main/ppt/MarineGenomics_Lecture1.pdf)
+You will find the lecture for week one [here](https://github.com/BayLab/MarineGenomics2022/blob/main/ppt/MarGen22_Week1_intro.pdf)
 
 ## Introduction to shell computing via the data carpentry tutorial
 
