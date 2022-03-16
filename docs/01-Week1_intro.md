@@ -14,7 +14,7 @@ output:
 
 Welcome to Marine Genomics Spring 2022 at UC Davis!
 
-You will find the lecture for week one [here](https://github.com/BayLab/MarineGenomics2022/blob/main/ppt/MarGen22_Week1_intro.pdf)
+You will find the lecture for week one [here](https://github.com/BayLab/MarineGenomics2022/ppt/MarGen22_Week1_intro.pdf)
 
 ## Introduction to shell computing via the data carpentry tutorial
 
@@ -83,9 +83,11 @@ Once you've logged in you should be redirected to Jetstream2. You should now be 
 
 Click on course allocation box on the left. 
 
-
 <img src="./figs/jetstream/Fig6.png" width="100%" />
 
+&nbsp;
+
+It should take you to a page that looks like this:
 <img src="./figs/jetstream/Fig7.png" width="100%" />
 
 &nbsp;
@@ -197,7 +199,7 @@ $
 
 The dollar sign is a prompt, which shows us that the shell is waiting for input; your shell may use a different character as a prompt and may add information before the prompt. When typing commands, either from these lessons or from other sources, do not type the prompt, only the commands that follow it.
 
-Let’s find out where we are by running a command called **'pwd'** (which stands for “print working directory”). At any moment, our current working directory is our current default directory, i.e., the directory that the computer assumes we want to run commands in, unless we explicitly specify something else. Here, the computer’s response is /home/exouser, which is the top level directory within our cloud system:
+Let’s find out where we are by running a command called **`pwd`** (which stands for “print working directory”). At any moment, our current working directory is our current default directory, i.e., the directory that the computer assumes we want to run commands in, unless we explicitly specify something else. Here, the computer’s response is /home/exouser, which is the top level directory within our cloud system:
 
 Note: You should be able to directly copy and paste code from this webpage using: shift+control+V
 
@@ -228,7 +230,7 @@ $ ls
 ```html
 Desktop  Documents  Downloads  Music  Pictures  Public  Templates  Videos MarineGenomics
 ```
-The command to change locations in our file system is **cd**, followed by a directory name to change our working directory. cd stands for “change directory”.
+The command to change locations in our file system is **`cd`**, followed by a directory name to change our working directory. cd stands for “change directory”.
 
 Let’s say we want to navigate to the MarineGenomics directory we saw above. We can use the following command to get there:
 ```html
@@ -462,7 +464,7 @@ prints the contents of `/home`.
 > 3. Explore the options for `ls` to find out how to see hidden directories. List the contents of the directory and identify the name of the text file in that directory. 
 > Hint: hidden files and folders in Unix start with `.`, for example `.my_hidden_directory`
 
-<details><summary><span style="color: red;">Solution</span></summary>
+<details><summary><span style="color: orange;">Solution</span></summary>
 <p>
 
 ```html
@@ -532,7 +534,7 @@ Navigating practice
 > 2. Check that you are in the correct directory.
 > 3. From within the home direcroty, list the contents of the week1 directory.
 
-<details><summary><span style="color: red;">Solution</span></summary>
+<details><summary><span style="color: orange;">Solution</span></summary>
 <p>
 ```html
 $ cd

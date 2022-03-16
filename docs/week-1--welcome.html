@@ -326,7 +326,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="week-1--welcome" class="section level1 hasAnchor" number="2">
 <h1><span class="header-section-number">2</span> Week 1- Welcome!<a href="week-1--welcome.html#week-1--welcome" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Welcome to Marine Genomics Spring 2022 at UC Davis!</p>
-<p>You will find the lecture for week one <a href="https://github.com/BayLab/MarineGenomics2022/blob/main/ppt/MarGen22_Week1_intro.pdf">here</a></p>
+<p>You will find the lecture for week one <a href="https://github.com/BayLab/MarineGenomics2022/ppt/MarGen22_Week1_intro.pdf">here</a></p>
 <div id="introduction-to-shell-computing-via-the-data-carpentry-tutorial" class="section level2 hasAnchor" number="2.1">
 <h2><span class="header-section-number">2.1</span> Introduction to shell computing via the data carpentry tutorial<a href="week-1--welcome.html#introduction-to-shell-computing-via-the-data-carpentry-tutorial" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We will be following the data carpentry tutorial (Copyright 2016 @ Software Carpentry) “Introduction to the command line for genomics.” We have made some modifications to the data carpentry tutorial to fit our course.</p>
@@ -366,7 +366,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p> </p>
 <p>Click on course allocation box on the left.</p>
 <p><img src="figs/jetstream/Fig6.png" width="100%" /></p>
-<p><img src="figs/jetstream/Fig7.png" width="100%" /></p>
+<p> </p>
+<p>It should take you to a page that looks like this:
+<img src="figs/jetstream/Fig7.png" width="100%" /></p>
 <p> </p>
 <p>Once within the course allocation we can create our first instance. Go to the “Create” tab and select “instance.”</p>
 <p><img src="figs/jetstream/Fig8.png" width="100%" /></p>
@@ -431,7 +433,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Several commands are frequently used to create, inspect, rename, and delete files and directories.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb1-1"><a href="week-1--welcome.html#cb1-1" aria-hidden="true" tabindex="-1"></a>$</span></code></pre></div>
 <p>The dollar sign is a prompt, which shows us that the shell is waiting for input; your shell may use a different character as a prompt and may add information before the prompt. When typing commands, either from these lessons or from other sources, do not type the prompt, only the commands that follow it.</p>
-<p>Let’s find out where we are by running a command called <strong>‘pwd’</strong> (which stands for “print working directory”). At any moment, our current working directory is our current default directory, i.e., the directory that the computer assumes we want to run commands in, unless we explicitly specify something else. Here, the computer’s response is /home/exouser, which is the top level directory within our cloud system:</p>
+<p>Let’s find out where we are by running a command called <strong><code>pwd</code></strong> (which stands for “print working directory”). At any moment, our current working directory is our current default directory, i.e., the directory that the computer assumes we want to run commands in, unless we explicitly specify something else. Here, the computer’s response is /home/exouser, which is the top level directory within our cloud system:</p>
 <p>Note: You should be able to directly copy and paste code from this webpage using: shift+control+V</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb2-1"><a href="week-1--welcome.html#cb2-1" aria-hidden="true" tabindex="-1"></a>$ pwd</span></code></pre></div>
 <div class="sourceCode" id="cb3"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb3-1"><a href="week-1--welcome.html#cb3-1" aria-hidden="true" tabindex="-1"></a>/home/exouser</span></code></pre></div>
@@ -444,7 +446,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Check that it’s there with ls</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb7-1"><a href="week-1--welcome.html#cb7-1" aria-hidden="true" tabindex="-1"></a>$ ls</span></code></pre></div>
 <div class="sourceCode" id="cb8"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb8-1"><a href="week-1--welcome.html#cb8-1" aria-hidden="true" tabindex="-1"></a>Desktop  Documents  Downloads  Music  Pictures  Public  Templates  Videos MarineGenomics</span></code></pre></div>
-<p>The command to change locations in our file system is <strong>cd</strong>, followed by a directory name to change our working directory. cd stands for “change directory.”</p>
+<p>The command to change locations in our file system is <strong><code>cd</code></strong>, followed by a directory name to change our working directory. cd stands for “change directory.”</p>
 <p>Let’s say we want to navigate to the MarineGenomics directory we saw above. We can use the following command to get there:</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb9-1"><a href="week-1--welcome.html#cb9-1" aria-hidden="true" tabindex="-1"></a>$ cd MarineGenomics</span></code></pre></div>
 <div class="sourceCode" id="cb10"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb10-1"><a href="week-1--welcome.html#cb10-1" aria-hidden="true" tabindex="-1"></a>$ pwd</span></code></pre></div>
@@ -575,7 +577,7 @@ Hint: hidden files and folders in Unix start with <code>.</code>, for example <c
 </blockquote>
 <details>
 <summary>
-<span style="color: red;">Solution</span>
+<span style="color: orange;">Solution</span>
 </summary>
 <p>
 <div class="sourceCode" id="cb40"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb40-1"><a href="week-1--welcome.html#cb40-1" aria-hidden="true" tabindex="-1"></a>$ cd</span></code></pre></div>
@@ -618,7 +620,7 @@ Hint: hidden files and folders in Unix start with <code>.</code>, for example <c
 </blockquote>
 <details>
 <summary>
-<span style="color: red;">Solution</span>
+<span style="color: orange;">Solution</span>
 </summary>
 <p>
 <div class="sourceCode" id="cb47"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb47-1"><a href="week-1--welcome.html#cb47-1" aria-hidden="true" tabindex="-1"></a>$ cd</span>
