@@ -640,11 +640,13 @@ This prints the contents of your home directory, without you needing to type the
 
 The commands `cd`, and `cd ~` are very useful for quickly navigating back to your home directory. We will be using the ~ character in later lessons to specify our home directory.
 
+A quick guide for directories is: “/” = root dir, “~/”= home dir “./”= current dir
+
 ## Key Points
 
 + The /, ~, and .. characters represent important navigational shortcuts.
 
-+ Hidden files and directories start with . and can be viewed using ls -a.
++ Hidden files and directories start with . and can be viewed using "ls -a".
 
 + Relative paths specify a location starting from the current location, while absolute paths specify a location from the root of the file system.
 

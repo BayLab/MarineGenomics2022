@@ -5,3 +5,5 @@ language:
     chapter_name: ""
 output_dir: "docs"
 new_session: true
+rmd_files:
+  html: ["index.Rmd", "01-Week1_intro.Rmd"]
