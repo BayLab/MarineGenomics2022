@@ -17,7 +17,6 @@ examining-the-contents-of-other-directories
 full-vs-relative-paths
 navigational-shortcuts
 key-points
-creature-of-the-week
 week-2-working-with-files
 our-data-set-fastq-files
 wildcards
@@ -37,4 +36,3 @@ writing-scripts-and-working-with-data
 writing-files
 writing-scripts
 uploading-and-downloading-data-to-your-virtual-machine-with-scp---unix
-creature-of-the-week-1

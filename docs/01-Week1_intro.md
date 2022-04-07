@@ -650,6 +650,4 @@ A quick guide for directories is: “/” = root dir, “~/”= home dir “./�
 
 + Relative paths specify a location starting from the current location, while absolute paths specify a location from the root of the file system.
 
-## Creature of the Week!
 
-![Spirula spirula!](./figs/creatures/anglerfish.jpg)

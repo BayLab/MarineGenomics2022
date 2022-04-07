@@ -108,12 +108,12 @@ each result starts with `/`.
 > Do each of the following tasks from your current directory using a single
 > `ls` command for each:
 > 
-> 1.  List all of the files in `/usr/bin` that start with the letter 'c'.
-> 2.  List all of the files in `/usr/bin` that contain the letter 'a'. 
-> 3.  List all of the files in `/usr/bin` that end with the letter 'o'.
+> 1.  List all of the files in `/usr/bin` that start with the letter 'c'
+> 2.  List all of the files in `/usr/bin` that contain the letter 'a' 
+> 3.  List all of the files in `/usr/bin` that end with the letter 'o'
 >
 > Bonus: List all of the files in `/usr/bin` that contain the letter 'a' or the
-> letter 'c'.
+> letter 'c'
 > 
 > Hint: The bonus question requires a Unix wildcard that we haven't talked about
 > yet. Try searching the internet for information about Unix wildcards to find
@@ -137,7 +137,7 @@ each result starts with `/`.
 
 
 > ## Exercise
-> `echo` is a built-in shell command that writes its arguments, like a line of text to standard output. 
+> `echo` is a built-in shell command that writes its arguments, like a line of text to a standard output. 
 > The `echo` command can also be used with pattern matching characters, such as wildcard characters. 
 > Here we will use the `echo` command to see how the wildcard character is interpreted by the shell.
 > 
@@ -279,7 +279,8 @@ This will print out all of the contents of the `SRR098026.fastq` to the screen.
 
 > > ## Solution
 > > 1. The last line of the file is `C:CCC::CCCCCCCC<8?6A:C28C<608'&&&,'$`.
-> > 2. `cat ./MarineGenomicsData/Week2/untrimmed_fastq/*`
+> > 2a. `cd ~`
+> > 2b. `cat ./MarineGenomicsData/Week2/untrimmed_fastq/*`
 > 
 
 </p>
@@ -505,7 +506,7 @@ and change the file permissions so that we can read from, but not write to, the 
 
 First, let's make a copy of one of our FASTQ files using the `cp` command. 
 
-Navigate to the `~/data_week2/Week2/data_week2/untrimmed_fastq` directory and enter:
+Navigate to the `~/MarineGenomicsData/Week2/untrimmed_fastq` directory and enter:
 
 ```html
 $ cp SRR098026.fastq SRR098026-copy.fastq
@@ -655,7 +656,7 @@ you will be asked whether you want to override your permission settings (say yes
 
 > ## Exercise
 >
-> Starting in the `~/data_week2/Week2/data_week2/untrimmed_fastq/` directory, do the following:
+> Starting in the `~/MarineGenomicsData/Week2/untrimmed_fastq/` directory, do the following:
 > 1. Make sure that you have deleted your backup directory and all files it contains.  
 > 2. Create a backup of each of your FASTQ files using `cp`. (Note: You'll need to do this individually for each of the two FASTQ files. We haven't 
 > learned yet how to do this
@@ -1429,12 +1430,10 @@ $  scp local_file.txt UserName@cluster.address:/scratch/
 If you wanted to download data from your virtual machine, we would put the location of the folder within the virtual machine in the location of <file I want to move>
 
 ```html
-$  scp UserName@cluster.address:/scratch/VirtualMachine_file.txt /home/exouser/data_week2/Week2/data_week2/untrimmed_fastq/
+$  scp UserName@cluster.address:/scratch/VirtualMachine_file.txt /home/exouser/MarineGenomicsData/Week2/untrimmed_fastq/
 ```
 
 
 
-## Creature of the Week!
 
-![California Sheepshead Wrasse smiling for a photo!](./figs/creatures/sheepshead_wrasse.jpg)
 
