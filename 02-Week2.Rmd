@@ -15,16 +15,9 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Week 2-Working With Files
 
-Before we start we need to download our data. The data for each week will be in a .tar.gz file that we will uncompress into our MarineGenomics Directory.
+Welcome to week 2! In this session we will be going over more tools to help us navigate our file system, view and manipulate files, and write basic scripts with bash/unix. 
 
-```html
-$ cd /home/margeno/
-$ wget https://raw.githubusercontent.com/BayLab/MarineGenomicsData/main/week2_quarter.tar.gz
-
-# use tar to uncompress the file
-
-$ tar -xzvf week2_quarter.tar.gz
-```
+&nbsp;
 
 * Questions:
   + How can I view and search file contents?
@@ -36,11 +29,19 @@ $ tar -xzvf week2_quarter.tar.gz
   + Use wildcards (`*`) to perform operations on multiple files.
   + Make a file read only.
   + Use the `history` command to view and repeat recently used commands.
-* Keypoints:
-  + You can view file contents using `less`, `cat`, `head` or `tail`.
-  + The commands `cp`, `mv`, and `mkdir` are useful for manipulating existing files and creating new directories.
-  + You can view file permissions using `ls -l` and change permissions using `chmod`.
-  + The `history` command and the up arrow on your keyboard can be used to repeat recently used commands.
+
+&nbsp;
+  
+Before we start we need to download our data. The data for each week will be in a .tar.gz file that we will uncompress into our MarineGenomics Directory.
+
+```html
+$ cd /home/exouser/
+$ wget https://raw.githubusercontent.com/BayLab/MarineGenomicsData/main/week2_quarter.tar.gz
+
+# use tar to uncompress the file
+
+$ tar -xzvf week2_quarter.tar.gz
+```
 
 ## Our data set: FASTQ files
 
@@ -54,7 +55,7 @@ Navigate to your `untrimmed_fastq` directory:
 
 
 ```html
-$ cd ~/data_week2/Week2/data_week2/untrimmed_fastq
+$ cd ~/MarineGenomicsData/Week2/untrimmed_fastq
 ```
 
 
@@ -71,7 +72,7 @@ SRR097977.fastq  SRR098026.fastq
 ```
 
 
-The `*` character is a special type of character called a wildcard, which can be used to represent any number of any type of character. 
+The `*` character is a special type of character called a wildcard, which can be used to represent any type of character. 
 Thus, `*.fastq` matches every file that ends with `.fastq`. 
 
 This command: 
@@ -96,7 +97,8 @@ $ ls /usr/bin/*.sh
 
 
 ```html
-/usr/bin/gettext.sh  /usr/bin/rescan-scsi-bus.sh
+/usr/bin/gettext.sh  /usr/bin/nvidia-bug-report.sh  /usr/bin/rescan-scsi-bus.sh
+
 ```
 
 
@@ -108,12 +110,12 @@ each result starts with `/`.
 > Do each of the following tasks from your current directory using a single
 > `ls` command for each:
 > 
-> 1.  List all of the files in `/usr/bin` that start with the letter 'c'.
-> 2.  List all of the files in `/usr/bin` that contain the letter 'a'. 
-> 3.  List all of the files in `/usr/bin` that end with the letter 'o'.
+> 1.  List all of the files in `/usr/bin` that start with the letter 'c'
+> 2.  List all of the files in `/usr/bin` that contain the letter 'a' 
+> 3.  List all of the files in `/usr/bin` that end with the letter 'o'
 >
 > Bonus: List all of the files in `/usr/bin` that contain the letter 'a' or the
-> letter 'c'.
+> letter 'c'
 > 
 > Hint: The bonus question requires a Unix wildcard that we haven't talked about
 > yet. Try searching the internet for information about Unix wildcards to find
@@ -134,6 +136,7 @@ each result starts with `/`.
 </p>
 </details>
 &nbsp;
+
 
 > ## Exercise
 > `echo` is a built-in shell command that writes its arguments, like a line of text to standard output. 
@@ -160,7 +163,6 @@ each result starts with `/`.
 <details><summary><span style="color: orange;">Solution</span></summary>
 <p>
 
-
 > > ## Solution
 > > ```html
 > > $ echo *.missing
@@ -180,9 +182,7 @@ each result starts with `/`.
 > > ```html
 > > ls: cannot access '*.missing': No such file or directory
 > > ```
-> > 
-> > 
-> 
+>
 
 </p>
 </details>
@@ -251,11 +251,11 @@ For more information on advanced usage of `history`, read section 9.3 of
 
 ## Examining Files
 
-We now know how to switch directories, run programs, and look at the
+We now know how to switch directories, run commands, and look at the
 contents of directories, but how do we look at the contents of files?
 
 One way to examine a file is to print out all of the
-contents using the program `cat`. 
+contents using the command `cat`. 
 
 Enter the following command from within the `untrimmed_fastq` directory: 
 
@@ -269,10 +269,10 @@ This will print out all of the contents of the `SRR098026.fastq` to the screen.
 
 > ## Exercise
 > 
-> 1. Print out the contents of the `~/data_week2/Week2/data_week2/untrimmed_fastq/SRR097977.fastq` file. What is the last line of the file? 
+> 1. Print out the contents of the `./MarineGenomicsData/Week2/untrimmed_fastq/SRR097977.fastq` file. What is the last line of the file? 
 > 2.  From your home directory, and without changing directories,
 > use one short command to print the contents of all of the files in
-> the `./data_week2/Week2/data_week2/untrimmed_fastq` directory.
+> the `./MarineGenomicsData/Week2/untrimmed_fastq` directory.
 > 
 
 <details><summary><span style="color: orange;">Solution</span></summary>
@@ -281,17 +281,16 @@ This will print out all of the contents of the `SRR098026.fastq` to the screen.
 
 > > ## Solution
 > > 1. The last line of the file is `C:CCC::CCCCCCCC<8?6A:C28C<608'&&&,'$`.
-> > 2. `cat ./data_week2/Week2/data_week2/untrimmed_fastq/*`
+> > 2. `cat ./MarineGenomicsData/Week2/untrimmed_fastq/*`
 > 
 
 </p>
 </details>
 &nbsp;
 
-`cat` is a terrific program, but when the file is really big, it can
+`cat` is a terrific command, but when the file is really big, it can
 be annoying to use. The program, `less`, is useful for this
-case. `less` opens the file as read only, and lets you navigate through it. The navigation commands
-are identical to the `man` program.
+case. `less` opens the file as read only, and lets you navigate through it. 
 
 Enter the following command:
 
@@ -317,8 +316,7 @@ that word is found.
 
 **Shortcut:** If you hit "/" then "enter", `less` will  repeat
 the previous search. `less` searches from the current location and
-works its way forward. Scroll up a couple lines on your terminal to verify
-you are at the beginning of the file. Note, if you are at the end of the file and search
+works its way forward. Note, if you are at the end of the file and search
 for the sequence "CAA", `less` will not find it. You either need to go to the
 beginning of the file (by typing `g`) and search again using `/` or you
 can use `?` to search backwards in the same way you used `/` previously.
@@ -331,7 +329,7 @@ return, you will search backwards and move up the file to previous examples of t
 
 > ## Exercise
 >
-> What are the next three nucleotides (characters) after the first instance of the sequence quoted above?
+> What are the next three nucleotides (characters) after the first instance of 'TTTTT'?
 > 
 
 <details><summary><span style="color: orange;">Solution</span></summary>
@@ -345,7 +343,7 @@ return, you will search backwards and move up the file to previous examples of t
 </details>
 &nbsp;
 
-Remember, the `man` program actually uses `less` internally and
+Remember, the `man` command actually uses `less` internally and
 therefore uses the same commands, so you can search documentation
 using "/" as well!
 
@@ -450,9 +448,7 @@ NNNNNNNNNNNNNNNNCNNNNNNNNNNNNNNNNNN
 All but one of the nucleotides in this read are unknown (`N`). This is a pretty bad read!
 
 Line 4 shows the quality for each nucleotide in the read. Quality is interpreted as the 
-probability of an incorrect base call (e.g. 1 in 10) or, equivalently, the base call 
-accuracy (e.g. 90%). To make it possible to line up each individual nucleotide with its quality
-score, the numerical score is converted into a code where each individual character 
+probability of an incorrect base call. To make it possible to line up each individual nucleotide with its quality score, the numerical score is converted into a code where each character 
 represents the numerical quality score for an individual nucleotide. For example, in the line
 above, the quality score line is: 
 
@@ -477,12 +473,8 @@ Quality encoding: !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJK
 Quality score:    0........10........20........30........40..                          
 ```
 
-
-Each quality score represents the probability that the corresponding nucleotide call is
-incorrect. This quality score is logarithmically based, so a quality score of 10 reflects a
+This quality score is logarithmically based, so a quality score of 10 reflects a
 base call accuracy of 90%, but a quality score of 20 reflects a base call accuracy of 99%. 
-These probability values are the results from the base calling algorithm and dependent on how 
-much signal was captured for the base incorporation. 
 
 Looking back at our read: 
 
@@ -494,7 +486,7 @@ NNNNNNNNNNNNNNNNCNNNNNNNNNNNNNNNNNN
 ```
 
 
-we can now see that the quality of each of the `N`s is 0 and the quality of the only
+We can now see that the quality of each of the `N`s is 0 and the quality of the only
 nucleotide call (`C`) is also very poor (`#` = a quality score of 2). This is indeed a very
 bad read. 
 
@@ -510,12 +502,12 @@ of those files. In cases like this, it's much faster to do these operations at t
 ### Copying Files
 
 When working with computational data, it's important to keep a safe copy of that data that can't be accidentally overwritten or deleted. 
-For this lesson, our raw data is our FASTQ files.  We don't want to accidentally change the original files, so we'll make a copy of them
+For this lesson, that would be our raw data is our FASTQ files.  We don't want to accidentally change the original files, so we'll make a copy of them
 and change the file permissions so that we can read from, but not write to, the files.
 
 First, let's make a copy of one of our FASTQ files using the `cp` command. 
 
-Navigate to the `~/data_week2/Week2/data_week2/untrimmed_fastq` directory and enter:
+Navigate to the `~/MarineGenomicsData/Week2/untrimmed_fastq` directory and enter:
 
 ```html
 $ cp SRR098026.fastq SRR098026-copy.fastq
@@ -524,7 +516,7 @@ $ ls -F
 
 
 ```html
-SRR097977.fastq  SRR098026-copy.fastq  SRR098026.fastq
+SRR097977.fastq*  SRR098026-copy.fastq*  SRR098026.fastq*
 ```
 
 
@@ -585,7 +577,8 @@ $ ls -l
 
 
 ```html
--rw-rw-r-- 1 margeno margeno 43K Apr 6 12:15 SRR098026-backup.fastq
+-rwxrwxr-x 1 exouser exouser 43332 Mar 25 01:23 SRR098026-backup.fastq
+
 ```
 
 
@@ -593,13 +586,14 @@ The first part of the output for the `-l` flag gives you information about the f
 permissions list. The first character in this list is related to file type, not permissions, so we'll ignore it for now. The next three
 characters relate to the permissions that the file owner has, the next three relate to the permissions for group members, and the final
 three characters specify what other users outside of your group can do with the file. We're going to concentrate on the three positions
-that deal with your permissions (as the file owner). 
+that deal with your permissions (as the file user). 
 
-![Permissions breakdown](./figs/fig_week2/rwx_figure.png)
+![Permissions breakdown](./figs/fig_week2/rwx_fig.png)
+Figure by [Mary Brent](https://www.guru99.com/file-permissions.html)
 
-Here the three positions that relate to the file owner are `rw-`. The `r` means that you have permission to read the file, the `w` 
-indicates that you have permission to write to (i.e. make changes to) the file, and the third position is a `-`, indicating that you 
-don't have permission to carry out the ability encoded by that space (this is the space where `x` or executable ability is stored, we'll 
+
+Here the three positions that relate to the file user/owner are `rwx`. The `r` means that you have permission to read the file, the `w` 
+indicates that you have permission to write to (i.e. make changes to) the file, and the third position is `x`, indicating that you have permission to carry out the ability encoded by that space (this is the space where `x` or executable ability is stored, we'll 
 talk more about this in [a later lesson](http://www.datacarpentry.org/shell-genomics/05-writing-scripts/)).
 
 Our goal for now is to change permissions on this file so that you no longer have `w` or write permissions. We can do this using the `chmod` (change mode) command and subtracting (`-`) the write permission `-w`. 
@@ -610,14 +604,18 @@ $ ls -l
 ```
 
 ```html
--r--r--r-- 1 dcuser dcuser 43332 Nov 15 23:02 SRR098026-backup.fastq
+-r-xr-xr-x 1 exouser exouser 43332 Mar 25 01:23 SRR098026-backup.fastq
 ```
 
-Chmod can also change the permission to only the user (u), group (g), and/or other (o). Let's add reading (r), writing (x), and execute (x) permissions to user group.
+Chmod can also change the permission to only the user (u), group (g), and/or other (o). Let's add reading (r), writing (x), and execute (x) permissions to group owners (because coding is better with friends!).
 
 ```html
-$ chmod u=rwx SRR098026-backup.fastq
+$ chmod g=rwx SRR098026-backup.fastq
 $ ls -l 
+```
+
+```html
+-r-xrwxr-x 1 exouser exouser 43332 Mar 25 01:23 SRR098026-backup.fastq
 ```
 
 ### Removing
@@ -655,11 +653,11 @@ $ rm -r backup
 
 
 This will delete not only the directory, but all files within the directory. If you have write-protected files in the directory, 
-you will be asked whether you want to override your permission settings. 
+you will be asked whether you want to override your permission settings (say yes here).
 
 > ## Exercise
 >
-> Starting in the `~/data_week2/Week2/data_week2/untrimmed_fastq/` directory, do the following:
+> Starting in the `~/MarineGenomicsData/Week2/untrimmed_fastq/` directory, do the following:
 > 1. Make sure that you have deleted your backup directory and all files it contains.  
 > 2. Create a backup of each of your FASTQ files using `cp`. (Note: You'll need to do this individually for each of the two FASTQ files. We haven't 
 > learned yet how to do this
@@ -691,8 +689,16 @@ you will be asked whether you want to override your permission settings.
 </details>
 &nbsp;
 
+Now you have the ability to edit and explore your directories, and manipulate the files within them!
 
-## Redirections
+* Part 1 Keypoints:
+  + You can view file contents using `less`, `cat`, `head` or `tail`.
++ The commands `cp`, `mv`, `rm`` and `mkdir` are useful for manipulating existing files and creating new directories.
++ You can view file permissions using `ls -l` and change permissions using `chmod`.
++ The `history` command and the up arrow on your keyboard can be used to repeat recently used commands.
+
+
+## Searching within, editing, and redirecting files
 
 * Questions:
   + How can I search within files?
@@ -701,25 +707,15 @@ you will be asked whether you want to override your permission settings.
   + Employ the `grep` command to search for information within files.
   + Print the results of a command to a file.
   + Construct command pipelines with two or more stages.
-  + Use `for` loops to run the same command for several input files.
-* Keypoints:
-  + `grep` is a powerful search tool with many options for customization.
-  + `>`, `>>`, and `|` are different ways of redirecting output.
-  + `command > file` redirects a command's output to a file.
-  + `command >> file` redirects a command's output to a file without overwriting the existing contents of the file.
-  + `command_1 | command_2` redirects the output of the first command as input to the second command.
-  + `for` loops are used for iteration.
-  + `basename` gets rid of repetitive parts of names.
+
 
 ## Searching files
 
-We discussed in a previous episode how to search within a file using `less`. We can also
+In addition to `less`, we can also
 search within files without even opening them, using `grep`. `grep` is a command-line
 utility for searching plain-text files for lines matching a specific set of 
-characters (sometimes called a string) or a particular pattern 
-(which can be specified using something called regular expressions). We're not going to work with 
-regular expressions in this lesson, and are instead going to specify the strings 
-we are searching for.
+characters (sometimes called a string).
+
 Let's give it a try!
 
 > ### Nucleotide abbreviations
@@ -736,7 +732,7 @@ We'll search for strings inside of our fastq files. Let's first make sure we are
 directory:
 
 ```html
-$ cd ~/data_week2/Week2/data_week2/untrimmed_fastq
+$ cd ~/MarineGenomicsData/Week2/data_week2/untrimmed_fastq
 ```
 
 
@@ -762,7 +758,7 @@ $ grep NNNNNNNNNN SRR098026.fastq
 This command returns a lot of output to the terminal. Every single line in the SRR098026 
 file that contains at least 10 consecutive Ns is printed to the terminal, regardless of how long or short the file is. 
 We may be interested not only in the actual sequence which contains this string, but 
-in the name (or identifier) of that sequence. We discussed in a previous lesson 
+in the name (or identifier) of that sequence. We discussed previously
 that the identifier line immediately precedes the nucleotide sequence for each read
 in a FASTQ file. We may also want to inspect the quality scores associated with
 each of these reads. To get all of this information, we will return the line 
@@ -860,24 +856,25 @@ The command for redirecting output to a file is `>`.
 
 Let's try out this command and copy all the records (including all four lines of each record) 
 in our FASTQ files that contain 
-'NNNNNNNNNN' to another file called `bad_reads.txt`.
+'NNNNNNNNNN' to another file called `bad_reads.fastq`.
+
+```html
+$ grep -B1 -A2 NNNNNNNNNN SRR098026.fastq > bad_reads.fastq
+```
+
+> ### File extensions
+> 
+> In the code above, we have saved the bad reads as a FASTQ file, which may seem like the obvious file extension as
+> it will be holding FASTQ formatted data that we're extracting from our FASTQ files. But as we proceed with the exercises, we will be working with the exact same file, which we will now 
+> save as a `.txt` file. This will still be a FASTQ file even though it does not have a  
+> name with a `.fastq` extension. We are doing this as using a `.fastq` extension will lead us to problems
+> when we move to using wildcards later in this episode. We'll point out where this becomes
+> important. For now, it's good that we're thinking about file extensions! 
+> 
 
 ```html
 $ grep -B1 -A2 NNNNNNNNNN SRR098026.fastq > bad_reads.txt
 ```
-
-
-> ### File extensions
-> 
-> You might be confused about why we're naming our output file with a `.txt` extension. After all,
-> it will be holding FASTQ formatted data that we're extracting from our FASTQ files. Won't it 
-> also be a FASTQ file? The answer is, yes - it will be a FASTQ file and it would make sense to 
-> name it with a `.fastq` extension. However, using a `.fastq` extension will lead us to problems
-> when we move to using wildcards later in this episode. We'll point out where this becomes
-> important. For now, it's good that you're thinking about file extensions! 
-> 
-
-
 
 The prompt should sit there a little bit, and then it should look like nothing
 happened. But type `ls`. You should see a new file called `bad_reads.txt`. 
@@ -887,8 +884,7 @@ We can check the number of lines in our new file using a command called `wc`.
 in a file. The FASTQ file may change over time, so given the potential for updates, 
 make sure your file matches your instructor's output. 
 
-As of Sept. 2020, wc gives the following output:  
-
+'wc' gives the following output:  
 
 
 ```html
@@ -1076,10 +1072,9 @@ reads that we've found. We created the files to store the reads and then counted
 the file to see how many reads matched our criteria. There's a way to do this, however, that
 doesn't require us to create these intermediate files - the pipe command (`|`).
 
-What `|` does is take the output that is scrolling by on the terminal and uses that output as input to another command. 
-When our output was scrolling by, we might have wished we could slow it down and
-look at it, like we can with `less`. Well it turns out that we can! We can redirect our output
-from our `grep` call through the `less` command.
+What `|` does is take the output of that command and immediately uses it as an input to another command. 
+Maybe our goal is to just look at an output of a grep command, so instead of typing a `grep` command and then subsequently typing `less`, we can save time and effort by piping them together!
+Here we redirect our output from our `grep` call through the `less` command.
 
 ```html
 $ grep -B1 -A2 NNNNNNNNNN SRR098026.fastq | less
@@ -1153,13 +1148,6 @@ character matching the beginning of the line, and the pattern has to be enclose 
 not interpret the pattern as an extended option (starting with --).
 
 
-> ### Custom `grep` control
-> 
-> Use `man grep` to read more about other options to customize the output of `grep` including extended options, 
-> anchoring characters, and much more.
-> 
-
-
 Redirecting output is often not intuitive, and can take some time to get used to. Once you're 
 comfortable with redirection, however, you'll be able to combine any number of commands to
 do all sorts of exciting things with your data!
@@ -1170,201 +1158,15 @@ them together, you can do some really powerful things very
 efficiently. 
 
 
-
-
-## Writing for loops
-
-Loops are key to productivity improvements through automation as they allow us to execute commands repeatedly. 
-Similar to wildcards and tab completion, using loops also reduces the amount of typing (and typing mistakes). 
-Loops are helpful when performing operations on groups of sequencing files, such as unzipping or trimming multiple
-files. We will use loops for these purposes in subsequent analyses, but will cover the basics of them for now.
-
-When the shell sees the keyword `for`, it knows to repeat a command (or group of commands) once for each item in a list. 
-Each time the loop runs (called an iteration), an item in the list is assigned in sequence to the **variable**, and 
-the commands inside the loop are executed, before moving on to the next item in the list. Inside the loop, we call for 
-the variable's value by putting `$` in front of it. The `$` tells the shell interpreter to treat the **variable**
-as a variable name and substitute its value in its place, rather than treat it as text or an external command. In shell programming, this is usually called "expanding" the variable.
-
-Sometimes, we want to expand a variable without any whitespace to its right.
-Suppose we have a variable named `foo` that contains the text `abc`, and would
-like to expand `foo` to create the text `abcEFG`.
-
-```html
-$ foo=abc
-$ echo foo is $foo
-foo is abc
-$ echo foo is $fooEFG      # doesn't work
-foo is
-```
-
-
-The interpreter is trying to expand a variable named `fooEFG`, which (probably)
-doesn't exist. We can avoid this problem by enclosing the variable name in 
-braces (`{` and `}`, sometimes called "squiggle braces"). `bash` treats the `#`
-character as a comment character. Any text on a line after a `#` is ignored by
-bash when evaluating the text as code.
-
-```html
-$ foo=abc
-$ echo foo is $foo
-foo is abc
-$ echo foo is ${foo}EFG      # now it works!
-foo is abcEFG
-```
-
-
-Let's write a for loop to show us the first two lines of the fastq files we downloaded earlier. You will notice the shell prompt changes from `$` to `>` and back again as we were typing in our loop. The second prompt, `>`, is different to remind us that we haven’t finished typing a complete command yet. A semicolon, `;`, can be used to separate two commands written on a single line.
-
-```html
-$ cd ~/data_week2/Week2/data_week2/untrimmed_fastq
-```
-
-
-```html
-$ for filename in *.fastq
-> do
-> head -n 2 ${filename}
-> done
-```
-
-
-The for loop begins with the formula `for <variable> in <group to iterate over>`. In this case, the word `filename` is designated 
-as the variable to be used over each iteration. In our case `SRR097977.fastq` and `SRR098026.fastq` will be substituted for `filename` 
-because they fit the pattern of ending with .fastq in the directory we've specified. The next line of the for loop is `do`. The next line is 
-the code that we want to execute. We are telling the loop to print the first two lines of each variable we iterate over. Finally, the
-word `done` ends the loop.
-
-After executing the loop, you should see the first two lines of both fastq files printed to the terminal. Let's create a loop that 
-will save this information to a file.
-
-```html
-$ for filename in *.fastq
-> do
-> head -n 2 ${filename} >> seq_info.txt
-> done
-```
-
-
-When writing a loop, you will not be able to return to previous lines once you have pressed Enter. Remember that we can cancel the current command using
-
-- <kbd>Ctrl</kbd>+<kbd>C</kbd>
-
-If you notice a mistake that is going to prevent your loop for executing correctly.
-
-Note that we are using `>>` to append the text to our `seq_info.txt` file. If we used `>`, the `seq_info.txt` file would be rewritten
-every time the loop iterates, so it would only have text from the last variable used. Instead, `>>` adds to the end of the file.
-
-## Using Basename in for loops
-Basename is a function in UNIX that is helpful for removing a uniform part of a name from a list of files. In this case, we will use basename to remove the `.fastq` extension from the files that we’ve been working with. 
-
-```html
-$ basename SRR097977.fastq .fastq
-```
-
-
-We see that this returns just the SRR accession, and no longer has the .fastq file extension on it.
-
-```html
-SRR097977
-```
-
-
-If we try the same thing but use `.fasta` as the file extension instead, nothing happens. This is because basename only works when it exactly matches a string in the file.
-
-```html
-$ basename SRR097977.fastq .fasta
-```
-
-
-```html
-SRR097977.fastq
-```
-
-
-Basename is really powerful when used in a for loop. It allows to access just the file prefix, which you can use to name things. Let's try this.
-
-Inside our for loop, we create a new name variable. We call the basename function inside the parenthesis, then give our variable name from the for loop, in this case `${filename}`, and finally state that `.fastq` should be removed from the file name. It’s important to note that we’re not changing the actual files, we’re creating a new variable called name. The line > echo $name will print to the terminal the variable name each time the for loop runs. Because we are iterating over two files, we expect to see two lines of output.
-
-```html
-$ for filename in *.fastq
-> do
-> name=$(basename ${filename} .fastq)
-> echo ${name}
-> done
-```
-
-<details><summary>Exercise</summary>
-<p>
-
-
-> ### Exercise
->
-> Print the file prefix of all of the `.txt` files in our current directory.
-
-<details><summary><span style="color: orange;">Solution</span></summary>
-<p>
-
->
->> ### Solution
->>  
->>
->> ```html
->> $ for filename in *.txt
->> > do
->> > name=$(basename ${filename} .txt)
->> > echo ${name}
->> > done
->> ```
->> 
->>
-> 
-
-</p>
-</details>
 &nbsp;
 
-
-One way this is really useful is to move files. Let's rename all of our .txt files using `mv` so that they have the years on them, which will document when we created them. 
-
-```html
-$ for filename in *.txt
-> do
-> name=$(basename ${filename} .txt)
-> mv ${filename}  ${name}_2019.txt
-> done
-```
-
-<details><summary>Exercise</summary>
-<p>
-
-> ### Exercise
->
-> Remove `_2019` from all of the `.txt` files. 
->
-
-
-<details><summary><span style="color: orange;">Solution</span></summary>
-<p>
-
->> ### Solution
->>  
->>
->> ```html
->> $ for filename in *_2019.txt
->> > do
->> > name=$(basename ${filename} _2019.txt)
->> > mv ${filename} ${name}.txt
->> > done
->> ```
->> 
->>
-> 
-
-</p>
-</details>
-&nbsp;
-
-
+* Keypoints:
+  + `grep` is a powerful search tool with many options for customization.
+  + `>`, `>>`, and `|` are different ways of redirecting output.
+  + `command > file` redirects a command's output to a file.
+  + `command >> file` redirects a command's output to a file without overwriting the existing contents of the file.
+  + `command_1 | command_2` redirects the output of the first command as input to the second command.
+  
 </p>
 </details>
 &nbsp;
@@ -1378,9 +1180,7 @@ $ for filename in *.txt
   + Write a basic shell script.
   + Use the `bash` command to execute a shell script.
   + Use `chmod` to make a script an executable program.
-* Keypoints:
-  + Scripts are a collection of commands executed together.
-  + Transferring information to and from virtual and local computers.
+
 
 <script language="javascript" type="text/javascript">
 function set_page_view_defaults() {
@@ -1407,22 +1207,22 @@ window.onload = set_page_view_defaults;
 
 We've been able to do a lot of work with files that already exist, but what if we want to write our own files? We're not going to type in a FASTA file, but we'll see as we go through other tutorials, there are a lot of reasons we'll want to write a file, or edit an existing file.
 
-To add text to files, we're going to use a text editor called Nano. We're going to create a file to take notes about what we've been doing with the data files in `~/data_week2/Week2/data_week2/untrimmed_fastq`.
+To add text to files, we're going to use a text editor called Nano. We're going to create a file to take notes about what we've been doing with the data files.
 
 This is good practice when working in bioinformatics. We can create a file called `README.txt` that describes the data files in the directory or documents how the files in that directory were generated.  As the name suggests, it's a file that we or others should read to understand the information in that directory.
 
-Let's change our working directory to `~/data_week2/Week2/data_week2/untrimmed_fastq` using `cd`,
+Let's change our working directory to `~/MarineGenomicsData/Week2/untrimmed_fastq` using `cd`,
 then run `nano` to create a file called `README.txt`:
 
 ```html
-$ cd ~/data_week2/Week2/data_week2/untrimmed_fastq
+$ cd ~/MarineGenomicsData/Week2/untrimmed_fastq
 $ nano README.txt
 ```
 
 
 You should see something like this: 
 
-![nano201711.png](./figs/img_week2/nano201711.png)
+![](./figs/img_week2/nano.png)
 
 The text at the bottom of the screen shows the keyboard shortcuts for performing various tasks in `nano`. We will talk more about how to interpret this information soon.
 
@@ -1448,17 +1248,14 @@ The text at the bottom of the screen shows the keyboard shortcuts for performing
 >
 > No matter what editor you use, you will need to know where it searches
 > for and saves files. If you start it from the shell, it will (probably)
-> use your current working directory as its default location. If you use
-> your computer's start menu, it may want to save files in your desktop or
-> documents directory instead. You can change this by navigating to
-> another directory the first time you "Save As..."
+> use your current working directory as its default location. 
 
 </p>
 </details>
 &nbsp;
 
 Let's type in a few lines of text. Describe what the files in this
-directory are or what you've been doing with them.
+directory are, what you've been doing with them, what date you created/edited them.
 Once we're happy with our text, we can press <kbd>Ctrl</kbd>-<kbd>O</kbd> (press the <kbd>Ctrl</kbd> or <kbd>Control</kbd> key and, while
 holding it down, press the <kbd>O</kbd> key) to write our data to disk. You'll be asked what file we want to save this to:
 press <kbd>Return</kbd> to accept the suggested default of `README.txt`.
@@ -1470,8 +1267,8 @@ return to the shell.
 >
 > The Control key is also called the "Ctrl" key. There are various ways
 > in which using the Control key may be described. For example, you may
-> see an instruction to press the <kbd>Ctrl</kbd> key and, while holding it down,
-> press the <kbd>X</kbd> key, described as any of:
+> see an instruction to exit as pressing the <kbd>Ctrl</kbd> key and
+> the <kbd>X</kbd> key, described as any of:
 >
 > * `Control-X`
 > * `Control+X`
@@ -1485,7 +1282,7 @@ return to the shell.
 > file.
 
 
-Now you've written a file. You can take a look at it with `less` or `cat`, or open it up again and edit it with `nano`.
+Now you've written a file! You can take a look at it with `less` or `cat`, or open it up again and edit it with `nano`.
 
 
 <details><summary>Exercise</summary>
@@ -1493,7 +1290,7 @@ Now you've written a file. You can take a look at it with `less` or `cat`, or op
 
 > ### Exercise
 >
-> Open `README.txt` and add the date to the top of the file and save the file. 
+> Open `README.txt` and at the bottom add a song title from your ideal 'coding playlist' and save the file. 
 >
 
 <details><summary><span style="color: orange;">Solution</span></summary>
@@ -1502,7 +1299,7 @@ Now you've written a file. You can take a look at it with `less` or `cat`, or op
 > > ### Solution
 > > 
 > > Use `nano README.txt` to open the file.  
-> > Add today's date and then use <kbd>Ctrl</kbd>-<kbd>X</kbd> followed by `y` and <kbd>Enter</kbd> to save.
+> > Add your song and then use <kbd>Ctrl</kbd>-<kbd>X</kbd> followed by `y` and <kbd>Enter</kbd> to save.
 > >
 > 
 >
@@ -1556,32 +1353,6 @@ $ bash bad-reads-script.sh
 It will look like nothing happened, but now if you look at `scripted_bad_reads.txt`, you can see that there are now reads in the file.
 
 
-<details><summary>Exercise</summary>
-<p>
-
-> ### Exercise
->
-> We want the script to tell us when it's done.  
-> 1. Open `bad-reads-script.sh` and add the line `echo "Script finished!"` after the `grep` command and save the file.  
-> 2. Run the updated script.
->
-
-<details><summary><span style="color: orange;">Solution</span></summary>
-<p>
-
-> > ### Solution
-> > 
-> >    ```
-> >   $ bash bad-reads-script.sh
-> >   Script finished!
-> >   ```
-> >
-> 
-
-</p>
-</details>
-&nbsp;
-
 </p>
 </details>
 &nbsp;
@@ -1600,7 +1371,7 @@ $ ls -l bad-reads-script.sh
 
 
 ```html
--rw-rw-r-- 1 margeno margeno 75 Apr  8 12:46 bad-reads-script.sh
+-rw-rw-r-- 1 exouser exouser 75 Apr  8 12:46 bad-reads-script.sh
 ```
 
 
@@ -1622,7 +1393,7 @@ $ ls -l bad-reads-script.sh
 
 
 ```html
--rwxrwxr-x 1 margeno margeno 75 Apr  8 12:48 bad-reads-script.sh
+-rwxrwxr-x 1 exouser exouser 75 Apr  8 12:48 bad-reads-script.sh
 ```
 
 
@@ -1639,81 +1410,6 @@ The script should run the same way as before, but now we've created our very own
 &nbsp;
 
 
-## Moving and Downloading Data
-
-Below we'll show you some commands to download data onto your instance, or to move data between your computer and the cloud.
-
-### Getting data from the cloud
-
-There are two programs that will download data from a remote server to your local
-(or remote) machine: ``wget`` and ``curl``. They were designed to do slightly different
-tasks by default, so you'll need to give the programs somewhat different options to get
-the same behaviour, but they are mostly interchangeable.
-
- - ``wget`` is short for "world wide web get", and it's basic function is to *download*
- web pages or data at a web address.
-
- - ``cURL`` is a pun, it is supposed to be read as "see URL", so its basic function is
- to *display* webpages or data at a web address.
-
-Which one you need to use mostly depends on your operating system, as most computers will
-only have one or the other installed by default.
-
-Today we will use wget to download some data from Ensembl.
-
-
-<details><summary>Exercise</summary>
-<p>
-
-Before we can start our download, we need to know whether we're using ``curl`` or ``wget``.
-
-To see which program you have, type:
- 
-```html
-$ which curl
-$ which wget
-```
-
-
-``which`` is a BASH program that looks through everything you have
-installed, and tells you what folder it is installed to. If it can't
-find the program you asked for, it returns nothing, i.e. gives you no
-results.
-
-On Mac OSX, you'll likely get the following output:
-
-
-```html
-$ which wget
-```
-
-
-```html
-$ /usr/bin/wget
-```
-
-Once you know whether you have ``curl`` or ``wget``, use one of the
-following commands to download the file:
-
-</p>
-</details>
-&nbsp;
-
-
-```html
-$ cd
-$ wget ftp://ftp.ensemblgenomes.org/pub/release-37/bacteria/species_EnsemblBacteria.txt
-```
-
-Let's see if the file from ensembl downloaded
-
-```html
-ls species_EnsemblBacteria.txt
-```
-
-it did!
-
-
 ### Uploading and Downloading Data to your Virtual Machine with scp - UNIX
 
 This section is for your general knowledge.
@@ -1726,7 +1422,7 @@ and use it to copy a single file:
 scp <file I want to move> <where I want to move it>
 ```
 
-In terminal,you can use the `scp` command to upload a file (e.g. local_file.txt) to the cluster home directory:
+In terminal, you can use the `scp` command to upload a file (e.g. local_file.txt) to the cluster home directory:
 
 ```html
 $  scp local_file.txt UserName@cluster.address:/scratch/
@@ -1735,105 +1431,9 @@ $  scp local_file.txt UserName@cluster.address:/scratch/
 If you wanted to download data from your virtual machine, we would put the location of the folder within the virtual machine in the location of <file I want to move>
 
 ```html
-$  scp UserName@cluster.address:/scratch/VirtualMachine_file.txt /home/margeno/data_week2/Week2/data_week2/untrimmed_fastq/
+$  scp UserName@cluster.address:/scratch/VirtualMachine_file.txt /home/exouser/MarineGenomicsData/Week2/untrimmed_fastq/
 ```
 
-## Awk
-
-`Awk` is a fast and versatile pattern matching programming language. `Awk` can do the same tasks that `sed`, `grep`, `cat`, and `wc`; and then it can do a lot more https://www.gnu.org/software/gawk/manual/gawk.html. This program deserves a full class to go into details, so instead we just have this section to make you aware that the program exists. 
-
-Let's see how awk can behave like `wc`.
-
-```html
-$ cd /home/margeno/data_week2/Week2/data_week2
-```
-
-```html
-$ ls TableS2_QTL_Bay_2017.txt  sra_metadata  untrimmed_fastq
-```
-
-This table is from the Bay et al. 2017 publication ~/data_week2/Week2/data_week2/TableS2_QTL_Bay_2017.txt and we will use it as our example file for this section.
-
-We can look inside the file by using `cat` or `awk`
-
-```html 
-$ awk '{print $0}' TableS2_QTL_Bay_2017.txt
-```
-
-The instructions are enclosed in single quotes
-
-This command has the same output of "cat": it prints each line from the example file TableS2_QTL_Bay_2017.txt
-
-The structure of the instruction is the following:
-- curly braces surround the set of instructions
-- print is the instruction that sends its arguments to the terminal
-- $0 is a variable, it means "the content of the current line"
-
-As you can see, the file contains a table.
-
-```html
-Trait 	n	LOD	Chr	Position (cM) 	Nearest SNP 
-mate choice	200	4.5	14	22.43	chrXIV:1713227 
-mate choice 	200	4.61	21	8	chrXXI:9373717 
-discriminant function 	200	4.83	12	17	chrXII:7504339 
-discriminant function 	200	4.23	14	8.1	chrXIV:4632223 
-PC2	200	4.04	4	30.76	chrIV:11367975 
-PC2	200	6.67	7	47	chrVII:26448674 
-centroid size	200	6.97	9	47.8	chrIX:19745222 
-x2*	200	3.93	7	60	chrUn:29400087 
-y2*	200	9.99	4	32	chrIV:11367975 
-x3	200	4.45	1	32.3	chrI:15145305 
-x4	200	5.13	16	30.9	chrXVI:12111717 
-x5*	200	4.54	15	6	chrXV:505537 
-y5	200	4.21	4	24.9	chrIV:15721538 
-x6	200	3.96	16	29.5	chrXVI:13588796 
-y6*	200	4.14	9	30.2	chrIX:18942598 
-y15*	200	5.3	2	27	chrII:19324477 
-x16	200	5.49	7	60	chrUn:29400087 
-x17 	200	4.92	1	32.8	chrI:14261764 
-Table S2. Significant QTL loci for mate choice and morphology
-``` 
-
-Now let's use `awk` to count the lines of a file, similarly to what `wc -l` would do. 
-
-As you probably remember, -l is an option that asks for the number of lines only.
-
-However, wc counts the number of newlines in the file, if the last line does
-not contain a carriage return (i.e. there is no emptyline at the end of the file),
-the result is going be the actual number of lines minus one.
-
-```html 
-$ wc -l TableS2_QTL_Bay_2017.txt
-```
-
-```html
-19 TableS2_QTL_Bay_2017.txt
-```
-	
-A workaround is to use `awk`. `Awk` is command line program that takes as input a set
-of instructions and one or more files. The instructions are executed on each line
-of the input file(s).
-
-```html
-$ awk '{print NR;}' TableS2_QTL_Bay_2017.txt | tail -1
-```
-
-`Awk` can also search within a file like `grep` can. Let's see if there are any significant QTL loci in the chromosome "chrXIV" 
-
-```html
-$ awk '/chrXIV/' TableS2_QTL_Bay_2017.txt
-```
-This chromosome had two significant QTL Loci for mate choice and morphology. 
-
-</p>
-</details>
-&nbsp;
-
-
-When to use awk? 
-
- *  for search and replacement of large files (it's fast!)
- *  when manipulating multiple large files
 
 
 ## Creature of the Week!
