@@ -36,3 +36,13 @@ writing-scripts-and-working-with-data
 writing-files
 writing-scripts
 uploading-and-downloading-data-to-your-virtual-machine-with-scp---unix
+week-3--what-is-a-genetic-variant
+to-get-started-lets-dowload-the-data-and-install-a-few-programs
+computing-magic-with-for-loops
+using-basename-in-for-loops
+raw-read-quality-control
+trimming-to-remove-adapters
+building-an-index-of-our-genome
+map-reads-to-the-genome
+sam-to-bam-file-conversion
+genotype-likelihoods
