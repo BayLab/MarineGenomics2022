@@ -733,7 +733,7 @@ We'll search for strings inside of our fastq files. Let's first make sure we are
 directory:
 
 ```html
-$ cd ~/MarineGenomicsData/Week2/data_week2/untrimmed_fastq
+$ cd ~/MarineGenomicsData/Week2/untrimmed_fastq
 ```
 
 
