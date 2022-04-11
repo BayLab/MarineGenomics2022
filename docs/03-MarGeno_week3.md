@@ -60,172 +60,6 @@ $ ls
 ```
 Change directories to the one that has the data MarineGenomicsData/Week3. If you `ls` into this directory you should see 6 files with a `.fastq.gz` extension and 1 tiny genome file with a `.fna.gz` extension.
 
-## Computing magic with for loops
-
-Loops are key to productivity improvements through automation as they allow us to execute commands repeatedly. 
-Similar to wildcards and tab completion, using loops also reduces the amount of typing (and typing mistakes). 
-Loops are helpful when performing operations on groups of sequencing files, such as unzipping or trimming multiple
-files. We will use loops for these purposes in subsequent analyses.
-
-When the shell sees the keyword `for`, it knows to repeat a command (or group of commands) once for each item in a list. 
-Each time the loop runs (called an iteration), an item in the list is assigned in sequence to the **variable**, and 
-the commands inside the loop are executed, before moving on to the next item in the list. Inside the loop, we call for 
-the variable's value by putting `$` in front of it. The `$` tells the shell interpreter to treat the **variable**
-as a variable name and substitute its value in its place, rather than treat it as text or an external command. In shell programming, this is usually called "expanding" the variable.
-
-
-Let's write a for loop to show us the first two lines of the fastq files we downloaded earlier. You will notice the shell prompt changes from `$` to `>` and back again as we were typing in our loop. The second prompt, `>`, is different to remind us that we haven’t finished typing a complete command yet. A semicolon, `;`, can be used to separate two commands written on a single line.
-
-
-#####CHANGE THIS DIR BELOW TO WEEK3!
-```html
-$ cd ~/data_week2/Week2/data_week2/untrimmed_fastq
-```
-
-
-```html
-$ for filename in *.fastq
-> do
-> head -n 2 ${filename}
-> done
-```
-
-The for loop begins with the formula `for <variable> in <group to iterate over>`. In this case, the word `filename` is designated 
-as the variable to be used over each iteration. In our case each fastq file will be sequentially substituted for `filename` 
-because they fit the pattern of ending with .fastq in the directory we've specified. The next line of the for loop is `do`. The next line is 
-the code that we want to execute. We are telling the loop to print the first two lines of each variable we iterate over. Finally, the
-word `done` ends the loop.
-
-After executing the loop, you should see the first two lines of both fastq files printed to the terminal. Let's create a loop that 
-will save this information to a file.
-
-```html
-$ for filename in *.fastq
-> do
-> head -n 2 ${filename} >> seq_info.txt
-> done
-```
-
-
-When writing a loop, you will not be able to return to previous lines once you have pressed Enter. Remember that we can cancel the current command using
-
-- <kbd>Ctrl</kbd>+<kbd>C</kbd>
-
-if you notice a mistake that is going to prevent your loop for executing correctly.
-
-Note that we are using `>>` to append the text to our `seq_info.txt` file. If we used `>`, the `seq_info.txt` file would be rewritten
-every time the loop iterates, so it would only have text from the last variable used. Instead, `>>` adds to the end of the file.
-
-## Using Basename in for loops
-Basename is a function in UNIX that is helpful for removing a uniform part of a name from a list of files. In this case, we will use basename to remove the `.fastq` extension from the files that we’ve been working with. 
-
-```html
-$ basename SRR097977.fastq .fastq
-```
-
-
-We see that this returns just the SRR accession, and no longer has the .fastq file extension on it.
-
-```html
-SRR097977
-```
-
-
-If we try the same thing but use `.fasta` as the file extension instead, nothing happens. This is because basename only works when it exactly matches a string in the file.
-
-```html
-$ basename SRR097977.fastq .fasta
-```
-
-
-```html
-SRR097977.fastq
-```
-
-
-Basename is really powerful when used in a for loop. It allows to access just the file prefix, which you can use to name things. Let's try this.
-
-Inside our for loop, we create a new name variable. We call the basename function inside the parenthesis, then give our variable name from the for loop, in this case `${filename}`, and finally state that `.fastq` should be removed from the file name. It’s important to note that we’re not changing the actual files, we’re creating a new variable called name. The line > echo $name will print to the terminal the variable name each time the for loop runs. Because we are iterating over two files, we expect to see two lines of output.
-
-```html
-$ for filename in *.fastq
-> do
-> name=$(basename ${filename} .fastq)
-> echo ${name}
-> done
-```
-
-<details><summary>Exercise</summary>
-<p>
-
-
-> ### Exercise
->
-> Print the file prefix of all of the `.txt` files in our current directory.
-
-<details><summary><span style="color: orange;">Solution</span></summary>
-<p>
-
->
->> ### Solution
->>  
->>
->> ```html
->> $ for filename in *.txt
->> > do
->> > name=$(basename ${filename} .txt)
->> > echo ${name}
->> > done
->> ```
->> 
->>
-> 
-
-</p>
-</details>
-&nbsp;
-
-
-One way this is really useful is to move files. Let's rename all of our .txt files using `mv` so that they have the years on them, which will document when we created them. 
-
-```html
-$ for filename in *.txt
-> do
-> name=$(basename ${filename} .txt)
-> mv ${filename}  ${name}_2019.txt
-> done
-```
-
-<details><summary>Exercise</summary>
-<p>
-
-> ### Exercise
->
-> Remove `_2019` from all of the `.txt` files. 
->
-
-
-<details><summary><span style="color: orange;">Solution</span></summary>
-<p>
-
->> ### Solution
->>  
->>
->> ```html
->> $ for filename in *_2019.txt
->> > do
->> > name=$(basename ${filename} _2019.txt)
->> > mv ${filename} ${name}.txt
->> > done
->> ```
->> 
->>
-> 
-
-</p>
-</details>
-&nbsp;
-
 
 ## Raw read quality control
 
@@ -263,9 +97,23 @@ You'll see you initially get an error message because fastqc doesn't see the .fa
 
 To view the output of fastqc, we'll minimize our terminal and look at our `Home` folder on our jetstream desktop. This is the same home directory that we've been working in through the terminal. Go to the directory where you were running fastqc and find an .html file. Double click it and it should open a web browser with the output data. We'll go over how to interpret this file in class.
 
+> ### Exercise
+>
+> Run fastqc on our .trimmed reads and compare the html with the untrimmed files. 
+
+<details><summary><span style="color: purple;">Solution</span></summary>
+<p>
+
+> `fastqc *trimmed.fastq.gz`
+> We should no longer see the red error flag for the per base sequence quality or base pairs conten. 
+
+</p>
+</details>
+&nbsp;
+
 ## Trimming to remove adapters
 
-There are many programs to trim sequence files. We'll use the same paper that was used in the Xuereb et al. 2018 paper [here]. Cutadapt is relatively easy to run with the code below, once we have identified our adaptor sequence and takes the general form below.
+There are many programs to trim sequence files. We'll use the same paper that was used in the Xuereb et al. 2018 paper. Cutadapt is relatively easy to run with the code below, requiring we supply the adapter sequence, input file name, and output file name.
 
 
 ```html
@@ -304,11 +152,13 @@ ls *trimmed*
 
 Our reads are now ready to be mapped to the genome.
 
+
+
 ## Building an index of our genome
 
 First we have to index our genome. We'll do that with the bowtie2-build command. This will generate a lot of files that describe different aspects of our genome
 
-We give bowtie2-build two things, the name of our genome, and a general name to label the output files. I always keep the name of the output files the same as the original genome file (without the .fna.gz extension) to avoid confusion (what's this file for?).
+We give bowtie2-build two things, the name of our genome, and a general name to label the output files. I always keep the name of the output files the same as the original genome file (without the .fna.gz extension) to avoid confusion.
 
 ```html
 
@@ -318,6 +168,8 @@ bowtie2-build Ppar_tinygenome.fna.gz Ppar_tinygenome
 This should produce several output files with extensions including: .bt2 and rev.1.bt2 etc (six files in total)
 
 ## Map reads to the genome
+
+Now we will need to map our reads onto the reference genome, so we can compare their sequences and call genetic variants. Here you would look at the bowtie manual to find the mapping code and it's parameters. We've already done this, and found that we need to run the `bowtie2`command with the parameters `-x` for reference, `-U` for reads, and `-S` for name of output sam file. 
 
 Let's map those reads using a for loop
 
@@ -336,13 +188,40 @@ done
 
 You should see a bunch of text telling you all about how well our reads mapped to the genome. For this example we're getting a low percentage (20-30%) because of how the genome and reads were subset for this exercise. The full genome and full read files have a much higher mapping rate (70-80%) than our subset. 
 
-You'll also notice that we have made a bunch of .sam files. THis stands for Sequence Alignment Map file. Let's use `less` to look at one of these files using `less`
+You'll also notice that we have made a bunch of .sam files. THis stands for Sequence Alignment Map file. Let's use `less` to look at one of these files.
 
-There are several columns of data in a sam file
+> ### Exercise
+> Map the untrimmed files to the genome. How do the alignments compare?
+
+<details><summary><span style="color: purple;">Solution</span></summary>
+<p>
+
+> As a for loop:
+> `for filename in *tiny.fastq.gz; do; base=$(basename $filename .tiny.fastq.gz); echo=${base}; bowtie2 -x Ppar_tinygenome.fna.gz -U ${base}.tiny.fastq.gz -S ${base}.nottrimmed.sam; done`
+
+</p>
+</details>
+&nbsp;
+
+> ### Exercise
+> Run the mapping for loop as a shell script using bash (i.e., store the for loop in a text editor (NANOs or other) and execute the .sh script with bash)
+
+<details><summary><span style="color: purple;">Solution</span></summary>
+<p>
+
+> This can be done by copying and pasting the for loop in a text editor that you save as for example `map_samples_bowtie2.sh`. This script is then executed by `bash map_samples_bowtie2.sh`
+
+</p>
+</details>
+&nbsp;
 
 ## sam to bam file conversion
 
-The next step is to convert our sam file to a bam (Binary Alignment Map file). This gets our file ready to be read by angsd the program we're going to use to call SNPs.
+The next step is to convert our sam file to a bam (Binary Alignment Map file). This gets our file ready to be read by angsd, the program we're going to use to call SNPs. 
+
+Try googling the parameters of the `samtools view` command to understand what is done with `-bhS`. 
+
+In the second half of the pipe, we are sorting our sam files and converting to a .bam output, with `-o` indicating the name of the output file(s).
 
 ```html
 for filename in *.sam
@@ -384,81 +263,43 @@ Run the following code to calculate genotype likelihoods
 
 This will generate two files, one with a .arg extension, this has a record of the script we ran to generate the output, and a .maf file that will give you the minor allele frequencies and is the main output file. If you see these two files, Yay!! We did it!
 
+> ### Exercise
+> Change the parameters of the angsd genotype likelihoods command. How many more/less SNPs do we recover if we lower or raise the SNP p-value? To see what the other parameters do run `../../angsd/angsd -h
+
+<details><summary><span style="color: purple;">Solution</span></summary>
+<p>
+
+> If we remove the `-SNP_pval` command entirely we get ~72000 sites retained! Wow! That seems like a lot given our ~20% maping rate. If you instead increase the p-value threshold to 1e-3 we find 3 SNPs. 
+
+</p>
+</details>
+&nbsp;
 
 
 
-
-> ### Suggested Exercises
+> ### Additional Exercises
 
 > A possible answer is located beneath each activities, but it's possible you will correctly perform the suggestion in a different way. 
 
-
-> 1. Run fastqc on our .trimmed reads and compare the html with the untrimmed files. 
-
-<details><summary><span style="color: purple;">Solution</span></summary>
-<p>
-
-> 1. We should no longer see the red error flag for the per base sequence quality or base pairs conten. code: fastqc *trimmed.fastq.gz 
-
-</p>
-</details>
-&nbsp;
-
-
-> 2. Map the untrimmed files to the genome. How do the alignments compare?
+> 1. Use cutadapt to trim the sequences to 70 bp like they did in the Xuereb et al. 2018 paper. Write the output of cutadapt to an .70bp.trimmed.fastq.gz and then map these 70bp, trimmed reads to the genome. How do they compare to our .trimmed reads?
 
 <details><summary><span style="color: purple;">Solution</span></summary>
 <p>
-
-> 2. As a for loop:
-> `for filename in *tiny.fastq.gz; do; base=$(basename $filename .tiny.fastq.gz); echo=${base}; bowtie2 -x Ppar_tinygenome.fna.gz -U ${base}.tiny.fastq.gz -S ${base}.nottrimmed.sam; done`
-
-</p>
-</details>
-&nbsp;
-
-
-> 3. Use cutadapt to trim the sequences to 70 bp like they did in the Xuereb et al. 2018 paper. Write the output of cutadapt to an .70bp.trimmed.fastq.gz and then map these 70bp, trimmed reads to the genome. How do they compare to our .trimmed reads?
-
-<details><summary><span style="color: purple;">Solution</span></summary>
-<p>
-> 3. To find the parameter for maximum read length in cutadapt: `cutadapt - help` There are a few ways to do this.
+> 1. To find the parameter for maximum read length in cutadapt: `cutadapt - help` There are a few ways to do this.
 > `cutadapt -g TGCAG ${base}.tiny.fastq.gz -u 70 -o ${base}.tiny_70bp_trimmed.fastq.gz` 
 
 </p>
 </details>
 &nbsp;
 
-> 4. Run the mapping for loop as a shell script using bash (i.e., store the for loop in a text editor (NANOs or other) and execute the .sh script with bash)
+
+
+> 2. For this lesson we ran everything in the same directory and you can see that we generated quite a few files by the time we were done. Many population genomic studies have data for hundreds of individuals and running everything in the same directory gets confusing and messy. However, having the data in a different directory from the output complicates running things a little (you have to remember which directory you're in). Make a new directory called `raw_data` and `mv` the raw data files (those that end in fastq.gz, and the tinygenome) into it. Then mv everything that we generated into a folder called `old_outputs`. Now rerun our code making a directory for the `trimmed_reads` and `sam_bam` files each. 
 
 <details><summary><span style="color: purple;">Solution</span></summary>
 <p>
 
-> 4. This can be done by copying and pasting the for loop in a text editor that you save as for example `map_samples_bowtie2.sh`. This script is then executed by `bash map_samples_bowtie2.sh`
-
-</p>
-</details>
-&nbsp;
-
-
-> 5. Change the parameters of the angsd genotype likelihoods command. How many more/less SNPs do we recover if we lower or raise the SNP p-value? To see what the other parameters do run `../../angsd/angsd -h
-
-<details><summary><span style="color: purple;">Solution</span></summary>
-<p>
-
-> 5. If we remove the `-SNP_pval` command entirely we get ~72000 sites retained! Wow! That seems like a lot given our ~20% maping rate. If you instead increase the p-value threshold to 1e-3 we find 3 SNPs. 
-
-</p>
-</details>
-&nbsp;
-
-
-> 6. For this exercise we ran everything in the same directory and you can see that we generated quite a few files by the time we were done. Many population genomic studies have data for hundreds of individuals and running everything in the same directory gets confusing and messy. However, having the data in a different directory from the output complicates running things a little (you have to remember which directory you're in). Make a new directory called `raw_data` and `mv` the raw data files (those that end in fastq.gz, and the tinygenome) into it. Then mv everything that we generated into a folder called `old_outputs`. Now rerun our code making a directory for the `trimmed_reads` and `sam_bam` files each. 
-
-<details><summary><span style="color: purple;">Solution</span></summary>
-<p>
-
-> 6. The commands you will run include:
+> 2. The commands you will run include:
 > to make a new directory and move the raw data: `mkdir raw_data; mv *fastq.gz raw_data` 
 > to move all the old output that we generated `mkdir old_outputs; mv * old_outputs`
 > then make output folder for each step in the process: `mkdir trimmed_reads; mkdir sam_bam`
