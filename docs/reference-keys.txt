@@ -45,3 +45,4 @@ building-an-index-of-our-genome
 map-reads-to-the-genome
 sam-to-bam-file-conversion
 genotype-likelihoods
+test

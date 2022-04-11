@@ -99,9 +99,23 @@ You'll see you initially get an error message because fastqc doesn't see the .fa
 
 To view the output of fastqc, we'll minimize our terminal and look at our `Home` folder on our jetstream desktop. This is the same home directory that we've been working in through the terminal. Go to the directory where you were running fastqc and find an .html file. Double click it and it should open a web browser with the output data. We'll go over how to interpret this file in class.
 
+> ### Exercise
+>
+> Run fastqc on our .trimmed reads and compare the html with the untrimmed files. 
+
+<details><summary><span style="color: purple;">Solution</span></summary>
+<p>
+
+> `fastqc *trimmed.fastq.gz`
+> We should no longer see the red error flag for the per base sequence quality or base pairs conten. 
+
+</p>
+</details>
+&nbsp;
+
 ## Trimming to remove adapters
 
-There are many programs to trim sequence files. We'll use the same paper that was used in the Xuereb et al. 2018 paper [here]. Cutadapt is relatively easy to run with the code below, once we have identified our adaptor sequence and takes the general form below.
+There are many programs to trim sequence files. We'll use the same paper that was used in the Xuereb et al. 2018 paper. Cutadapt is relatively easy to run with the code below, requiring we supply the adapter sequence, input file name, and output file name.
 
 
 ```html
@@ -140,24 +154,13 @@ ls *trimmed*
 
 Our reads are now ready to be mapped to the genome.
 
-> ### Exercise
->
-> Run fastqc on our .trimmed reads and compare the html with the untrimmed files. 
 
-<details><summary><span style="color: purple;">Solution</span></summary>
-<p>
-
-> We should no longer see the red error flag for the per base sequence quality or base pairs conten. code: fastqc *trimmed.fastq.gz 
-
-</p>
-</details>
-&nbsp;
 
 ## Building an index of our genome
 
 First we have to index our genome. We'll do that with the bowtie2-build command. This will generate a lot of files that describe different aspects of our genome
 
-We give bowtie2-build two things, the name of our genome, and a general name to label the output files. I always keep the name of the output files the same as the original genome file (without the .fna.gz extension) to avoid confusion (what's this file for?).
+We give bowtie2-build two things, the name of our genome, and a general name to label the output files. I always keep the name of the output files the same as the original genome file (without the .fna.gz extension) to avoid confusion.
 
 ```html
 
@@ -167,6 +170,8 @@ bowtie2-build Ppar_tinygenome.fna.gz Ppar_tinygenome
 This should produce several output files with extensions including: .bt2 and rev.1.bt2 etc (six files in total)
 
 ## Map reads to the genome
+
+Now we will need to map our reads onto the reference genome, so we can compare their sequences and call genetic variants. Here you would look at the bowtie manual to find the mapping code and it's parameters. We've already done this, and found that we need to run the `bowtie2`command with the parameters `-x` for reference, `-U` for reads, and `-S` for name of output sam file. 
 
 Let's map those reads using a for loop
 
@@ -185,7 +190,7 @@ done
 
 You should see a bunch of text telling you all about how well our reads mapped to the genome. For this example we're getting a low percentage (20-30%) because of how the genome and reads were subset for this exercise. The full genome and full read files have a much higher mapping rate (70-80%) than our subset. 
 
-You'll also notice that we have made a bunch of .sam files. THis stands for Sequence Alignment Map file. Let's use `less` to look at one of these files using `less`
+You'll also notice that we have made a bunch of .sam files. THis stands for Sequence Alignment Map file. Let's use `less` to look at one of these files.
 
 > ### Exercise
 > Map the untrimmed files to the genome. How do the alignments compare?
@@ -214,7 +219,11 @@ You'll also notice that we have made a bunch of .sam files. THis stands for Sequ
 
 ## sam to bam file conversion
 
-The next step is to convert our sam file to a bam (Binary Alignment Map file). This gets our file ready to be read by angsd the program we're going to use to call SNPs.
+The next step is to convert our sam file to a bam (Binary Alignment Map file). This gets our file ready to be read by angsd, the program we're going to use to call SNPs. 
+
+Try googling the parameters of the `samtools view` command to understand what is done with `-bhS`. 
+
+In the second half of the pipe, we are sorting our sam files and converting to a .bam output, with `-o` indicating the name of the output file(s).
 
 ```html
 for filename in *.sam
@@ -314,5 +323,8 @@ This will generate two files, one with a .arg extension, this has a record of th
 </p>
 </details>
 &nbsp;
+
+
+### test
 
 
