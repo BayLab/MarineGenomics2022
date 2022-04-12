@@ -45,9 +45,12 @@ And one more program that we'll install separately. This is `angsd` which we wil
 
 ```html
   cd
-  git clone --recursive https://github.com/samtools/htslib.git
+  sudo apt  install liblzma-dev
+  sudo apt install libbz2-dev
+  sudo apt-get install libcurl4-nss-dev
   git clone https://github.com/ANGSD/angsd.git 
-  cd htslib;make;cd ../angsd ;make HTSSRC=../htslib
+  cd angsd
+  make CRYPTOLIB=""
   
 ```
 
@@ -56,9 +59,11 @@ Now we're ready to get going. The first thing we'll do is have a look at our dat
 ```html
 $ ls
 
-
 ```
-Change directories to the one that has the data MarineGenomicsData/Week3. If you `ls` into this directory you should see 6 files with a `.fastq.gz` extension and 1 tiny genome file with a `.fna.gz` extension.
+
+You'll see that when we uncompressed our data file, it created a directory called 'week4', when we are in week3. Use the `mv` command to rename the directory to 'week3'.
+
+Change directories to MarineGenomics/week3. If you `ls` into this directory you should see 6 files with a `.fastq.gz` extension and 1 tiny genome file with a `.fna.gz` extension.
 
 
 ## Raw read quality control
@@ -97,23 +102,10 @@ You'll see you initially get an error message because fastqc doesn't see the .fa
 
 To view the output of fastqc, we'll minimize our terminal and look at our `Home` folder on our jetstream desktop. This is the same home directory that we've been working in through the terminal. Go to the directory where you were running fastqc and find an .html file. Double click it and it should open a web browser with the output data. We'll go over how to interpret this file in class.
 
-> ### Exercise
->
-> Run fastqc on our .trimmed reads and compare the html with the untrimmed files. 
-
-<details><summary><span style="color: purple;">Solution</span></summary>
-<p>
-
-> `fastqc *trimmed.fastq.gz`
-> We should no longer see the red error flag for the per base sequence quality or base pairs conten. 
-
-</p>
-</details>
-&nbsp;
 
 ## Trimming to remove adapters
 
-There are many programs to trim sequence files. We'll use the same paper that was used in the Xuereb et al. 2018 paper. Cutadapt is relatively easy to run with the code below, requiring we supply the adapter sequence, input file name, and output file name.
+There are many programs to trim sequence files. We'll use the same paper that was used in the [Xuereb et al. 2018 paper](https://onlinelibrary.wiley.com/doi/pdf/10.1111/mec.14942). Cutadapt is relatively easy to run with the code below, requiring we supply the adapter sequence, input file name, and output file name.
 
 
 ```html
@@ -167,6 +159,21 @@ bowtie2-build Ppar_tinygenome.fna.gz Ppar_tinygenome
 ```
 This should produce several output files with extensions including: .bt2 and rev.1.bt2 etc (six files in total)
 
+> ### Exercise for while indexing:
+>
+> Run fastqc on our .trimmed reads and compare the html with the untrimmed files. 
+
+<details><summary><span style="color: purple;">Solution</span></summary>
+<p>
+
+> `fastqc *trimmed.fastq.gz`
+> We should no longer see the red error flag for the per base sequence quality or base pairs conten. 
+
+</p>
+</details>
+&nbsp;
+
+
 ## Map reads to the genome
 
 Now we will need to map our reads onto the reference genome, so we can compare their sequences and call genetic variants. Here you would look at the bowtie manual to find the mapping code and it's parameters. We've already done this, and found that we need to run the `bowtie2`command with the parameters `-x` for reference, `-U` for reads, and `-S` for name of output sam file. 
@@ -180,7 +187,7 @@ do
   base=$(basename $filename .tiny_trimmed.fastq.gz)
   echo ${base}
 
-  bowtie2 -x Ppar_tinygenome -U ${base}.tiny_trimmed.fastq.gz -S ${base}.sam
+  bowtie2 -x Ppar_tinygenome -U ${base}.tiny_trimmed.fastq.gz -S ${base}.trim.sam
 
 done
 
@@ -188,7 +195,7 @@ done
 
 You should see a bunch of text telling you all about how well our reads mapped to the genome. For this example we're getting a low percentage (20-30%) because of how the genome and reads were subset for this exercise. The full genome and full read files have a much higher mapping rate (70-80%) than our subset. 
 
-You'll also notice that we have made a bunch of .sam files. THis stands for Sequence Alignment Map file. Let's use `less` to look at one of these files.
+You'll also notice that we have made a bunch of .sam files. This stands for Sequence Alignment Map file. Let's use `less` to look at one of these files.
 
 > ### Exercise
 > Map the untrimmed files to the genome. How do the alignments compare?
@@ -201,7 +208,7 @@ You'll also notice that we have made a bunch of .sam files. THis stands for Sequ
 >for filename in *tiny.fastq.gz; do
 >base=$(basename $filename .tiny.fastq.gz)
 >echo=${base}
->bowtie2 -x Ppar_tinygenome.fna.gz -U ${base}.tiny.fastq.gz -S ${base}.nottrimmed.sam
+>bowtie2 -x Ppar_tinygenome -U ${base}.tiny.fastq.gz -S ${base}.nottrimmed.sam
 >done
 >```
 
@@ -231,13 +238,13 @@ Try googling the parameters of the `samtools view` command to understand what is
 In the second half of the pipe, we are sorting our sam files and converting to a .bam output, with `-o` indicating the name of the output file(s).
 
 ```html
-for filename in *.sam
+for filename in *.trim.sam
 do
 
-  base=$(basename $filename .sam)
+  base=$(basename $filename .trim.sam)
   echo ${base}
   
-  samtools view -bhS ${base}.sam | samtools sort -o ${base}.bam
+  samtools view -bhS ${base}.trim.sam | samtools sort -o ${base}.bam
 
 done
 
@@ -276,7 +283,7 @@ This will generate two files, one with a .arg extension, this has a record of th
 <details><summary><span style="color: purple;">Solution</span></summary>
 <p>
 
-> If we remove the `-SNP_pval` command entirely we get ~72000 sites retained! Wow! That seems like a lot given our ~20% maping rate. If you instead increase the p-value threshold to 1e-3 we find 3 SNPs. 
+> If we remove the `-SNP_pval` command entirely we get ~68000 sites retained! Wow! That seems like a lot given our ~20% maping rate. If you instead increase the p-value threshold to 1e-3 we find 0 SNPs. 
 
 </p>
 </details>
@@ -292,8 +299,18 @@ This will generate two files, one with a .arg extension, this has a record of th
 
 <details><summary><span style="color: purple;">Solution</span></summary>
 <p>
-> 1. To find the parameter for maximum read length in cutadapt: `cutadapt - help` There are a few ways to do this.
+> 1. To find the parameter for maximum read length in cutadapt: `cutadapt - help` 
+
 > `cutadapt -g TGCAG ${base}.tiny.fastq.gz -u 70 -o ${base}.tiny_70bp_trimmed.fastq.gz` 
+
+>```html
+>for filename in *tiny_70bp_trimmed.fastq.gz
+>do
+>base=$(basename $filename .tiny_70bp_trimmed.fastq.gz)
+>echo=${base}
+>bowtie2 -x Ppar_tinygenome -U ${base}.tiny_70bp_trimmed.fastq.gz  -S ${base}.70bp_trimmed.sam
+>done
+>```
 
 </p>
 </details>
@@ -301,28 +318,37 @@ This will generate two files, one with a .arg extension, this has a record of th
 
 
 
-> 2. For this lesson we ran everything in the same directory and you can see that we generated quite a few files by the time we were done. Many population genomic studies have data for hundreds of individuals and running everything in the same directory gets confusing and messy. However, having the data in a different directory from the output complicates running things a little (you have to remember which directory you're in). Make a new directory called `raw_data` and `mv` the raw data files (those that end in fastq.gz, and the tinygenome) into it. Then mv everything that we generated into a folder called `old_outputs`. Now rerun our code making a directory for the `trimmed_reads` and `sam_bam` files each. 
+> 2. For this lesson we ran everything in the same directory and you can see that we generated quite a few files by the time we were done. Many population genomic studies have data for hundreds of individuals and running everything in the same directory gets confusing and messy. However, having the data in a different directory from the output complicates running things a little (you have to remember which directory you're in). 
+>Make a new directory called `raw_data` and `mv` the raw data files (those that end in fastq.gz, and the tinygenome) into it. Then mv everything that we generated into a folder called `old_outputs`. Now rerun our code making a directory for the `trimmed_reads` and `sam_bam` files each. 
+
+>NOTE: The following solution still has one small typo error in it. See if you can find the error and get the code to run. 
 
 <details><summary><span style="color: purple;">Solution</span></summary>
 <p>
 
 > 2. The commands you will run include:
-> to make a new directory and move the raw data: `mkdir raw_data; mv *fastq.gz raw_data` 
-> to move all the old output that we generated `mkdir old_outputs; mv * old_outputs`
-> then make output folder for each step in the process: `mkdir trimmed_reads; mkdir sam_bam`
-> and then rerun the for loops but change the file path for the input and output data. 
+>
+> To make a new directory and move the raw data: `mkdir raw_data; mv *fastq.gz raw_data` 
+>
+> To move all the old output that we generated `mkdir old_outputs; mv * old_outputs`
+>
+> Then make output folder for each step in the process: `mkdir trimmed_reads; mkdir sam_bam`
+>
+> Then rerun the for loops but change the file path for the input and output data. 
+>
 > For example this is how the cutadapt command will look: 
-> `for filename in raw_data/*.tiny.fastq.gz
+>```html
+> for filename in raw_data/*.tiny.fastq.gz
 >do
 >
->  base=$(basename $filename .tiny.fastq.gz)
->  echo=${base}
+> base=$(basename $filename .tiny.fastq.gz)
+> echo=${base}
 >
->  cutadapt -g TGCAG raw_data/${base}.tiny.fastq.gz -o trimmed_reads/${base}.tiny_trimmed.fastq.gz 
+>cutadapt -g TGCAG raw_data/$base.tiny.fastq.gz -o trimmed_reads/$base.tiny_trimmed.fastq.gz 
 >
->done`
-
-> you can see we've added the file name `raw_data` everytime we're calling the read files (at the beginning of the for loop and withing the cutadapt program). And we specify to put our trimmed reads in the `trimmed_reads` folder. To see if they're there run: `ls trimmed_reads`.
+>done
+>```
+> You can see we've added the file name `raw_data` everytime we're calling the read files (at the beginning of the for loop and withing the cutadapt program). And we specify to put our trimmed reads in the `trimmed_reads` folder. To see if they're there run: `ls trimmed_reads`.
 > Much more organized!
 
 </p>
