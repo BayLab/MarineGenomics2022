@@ -191,10 +191,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.4" data-path="week-3--what-is-a-genetic-variant.html"><a href="week-3--what-is-a-genetic-variant.html#building-an-index-of-our-genome"><i class="fa fa-check"></i><b>4.4</b> Building an index of our genome<span></span></a></li>
 <li class="chapter" data-level="4.5" data-path="week-3--what-is-a-genetic-variant.html"><a href="week-3--what-is-a-genetic-variant.html#map-reads-to-the-genome"><i class="fa fa-check"></i><b>4.5</b> Map reads to the genome<span></span></a></li>
 <li class="chapter" data-level="4.6" data-path="week-3--what-is-a-genetic-variant.html"><a href="week-3--what-is-a-genetic-variant.html#sam-to-bam-file-conversion"><i class="fa fa-check"></i><b>4.6</b> sam to bam file conversion<span></span></a></li>
-<li class="chapter" data-level="4.7" data-path="week-3--what-is-a-genetic-variant.html"><a href="week-3--what-is-a-genetic-variant.html#genotype-likelihoods"><i class="fa fa-check"></i><b>4.7</b> Genotype likelihoods<span></span></a>
-<ul>
-<li class="chapter" data-level="4.7.1" data-path="week-3--what-is-a-genetic-variant.html"><a href="week-3--what-is-a-genetic-variant.html#test"><i class="fa fa-check"></i><b>4.7.1</b> test<span></span></a></li>
-</ul></li>
+<li class="chapter" data-level="4.7" data-path="week-3--what-is-a-genetic-variant.html"><a href="week-3--what-is-a-genetic-variant.html#genotype-likelihoods"><i class="fa fa-check"></i><b>4.7</b> Genotype likelihoods<span></span></a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -342,8 +339,12 @@ We should no longer see the red error flag for the per base sequence quality or 
 </summary>
 <p>
 <blockquote>
-<p>As a for loop:
-<code>for filename in *tiny.fastq.gz; do; base=$(basename $filename .tiny.fastq.gz); echo=${base}; bowtie2 -x Ppar_tinygenome.fna.gz -U ${base}.tiny.fastq.gz -S ${base}.nottrimmed.sam; done</code></p>
+<p>As a for loop:</p>
+<div class="sourceCode" id="cb173"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb173-1"><a href="week-3--what-is-a-genetic-variant.html#cb173-1" aria-hidden="true" tabindex="-1"></a>for filename in *tiny.fastq.gz; do</span>
+<span id="cb173-2"><a href="week-3--what-is-a-genetic-variant.html#cb173-2" aria-hidden="true" tabindex="-1"></a>base=$(basename $filename .tiny.fastq.gz)</span>
+<span id="cb173-3"><a href="week-3--what-is-a-genetic-variant.html#cb173-3" aria-hidden="true" tabindex="-1"></a>echo=${base}</span>
+<span id="cb173-4"><a href="week-3--what-is-a-genetic-variant.html#cb173-4" aria-hidden="true" tabindex="-1"></a>bowtie2 -x Ppar_tinygenome.fna.gz -U ${base}.tiny.fastq.gz -S ${base}.nottrimmed.sam</span>
+<span id="cb173-5"><a href="week-3--what-is-a-genetic-variant.html#cb173-5" aria-hidden="true" tabindex="-1"></a>done</span></code></pre></div>
 </blockquote>
 </p>
 </details>
@@ -369,27 +370,27 @@ We should no longer see the red error flag for the per base sequence quality or 
 <p>The next step is to convert our sam file to a bam (Binary Alignment Map file). This gets our file ready to be read by angsd, the program we’re going to use to call SNPs.</p>
 <p>Try googling the parameters of the <code>samtools view</code> command to understand what is done with <code>-bhS</code>.</p>
 <p>In the second half of the pipe, we are sorting our sam files and converting to a .bam output, with <code>-o</code> indicating the name of the output file(s).</p>
-<div class="sourceCode" id="cb173"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb173-1"><a href="week-3--what-is-a-genetic-variant.html#cb173-1" aria-hidden="true" tabindex="-1"></a>for filename in *.sam</span>
-<span id="cb173-2"><a href="week-3--what-is-a-genetic-variant.html#cb173-2" aria-hidden="true" tabindex="-1"></a>do</span>
-<span id="cb173-3"><a href="week-3--what-is-a-genetic-variant.html#cb173-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb173-4"><a href="week-3--what-is-a-genetic-variant.html#cb173-4" aria-hidden="true" tabindex="-1"></a>  base=$(basename $filename .sam)</span>
-<span id="cb173-5"><a href="week-3--what-is-a-genetic-variant.html#cb173-5" aria-hidden="true" tabindex="-1"></a>  echo ${base}</span>
-<span id="cb173-6"><a href="week-3--what-is-a-genetic-variant.html#cb173-6" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb173-7"><a href="week-3--what-is-a-genetic-variant.html#cb173-7" aria-hidden="true" tabindex="-1"></a>  samtools view -bhS ${base}.sam | samtools sort -o ${base}.bam</span>
-<span id="cb173-8"><a href="week-3--what-is-a-genetic-variant.html#cb173-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb173-9"><a href="week-3--what-is-a-genetic-variant.html#cb173-9" aria-hidden="true" tabindex="-1"></a>done</span></code></pre></div>
+<div class="sourceCode" id="cb174"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb174-1"><a href="week-3--what-is-a-genetic-variant.html#cb174-1" aria-hidden="true" tabindex="-1"></a>for filename in *.sam</span>
+<span id="cb174-2"><a href="week-3--what-is-a-genetic-variant.html#cb174-2" aria-hidden="true" tabindex="-1"></a>do</span>
+<span id="cb174-3"><a href="week-3--what-is-a-genetic-variant.html#cb174-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb174-4"><a href="week-3--what-is-a-genetic-variant.html#cb174-4" aria-hidden="true" tabindex="-1"></a>  base=$(basename $filename .sam)</span>
+<span id="cb174-5"><a href="week-3--what-is-a-genetic-variant.html#cb174-5" aria-hidden="true" tabindex="-1"></a>  echo ${base}</span>
+<span id="cb174-6"><a href="week-3--what-is-a-genetic-variant.html#cb174-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb174-7"><a href="week-3--what-is-a-genetic-variant.html#cb174-7" aria-hidden="true" tabindex="-1"></a>  samtools view -bhS ${base}.sam | samtools sort -o ${base}.bam</span>
+<span id="cb174-8"><a href="week-3--what-is-a-genetic-variant.html#cb174-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb174-9"><a href="week-3--what-is-a-genetic-variant.html#cb174-9" aria-hidden="true" tabindex="-1"></a>done</span></code></pre></div>
 </div>
 <div id="genotype-likelihoods" class="section level2 hasAnchor" number="4.7">
 <h2><span class="header-section-number">4.7</span> Genotype likelihoods<a href="week-3--what-is-a-genetic-variant.html#genotype-likelihoods" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>There are many ways and many programs that call genotypes. The program that we will use calculates genotype likelihoods, which account for uncertainty due to sequencing errors and/or mapping errors and is one of several programs in the package ANGSD. The purpose of this class is not to discuss which program is the “best,” but to teach you to use some commonly used programs.</p>
 <p>angsd needs a text file with the <code>.bam</code> file names listed. We can make that by running the command below</p>
-<div class="sourceCode" id="cb174"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb174-1"><a href="week-3--what-is-a-genetic-variant.html#cb174-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb174-2"><a href="week-3--what-is-a-genetic-variant.html#cb174-2" aria-hidden="true" tabindex="-1"></a>ls *.bam &gt; bam.filelist</span></code></pre></div>
+<div class="sourceCode" id="cb175"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb175-1"><a href="week-3--what-is-a-genetic-variant.html#cb175-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb175-2"><a href="week-3--what-is-a-genetic-variant.html#cb175-2" aria-hidden="true" tabindex="-1"></a>ls *.bam &gt; bam.filelist</span></code></pre></div>
 <p>Look at the list:</p>
-<div class="sourceCode" id="cb175"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb175-1"><a href="week-3--what-is-a-genetic-variant.html#cb175-1" aria-hidden="true" tabindex="-1"></a>cat bam.filelist</span></code></pre></div>
+<div class="sourceCode" id="cb176"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb176-1"><a href="week-3--what-is-a-genetic-variant.html#cb176-1" aria-hidden="true" tabindex="-1"></a>cat bam.filelist</span></code></pre></div>
 <p>Run the following code to calculate genotype likelihoods</p>
-<div class="sourceCode" id="cb176"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb176-1"><a href="week-3--what-is-a-genetic-variant.html#cb176-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb176-2"><a href="week-3--what-is-a-genetic-variant.html#cb176-2" aria-hidden="true" tabindex="-1"></a>../../angsd/angsd -bam bam.filelist -GL 1 -out genotype_likelihoods -doMaf 2 -SNP_pval 1e-2 -doMajorMinor 1</span></code></pre></div>
+<div class="sourceCode" id="cb177"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb177-1"><a href="week-3--what-is-a-genetic-variant.html#cb177-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb177-2"><a href="week-3--what-is-a-genetic-variant.html#cb177-2" aria-hidden="true" tabindex="-1"></a>../../angsd/angsd -bam bam.filelist -GL 1 -out genotype_likelihoods -doMaf 2 -SNP_pval 1e-2 -doMajorMinor 1</span></code></pre></div>
 <p>This will generate two files, one with a .arg extension, this has a record of the script we ran to generate the output, and a .maf file that will give you the minor allele frequencies and is the main output file. If you see these two files, Yay!! We did it!</p>
 <blockquote>
 <h3 id="exercise-19" class="hasAnchor">Exercise<a href="week-3--what-is-a-genetic-variant.html#exercise-19" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -463,10 +464,7 @@ Much more organized!</p>
 </p>
 </details>
 <p> </p>
-<div id="test" class="section level3 hasAnchor" number="4.7.1">
-<h3><span class="header-section-number">4.7.1</span> test<a href="week-3--what-is-a-genetic-variant.html#test" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 
-</div>
 </div>
 </div>
             </section>
