@@ -240,9 +240,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb162-3"><a href="week-3--what-is-a-genetic-variant.html#cb162-3" aria-hidden="true" tabindex="-1"></a>  sudo apt install libbz2-dev</span>
 <span id="cb162-4"><a href="week-3--what-is-a-genetic-variant.html#cb162-4" aria-hidden="true" tabindex="-1"></a>  sudo apt-get install libcurl4-nss-dev</span>
 <span id="cb162-5"><a href="week-3--what-is-a-genetic-variant.html#cb162-5" aria-hidden="true" tabindex="-1"></a>  git clone https://github.com/ANGSD/angsd.git </span>
-<span id="cb162-6"><a href="week-3--what-is-a-genetic-variant.html#cb162-6" aria-hidden="true" tabindex="-1"></a>  cd angsd</span>
-<span id="cb162-7"><a href="week-3--what-is-a-genetic-variant.html#cb162-7" aria-hidden="true" tabindex="-1"></a>  make CRYPTOLIB=&quot;&quot;</span>
-<span id="cb162-8"><a href="week-3--what-is-a-genetic-variant.html#cb162-8" aria-hidden="true" tabindex="-1"></a>  </span></code></pre></div>
+<span id="cb162-6"><a href="week-3--what-is-a-genetic-variant.html#cb162-6" aria-hidden="true" tabindex="-1"></a>  git clone --recursive https://github.com/samtools/htslib.git</span>
+<span id="cb162-7"><a href="week-3--what-is-a-genetic-variant.html#cb162-7" aria-hidden="true" tabindex="-1"></a>  cd angsd</span>
+<span id="cb162-8"><a href="week-3--what-is-a-genetic-variant.html#cb162-8" aria-hidden="true" tabindex="-1"></a>  make CRYPTOLIB=&quot;&quot;</span>
+<span id="cb162-9"><a href="week-3--what-is-a-genetic-variant.html#cb162-9" aria-hidden="true" tabindex="-1"></a>  </span></code></pre></div>
 <p>Now we’re ready to get going. The first thing we’ll do is have a look at our data and directories to make sure we know where everything is.</p>
 <div class="sourceCode" id="cb163"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb163-1"><a href="week-3--what-is-a-genetic-variant.html#cb163-1" aria-hidden="true" tabindex="-1"></a>$ ls</span></code></pre></div>
 <p>You’ll see that when we uncompressed our data file, it created a directory called ‘week4,’ when we are in week3. Use the <code>mv</code> command to rename the directory to ‘week3.’</p>
