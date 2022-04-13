@@ -302,7 +302,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb171-2"><a href="week-3--what-is-a-genetic-variant.html#cb171-2" aria-hidden="true" tabindex="-1"></a>bowtie2-build Ppar_tinygenome.fna.gz Ppar_tinygenome</span></code></pre></div>
 <p>This should produce several output files with extensions including: .bt2 and rev.1.bt2 etc (six files in total)</p>
 <blockquote>
-<h3 id="exercise-for-while-indexing" class="hasAnchor">Exercise for while indexing:<a href="week-3--what-is-a-genetic-variant.html#exercise-for-while-indexing" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3 id="exercise-16" class="hasAnchor">Exercise<a href="week-3--what-is-a-genetic-variant.html#exercise-16" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Run fastqc on our .trimmed reads and compare the html with the untrimmed files.</p>
 </blockquote>
 <details>
@@ -334,7 +334,7 @@ We should no longer see the red error flag for the per base sequence quality or 
 <p>You should see a bunch of text telling you all about how well our reads mapped to the genome. For this example we’re getting a low percentage (20-30%) because of how the genome and reads were subset for this exercise. The full genome and full read files have a much higher mapping rate (70-80%) than our subset.</p>
 <p>You’ll also notice that we have made a bunch of .sam files. This stands for Sequence Alignment Map file. Let’s use <code>less</code> to look at one of these files.</p>
 <blockquote>
-<h3 id="exercise-16" class="hasAnchor">Exercise<a href="week-3--what-is-a-genetic-variant.html#exercise-16" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3 id="exercise-17" class="hasAnchor">Exercise<a href="week-3--what-is-a-genetic-variant.html#exercise-17" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Map the untrimmed files to the genome. How do the alignments compare?</p>
 </blockquote>
 <details>
@@ -354,7 +354,7 @@ We should no longer see the red error flag for the per base sequence quality or 
 </details>
 <p> </p>
 <blockquote>
-<h3 id="exercise-17" class="hasAnchor">Exercise<a href="week-3--what-is-a-genetic-variant.html#exercise-17" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3 id="exercise-18" class="hasAnchor">Exercise<a href="week-3--what-is-a-genetic-variant.html#exercise-18" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Run the mapping for loop as a shell script using bash (i.e., store the for loop in a text editor (NANOs or other) and execute the .sh script with bash)</p>
 </blockquote>
 <details>
@@ -397,7 +397,7 @@ We should no longer see the red error flag for the per base sequence quality or 
 <span id="cb177-2"><a href="week-3--what-is-a-genetic-variant.html#cb177-2" aria-hidden="true" tabindex="-1"></a>../../angsd/angsd -bam bam.filelist -GL 1 -out genotype_likelihoods -doMaf 2 -SNP_pval 1e-2 -doMajorMinor 1</span></code></pre></div>
 <p>This will generate two files, one with a .arg extension, this has a record of the script we ran to generate the output, and a .maf file that will give you the minor allele frequencies and is the main output file. If you see these two files, Yay!! We did it!</p>
 <blockquote>
-<h3 id="exercise-18" class="hasAnchor">Exercise<a href="week-3--what-is-a-genetic-variant.html#exercise-18" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3 id="exercise-19" class="hasAnchor">Exercise<a href="week-3--what-is-a-genetic-variant.html#exercise-19" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Change the parameters of the angsd genotype likelihoods command. How many more/less SNPs do we recover if we lower or raise the SNP p-value? To see what the other parameters do run `../../angsd/angsd -h</p>
 </blockquote>
 <details>
@@ -452,9 +452,6 @@ We should no longer see the red error flag for the per base sequence quality or 
 Make a new directory called <code>raw_data</code> and <code>mv</code> the raw data files (those that end in fastq.gz, and the tinygenome) into it. Then mv everything that we generated into a folder called <code>old_outputs</code>. Now rerun our code making a directory for the <code>trimmed_reads</code> and <code>sam_bam</code> files each.</li>
 </ol>
 </blockquote>
-<blockquote>
-<p>NOTE: The following solution still has one small typo error in it. See if you can find the error and get the code to run.</p>
-</blockquote>
 <details>
 <summary>
 <span style="color: purple;">Solution</span>
@@ -465,10 +462,11 @@ Make a new directory called <code>raw_data</code> and <code>mv</code> the raw da
 <li>The commands you will run include:</li>
 </ol>
 <p>To make a new directory and move the raw data: <code>mkdir raw_data; mv *fastq.gz raw_data</code></p>
-<p>To move all the old output that we generated <code>mkdir old_outputs; mv * old_outputs</code></p>
+<p>To move all the old output that we generated: <code>mv * old_outputs</code></p>
 <p>Then make output folder for each step in the process: <code>mkdir trimmed_reads; mkdir sam_bam</code></p>
 <p>Then rerun the for loops but change the file path for the input and output data.</p>
-<p>For example this is how the cutadapt command will look:</p>
+<p>For example the cutadapt command can be done with a loop as shown below.
+NOTE: The following solution still has one small typo error in it. See if you can find the error and get the code to run.</p>
 <div class="sourceCode" id="cb179"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb179-1"><a href="week-3--what-is-a-genetic-variant.html#cb179-1" aria-hidden="true" tabindex="-1"></a>for filename in raw_data/*.tiny.fastq.gz</span>
 <span id="cb179-2"><a href="week-3--what-is-a-genetic-variant.html#cb179-2" aria-hidden="true" tabindex="-1"></a>do</span>
 <span id="cb179-3"><a href="week-3--what-is-a-genetic-variant.html#cb179-3" aria-hidden="true" tabindex="-1"></a></span>

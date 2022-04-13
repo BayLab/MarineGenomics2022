@@ -160,7 +160,7 @@ bowtie2-build Ppar_tinygenome.fna.gz Ppar_tinygenome
 ```
 This should produce several output files with extensions including: .bt2 and rev.1.bt2 etc (six files in total)
 
-> ### Exercise for while indexing:
+> ### Exercise
 >
 > Run fastqc on our .trimmed reads and compare the html with the untrimmed files. 
 
@@ -322,7 +322,6 @@ This will generate two files, one with a .arg extension, this has a record of th
 > 2. For this lesson we ran everything in the same directory and you can see that we generated quite a few files by the time we were done. Many population genomic studies have data for hundreds of individuals and running everything in the same directory gets confusing and messy. However, having the data in a different directory from the output complicates running things a little (you have to remember which directory you're in). 
 >Make a new directory called `raw_data` and `mv` the raw data files (those that end in fastq.gz, and the tinygenome) into it. Then mv everything that we generated into a folder called `old_outputs`. Now rerun our code making a directory for the `trimmed_reads` and `sam_bam` files each. 
 
->NOTE: The following solution still has one small typo error in it. See if you can find the error and get the code to run. 
 
 <details><summary><span style="color: purple;">Solution</span></summary>
 <p>
@@ -331,13 +330,15 @@ This will generate two files, one with a .arg extension, this has a record of th
 >
 > To make a new directory and move the raw data: `mkdir raw_data; mv *fastq.gz raw_data` 
 >
-> To move all the old output that we generated `mkdir old_outputs; mv * old_outputs`
+> To move all the old output that we generated: `mv * old_outputs`
 >
 > Then make output folder for each step in the process: `mkdir trimmed_reads; mkdir sam_bam`
 >
 > Then rerun the for loops but change the file path for the input and output data. 
 >
-> For example this is how the cutadapt command will look: 
+> For example the cutadapt command can be done with a loop as shown below.
+> NOTE: The following solution still has one small typo error in it. See if you can find the error and get the code to run. 
+>
 >```html
 > for filename in raw_data/*.tiny.fastq.gz
 >do
