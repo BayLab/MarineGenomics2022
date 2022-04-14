@@ -1210,9 +1210,9 @@ as a variable name and substitute its value in its place, rather than treat it a
 <p>Let’s write a for loop to show us the first two lines of the fastq files we downloaded earlier. You will notice the shell prompt changes from <code>$</code> to <code>&gt;</code> and back again as we were typing in our loop. The second prompt, <code>&gt;</code>, is different to remind us that we haven’t finished typing a complete command yet. A semicolon, <code>;</code>, can be used to separate two commands written on a single line.</p>
 <div class="sourceCode" id="cb149"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb149-1"><a href="week-2-working-with-files.html#cb149-1" aria-hidden="true" tabindex="-1"></a>$ cd ~/data_week2/Week2/data_week2/untrimmed_fastq</span></code></pre></div>
 <div class="sourceCode" id="cb150"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb150-1"><a href="week-2-working-with-files.html#cb150-1" aria-hidden="true" tabindex="-1"></a>$ for filename in *.fastq</span>
-<span id="cb150-2"><a href="week-2-working-with-files.html#cb150-2" aria-hidden="true" tabindex="-1"></a>&gt; do</span>
-<span id="cb150-3"><a href="week-2-working-with-files.html#cb150-3" aria-hidden="true" tabindex="-1"></a>&gt; head -n 2 ${filename}</span>
-<span id="cb150-4"><a href="week-2-working-with-files.html#cb150-4" aria-hidden="true" tabindex="-1"></a>&gt; done</span></code></pre></div>
+<span id="cb150-2"><a href="week-2-working-with-files.html#cb150-2" aria-hidden="true" tabindex="-1"></a>do</span>
+<span id="cb150-3"><a href="week-2-working-with-files.html#cb150-3" aria-hidden="true" tabindex="-1"></a>head -n 2 ${filename}</span>
+<span id="cb150-4"><a href="week-2-working-with-files.html#cb150-4" aria-hidden="true" tabindex="-1"></a>done</span></code></pre></div>
 <p>The for loop begins with the formula <code>for &lt;variable&gt; in &lt;group to iterate over&gt;</code>. In this case, the word <code>filename</code> is designated
 as the variable to be used over each iteration. In our case each fastq file will be sequentially substituted for <code>filename</code>
 because they fit the pattern of ending with .fastq in the directory we’ve specified. The next line of the for loop is <code>do</code>. The next line is
@@ -1221,9 +1221,9 @@ word <code>done</code> ends the loop.</p>
 <p>After executing the loop, you should see the first two lines of both fastq files printed to the terminal. Let’s create a loop that
 will save this information to a file.</p>
 <div class="sourceCode" id="cb151"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb151-1"><a href="week-2-working-with-files.html#cb151-1" aria-hidden="true" tabindex="-1"></a>$ for filename in *.fastq</span>
-<span id="cb151-2"><a href="week-2-working-with-files.html#cb151-2" aria-hidden="true" tabindex="-1"></a>&gt; do</span>
-<span id="cb151-3"><a href="week-2-working-with-files.html#cb151-3" aria-hidden="true" tabindex="-1"></a>&gt; head -n 2 ${filename} &gt;&gt; seq_info.txt</span>
-<span id="cb151-4"><a href="week-2-working-with-files.html#cb151-4" aria-hidden="true" tabindex="-1"></a>&gt; done</span></code></pre></div>
+<span id="cb151-2"><a href="week-2-working-with-files.html#cb151-2" aria-hidden="true" tabindex="-1"></a>do</span>
+<span id="cb151-3"><a href="week-2-working-with-files.html#cb151-3" aria-hidden="true" tabindex="-1"></a>head -n 2 ${filename} &gt;&gt; seq_info.txt</span>
+<span id="cb151-4"><a href="week-2-working-with-files.html#cb151-4" aria-hidden="true" tabindex="-1"></a>done</span></code></pre></div>
 <p>When writing a loop, you will not be able to return to previous lines once you have pressed Enter. Remember that we can cancel the current command using</p>
 <ul>
 <li><kbd>Ctrl</kbd>+<kbd>C</kbd></li>
@@ -1244,10 +1244,10 @@ every time the loop iterates, so it would only have text from the last variable 
 <p>Basename is really powerful when used in a for loop. It allows to access just the file prefix, which you can use to name things. Let’s try this.</p>
 <p>Inside our for loop, we create a new name variable. We call the basename function inside the parenthesis, then give our variable name from the for loop, in this case <code>${filename}</code>, and finally state that <code>.fastq</code> should be removed from the file name. It’s important to note that we’re not changing the actual files, we’re creating a new variable called name. The line &gt; echo $name will print to the terminal the variable name each time the for loop runs. Because we are iterating over two files, we expect to see two lines of output.</p>
 <div class="sourceCode" id="cb156"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb156-1"><a href="week-2-working-with-files.html#cb156-1" aria-hidden="true" tabindex="-1"></a>$ for filename in *.fastq</span>
-<span id="cb156-2"><a href="week-2-working-with-files.html#cb156-2" aria-hidden="true" tabindex="-1"></a>&gt; do</span>
-<span id="cb156-3"><a href="week-2-working-with-files.html#cb156-3" aria-hidden="true" tabindex="-1"></a>&gt; name=$(basename ${filename} .fastq)</span>
-<span id="cb156-4"><a href="week-2-working-with-files.html#cb156-4" aria-hidden="true" tabindex="-1"></a>&gt; echo ${name}</span>
-<span id="cb156-5"><a href="week-2-working-with-files.html#cb156-5" aria-hidden="true" tabindex="-1"></a>&gt; done</span></code></pre></div>
+<span id="cb156-2"><a href="week-2-working-with-files.html#cb156-2" aria-hidden="true" tabindex="-1"></a>do</span>
+<span id="cb156-3"><a href="week-2-working-with-files.html#cb156-3" aria-hidden="true" tabindex="-1"></a>name=$(basename ${filename} .fastq)</span>
+<span id="cb156-4"><a href="week-2-working-with-files.html#cb156-4" aria-hidden="true" tabindex="-1"></a>echo ${name}</span>
+<span id="cb156-5"><a href="week-2-working-with-files.html#cb156-5" aria-hidden="true" tabindex="-1"></a>done</span></code></pre></div>
 <details>
 <summary>
 Exercise
@@ -1266,10 +1266,10 @@ Exercise
 <blockquote>
 <h3 id="solution-10" class="hasAnchor">Solution<a href="week-2-working-with-files.html#solution-10" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="sourceCode" id="cb157"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb157-1"><a href="week-2-working-with-files.html#cb157-1" aria-hidden="true" tabindex="-1"></a>$ for filename in *.txt</span>
-<span id="cb157-2"><a href="week-2-working-with-files.html#cb157-2" aria-hidden="true" tabindex="-1"></a>&gt; do</span>
-<span id="cb157-3"><a href="week-2-working-with-files.html#cb157-3" aria-hidden="true" tabindex="-1"></a>&gt; name=$(basename ${filename} .txt)</span>
-<span id="cb157-4"><a href="week-2-working-with-files.html#cb157-4" aria-hidden="true" tabindex="-1"></a>&gt; echo ${name}</span>
-<span id="cb157-5"><a href="week-2-working-with-files.html#cb157-5" aria-hidden="true" tabindex="-1"></a>&gt; done</span></code></pre></div>
+<span id="cb157-2"><a href="week-2-working-with-files.html#cb157-2" aria-hidden="true" tabindex="-1"></a>do</span>
+<span id="cb157-3"><a href="week-2-working-with-files.html#cb157-3" aria-hidden="true" tabindex="-1"></a>name=$(basename ${filename} .txt)</span>
+<span id="cb157-4"><a href="week-2-working-with-files.html#cb157-4" aria-hidden="true" tabindex="-1"></a>echo ${name}</span>
+<span id="cb157-5"><a href="week-2-working-with-files.html#cb157-5" aria-hidden="true" tabindex="-1"></a>done</span></code></pre></div>
 </blockquote>
 </blockquote>
 </p>
@@ -1299,10 +1299,10 @@ Exercise
 <blockquote>
 <h3 id="solution-11" class="hasAnchor">Solution<a href="week-2-working-with-files.html#solution-11" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="sourceCode" id="cb159"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb159-1"><a href="week-2-working-with-files.html#cb159-1" aria-hidden="true" tabindex="-1"></a>$ for filename in *_2019.txt</span>
-<span id="cb159-2"><a href="week-2-working-with-files.html#cb159-2" aria-hidden="true" tabindex="-1"></a>&gt; do</span>
-<span id="cb159-3"><a href="week-2-working-with-files.html#cb159-3" aria-hidden="true" tabindex="-1"></a>&gt; name=$(basename ${filename} _2019.txt)</span>
-<span id="cb159-4"><a href="week-2-working-with-files.html#cb159-4" aria-hidden="true" tabindex="-1"></a>&gt; mv ${filename} ${name}.txt</span>
-<span id="cb159-5"><a href="week-2-working-with-files.html#cb159-5" aria-hidden="true" tabindex="-1"></a>&gt; done</span></code></pre></div>
+<span id="cb159-2"><a href="week-2-working-with-files.html#cb159-2" aria-hidden="true" tabindex="-1"></a>do</span>
+<span id="cb159-3"><a href="week-2-working-with-files.html#cb159-3" aria-hidden="true" tabindex="-1"></a>name=$(basename ${filename} _2019.txt)</span>
+<span id="cb159-4"><a href="week-2-working-with-files.html#cb159-4" aria-hidden="true" tabindex="-1"></a>mv ${filename} ${name}.txt</span>
+<span id="cb159-5"><a href="week-2-working-with-files.html#cb159-5" aria-hidden="true" tabindex="-1"></a>done</span></code></pre></div>
 </blockquote>
 </blockquote>
 </p>

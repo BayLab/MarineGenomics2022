@@ -1432,9 +1432,9 @@ $ cd ~/data_week2/Week2/data_week2/untrimmed_fastq
 
 ```html
 $ for filename in *.fastq
-> do
-> head -n 2 ${filename}
-> done
+do
+head -n 2 ${filename}
+done
 ```
 
 The for loop begins with the formula `for <variable> in <group to iterate over>`. In this case, the word `filename` is designated 
@@ -1448,9 +1448,9 @@ will save this information to a file.
 
 ```html
 $ for filename in *.fastq
-> do
-> head -n 2 ${filename} >> seq_info.txt
-> done
+do
+head -n 2 ${filename} >> seq_info.txt
+done
 ```
 
 
@@ -1498,10 +1498,10 @@ Inside our for loop, we create a new name variable. We call the basename functio
 
 ```html
 $ for filename in *.fastq
-> do
-> name=$(basename ${filename} .fastq)
-> echo ${name}
-> done
+do
+name=$(basename ${filename} .fastq)
+echo ${name}
+done
 ```
 
 <details><summary>Exercise</summary>
@@ -1521,10 +1521,10 @@ $ for filename in *.fastq
 >>
 >> ```html
 >> $ for filename in *.txt
->> > do
->> > name=$(basename ${filename} .txt)
->> > echo ${name}
->> > done
+>> do
+>> name=$(basename ${filename} .txt)
+>> echo ${name}
+>> done
 >> ```
 >> 
 >>
@@ -1562,10 +1562,10 @@ $ for filename in *.txt
 >>
 >> ```html
 >> $ for filename in *_2019.txt
->> > do
->> > name=$(basename ${filename} _2019.txt)
->> > mv ${filename} ${name}.txt
->> > done
+>> do
+>> name=$(basename ${filename} _2019.txt)
+>> mv ${filename} ${name}.txt
+>> done
 >> ```
 >> 
 >>
