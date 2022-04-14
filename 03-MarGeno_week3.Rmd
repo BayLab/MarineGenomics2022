@@ -198,7 +198,7 @@ done
 
 You should see a bunch of text telling you all about how well our reads mapped to the genome. For this example we're getting a low percentage (20-30%) because of how the genome and reads were subset for this exercise. The full genome and full read files have a much higher mapping rate (70-80%) than our subset. 
 
-You'll also notice that we have made a bunch of .sam files. This stands for Sequence Alignment Map file. Let's use `less` to look at one of these files.
+You'll also notice that we have made a bunch of [.sam files](http://samtools.github.io/hts-specs/SAMv1.pdf). This stands for Sequence Alignment Map file. Let's use `less` to look at one of these files.
 
 > ### Exercise
 > Map the untrimmed files to the genome. How do the alignments compare?
@@ -339,7 +339,6 @@ This will generate two files, one with a .arg extension, this has a record of th
 > Then rerun the for loops but change the file path for the input and output data. 
 >
 > For example the cutadapt command can be done with a loop as shown below.
-> NOTE: The following solution still has one small typo error in it. See if you can find the error and get the code to run. 
 >
 >```html
 > for filename in raw_data/*.tiny.fastq.gz
@@ -348,7 +347,7 @@ This will generate two files, one with a .arg extension, this has a record of th
 > base=$(basename $filename .tiny.fastq.gz)
 > echo=${base}
 >
->cutadapt -g TGCAG raw_data/$base.tiny.fastq.gz -o trimmed_reads/$base.tiny_trimmed.fastq.gz 
+>cutadapt -g TGCAG raw_data/${base}.tiny.fastq.gz -o trimmed_reads/${base}.tiny_trimmed.fastq.gz 
 >
 >done
 >```
