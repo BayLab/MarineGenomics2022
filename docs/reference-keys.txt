@@ -45,3 +45,17 @@ building-an-index-of-our-genome
 map-reads-to-the-genome
 sam-to-bam-file-conversion
 genotype-likelihoods
+week-4---the-r-environment
+create-a-project-in-rstudio
+orientation-to-r
+manipulating-a-vector-object
+operations-act-on-each-element-of-a-vector
+operations-can-also-work-with-two-vectors
+practice-r-operations
+characterizing-a-dataframe
+how-to-access-parts-of-the-data
+data-manipulation
+practice-exploring-a-dataframe
+subsetting-datasets-logicals
+practice-subsetting-datasetslogicals
+a-few-tips-for-coding-in-rstudio
