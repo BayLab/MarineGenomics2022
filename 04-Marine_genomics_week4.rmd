@@ -1,7 +1,7 @@
 ---
 title: "Marine Genomics Week 4"
-author: "STEMinist_R, modified by Serena Caplins"
-date: "4/20/2021"
+author: "STEMinist_R, modified by Serena Caplins, modified by Tali Magory"
+date: "4/21/2022"
 output:
   bookdown::html_book:
     toc: yes
@@ -12,30 +12,58 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# Week 4- The R environment
+# Week 4 - The R environment
 
-This lesson is modified from materials of the STEMinist_R lessons produced by several UC Davis graduate student and which can be found [here](https://github.com/ecalfee/STEMinist_R.git). The lessons were shortened here to fit into two sessions (an 1.5hr session and a 50 min session).
+This lesson is modified from materials of the STEMinist_R lessons produced by several UC Davis graduate student and which can be found [here](https://github.com/ecalfee/STEMinist_R.git). We have made some modifications to the data carpentry tutorial to fit our course.
 
-These materials are evenly divided between live coding examples performed by the instructor and exercises performed by the students. 
-
-This class will take place with students typing directly into an R script for the exercises all of which can be found in the Week 4 file [here](https://github.com/BayLab/MarineGenomicsData.git) 
-
-You can download the R files for this week via wget in the terminal with the following link:
+Download the data from the MarineGenomicsData repository on git hub via wget in the terminal with the following link:
 
 ```{html
 wget https://raw.githubusercontent.com/BayLab/MarineGenomicsData/main/week4.tar.gz
 ```
 
-this is a commpressed file which can be uncompressed via:
+Use tar to uncompress the file:
 ```
 tar -xzvf week4.tar.gz
 
 ```
-You can now open R and load in the R_Day_1_Lesson.R file. This is the script that we will work out of for the rest of the week. You can see it contains many commented sections that begin with a `#`. This allows you to add comments to your code, explaining what you are doing for each line of code. Commenting code is very important! It explains to someone else what your code does, and can even be useful when you revisit your own code after a few weeks/months/years. Be nice to your future self, comment your code. 
 
-The next section contains the commented out code and the script that is run in R in a format that is more easily readable on a website.
+Move the 'week4' directory from MarineGenomicsData into MarineGenomics:
+```
+mv MarineGenomicsData/Week4 MarineGenomics/week4
+```
 
-## Lesson 1: Orientation to R
+You can now open Rstudio by searching for Rstudio in Applications. When we first open Rstudio, it has 3 parts: the window to the left (console/terminal/jobs), and two windows to the right (environment/history/connections/tutorial and files/plots/packages/help/viewer). When we open a script, a fourth window will appear. We can change the location and size of these windows as we please, and we will get used to using them when we code in Rstudio. 
+
+Before we begin coding, for good practice, let's start by creating a Project. Working in a project allows us to save all our scripts in the same place, and to automatically have access to the files we are working with without repeatedly specifying paths. This will be especially important once you start working on multiple projects at a time. 
+
+## Create a project in Rstudio
+Go to 'File' and select 'New Project'. You will then see this:
+&nbsp;
+
+```{r one, echo=FALSE, out.width = '100%'}
+knitr::include_graphics("./figs/jetstream/Project1.png")
+```
+Select 'Existing Directory'. Then, select 'browse':
+&nbsp;
+
+```{r two, echo=FALSE, out.width = '100%'}
+knitr::include_graphics("./figs/jetstream/Project2.png")
+```
+Select the 'Marine Genomics' directory and then select 'week4':
+&nbsp;
+
+```{r three, echo=FALSE, out.width = '100%'}
+knitr::include_graphics("./figs/jetstream/Project3.png")
+```
+Click 'Open', and then 'Create Project'. You have now created a project ('week4.Rproj') that is located together with the other files that we will be working with. 
+
+There are a few types of files we can work with in Rstudio. The most basic file is an *.R file, which contains simple code. We will orientate ourselves with Rstudio using such a file. 
+
+## Orientation to R
+
+Load the 'R_Day_1_Lesson.R file' by clicking on it in the window to the lower-right. This is the script that we will work out of today. You can see it contains many commented sections that begin with a `#`. This allows you to add comments to your code, explaining what you are doing for each line of code. Commenting code is very important! It explains to someone else what your code does, and can even be useful when you revisit your own code after a few weeks/months/years. Be nice to your future self, comment your code. 
+We can use this script to copy (from the website) the commands we use and paste them (onto the R file).
 
 R can be used for basic arithmetic:
 
@@ -48,7 +76,7 @@ R can be used for basic arithmetic:
 
 It can also store values in variables:
 
-You can assign an object using an assignment operator `<-` or  `=`.
+You can assign an object using an assignment operator `<-` or  `=`. Notice that once you've created an object, it will appear in the 'Environment' section in the window on the upper right.
 ```{r , echo=T}
 
 number<-10
@@ -105,11 +133,11 @@ We can see how long a vector is with `length()`
 length(n)
 
 ```  
-You can use square brackets `[]` to get parts of vectors.
+You can use square brackets `[]` to get parts of vectors. For example, the third part of the 'animals' vector we created:
 
 ```{r , echo=T}
 
-n[50]
+animals[3]
 
 ```  
 
@@ -146,25 +174,6 @@ numbers + y
 
 # n * y
 numbers * y
-
-```
-
-## A few tips below for working with objects:
-
-We can keep track of what objects R is using, with the functions `ls()` and `objects()`
-```{r , echo=T}
-ls()
-objects() #returns the same results as ls() in this case. because we only have objects in our environment.
-
-# how to get help for a function; you can also write help()
-?ls
-
-# you can get rid of objects you don't want
-
-rm(numbers)
-
-# and make sure it got rid of them
-ls()
 
 ```
 ## Practice R Operations
@@ -230,7 +239,7 @@ sum(x) - sum(y)
 
 
 
-## 1.2 Characterizing a dataframe
+## Characterizing a dataframe
 
 
 We'll now move from working with objects and vectors to working with dataframes:
@@ -271,7 +280,7 @@ data("msleep")
 ```
 
 
-There are many functions in R that allow us to get an idea of what the data looks like. For example, what are it's dimensions (how many rows and columns)? 
+There are many functions in R that allow us to get an idea of what the data looks like. For example, what are its dimensions (how many rows and columns)? 
 
 ```{r, echo=T}
 
@@ -287,10 +296,13 @@ str(msleep)
 dim(), ncol(), nrow()- dimensions, number of columns, number of rows
 colnames(), rownames() - column names, row names
 
- Rstudio also allows us to just look into the data file with `View()`
+Rstudio also allows us to just look into the data file with `View()`. We can also click on our dataframe in the 'Environment'. 
+```{r, echo=T}
 
+View(msleep)
+```
 
-## How to access parts of the data:
+## How to access parts of the data
 
 We can also look at a single column at a time. There are three ways to access this: $, [,#] or [,"a"]. 
 
@@ -341,15 +353,14 @@ unique(msleep[, "order"])
  # table()
 table(msleep$order)
 
- # levels(), if class is factor (and if not we can make it a factor)
+ # levels(), if class is factor (and if not, we can make it a factor by using 'as.factor')
 levels(as.factor(msleep$order))
 
 ```
 ## Data Manipulation
 
-If your data is transposed in a way that isn't useful to you, you can switch it. Note that this often changes the class of each column!
-
-In R, each column must have the same type of data:
+If your data is transposed in a way that isn't useful to you, you can switch it:
+(Note that this often changes the class of each column! In R, each column must have the same type of data)
 ```{r, echo=T}
  # t()
 
@@ -392,12 +403,13 @@ summary(msleep$sleep_total)
 ```
 
 Sometimes, the values we care about aren't provided in a data set. When this happens, we can create a new column that contains the values we're interested in:
+Note: we use the $ sign to create a new column on the left part of the command, and to specify the column on the right side of the command
 
 ```{r, echo=T}
 
   # what if what we cared about was our sleep_total/sleep_rem ratio?
   # add a sleep_total/sleep_rem ratio column to our msleep dataframe with $
-msleep$total_rem<-msleep$sleep_total/msleep$sleep_rem
+msleep$total_rem <- msleep$sleep_total/msleep$sleep_rem
 
   # look at our dataframe again. It now contains 12 columns, one of them being the one we just created.
 head(msleep)
@@ -583,19 +595,16 @@ median(iris$Sepal.Length)
 &nbsp;
           
            
-
-We'll continue with this material on Thursday!
-
-## 1.3 Subsetting datasets & logicals
+## Subsetting datasets & logicals
 
 
 A few useful commands: equals `==`,  does not equal `!=`, greater than `>`, less than `<`, and `&`, and a pipe which can also indicate "and" `|`.
 
-Reminder there are two assignment operators in R `<-` and a single equals sign `=`. The one you use really depends on how you learned to use R, and are otherwise equivalent.
+Reminder there are two assignment operators in R `<-` and a single equals sign `=`. The one you use really depends on how you learned to use R, and they are otherwise equivalent.
 
 **Logical conditions vs. assignment operators:**
 
-Logical values of TRUE and FALSE are special in R. What class is a logical value?
+Logical values of TRUE (also 'T') and FALSE (also 'F) are special in R. What class is a logical value?
 
 ```{r, echo=T}
 TRUE
@@ -606,20 +615,6 @@ FALSE
 class(TRUE)
 
 ```
-Logical values are stored as 0 for FALSE and 1 for TRUE. Which means you can do math with them!
-
-```{r, echo=T}
-
-TRUE + 1
-FALSE + 1
-
-sum(c(TRUE,TRUE,FALSE,FALSE))
-
-!TRUE
-
-!c(TRUE,TRUE,FALSE,FALSE)
-```
-
 
 Logicals will be the output of various tests:
 
@@ -874,5 +869,15 @@ table(iris[,'sepalCategory'])
 </p>
 </details>    
 
-## Creature of the Week!
-![Portuguese man o' war drifting in the ocean. It is also known as the "floating terror" or "bluebottle" (Image credit: Getty Images)](./figs/creatures/portuguesemanowar.jpg)
+## A few tips for coding in Rstudio
+
+```{r , echo=T}
+# how to get help for a function; you can also write help()
+?ls
+
+# executing a command from a script; instead of copy/paste into the console, we can also select the command and press 'Ctrl'+'Enter' OR locate our cursor at the end of the line and press 'Ctrl'+Enter'
+
+# we can use 'tab' to complete names, just like in Bash
+
+# 'Ctrl'+ L cleans our Console.
+```
