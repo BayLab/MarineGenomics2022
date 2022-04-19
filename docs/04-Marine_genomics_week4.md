@@ -1,7 +1,7 @@
 ---
-title: "Marine Genomics Week 4"
-author: "STEMinist_R, modified by Serena Caplins, modified by Tali Magory"
-date: "4/21/2022"
+title:
+author:
+date:
 output:
   bookdown::html_book:
     toc: yes
@@ -41,6 +41,7 @@ Go to 'File' and select 'New Project'. You will then see this:
 
 <img src="./figs/jetstream/Project1.png" width="100%" />
 Select 'Existing Directory'. Then, select 'browse':
+(this may take a minute)
 &nbsp;
 
 <img src="./figs/jetstream/Project2.png" width="100%" />
@@ -54,7 +55,9 @@ There are a few types of files we can work with in Rstudio. The most basic file 
 
 ## Orientation to R
 
-Load the 'R_Day_1_Lesson.R file' by clicking on it in the window to the lower-right. This is the script that we will work out of today. You can see it contains many commented sections that begin with a `#`. This allows you to add comments to your code, explaining what you are doing for each line of code. Commenting code is very important! It explains to someone else what your code does, and can even be useful when you revisit your own code after a few weeks/months/years. Be nice to your future self, comment your code. 
+When we work in R, we document our work using a script (for example, an R file). We can open a new R file by selecting File > New File > R Script, which generates a simple text file. 
+It's very important to add comments to our code, that explain the commands that we are using, by using the '#' sign - anything that follows a '#' is not code!
+Commenting on code is very important! It explains to someone else what your code does, and can even be useful when you revisit your own code after a few weeks/months/years. Be nice to your future self, comment your code. 
 We can use this script to copy (from the website) the commands we use and paste them (onto the R file).
 
 R can be used for basic arithmetic:
@@ -67,16 +70,16 @@ R can be used for basic arithmetic:
 ```
 ## [1] 38
 ```
-
+The number in the brackets in the line the number. 
 
 It can also store values in variables:
 
 You can assign an object using an assignment operator `<-` or  `=`. Notice that once you've created an object, it will appear in the 'Environment' section in the window on the upper right.
 
 ```r
-number<-10
+number <- 10
 
-numbers<-c(10, 11, 12, 14, 16)
+numbers <- c(10, 11, 12, 14, 16)
 ```
 
 You can see your assigned object by typing the name you gave it.
@@ -100,22 +103,22 @@ numbers
 Objects can be numbers or characters:
 
 ```r
-cat<-"meow"
-dog<-"woof"
+cat <- "meow"
+dog <- "woof"
 ```
 
 
 We can use colons to get sequences of numbers:
 
 ```r
-n<-1:100
+n <- 1:100
 ```
 
 Vectors can also include characters (in quotes): 
 `c()`=concatenate, aka link things together!
 
 ```r
-animals<-c("woof", "meow", "hiss", "baa")
+animals <- c("woof", "meow", "hiss", "baa")
 ```
 
 ## Manipulating a vector object 
@@ -141,7 +144,7 @@ length(n)
 ## [1] 100
 ```
 You can use square brackets `[]` to get parts of vectors. For example, the third part of the 'animals' vector we created:
-
+#######################
 
 ```r
 animals[3]
@@ -150,168 +153,6 @@ animals[3]
 ```
 ## [1] "hiss"
 ```
-
-
-## Operations act on each element of a vector:
-
-```r
-# +2
-numbers+2
-```
-
-```
-## [1] 12 13 14 16 18
-```
-
-```r
-# *2
-numbers*2
-```
-
-```
-## [1] 20 22 24 28 32
-```
-
-```r
-# mean
-mean(numbers)
-```
-
-```
-## [1] 12.6
-```
-
-```r
-# ^2
-numbers^2
-```
-
-```
-## [1] 100 121 144 196 256
-```
-
-```r
-# sum
-sum(numbers)
-```
-
-```
-## [1] 63
-```
-
-
-## Operations can also work with two vectors:
-
-```r
-#define a new object y
-y<-numbers*2
-
-# n + y
-numbers + y
-```
-
-```
-## [1] 30 33 36 42 48
-```
-
-```r
-# n * y
-numbers * y
-```
-
-```
-## [1] 200 242 288 392 512
-```
-## Practice R Operations
-> ## EXERCISE 1.1 # 
-
-
-> 01. Open Rstudio and perform an arithmetic calculation in the command line.
-
-<details><summary><span style="color: blue;">Solution</span></summary>
-<p>
-
-
-```r
-#this can be whatever you decide to do!
-
-5*134
-```
-
-```
-## [1] 670
-```
-</p>
-</details>
-
-
-> 02. Create a numeric vector in the command line containing:
-> + the numbers 2, 9, 3, 8, and 3 and assign this vector to a global variable x. 
-> + Perform arithmetic with x. 
-> + Convince yourself R works as a calculator, and knows order of operations. 
-> + Multiply x by 10, and save the result as a new object named y
-> + Calculate the difference in the sum of the x vector and the sum of the y vector
-        
-<details><summary><span style="color: blue;">Solution</span></summary>
-<p>
-
-
-```r
-x <- c(2, 9, 3, 8, 3)
-
-x * 20
-```
-
-```
-## [1]  40 180  60 160  60
-```
-
-```r
-x + 4 * 24
-```
-
-```
-## [1]  98 105  99 104  99
-```
-
-```r
-y <- x * 10
-
-sum(x) - sum(y)
-```
-
-```
-## [1] -225
-```
-
-
-</p>
-</details>        
-
-
-> 03. Call the help files for the functions ls() and rm()
-> + What are the arguments for the ls() function?
-> + What does the 'sorted' argument do? 
-
-<details><summary><span style="color: blue;">Solution</span></summary>
-<p>
-
-
-```r
-?ls
-```
-
-```
-## starting httpd help server ... done
-```
-
-```r
-#From the help file: 	sorted is a logical indicating if the resulting character should be sorted alphabetically. Note that this is part of ls() may take most of the time.
-```
-</p>
-</details>
-
-
 
 ## Characterizing a dataframe
 
@@ -416,6 +257,19 @@ str(msleep)
 dim(), ncol(), nrow()- dimensions, number of columns, number of rows
 colnames(), rownames() - column names, row names
 
+It's important to know the class of data if you want to work with it. `msleep` contains several different types of data. Some common classes are: factors, numeric, integers, characters, logical
+ 
+
+```r
+ # class()
+
+class(msleep)
+```
+
+```
+## [1] "tbl_df"     "tbl"        "data.frame"
+```
+
 Rstudio also allows us to just look into the data file with `View()`. We can also click on our dataframe in the 'Environment'. 
 
 ```r
@@ -513,14 +367,14 @@ class(msleep$sleep_total)
 We can also look at a single row at a time. There are two ways to access this: 1. by indicating the row number in square brackets next to the name of the dataframe `name[#,]` and by calling the actual name of the row (if your rows have names) `name["a",]`.
 
 ```r
-msleep[43,]
+msleep[3,]
 ```
 
 ```
 ## # A tibble: 1 x 11
 ##   name    genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
 ##   <chr>   <chr> <chr> <chr> <chr>              <dbl>     <dbl>       <dbl> <dbl>
-## 1 Little~ Myot~ inse~ Chir~ <NA>                19.9         2         0.2   4.1
+## 1 Mounta~ Aplo~ herbi Rode~ nt                  14.4       2.4          NA   9.6
 ## # ... with 2 more variables: brainwt <dbl>, bodywt <dbl>
 ```
 
@@ -564,7 +418,7 @@ msleep[,c(1, 6)]
 ```r
  # and make a new data frame from these subsets
 
-subsleep<-msleep[,c(1, 6)]
+subsleep <- msleep[,c(1, 6)]
 ```
 But what if we actually care about how many **unique** things are in a column?
 
@@ -646,42 +500,6 @@ str(tr_msleep)
 ##   ..$ : chr [1:11] "name" "genus" "vore" "order" ...
 ##   ..$ : NULL
 ```
-It's important to know the class of data if you want to manipulate it. For example, you can't add characters.
-`msleep` contains several different types of data. 
-
-Some common classes are: factors, numeric, integers, characters, logical
- 
-
-```r
- # class()
-
-class(msleep)
-```
-
-```
-## [1] "tbl_df"     "tbl"        "data.frame"
-```
-
-```r
- # str()
-
-str(msleep)
-```
-
-```
-## tibble [83 x 11] (S3: tbl_df/tbl/data.frame)
-##  $ name        : chr [1:83] "Cheetah" "Owl monkey" "Mountain beaver" "Greater short-tailed shrew" ...
-##  $ genus       : chr [1:83] "Acinonyx" "Aotus" "Aplodontia" "Blarina" ...
-##  $ vore        : chr [1:83] "carni" "omni" "herbi" "omni" ...
-##  $ order       : chr [1:83] "Carnivora" "Primates" "Rodentia" "Soricomorpha" ...
-##  $ conservation: chr [1:83] "lc" NA "nt" "lc" ...
-##  $ sleep_total : num [1:83] 12.1 17 14.4 14.9 4 14.4 8.7 7 10.1 3 ...
-##  $ sleep_rem   : num [1:83] NA 1.8 2.4 2.3 0.7 2.2 1.4 NA 2.9 NA ...
-##  $ sleep_cycle : num [1:83] NA NA NA 0.133 0.667 ...
-##  $ awake       : num [1:83] 11.9 7 9.6 9.1 20 9.6 15.3 17 13.9 21 ...
-##  $ brainwt     : num [1:83] NA 0.0155 NA 0.00029 0.423 NA NA NA 0.07 0.0982 ...
-##  $ bodywt      : num [1:83] 50 0.48 1.35 0.019 600 ...
-```
 
 Often we want to summarize data. There are many ways of doing this in R:
 
@@ -732,20 +550,7 @@ Note: we use the $ sign to create a new column on the left part of the command, 
 msleep$total_rem <- msleep$sleep_total/msleep$sleep_rem
 
   # look at our dataframe again. It now contains 12 columns, one of them being the one we just created.
-head(msleep)
-```
-
-```
-## # A tibble: 6 x 12
-##   name    genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
-##   <chr>   <chr> <chr> <chr> <chr>              <dbl>     <dbl>       <dbl> <dbl>
-## 1 Cheetah Acin~ carni Carn~ lc                  12.1      NA        NA      11.9
-## 2 Owl mo~ Aotus omni  Prim~ <NA>                17         1.8      NA       7  
-## 3 Mounta~ Aplo~ herbi Rode~ nt                  14.4       2.4      NA       9.6
-## 4 Greate~ Blar~ omni  Sori~ lc                  14.9       2.3       0.133   9.1
-## 5 Cow     Bos   herbi Arti~ domesticated         4         0.7       0.667  20  
-## 6 Three-~ Brad~ herbi Pilo~ <NA>                14.4       2.2       0.767   9.6
-## # ... with 3 more variables: brainwt <dbl>, bodywt <dbl>, total_rem <dbl>
+View(msleep)
 ```
 
 
@@ -1619,10 +1424,20 @@ table(iris[,'sepalCategory'])
 ```r
 # how to get help for a function; you can also write help()
 ?ls
+```
 
+```
+## starting httpd help server ... done
+```
+
+```r
 # executing a command from a script; instead of copy/paste into the console, we can also select the command and press 'Ctrl'+'Enter' OR locate our cursor at the end of the line and press 'Ctrl'+Enter'
 
 # we can use 'tab' to complete names, just like in Bash
 
 # 'Ctrl'+ L cleans our Console.
+
+# you can use the 'up' arrow on our keypad to go back to the command we've used previously. 
+
+# Don't forget to save your work!
 ```

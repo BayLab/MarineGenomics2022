@@ -49,9 +49,6 @@ week-4---the-r-environment
 create-a-project-in-rstudio
 orientation-to-r
 manipulating-a-vector-object
-operations-act-on-each-element-of-a-vector
-operations-can-also-work-with-two-vectors
-practice-r-operations
 characterizing-a-dataframe
 how-to-access-parts-of-the-data
 data-manipulation
