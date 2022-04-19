@@ -75,7 +75,7 @@ R can be used for basic arithmetic:
 5+10+23
 
 ```
-The number in the brackets is the line the number.
+The number in the brackets is the line the number. 
 
 It can also store values in objects. There are five different types of objects in R: vector, list, matrix, data frame and array. (image taken from [this](https://rstudio-education.github.io/hopr/r-objects.html#summary-2) website)
 &nbsp;
