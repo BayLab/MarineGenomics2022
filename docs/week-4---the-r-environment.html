@@ -261,8 +261,10 @@ We can use this script to copy (from the website) the commands we use and paste 
 <div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="week-4---the-r-environment.html#cb183-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span><span class="sc">+</span><span class="dv">10</span><span class="sc">+</span><span class="dv">23</span></span></code></pre></div>
 <pre><code>## [1] 38</code></pre>
 <p>The number in the brackets in the line the number.</p>
-<p>It can also store values in variables:</p>
-<p>You can assign an object using an assignment operator <code>&lt;-</code> or <code>=</code>. Notice that once you’ve created an object, it will appear in the ‘Environment’ section in the window on the upper right.</p>
+<p>It can also store values in objects. There are five different types of objects in R: vector, list, matrix, data frame and array. (image taken from <a href="https://rstudio-education.github.io/hopr/r-objects.html#summary-2">this</a> website)
+ </p>
+<p><img src="figs/jetstream/Robjects.png" width="100%" /></p>
+<p>You can assign values to an object using an assignment operator <code>&lt;-</code> or <code>=</code>. Notice that once you’ve created an object, it will appear in the ‘Environment’ section in the window on the upper right.</p>
 <div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="week-4---the-r-environment.html#cb185-1" aria-hidden="true" tabindex="-1"></a>number <span class="ot">&lt;-</span> <span class="dv">10</span></span>
 <span id="cb185-2"><a href="week-4---the-r-environment.html#cb185-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb185-3"><a href="week-4---the-r-environment.html#cb185-3" aria-hidden="true" tabindex="-1"></a>numbers <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>, <span class="dv">14</span>, <span class="dv">16</span>)</span></code></pre></div>
@@ -507,8 +509,8 @@ Think about “rc cola” or “remote control car” to remember that [5,] mean
 </div>
 <div id="data-manipulation" class="section level2 hasAnchor" number="5.6">
 <h2><span class="header-section-number">5.6</span> Data Manipulation<a href="week-4---the-r-environment.html#data-manipulation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>If your data is transposed in a way that isn’t useful to you, you can switch it:
-(Note that this often changes the class of each column! In R, each column must have the same type of data)</p>
+<p>If your data is transposed in a way that isn’t useful to you, you can switch it:</p>
+<p>(Note that this often changes the class of each column! In R, each column must have the same type of data)</p>
 <div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="week-4---the-r-environment.html#cb233-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># t()</span></span>
 <span id="cb233-2"><a href="week-4---the-r-environment.html#cb233-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb233-3"><a href="week-4---the-r-environment.html#cb233-3" aria-hidden="true" tabindex="-1"></a>tr_msleep<span class="ot">&lt;-</span><span class="fu">t</span>(msleep)</span>

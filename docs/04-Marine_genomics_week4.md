@@ -72,9 +72,12 @@ R can be used for basic arithmetic:
 ```
 The number in the brackets in the line the number. 
 
-It can also store values in variables:
+It can also store values in objects. There are five different types of objects in R: vector, list, matrix, data frame and array. (image taken from [this](https://rstudio-education.github.io/hopr/r-objects.html#summary-2) website)
+&nbsp;
 
-You can assign an object using an assignment operator `<-` or  `=`. Notice that once you've created an object, it will appear in the 'Environment' section in the window on the upper right.
+<img src="./figs/jetstream/Robjects.png" width="100%" />
+
+You can assign values to an object using an assignment operator `<-` or  `=`. Notice that once you've created an object, it will appear in the 'Environment' section in the window on the upper right.
 
 ```r
 number <- 10
@@ -484,6 +487,7 @@ levels(as.factor(msleep$order))
 ## Data Manipulation
 
 If your data is transposed in a way that isn't useful to you, you can switch it:
+
 (Note that this often changes the class of each column! In R, each column must have the same type of data)
 
 ```r
