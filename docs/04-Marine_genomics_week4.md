@@ -70,7 +70,7 @@ R can be used for basic arithmetic:
 ```
 ## [1] 38
 ```
-The number in the brackets in the line the number. 
+The number in the brackets in the line the numberץ
 
 It can also store values in objects. There are five different types of objects in R: vector, list, matrix, data frame and array. (image taken from [this](https://rstudio-education.github.io/hopr/r-objects.html#summary-2) website)
 &nbsp;
