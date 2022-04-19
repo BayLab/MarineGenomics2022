@@ -1441,7 +1441,7 @@ table(iris[,'sepalCategory'])
 
 # 'Ctrl'+ L cleans our Console.
 
-# you can use the 'up' arrow on our keypad to go back to the command we've used previously. 
+# we can use the 'up' arrow on our keypad to go back to the command we've used previously. 
 
 # Don't forget to save your work!
 ```
