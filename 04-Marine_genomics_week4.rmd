@@ -17,20 +17,16 @@ knitr::opts_chunk$set(echo = TRUE)
 This lesson is modified from materials of the STEMinist_R lessons produced by several UC Davis graduate student and which can be found [here](https://github.com/ecalfee/STEMinist_R.git). We have made some modifications to the data carpentry tutorial to fit our course.
 
 Download the data from the MarineGenomicsData repository on git hub via wget in the terminal with the following link:
-
+(first we navigate to the MarineGenomics directory)
 ```{html
-wget https://raw.githubusercontent.com/BayLab/MarineGenomicsData/main/week4.tar.gz
-```
+cd MarineGenomics
+wget https://raw.githubusercontent.com/BayLab/MarineGenomicsData/main/week4_2022.tar.gz
 
+```
 Use tar to uncompress the file:
 ```
-tar -xzvf week4.tar.gz
+tar -xzvf week4_2022.tar.gz
 
-```
-
-Move the 'week4' directory from MarineGenomicsData into MarineGenomics:
-```
-mv MarineGenomicsData/Week4 MarineGenomics/week4
 ```
 
 You can now open Rstudio by searching for Rstudio in Applications. When we first open Rstudio, it has 3 parts: the window to the left (console/terminal/jobs), and two windows to the right (environment/history/connections/tutorial and files/plots/packages/help/viewer). When we open a script, a fourth window will appear. We can change the location and size of these windows as we please, and we will get used to using them when we code in Rstudio. 
@@ -51,13 +47,13 @@ Select 'Existing Directory'. Then, select 'browse':
 ```{r two, echo=FALSE, out.width = '100%'}
 knitr::include_graphics("./figs/jetstream/Project2.png")
 ```
-Select the 'Marine Genomics' directory and then select 'week4':
+Select the 'Marine Genomics' directory and then select 'week4_2022':
 &nbsp;
 
 ```{r three, echo=FALSE, out.width = '100%'}
 knitr::include_graphics("./figs/jetstream/Project3.png")
 ```
-Click 'Open', and then 'Create Project'. You have now created a project ('week4.Rproj') that is located together with the other files that we will be working with. 
+Click 'Open', and then 'Create Project'. You have now created a project ('week4_2022.Rproj') that is located together with the other files that we will be working with. 
 
 There are a few types of files we can work with in Rstudio. The most basic file is an *.R file, which contains simple code. We will orientate ourselves with Rstudio using such a file. 
 
