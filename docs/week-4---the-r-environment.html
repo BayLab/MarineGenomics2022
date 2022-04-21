@@ -227,13 +227,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="week-4---the-r-environment" class="section level1 hasAnchor" number="5">
 <h1><span class="header-section-number">5</span> Week 4 - The R environment<a href="week-4---the-r-environment.html#week-4---the-r-environment" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>This lesson is modified from materials of the STEMinist_R lessons produced by several UC Davis graduate student and which can be found <a href="https://github.com/ecalfee/STEMinist_R.git">here</a>. We have made some modifications to the data carpentry tutorial to fit our course.</p>
-<p>Make a new directory for week4 on the MarineGenomics directory</p>
-<pre><code>mkdir MarineGenomics/week4</code></pre>
-<p>Download the data from the MarineGenomics repository on git hub via wget in the terminal with the following links:
-(first we will naviagte to the ‘week4’ directory)</p>
-<pre class="{html"><code>cd MarineGenomics/week4
-wget https://github.com/BayLab/MarineGenomics2022/blob/d15bf09fbba443c96a6e3a05e5a361a03de4a5c7/data/Week4/Exercise_1.1_Dataframes.R
-wget https://github.com/BayLab/MarineGenomics2022/blob/d15bf09fbba443c96a6e3a05e5a361a03de4a5c7/data/Week4/Exercise_1.2_Subsetting.R
+<p>Download the data from the MarineGenomicsData repository on git hub via wget in the terminal with the following link:
+(first we navigate to the MarineGenomics directory)</p>
+<pre class="{html"><code>cd MarineGenomics
+wget https://raw.githubusercontent.com/BayLab/MarineGenomicsData/main/week4_2022.tar.gz
+</code></pre>
+<p>Use tar to uncompress the file:</p>
+<pre><code>tar -xzvf week4_2022.tar.gz
 </code></pre>
 <p>You can now open Rstudio by searching for Rstudio in Applications. When we first open Rstudio, it has 3 parts: the window to the left (console/terminal/jobs), and two windows to the right (environment/history/connections/tutorial and files/plots/packages/help/viewer). When we open a script, a fourth window will appear. We can change the location and size of these windows as we please, and we will get used to using them when we code in Rstudio.</p>
 <p>Before we begin coding, for good practice, let’s start by creating a Project. Working in a project allows us to save all our scripts in the same place, and to automatically have access to the files we are working with without repeatedly specifying paths. This will be especially important once you start working on multiple projects at a time.</p>
@@ -246,10 +246,10 @@ Select ‘Existing Directory.’ Then, select ‘browse’:
 (this may take a minute)
  </p>
 <p><img src="figs/jetstream/Project2.png" width="100%" />
-Select the ‘Marine Genomics’ directory and then select ‘week4’:
+Select the ‘Marine Genomics’ directory and then select ‘week4_2022’:
  </p>
 <p><img src="figs/jetstream/Project3.png" width="100%" />
-Click ‘Open,’ and then ‘Create Project.’ You have now created a project (‘week4.Rproj’) that is located together with the other files that we will be working with.</p>
+Click ‘Open,’ and then ‘Create Project.’ You have now created a project (‘week4_2022.Rproj’) that is located together with the other files that we will be working with.</p>
 <p>There are a few types of files we can work with in Rstudio. The most basic file is an *.R file, which contains simple code. We will orientate ourselves with Rstudio using such a file.</p>
 </div>
 <div id="orientation-to-r" class="section level2 hasAnchor" number="5.2">

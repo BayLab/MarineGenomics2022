@@ -14,17 +14,16 @@ output:
 
 This lesson is modified from materials of the STEMinist_R lessons produced by several UC Davis graduate student and which can be found [here](https://github.com/ecalfee/STEMinist_R.git). We have made some modifications to the data carpentry tutorial to fit our course.
 
-Make a new directory for week4 on the MarineGenomics directory
+Download the data from the MarineGenomicsData repository on git hub via wget in the terminal with the following link:
+(first we navigate to the MarineGenomics directory)
+```{html
+cd MarineGenomics
+wget https://raw.githubusercontent.com/BayLab/MarineGenomicsData/main/week4_2022.tar.gz
 
 ```
-mkdir MarineGenomics/week4
+Use tar to uncompress the file:
 ```
-Download the data from the MarineGenomics repository on git hub via wget in the terminal with the following links:
-(first we will naviagte to the 'week4' directory)
-```{html
-cd MarineGenomics/week4
-wget https://github.com/BayLab/MarineGenomics2022/blob/d15bf09fbba443c96a6e3a05e5a361a03de4a5c7/data/Week4/Exercise_1.1_Dataframes.R
-wget https://github.com/BayLab/MarineGenomics2022/blob/d15bf09fbba443c96a6e3a05e5a361a03de4a5c7/data/Week4/Exercise_1.2_Subsetting.R
+tar -xzvf week4_2022.tar.gz
 
 ```
 
@@ -42,11 +41,11 @@ Select 'Existing Directory'. Then, select 'browse':
 &nbsp;
 
 <img src="./figs/jetstream/Project2.png" width="100%" />
-Select the 'Marine Genomics' directory and then select 'week4':
+Select the 'Marine Genomics' directory and then select 'week4_2022':
 &nbsp;
 
 <img src="./figs/jetstream/Project3.png" width="100%" />
-Click 'Open', and then 'Create Project'. You have now created a project ('week4.Rproj') that is located together with the other files that we will be working with. 
+Click 'Open', and then 'Create Project'. You have now created a project ('week4_2022.Rproj') that is located together with the other files that we will be working with. 
 
 There are a few types of files we can work with in Rstudio. The most basic file is an *.R file, which contains simple code. We will orientate ourselves with Rstudio using such a file. 
 
