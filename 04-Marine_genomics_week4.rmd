@@ -16,21 +16,18 @@ knitr::opts_chunk$set(echo = TRUE)
 
 This lesson is modified from materials of the STEMinist_R lessons produced by several UC Davis graduate student and which can be found [here](https://github.com/ecalfee/STEMinist_R.git). We have made some modifications to the data carpentry tutorial to fit our course.
 
-Download the data from the MarineGenomicsData repository on git hub via wget in the terminal with the following link:
+Make a new directory for week4 on the MarineGenomics directory
 
+```
+mkdir MarineGenomics/week4
+```
+Download the data from the MarineGenomics repository on git hub via wget in the terminal with the following links:
+(first we will naviagte to the 'week4' directory)
 ```{html
-wget https://raw.githubusercontent.com/BayLab/MarineGenomicsData/main/week4.tar.gz
-```
+cd MarineGenomics/week4
+wget https://github.com/BayLab/MarineGenomics2022/blob/d15bf09fbba443c96a6e3a05e5a361a03de4a5c7/data/Week4/Exercise_1.1_Dataframes.R
+wget https://github.com/BayLab/MarineGenomics2022/blob/d15bf09fbba443c96a6e3a05e5a361a03de4a5c7/data/Week4/Exercise_1.2_Subsetting.R
 
-Use tar to uncompress the file:
-```
-tar -xzvf week4.tar.gz
-
-```
-
-Move the 'week4' directory from MarineGenomicsData into MarineGenomics:
-```
-mv MarineGenomicsData/Week4 MarineGenomics/week4
 ```
 
 You can now open Rstudio by searching for Rstudio in Applications. When we first open Rstudio, it has 3 parts: the window to the left (console/terminal/jobs), and two windows to the right (environment/history/connections/tutorial and files/plots/packages/help/viewer). When we open a script, a fourth window will appear. We can change the location and size of these windows as we please, and we will get used to using them when we code in Rstudio. 
