@@ -147,7 +147,6 @@ length(n)
 ## [1] 100
 ```
 You can use square brackets `[]` to get parts of vectors. For example, the third part of the 'animals' vector we created:
-#######################
 
 ```r
 animals[3]
@@ -559,7 +558,7 @@ View(msleep)
 
 
 ## Practice exploring a dataframe
-> ## EXERCISE 1.2 
+> ## EXERCISE 1.1
 
 > Reminder of those useful commands: dataframename[row , col], str(), dim(), nrow(), unique(), length(), rownames(), summary(), min(), max(), mean(), range(), levels(), factor(), as.factor(), class(), ncol(), nrow(), table(), sum(), quantile(), var()
 
@@ -1084,7 +1083,7 @@ msleep[which(msleep[,"sleep_total"]>18 & msleep[,"order"] == "Chiroptera"),]
 ```
 ## Practice Subsetting datasets/logicals
 
-> ## EXERCISE 1.3 indexing by logical statements
+> ## EXERCISE 1.2 indexing by logical statements
 
 > A few useful commands:  "==", "!=", ">", "<", "&", "|", sum(), which(), table(), !
 
