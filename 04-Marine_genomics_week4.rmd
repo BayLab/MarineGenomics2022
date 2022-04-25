@@ -57,7 +57,7 @@ Click 'Open', and then 'Create Project'. You have now created a project ('week4_
 
 There are a few types of files we can work with in Rstudio. The most basic file is an *.R file, which contains simple code. We will orientate ourselves with Rstudio using such a file. 
 
-## Orientation to R
+## Orientation to R studio
 
 When we work in R, we document our work using a script (for example, an R file). We can open a new R file by selecting File > New File > R Script, which generates a simple text file. 
 It's very important to add comments to our code, that explain the commands that we are using, by using the '#' sign - anything that follows a '#' is not code!

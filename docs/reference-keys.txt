@@ -47,7 +47,7 @@ sam-to-bam-file-conversion
 genotype-likelihoods
 week-4---the-r-environment
 create-a-project-in-rstudio
-orientation-to-r
+orientation-to-r-studio
 manipulating-a-vector-object
 characterizing-a-dataframe
 how-to-access-parts-of-the-data

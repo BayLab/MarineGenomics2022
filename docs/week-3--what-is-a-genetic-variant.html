@@ -194,7 +194,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5" data-path="week-4---the-r-environment.html"><a href="week-4---the-r-environment.html"><i class="fa fa-check"></i><b>5</b> Week 4 - The R environment<span></span></a>
 <ul>
 <li class="chapter" data-level="5.1" data-path="week-4---the-r-environment.html"><a href="week-4---the-r-environment.html#create-a-project-in-rstudio"><i class="fa fa-check"></i><b>5.1</b> Create a project in Rstudio<span></span></a></li>
-<li class="chapter" data-level="5.2" data-path="week-4---the-r-environment.html"><a href="week-4---the-r-environment.html#orientation-to-r"><i class="fa fa-check"></i><b>5.2</b> Orientation to R<span></span></a></li>
+<li class="chapter" data-level="5.2" data-path="week-4---the-r-environment.html"><a href="week-4---the-r-environment.html#orientation-to-r-studio"><i class="fa fa-check"></i><b>5.2</b> Orientation to R studio<span></span></a></li>
 <li class="chapter" data-level="5.3" data-path="week-4---the-r-environment.html"><a href="week-4---the-r-environment.html#manipulating-a-vector-object"><i class="fa fa-check"></i><b>5.3</b> Manipulating a vector object<span></span></a></li>
 <li class="chapter" data-level="5.4" data-path="week-4---the-r-environment.html"><a href="week-4---the-r-environment.html#characterizing-a-dataframe"><i class="fa fa-check"></i><b>5.4</b> Characterizing a dataframe<span></span></a></li>
 <li class="chapter" data-level="5.5" data-path="week-4---the-r-environment.html"><a href="week-4---the-r-environment.html#how-to-access-parts-of-the-data"><i class="fa fa-check"></i><b>5.5</b> How to access parts of the data<span></span></a></li>
@@ -230,12 +230,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="to-get-started-lets-dowload-the-data-and-install-a-few-programs" class="section level2 hasAnchor" number="4.1">
 <h2><span class="header-section-number">4.1</span> To get started lets dowload the data and install a few programs<a href="week-3--what-is-a-genetic-variant.html#to-get-started-lets-dowload-the-data-and-install-a-few-programs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Download the data from the MarineGenomicsData repository on git hub. We’ll be working in the Week_3 folder</p>
-<div class="sourceCode" id="cb160"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb160-1"><a href="week-3--what-is-a-genetic-variant.html#cb160-1" aria-hidden="true" tabindex="-1"></a>wget https://raw.githubusercontent.com/BayLab/MarineGenomicsData/main/week3_quarter.tar.gz</span>
-<span id="cb160-2"><a href="week-3--what-is-a-genetic-variant.html#cb160-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb160-3"><a href="week-3--what-is-a-genetic-variant.html#cb160-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb160-4"><a href="week-3--what-is-a-genetic-variant.html#cb160-4" aria-hidden="true" tabindex="-1"></a># uncompress the file</span>
+<div class="sourceCode" id="cb160"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb160-1"><a href="week-3--what-is-a-genetic-variant.html#cb160-1" aria-hidden="true" tabindex="-1"></a>cd</span>
+<span id="cb160-2"><a href="week-3--what-is-a-genetic-variant.html#cb160-2" aria-hidden="true" tabindex="-1"></a>pwd</span>
+<span id="cb160-3"><a href="week-3--what-is-a-genetic-variant.html#cb160-3" aria-hidden="true" tabindex="-1"></a>wget https://raw.githubusercontent.com/BayLab/MarineGenomicsData/main/week3_quarter.tar.gz</span>
+<span id="cb160-4"><a href="week-3--what-is-a-genetic-variant.html#cb160-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb160-5"><a href="week-3--what-is-a-genetic-variant.html#cb160-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb160-6"><a href="week-3--what-is-a-genetic-variant.html#cb160-6" aria-hidden="true" tabindex="-1"></a>tar -xvzf week3_quarter.tar.gz</span></code></pre></div>
+<span id="cb160-6"><a href="week-3--what-is-a-genetic-variant.html#cb160-6" aria-hidden="true" tabindex="-1"></a># uncompress the file</span>
+<span id="cb160-7"><a href="week-3--what-is-a-genetic-variant.html#cb160-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-8"><a href="week-3--what-is-a-genetic-variant.html#cb160-8" aria-hidden="true" tabindex="-1"></a>tar -xvzf week3_quarter.tar.gz</span></code></pre></div>
 <p>Next we need to install a few programs that will allow us to do what we need to do. This will all take a few minutes!</p>
 <p>*The programs that we are installing
 + samtools: allows us to filter and view our mapped data
@@ -245,7 +247,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb161"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb161-1"><a href="week-3--what-is-a-genetic-variant.html#cb161-1" aria-hidden="true" tabindex="-1"></a>  sudo apt-get -y update <span class="er">&amp;&amp;</span> \</span>
 <span id="cb161-2"><a href="week-3--what-is-a-genetic-variant.html#cb161-2" aria-hidden="true" tabindex="-1"></a>  sudo apt-get -y install samtools bowtie2 cutadapt fastqc </span>
 <span id="cb161-3"><a href="week-3--what-is-a-genetic-variant.html#cb161-3" aria-hidden="true" tabindex="-1"></a>  </span></code></pre></div>
-<p>And one more program that we’ll install separately. This is <code>angsd</code> which we will use to find variants in our data. The first command navigates you to your home directory.</p>
+<p>And one more program that we’ll install separately. This is <code>angsd</code> which we will use to find variants in our data. The first command navigates you to your home directory.
+NOTE: the following should be copy-pasted line-by-line, and you should respond with yes “Y” when prompted.</p>
 <div class="sourceCode" id="cb162"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb162-1"><a href="week-3--what-is-a-genetic-variant.html#cb162-1" aria-hidden="true" tabindex="-1"></a>  cd</span>
 <span id="cb162-2"><a href="week-3--what-is-a-genetic-variant.html#cb162-2" aria-hidden="true" tabindex="-1"></a>  sudo apt  install liblzma-dev</span>
 <span id="cb162-3"><a href="week-3--what-is-a-genetic-variant.html#cb162-3" aria-hidden="true" tabindex="-1"></a>  sudo apt install libbz2-dev</span>

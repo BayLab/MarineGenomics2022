@@ -19,6 +19,8 @@ You'll find the lecture discussing the definition and identification of genetic 
 Download the data from the MarineGenomicsData repository on git hub. We'll be working in the Week_3 folder
 
 ```html
+cd
+pwd
 wget https://raw.githubusercontent.com/BayLab/MarineGenomicsData/main/week3_quarter.tar.gz
 
 
@@ -42,6 +44,8 @@ Next we need to install a few programs that will allow us to do what we need to 
 ```
 
 And one more program that we'll install separately. This is `angsd` which we will use to find variants in our data. The first command navigates you to your home directory.
+NOTE: the following should be copy-pasted line-by-line, and you should respond with yes "Y" when prompted.
+
 
 ```html
   cd
