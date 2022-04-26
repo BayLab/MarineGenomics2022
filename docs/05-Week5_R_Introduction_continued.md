@@ -1,7 +1,7 @@
 ---
-title: "Untitled"
-author: "Steminist_R lessons edited by Serena Caplins"
-date: "4/23/2021"
+title: 
+author: 
+date: 
 output:
   bookdown::html_book:
     toc: yes
@@ -65,7 +65,7 @@ plot(msleep$sleep_total, msleep$sleep_rem)
 
 ```r
 
-# or plot response variable as a function "~" of the predictor variable
+# or plot response variable as a function "~" of the predictor variable. When we use ~, the dependent variable is always on the left hand side. 
 ```
 
 
@@ -188,24 +188,20 @@ hist(msleep$sleep_total, col=rainbow(10))
 ```
 
 <img src="05-Week5_R_Introduction_continued_files/figure-html/5-7-1.png" width="768" />
+A quick glance at this histogram tells us that our sleep_total variable looks relatively normally distributed. This is important to know for many statistical tests. 
 
-```r
+&nbsp;
 
-
-#let's make a boxplot of sleep_total and order making each one a different color (how would you find out how many unique orders are in msleep?)
-#using plot it would look like the following:
-plot(msleep$sleep_total~as.factor(msleep$order), col=rainbow(19)) 
-```
-
-<img src="05-Week5_R_Introduction_continued_files/figure-html/5-7-2.png" width="768" />
-
-A quick glance at this histogram tells us that our sleep_total variable looks normally distributed. This is important to know for many statistical tests. 
-
-Let's try making a box plot, comparing the amount and variation in amount of sleep across the diffferent biological orders.
+Let's try making a box plot, comparing the amount and variation in amount of sleep across the diffferent biological orders (how would you find out how many unique orders are in msleep?)
 
 
 ```r
-#or boxplot
+#let's make a boxplot of sleep_total and order making each one a different color 
+#using plot it would look like the following (code is silenced as it give same plot as below):
+
+#plot(msleep$sleep_total~as.factor(msleep$order), col=rainbow(19)) 
+
+#or we can do the following:
 boxplot(msleep$sleep_total~as.factor(msleep$order), col=rainbow(19)) 
 ```
 
@@ -485,7 +481,7 @@ g
 <img src="05-Week5_R_Introduction_continued_files/figure-html/5-21-1.png" width="768" />
 This example is a great way to begin to explore how the relationship between total sleep and REM sleep varies across species with different diets, but overall still shows the correlation at the whole group level. 
 
-If we want to dive deep into the discrepancies in the data, and compare the relationship between two continuous variables, and how that relationship differs between groups/characters, we can use whats called a 'facet wrap'.
+If we want to dive deeper and compare the relationship between two continuous variables, and how that relationship differs between groups/characters, we can use whats called a 'facet wrap'.
 
 For example in the iris dataframe we may be interested in looking at the relationship between Sepal.Length and Sepal.Width for each species. You can look at all of these together with `facet_wrap` or `facet_grid`. 
 
@@ -544,6 +540,7 @@ gen.data <- read.csv(file = 'margen.wk5.table.csv', sep = ';')
 
 gen.data
 str(gen.data)
+View(gen.data)
 
 ```
 
@@ -567,17 +564,18 @@ There are many ways to accomplish each exercise, and therefore solutions are not
 > # Group Exercise 1
 
 > The central-margin theory suggest that genetic diversity should be highest within the center of the species' distributional range. Let's explore if this is true in our dataset. 
-> 1.1 Let's take a look at the two variables GD and RP. Are they continuous or characters? Here we are also interested in the three species- what class of variable is SPP?
+>
+> 1.1 Let's take a look at the two variables GD and RP. Are they continuous or characters? Here we are also interested in the three species- is SPP continuous or categorical?
 
-> 1.2 If we want to look at a relationship between genetic diversity (GD) and range position (RP), what type of graph will allow us to look at a correlation? 
+> 1.2 If we want to look at a relationship between genetic diversity (GD) and range position (RP), what type of graph will allow us to look at their correlation? 
 
-> 1.3 We are specifically interested in comparing the relationship between GD and RP across the three species - what is the best way to view GD~RP per each individual species? Hint: have a look towards the later plots in this week's lesson for ideas. 
+> 1.3 We are specifically interested in comparing the relationship between GD and RP across the three species. What is the best way to view GD~RP per each individual species? Hint: have a look towards the later plots in this week's lesson for ideas. 
 
 > 1.4 Design and plot a figure that will best show the relationship between genetic diversity and range position per species. Do we find that genetic diversity is higher towards the middle of the range in any species? Remember, smaller values of RP represent areas closer to the center of the range.
 
 > # Group Exercise 2
 
-> The biogeography of an area is an important feature shaping genomic diversity of multiple species. In this second exercise, we want to compare the different regions (west vs south vs east coast bioregions) in the mean and range of genomic diversity values within each region. 
+> The biogeography of an area is an important feature shaping genomic diversity of multiple species. In this second exercise, we want to compare the different regions (west vs south vs east coast bioregions) in the mean and range of genetic diversity values within each region. 
 
 > 2.1 Let's think about the variables we want to compare. What columns are we going to use to make this plot? Remember we want to look at the values of genetic diversity (of all species), and if these signficantly differ between region. 
  
