@@ -66,7 +66,7 @@ We can use this script to copy (from the website) the commands we use and paste 
 
 R can be used for basic arithmetic:
 
-```{r , echo=T}
+```{r , label='4-1', echo=T}
 
 5+10+23
 
@@ -81,7 +81,7 @@ knitr::include_graphics("./figs/jetstream/Robjects.png")
 ```
 
 You can assign values to an object using an assignment operator `<-` or  `=`. Notice that once you've created an object, it will appear in the 'Environment' section in the window on the upper right.
-```{r , echo=T}
+```{r , label='4-2', echo=T}
 
 number <- 10
 
@@ -89,7 +89,7 @@ numbers <- c(10, 11, 12, 14, 16)
 ```
 
 You can see your assigned object by typing the name you gave it.
-```{r , echo=T}
+```{r , label='4-3', echo=T}
 
 number
 
@@ -98,7 +98,7 @@ numbers
 ```
 
 Objects can be numbers or characters:
-```{r , echo=T}
+```{r , label='4-4',echo=T}
 
 cat <- "meow"
 dog <- "woof"
@@ -108,7 +108,7 @@ dog <- "woof"
 
 
 We can use colons to get sequences of numbers:
-```{r , echo=T}
+```{r , label='4-5', echo=T}
 
 n <- 1:100
 
@@ -116,7 +116,7 @@ n <- 1:100
 
 Vectors can also include characters (in quotes): 
 `c()`=concatenate, aka link things together!
-```{r , echo=T}
+```{r , label='4-6', echo=T}
 
 animals <- c("woof", "meow", "hiss", "baa")
 
@@ -125,20 +125,20 @@ animals <- c("woof", "meow", "hiss", "baa")
 ## Manipulating a vector object 
 
 We can get summaries of vectors with `summary()`
-```{r , echo=T}
+```{r , label='4-7', echo=T}
 
 summary(n)
 
 ```
 
 We can see how long a vector is with `length()`
-```{r , echo=T}
+```{r , label='4-8', echo=T}
 
 length(n)
 
 ```  
 You can use square brackets `[]` to get parts of vectors. For example, the third part of the 'animals' vector we created:
-```{r , echo=T}
+```{r , label='4-9', echo=T}
 
 animals[3]
 
@@ -168,7 +168,7 @@ We're going to use data on sleep patterns in mammals. This requires installing a
  
 Install the package `ggplot2`. This only has to be done once and after installation we should then **comment out the command to install the package with a #.**
 
-```{r, echo=T}
+```{r, label='4-10',echo=T}
 
 #install.packages("ggplot2")
 
@@ -179,7 +179,7 @@ library (ggplot2)
  
 Load the data (it's called msleep).
 
-```{r, echo=T}
+```{r, label='4-11',echo=T}
 
 data("msleep")
 ```
@@ -187,7 +187,7 @@ data("msleep")
 
 There are many functions in R that allow us to get an idea of what the data looks like. For example, what are its dimensions (how many rows and columns)? 
 
-```{r, echo=T}
+```{r, label='4-12', echo=T}
 
 # head() -look at the beginning of the data file
 # tail() -look at the end of the data file
@@ -203,18 +203,14 @@ colnames(), rownames() - column names, row names
 
 It's important to know the class of data if you want to work with it. `msleep` contains several different types of data. Some common classes are: factors, numeric, integers, characters, logical
  
-```{r, echo=T}
+```{r, label='4-13', echo=T}
 
  # class()
 
 class(msleep)
 ```
 
-Rstudio also allows us to just look into the data file with `View()`. We can also click on our dataframe in the 'Environment'. 
-```{r, echo=T}
-
-View(msleep)
-```
+Rstudio also allows us to just look into the data file with `View()`. Type View(msleep) and we can see it now shows up on the top part of the window. We can also click on our dataframe in the 'Environment'. 
 
 ## How to access parts of the data
 
@@ -224,7 +220,7 @@ We can also look at a single column at a time. There are three ways to access th
 Think about "rc cola" or "remote control car" to remember that [5,] means fifth row and [,5] means fifth column!
 
 Each way has it's own advantages:
-```{r, echo=T}
+```{r, label='4-14', echo=T}
 
 msleep[,3]
 msleep[, "vore"]
@@ -233,7 +229,7 @@ msleep$vore
 ```
 
 Sometimes it is useful to know what class() the column is:
-```{r, echo=T}
+```{r, label='4-15', echo=T}
 
 class(msleep$vore)
 
@@ -241,7 +237,7 @@ class(msleep$sleep_total)
 ```
 
 We can also look at a single row at a time. There are two ways to access this: 1. by indicating the row number in square brackets next to the name of the dataframe `name[#,]` and by calling the actual name of the row (if your rows have names) `name["a",]`.
-```{r, echo=T}
+```{r, label='4-16', echo=T}
 
 msleep[3,]
 msleep[msleep$name == "Mountain beaver",]
@@ -249,7 +245,7 @@ msleep[msleep$name == "Mountain beaver",]
 ```
 
 We can select more than one row or column at a time:
-```{r, echo=T} 
+```{r, label='4-17', echo=T} 
  # see two columns
 
 msleep[,c(1, 6)]
@@ -260,7 +256,7 @@ subsleep <- msleep[,c(1, 6)]
 
 ```
 But what if we actually care about how many **unique** things are in a column?
-```{r, echo=T}
+```{r, label='4-18', echo=T}
  # unique()
 unique(msleep[, "order"])
 
@@ -276,7 +272,7 @@ levels(as.factor(msleep$order))
 If your data is transposed in a way that isn't useful to you, you can switch it:
 
 (Note that this often changes the class of each column! In R, each column must have the same type of data)
-```{r, echo=T}
+```{r, label='4-19', echo=T}
  # t()
 
 tr_msleep<-t(msleep)
@@ -286,7 +282,7 @@ str(tr_msleep)
 ```
 
 Often we want to summarize data. There are many ways of doing this in R:
-```{r, echo=T}
+```{r, label='4-20', echo=T}
 
  # calculate mean() of a column
 mean(msleep$sleep_total)
@@ -304,14 +300,13 @@ summary(msleep$sleep_total)
 Sometimes, the values we care about aren't provided in a data set. When this happens, we can create a new column that contains the values we're interested in:
 Note: we use the $ sign to create a new column on the left part of the command, and to specify the column on the right side of the command
 
-```{r, echo=T}
+```{r, label='4-21', echo=T}
 
   # what if what we cared about was our sleep_total/sleep_rem ratio?
   # add a sleep_total/sleep_rem ratio column to our msleep dataframe with $
 msleep$total_rem <- msleep$sleep_total/msleep$sleep_rem
 
-  # look at our dataframe again. It now contains 12 columns, one of them being the one we just created.
-View(msleep)
+  # look at our dataframe again. It now contains 12 columns, one of them being the one we just created. use the command "View(msleep)"
 
 ```
 
@@ -329,7 +324,7 @@ View(msleep)
 <details><summary><span style="color: blue;">Solution</span></summary>
 <p>
 
-```{r, echo=T}
+```{r, label='4-22', echo=T}
 data(iris)
 
 nrow(iris)
@@ -344,7 +339,7 @@ nrow(iris)
 <details><summary><span style="color: blue;">Solution</span></summary>
 <p>
 
-```{r, echo=T}
+```{r, label='4-23', echo=T}
 #nrows
 #str
 #dim
@@ -359,7 +354,7 @@ nrow(iris)
 <details><summary><span style="color: blue;">Solution</span></summary>
 <p>
 
-```{r, echo=T}
+```{r, label='4-24', echo=T}
 
 levels(iris$Species)
 
@@ -374,7 +369,7 @@ levels(iris$Species)
 <details><summary><span style="color: blue;">Solution</span></summary>
 <p>
 
-```{r, echo=T}
+```{r, label='4-25', echo=T}
 class(iris)
 ```
 </p>
@@ -386,7 +381,7 @@ class(iris)
 
 <details><summary><span style="color: blue;">Solution</span></summary>
 <p>
-```{r, echo=T}
+```{r, label='4-26', echo=T}
 colnames(iris)
 
 ```
@@ -399,7 +394,7 @@ colnames(iris)
 
 <details><summary><span style="color: blue;">Solution</span></summary>
 <p>
-```{r, echo=T}
+```{r, label='4-27', echo=T}
 str(iris)
 
 ```
@@ -412,7 +407,7 @@ str(iris)
 
 <details><summary><span style="color: blue;">Solution</span></summary>
 <p>
-```{r, echo=T}
+```{r, label='4-28', echo=T}
 
 setosa1.petalwidth<-iris[1,2]
 
@@ -427,7 +422,7 @@ setosa1.petallength<-iris[1,3]
 
 <details><summary><span style="color: blue;">Solution</span></summary>
 <p>
-```{r, echo=T}
+```{r, label='4-29', echo=T}
 
 #using our premade objects
 setosa1area2<-setosa1.petalwidth*setosa1.petallength
@@ -442,7 +437,7 @@ setosa1area2<-setosa1.petalwidth*setosa1.petallength
 
 <details><summary><span style="color: blue;">Solution</span></summary>
 <p>
-```{r, echo=T}
+```{r, label='4-30', echo=T}
 iris$PetalArea<-iris$Petal.Length*iris$Petal.Width
 
 ```
@@ -456,7 +451,7 @@ iris$PetalArea<-iris$Petal.Length*iris$Petal.Width
 <details><summary><span style="color: blue;">Solution</span></summary>
 <p>
 
-```{r, echo=T}
+```{r, label='4-31', echo=T}
 max(iris$Sepal.Length)
 
 ```
@@ -469,7 +464,7 @@ max(iris$Sepal.Length)
 
 <details><summary><span style="color: blue;">Solution</span></summary>
 <p>
-```{r, echo=T}
+```{r, label='4-32', echo=T}
 mean(iris$Sepal.Length)
 
 ```
@@ -482,7 +477,7 @@ mean(iris$Sepal.Length)
 
 <details><summary><span style="color: blue;">Solution</span></summary>
 <p>
-```{r, echo=T}
+```{r, label='4-33', echo=T}
 
 min(iris$Sepal.Length)
 median(iris$Sepal.Length)
@@ -505,7 +500,7 @@ Reminder there are two assignment operators in R `<-` and a single equals sign `
 
 Logical values of TRUE (also 'T') and FALSE (also 'F) are special in R. What class is a logical value?
 
-```{r, echo=T}
+```{r, label='4-34', echo=T}
 TRUE
 FALSE
 
@@ -517,7 +512,7 @@ class(TRUE)
 
 Logicals will be the output of various tests:
 
-```{r, echo=T}
+```{r, label='4-35', echo=T}
 
 1 == 1
 1 == 2
@@ -548,7 +543,7 @@ Logicals will be the output of various tests:
 ```
 
 This is very useful because we can use logicals to query a data frame or vector.
-```{r, echo=T}
+```{r, label='4-36', echo=T}
 
  # Which numbers in 1:10 are greater than 3?
 
@@ -589,7 +584,7 @@ msleep[which(msleep[,"sleep_total"]>18 & msleep[,"order"] == "Chiroptera"),]
 <details><summary><span style="color: blue;">Solution</span></summary>
 <p>
 
-```{r, echo=T}
+```{r, label='4-37', echo=T}
 
 a = c(TRUE, TRUE, FALSE, FALSE, TRUE, FALSE)
 a ## let's print to screen and make sure it is stored in this variable
@@ -603,7 +598,7 @@ a ## let's print to screen and make sure it is stored in this variable
 <details><summary><span style="color: blue;">Solution</span></summary>
 <p>
 
-```{r, echo=T}
+```{r, label='4-38', echo=T}
 which(a)  ## which gives you the index of TRUE values automatically
 which(a == TRUE)   ## but sometimes it's reassuring to state exactly what you're doing
 
@@ -616,7 +611,7 @@ which(a == TRUE)   ## but sometimes it's reassuring to state exactly what you're
 <details><summary><span style="color: blue;">Solution</span></summary>
 <p>
 
-```{r, echo=T}
+```{r,label='4-39', echo=T}
 which(!a)
 which(a == FALSE)
 
@@ -631,7 +626,7 @@ which(a == FALSE)
 <details><summary><span style="color: blue;">Solution</span></summary>
 <p>
 
-```{r, echo=T}
+```{r, label='4-40',echo=T}
 data(iris)  ## this reloads the data set in case you've closed R since using iris
 sum(iris[,'Sepal.Length']<5.5)  ## remember TRUE's are 1 and FALSE's are 0
 length(which(iris[,'Sepal.Length']<5.5))  ## here, which() will only return the index of TRUE values, so we're counting how many there are
@@ -646,7 +641,7 @@ length(which(iris[,'Sepal.Length']<5.5))  ## here, which() will only return the 
 <details><summary><span style="color: blue;">Solution</span></summary>
 <p>
 
-```{r, echo=T}
+```{r, label='4-41',echo=T}
 max(iris[,'Petal.Length'])  ## this gives us the length of the longest petal
 which(iris[,'Petal.Length'] == max(iris[,'Petal.Length']))  ## this gives us the index of the individual with the longest petal
 iris[,'Petal.Width'][which(iris[,'Petal.Length'] == max(iris[,'Petal.Length']))] ## now we're subsetting the Petal.Width column by the index of the individual with the longest petal
@@ -662,7 +657,7 @@ iris[which(iris[,'Petal.Length'] == max(iris[,'Petal.Length'])) , 'Petal.Width']
 <details><summary><span style="color: blue;">Solution</span></summary>
 <p>
 
-```{r, echo=T}
+```{r, label='4-42', echo=T}
 sum(iris[,'Species']=='versicolor')
 table(iris[,'Species']) ## this gets us all three species
 
@@ -675,7 +670,7 @@ table(iris[,'Species']) ## this gets us all three species
 <details><summary><span style="color: blue;">Solution</span></summary>
 <p>
 
-```{r, echo=T}
+```{r, label='4-43', echo=T}
 sum(iris[,'Petal.Length'] > 6)
 ```
 </p>
@@ -686,7 +681,7 @@ sum(iris[,'Petal.Length'] > 6)
 <details><summary><span style="color: blue;">Solution</span></summary>
 <p>
 
-```{r, echo=T}
+```{r, label='4-44', echo=T}
 iris[,'Species'][iris[,'Sepal.Length']>6]
 iris[iris[,'Sepal.Length']>6, 'Species'] ## alternatively, we can put the logical vector in the row part, and Species in the column part, to get a vector back
 ```
@@ -698,7 +693,7 @@ iris[iris[,'Sepal.Length']>6, 'Species'] ## alternatively, we can put the logica
 <details><summary><span style="color: blue;">Solution</span></summary>
 <p>
 
-```{r, echo=T}
+```{r, label='4-45', echo=T}
 sum( iris[,'Sepal.Length'] < 5 & iris[,'Sepal.Width'] > 3 )
 ```
 </p>
@@ -709,7 +704,7 @@ sum( iris[,'Sepal.Length'] < 5 & iris[,'Sepal.Width'] > 3 )
 <details><summary><span style="color: blue;">Solution</span></summary>
 <p>
 
-```{r, echo=T}
+```{r, label='4-46', echo=T}
 sum( iris[,'Petal.Width'] < 0.2 | iris[,'Petal.Length'] < 1.5 )
 ```
 </p>
@@ -720,7 +715,7 @@ sum( iris[,'Petal.Width'] < 0.2 | iris[,'Petal.Length'] < 1.5 )
 <details><summary><span style="color: blue;">Solution</span></summary>
 <p>
 
-```{r, echo=T}
+```{r, label='4-47', echo=T}
 mean( iris[,'Sepal.Width'][iris[,'Sepal.Length'] > 5][iris[,'Species']=='setosa']) ## convince yourself the second part is a logical vector that subsets iris[,'Sepal.Width']
 mean( iris[iris[,'Sepal.Length'] > 5, 'Sepal.Width'][iris[,'Species']=='setosa']) ## again, we can alternatively subset using logical vectors in the row position
 ```
@@ -732,7 +727,7 @@ mean( iris[iris[,'Sepal.Length'] > 5, 'Sepal.Width'][iris[,'Species']=='setosa']
 <details><summary><span style="color: blue;">Solution</span></summary>
 <p>
 
-```{r, echo=T}
+```{r, label='4-48', echo=T}
 max(iris[,'Petal.Length'][iris[,'Species']=='virginica']) - min(iris[,'Petal.Length'][iris[,'Species']=='virginica'])
 ```
 </p>
@@ -742,7 +737,7 @@ max(iris[,'Petal.Length'][iris[,'Species']=='virginica']) - min(iris[,'Petal.Len
 <details><summary><span style="color: blue;">Solution</span></summary>
 <p>
 
-```{r, echo=T}
+```{r, label='4-49', echo=T}
 sum(iris[,'Petal.Width'] > 1 ) / nrow(iris) ## here, we're counting up how many are wider than 1 cm, and dividing by the total number of flowers to get a proportion
 ```
 </p>
@@ -756,7 +751,7 @@ sum(iris[,'Petal.Width'] > 1 ) / nrow(iris) ## here, we're counting up how many 
 <details><summary><span style="color: blue;">Solution</span></summary>
 <p>
 
-```{r, echo=T}
+```{r, label='4-50', echo=T}
 # new column for long
 iris[,'sepalCategory'] = 'long'  ## this sets ever entry in the column equal to 'long'
 # new column for short (< 5.5 cm)
@@ -770,7 +765,7 @@ table(iris[,'sepalCategory'])
 
 ## A few tips for coding in Rstudio
 
-```{r , echo=T}
+```{r , label='4-51', echo=T}
 # how to get help for a function; you can also write help()
 ?ls
 

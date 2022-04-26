@@ -13,12 +13,7 @@ output:
 # Week 5- R Continued
 We're again drawing some of this material from the STEMinist_R materials which can be found [here](https://github.com/ecalfee/STEMinist_R.git)
 
-## 2.1 Plotting 
-
-
-These lessons are evenly divided between live coding and performed by the instructor and exercises performed by the students in class with instructor support.
-
-This class will take place with students typing directly into an R script for the exercises all of which can be found in the Week 4 file [here](https://github.com/BayLab/MarineGenomicsData.git) 
+This class will take place with students typing directly into an R script for the exercises all of which can be found in the Week 5 file [here](https://github.com/BayLab/MarineGenomicsData.git) 
 
 You can download just the R files for just this week via wget with the following link
 ```{html
@@ -30,6 +25,10 @@ this is a compressed file which can be uncompressed via:
 tar -xzvf week5.tar.gz
 ```
 
+## 2.1 Plotting 
+
+Plots are very useful to help us understand our data and test hypotheses. Usually a plot or graph will visually display the relationship between two or more **variables**. Variables can be continuous, such as the number of cats, for categorical/factor, such as the type of cat. 
+
 * A few useful commands that we will cover include:
   + points()
   + lines() 
@@ -40,7 +39,14 @@ tar -xzvf week5.tar.gz
       + A few useful arguments within plot(): main, xlab, ylab, col, pch, cex
 
 ## Scatterplots
-Within our `msleep` dataframe let's plot sleep_total by bodywt (bodyweight)
+Scatterplots are useful when we have **continuous variables**, and want to assess the relationship between them. Usually we will have a predictor or independent variable, which we think has an influence on the other variable, called the response or dependent variable. 
+
+Within our `msleep` dataframe let's plot sleep_total by sleep_rem. Here we expect the total number of hours sleeping to have an effect on the total hours of REM, or dreaming, sleep.
+
+&nbsp;
+
+First install the package 'ggplot2', then run the following:
+
 
 
 ```r
@@ -52,7 +58,7 @@ data(msleep)
 
 ```r
 
-plot(msleep$sleep_total,msleep$sleep_rem)
+plot(msleep$sleep_total, msleep$sleep_rem)
 ```
 
 <img src="05-Week5_R_Introduction_continued_files/figure-html/5-1-1.png" width="768" />
@@ -70,6 +76,12 @@ plot(msleep$sleep_total~msleep$sleep_rem) #you'll notice this swaps the x and y 
 
 <img src="05-Week5_R_Introduction_continued_files/figure-html/5-2-1.png" width="768" />
 
+From looking at this plot, does it look like there's a relationship between hours of sleep and hours of REM? What does each point represent on these graphs?
+
+Also, note that plots generally show the independent "cause" variable on the x-axis, and the dependent or "effect" variable on the y. 
+
+&nbsp;
+
 ## Customizing your plot
 
 * There are several different arguments within plotting functions that can be used to customize your plot.
@@ -82,8 +94,9 @@ plot(msleep$sleep_total~msleep$sleep_rem) #you'll notice this swaps the x and y 
 
 You can view different point characters with `?pch`
 
-There are **many** color options in R. For some general colors you can write the name (blue, red, green, etc). There are apparently 657 named colors in R (including "slateblue3, and peachpuff4) but you can also use the color hexidecimal code for a given color. There are several comprehensives guides for colors in R online and one of which can be found (here)[https://www.nceas.ucsb.edu/sites/default/files/2020-04/colorPaletteCheatsheet.pdf]  
+There are **many** color options in R. For some general colors you can write the name (blue, red, green, etc). There are apparently 657 named colors in R (including "slateblue3", and "peachpuff4") but you can also use the color hexidecimal code for a given color. There are several comprehensives guides for colors in R online and one of which can be found [here](https://www.nceas.ucsb.edu/sites/default/files/2020-04/colorPaletteCheatsheet.pdf)  
 
+&nbsp;
 
 Let's remake the total_sleep against sleep_rem plot and add-in some modifiers
 
@@ -103,6 +116,8 @@ plot(msleep$sleep_total~msleep$sleep_rem, pch = 16, col="blue", bty="L", xlab="R
 
 <img src="05-Week5_R_Introduction_continued_files/figure-html/5-4-1.png" width="768" />
 
+&nbsp;
+
 You may want to find out which points are on a plot. You can use `identify()` in place of `plot()` to identify specific points within your plot. This function prints out the row numbers for the points that you selected. 
 
 We can also add lines to an existing plot with `ablines()`. Let's add a line fit from a linear model to our plot.
@@ -118,9 +133,13 @@ abline(lm(msleep$sleep_total~msleep$sleep_rem))
 
 <img src="05-Week5_R_Introduction_continued_files/figure-html/5-5-1.png" width="768" />
 
+&nbsp;
+
+This adds a line of best fit, that minimizes the distance of those points from that line. These lines help us assess the overall pattern in the data. From the points and the line, does it look like there is a correlation?
+
 You can add a legend to a plot with `legend()` which needs you to specify the location. 
 
-To do this, let's make a cutoff for our points and color them by points above and below the cutoff. We'll use our subsetting skills from last week. Feel free to review that section (1.3).
+To do this, let's make a cutoff for our points and color them by points above and below the cutoff. We'll use our subsetting skills from last week. Feel free to review that section (5.8).
 
 
 ```r
@@ -136,14 +155,29 @@ msleep$colors[msleep$sleep_total < 17] <-"black"
 
 ```r
 plot(msleep$sleep_total~msleep$sleep_rem, pch = 16, col=msleep$colors, bty="L", xlab="REM Sleep (hours)", ylab= "Total Sleep (hours)") 
+
+legend("bottomright", legend=c(">=17hrs", "<17hrs"),
+      fill = c("red", "black"), cex=0.8)
 ```
 
 <img src="05-Week5_R_Introduction_continued_files/figure-html/5-6-1.png" width="768" />
 
+&nbsp;
 
-In addition to scatterplots you can make histograms and boxplots in base R. The same parameter options (pch, col, ylab, xlab, etc) apply for these plots as well as scatterplots.
+## Histograms and box plots
+
+In addition to scatterplots you can make histograms and box plots in base R. Boxplots and historgrams both include a **continuous variable** and a **categorical variable**. 
+
+Histograms are appropriate for counts, whereas box plots should be used to represent the characteristics of a distribution.
+
+Histograms are often used to assess the distribution of the data, and can be helpful when you want to assess the sums of a continuous variable within each group. 
+
+Box plots are helpful when we want to compare the means and variation of values between groups. Box plots graphically represent the five most important descriptive values for a data set: the minimum value, the first quartile, the median, the third quartile, and the maximum value.
+
+The same parameter options (pch, col, ylab, xlab, etc) apply for these plots as well as scatterplots.
 
 R will automatically plot a barplot if you give to the `plot()` function a continuous variable and a factor. If you have a vector stored as a character converting it to a factor via `as.factor` will make a boxplot.
+
 
 
 ```r
@@ -158,10 +192,16 @@ hist(msleep$sleep_total, col=rainbow(10))
 ```r
 
 
-#let's make a boxplot of sleep_total and order making eachone a different color (how would you find out how many unique orders are in msleep?)
-#using plot
-#plot(msleep$sleep_total~as.factor(msleep$order), col=rainbow(19)) #this is commented out simply to avoid ploting the same plot twice
+#let's make a boxplot of sleep_total and order making each one a different color (how would you find out how many unique orders are in msleep?)
+#using plot it would look like the following:
+plot(msleep$sleep_total~as.factor(msleep$order), col=rainbow(19)) 
 ```
+
+<img src="05-Week5_R_Introduction_continued_files/figure-html/5-7-2.png" width="768" />
+
+A quick glance at this histogram tells us that our sleep_total variable looks normally distributed. This is important to know for many statistical tests. 
+
+Let's try making a box plot, comparing the amount and variation in amount of sleep across the diffferent biological orders.
 
 
 ```r
@@ -170,16 +210,25 @@ boxplot(msleep$sleep_total~as.factor(msleep$order), col=rainbow(19))
 ```
 
 <img src="05-Week5_R_Introduction_continued_files/figure-html/5-8-1.png" width="768" />
+
+One thing to note is that most plots in R will order factors in alphabetical order. And if axis label names are long, the names might not all be shown (as on the x-axis on the plot above), or the labels might overlap. There are many ways to edit the axes to counter each of these things, which can be searched online. 
+
+&nbsp;
+
 Another example looking at sleep variation across the different types of consumers (carnivore, herbivore, insectivore and omnivore):
 
 ```r
-plot(msleep$sleep_total~as.factor(msleep$vore),col=rainbow(4), xlab="REM Sleep (hours)", ylab= "Total Sleep (hours)")
+plot(msleep$sleep_total~as.factor(msleep$vore),col=rainbow(4), xlab="Consumer type", ylab= "Total Sleep (hours)")
 ```
 
 <img src="05-Week5_R_Introduction_continued_files/figure-html/5-9-1.png" width="768" />
 
+Which type of consumer shows the least variation in hours the species within it sleep?
+
 ## Practice Problems 2.1
 > # Exercise 2.1
+> Here we are interested in understanding the effect of different diets on the growth of baby chicks. The following exercises will help us test our hypothesis that diet type will lead to differences in growth, via chick weight. 
+>
 > Read in the data using `data(ChickWeight)`
 
 ```r
@@ -205,7 +254,7 @@ length(unique(ChickWeight$Diet))
 </details>
 
 
-> 2. To vizualize the basics of the data, plot weight versus time
+> 2. To vizualize the basics of the data, plot weight versus time. 
 
 <details><summary><span style="color: red;">Solution</span></summary>
 <p>
@@ -217,11 +266,13 @@ plot(ChickWeight$weight ~ ChickWeight$Time,
 ```
 
 <img src="05-Week5_R_Introduction_continued_files/figure-html/5-10-1.png" width="768" />
+Does it look like there is a change in chick weight over time? Does that change differ across chicks?
+
 </p>
 </details>
 
 
-> 3. Plot a histogram of the weights of the chicks at the final day of the experiments (i.e. only the chicks who made it to the last day)
+> 3. Plot a histogram of the weights of the chicks at the final day of the experiments (i.e. only the chicks who made it to the last day). 
 
 <details><summary><span style="color: red;">Solution</span></summary>
 <p>
@@ -235,11 +286,13 @@ hist(ChickWeight$weight[ChickWeight$Time == max(ChickWeight$Time)],
 ```
 
 <img src="05-Week5_R_Introduction_continued_files/figure-html/5-11-1.png" width="768" />
+What does this tell us about the distribution of the data?
+
 </p>
 </details>
 
 
-> 4. Create a boxplot where the x-axis represents the different diets and the y-axis is the weights of the chicks at the final day of the experiments
+> 4. Create a boxplot where the x-axis represents the different diets and the y-axis is the weights of the chicks at the final day of the experiments. 
 
 <details><summary><span style="color: red;">Solution</span></summary>
 <p>
@@ -255,6 +308,8 @@ boxplot(weight ~ Diet,
 ```
 
 <img src="05-Week5_R_Introduction_continued_files/figure-html/5-12-1.png" width="768" />
+From this plot, do you think it's reasonable to assume that our hypothesis is correct (that diet affects weight)? If so, which diet leads to the highest growth in chicks?
+
 </p>
 </details>
 
@@ -353,7 +408,7 @@ ggplot(data=states, aes(x=Population, y=Income))+geom_point()+geom_smooth(method
 
 <img src="05-Week5_R_Introduction_continued_files/figure-html/5-17-1.png" width="768" />
 
-Another plot example:
+Another plot example, looking at the relationship between Income and Illiteracy, colored by the population size. 
 
 
 ```r
@@ -362,6 +417,7 @@ ggplot(data=states, aes(x=Income, y=Illiteracy, color=Population)) +geom_point()
 ```
 
 <img src="05-Week5_R_Introduction_continued_files/figure-html/5-18-1.png" width="768" />
+Looking at this plot, what is it telling us? Is there anything you would change to assess the data better?
 
 Let's use the `msleep` data set to explore what ggplot can do with character vectors. Make a plot of total sleep against REM sleep and then group by "vore".
 
@@ -427,8 +483,11 @@ g
 ```
 
 <img src="05-Week5_R_Introduction_continued_files/figure-html/5-21-1.png" width="768" />
+This example is a great way to begin to explore how the relationship between total sleep and REM sleep varies across species with different diets, but overall still shows the correlation at the whole group level. 
 
-One final example to share. I use ggplot often with data sets that have multiple character vectors and I want to see how they relate to my continuous variables. For example in the iris dataframe we may be interested in looking at the relationship between Sepal.Length and Sepal.Width for each species. You can look at all of these together with `facet_wrap` or `facet_grid`. 
+If we want to dive deep into the discrepancies in the data, and compare the relationship between two continuous variables, and how that relationship differs between groups/characters, we can use whats called a 'facet wrap'.
+
+For example in the iris dataframe we may be interested in looking at the relationship between Sepal.Length and Sepal.Width for each species. You can look at all of these together with `facet_wrap` or `facet_grid`. 
 
 
 ```r
@@ -441,6 +500,10 @@ ggplot(iris, aes(y=Sepal.Length, x=Sepal.Width, group=Species, color=Species))+
 ```
 
 <img src="05-Week5_R_Introduction_continued_files/figure-html/5-22-1.png" width="768" />
+How does the relationship between sepal width and length differ between the three species?
+
+&nbsp;
+
 Finally in ggplot we may be interested in seeing the mean values plotted with error bars for several groups. You can use the function `stat_summary` to find the mean and error around that mean for the given grouping.
 
 Here's a plot looking at the mean chickweight by diet.
@@ -454,6 +517,79 @@ ggplot(ChickWeight, aes(x=Time, y=weight, group=Diet, color=Diet))+
 ```
 
 <img src="05-Week5_R_Introduction_continued_files/figure-html/5-23-1.png" width="768" />
+Line plots such as this are really great to assess change over time. It is important to note that in the scatter plot earlier each point was an individual chick, but now we see each point in the mean weight of all chicks at each timepoint. 
+
+Also, looking at the plot above, what could you improve to let the viewer know more about the different axes and their variables?
+
+&nbsp;
+
+## Group Exercise on Data Visualization
+
+Here we will go through an exercise using genomic data from [this study](https://onlinelibrary.wiley.com/doi/full/10.1111/jbi.14229).
+
+Let's download and explore the data. In terminal run the following:
+
+```html
+wget https://raw.githubusercontent.com/BayLab/MarineGenomicsData/main/week5_2022.table.tar.gz
+
+tar -xzvf week5_2022.table.tar.gz
+```
+
+&nbsp;
+
+Move the downloaded data into your working R directory. Then we can read the data table with the 'read.csv' command, calling our data.frame "gen.data"
+
+```html
+gen.data <- read.csv(file = 'margen.wk5.table.csv', sep = ';')
+
+gen.data
+str(gen.data)
+
+```
+
+
+Looking at this dataframe we see the following variables: 
+
+1- genomic diversity (GD; specifically expected heterozygosity values)
+
+2- range position (RP; distance, in km, each site is from the center of the species' range) 
+
+3- region (RE; what bioregion the site falls within)
+
+4- species (SPP; urchin-Parechinus angulosus, crab-Cyclograpsus punctatus, limpet-Scutellastra granularis)
+
+&nbsp;
+
+We will do the following two exercises in groups of 2-3. You are welcome to draw out the plots first, then attempt to create them with R code (either base R or ggplot2). Make sure they are clear for others to interpret. 
+
+There are many ways to accomplish each exercise, and therefore solutions are not given below. Students can share what they created in class.  
+
+> # Group Exercise 1
+
+> The central-margin theory suggest that genetic diversity should be highest within the center of the species' distributional range. Let's explore if this is true in our dataset. 
+> 1.1 Let's take a look at the two variables GD and RP. Are they continuous or characters? Here we are also interested in the three species- what class of variable is SPP?
+
+> 1.2 If we want to look at a relationship between genetic diversity (GD) and range position (RP), what type of graph will allow us to look at a correlation? 
+
+> 1.3 We are specifically interested in comparing the relationship between GD and RP across the three species - what is the best way to view GD~RP per each individual species? Hint: have a look towards the later plots in this week's lesson for ideas. 
+
+> 1.4 Design and plot a figure that will best show the relationship between genetic diversity and range position per species. Do we find that genetic diversity is higher towards the middle of the range in any species? Remember, smaller values of RP represent areas closer to the center of the range.
+
+> # Group Exercise 2
+
+> The biogeography of an area is an important feature shaping genomic diversity of multiple species. In this second exercise, we want to compare the different regions (west vs south vs east coast bioregions) in the mean and range of genomic diversity values within each region. 
+
+> 2.1 Let's think about the variables we want to compare. What columns are we going to use to make this plot? Remember we want to look at the values of genetic diversity (of all species), and if these signficantly differ between region. 
+ 
+> 2.2 Of the variables we want to plot, which are continuous and which are categorical?
+
+> 2.3 Here we are interested in comparing the means and variation of values between groups. What type of plot is best suited for this? Hint: have a look at section 6.4.
+
+> 2.4 Design and plot a graph that will show mean genetic diversity, as well as minimum and maximum values across different regions. Do we see differences in multi-species genetic diversity composition between the three regions?
+
+ 
+&nbsp;
+
 
 ## Practice Problems 2.2
 > # Exercise 2.2 Plotting in ggplot
@@ -552,7 +688,7 @@ ggplot(midwest, aes(x=state, y=popdensity, color=state))+
 </p>
 </details>
 
-## For loops and the apply family of functions
+## Optional Learning: Extending for loops knowledge with the apply family of functions
 
 A few useful commands: function(), is.na, which, var, length, for(){ }, 
  points, print, paste, plot, unique, sample
@@ -1271,5 +1407,4 @@ sapply(colnames(states), function(x)hist(states[ , x],main = x, xlab = x,col = "
 </p>
 </details>
 
-## Creature of the Week!
-![Juvenile Banded Wobbegong, photo © Grey McNeil](./figs/creatures/wobbegong.jpg)
+

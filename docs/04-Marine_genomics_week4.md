@@ -204,16 +204,16 @@ head(msleep)
 ```
 
 ```
-## # A tibble: 6 x 11
+## # A tibble: 6 × 11
 ##   name    genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
 ##   <chr>   <chr> <chr> <chr> <chr>              <dbl>     <dbl>       <dbl> <dbl>
-## 1 Cheetah Acin~ carni Carn~ lc                  12.1      NA        NA      11.9
-## 2 Owl mo~ Aotus omni  Prim~ <NA>                17         1.8      NA       7  
-## 3 Mounta~ Aplo~ herbi Rode~ nt                  14.4       2.4      NA       9.6
-## 4 Greate~ Blar~ omni  Sori~ lc                  14.9       2.3       0.133   9.1
-## 5 Cow     Bos   herbi Arti~ domesticated         4         0.7       0.667  20  
-## 6 Three-~ Brad~ herbi Pilo~ <NA>                14.4       2.2       0.767   9.6
-## # ... with 2 more variables: brainwt <dbl>, bodywt <dbl>
+## 1 Cheetah Acin… carni Carn… lc                  12.1      NA        NA      11.9
+## 2 Owl mo… Aotus omni  Prim… <NA>                17         1.8      NA       7  
+## 3 Mounta… Aplo… herbi Rode… nt                  14.4       2.4      NA       9.6
+## 4 Greate… Blar… omni  Sori… lc                  14.9       2.3       0.133   9.1
+## 5 Cow     Bos   herbi Arti… domesticated         4         0.7       0.667  20  
+## 6 Three-… Brad… herbi Pilo… <NA>                14.4       2.2       0.767   9.6
+## # … with 2 more variables: brainwt <dbl>, bodywt <dbl>
 ```
 
 ```r
@@ -221,16 +221,16 @@ tail(msleep)
 ```
 
 ```
-## # A tibble: 6 x 11
+## # A tibble: 6 × 11
 ##   name    genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
 ##   <chr>   <chr> <chr> <chr> <chr>              <dbl>     <dbl>       <dbl> <dbl>
-## 1 Tenrec  Tenr~ omni  Afro~ <NA>                15.6       2.3      NA       8.4
-## 2 Tree s~ Tupa~ omni  Scan~ <NA>                 8.9       2.6       0.233  15.1
-## 3 Bottle~ Turs~ carni Ceta~ <NA>                 5.2      NA        NA      18.8
-## 4 Genet   Gene~ carni Carn~ <NA>                 6.3       1.3      NA      17.7
-## 5 Arctic~ Vulp~ carni Carn~ <NA>                12.5      NA        NA      11.5
-## 6 Red fox Vulp~ carni Carn~ <NA>                 9.8       2.4       0.35   14.2
-## # ... with 2 more variables: brainwt <dbl>, bodywt <dbl>
+## 1 Tenrec  Tenr… omni  Afro… <NA>                15.6       2.3      NA       8.4
+## 2 Tree s… Tupa… omni  Scan… <NA>                 8.9       2.6       0.233  15.1
+## 3 Bottle… Turs… carni Ceta… <NA>                 5.2      NA        NA      18.8
+## 4 Genet   Gene… carni Carn… <NA>                 6.3       1.3      NA      17.7
+## 5 Arctic… Vulp… carni Carn… <NA>                12.5      NA        NA      11.5
+## 6 Red fox Vulp… carni Carn… <NA>                 9.8       2.4       0.35   14.2
+## # … with 2 more variables: brainwt <dbl>, bodywt <dbl>
 ```
 
 ```r
@@ -239,7 +239,7 @@ str(msleep)
 ```
 
 ```
-## tibble [83 x 11] (S3: tbl_df/tbl/data.frame)
+## tibble [83 × 11] (S3: tbl_df/tbl/data.frame)
 ##  $ name        : chr [1:83] "Cheetah" "Owl monkey" "Mountain beaver" "Greater short-tailed shrew" ...
 ##  $ genus       : chr [1:83] "Acinonyx" "Aotus" "Aplodontia" "Blarina" ...
 ##  $ vore        : chr [1:83] "carni" "omni" "herbi" "omni" ...
@@ -268,11 +268,7 @@ class(msleep)
 ## [1] "tbl_df"     "tbl"        "data.frame"
 ```
 
-Rstudio also allows us to just look into the data file with `View()`. We can also click on our dataframe in the 'Environment'. 
-
-```r
-View(msleep)
-```
+Rstudio also allows us to just look into the data file with `View()`. Type View(msleep) and we can see it now shows up on the top part of the window. We can also click on our dataframe in the 'Environment'. 
 
 ## How to access parts of the data
 
@@ -288,7 +284,7 @@ msleep[,3]
 ```
 
 ```
-## # A tibble: 83 x 1
+## # A tibble: 83 × 1
 ##    vore 
 ##    <chr>
 ##  1 carni
@@ -301,7 +297,7 @@ msleep[,3]
 ##  8 <NA> 
 ##  9 carni
 ## 10 herbi
-## # ... with 73 more rows
+## # … with 73 more rows
 ```
 
 ```r
@@ -309,7 +305,7 @@ msleep[, "vore"]
 ```
 
 ```
-## # A tibble: 83 x 1
+## # A tibble: 83 × 1
 ##    vore 
 ##    <chr>
 ##  1 carni
@@ -322,7 +318,7 @@ msleep[, "vore"]
 ##  8 <NA> 
 ##  9 carni
 ## 10 herbi
-## # ... with 73 more rows
+## # … with 73 more rows
 ```
 
 ```r
@@ -369,11 +365,11 @@ msleep[3,]
 ```
 
 ```
-## # A tibble: 1 x 11
+## # A tibble: 1 × 11
 ##   name    genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
 ##   <chr>   <chr> <chr> <chr> <chr>              <dbl>     <dbl>       <dbl> <dbl>
-## 1 Mounta~ Aplo~ herbi Rode~ nt                  14.4       2.4          NA   9.6
-## # ... with 2 more variables: brainwt <dbl>, bodywt <dbl>
+## 1 Mounta… Aplo… herbi Rode… nt                  14.4       2.4          NA   9.6
+## # … with 2 more variables: brainwt <dbl>, bodywt <dbl>
 ```
 
 ```r
@@ -381,11 +377,11 @@ msleep[msleep$name == "Mountain beaver",]
 ```
 
 ```
-## # A tibble: 1 x 11
+## # A tibble: 1 × 11
 ##   name    genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
 ##   <chr>   <chr> <chr> <chr> <chr>              <dbl>     <dbl>       <dbl> <dbl>
-## 1 Mounta~ Aplo~ herbi Rode~ nt                  14.4       2.4          NA   9.6
-## # ... with 2 more variables: brainwt <dbl>, bodywt <dbl>
+## 1 Mounta… Aplo… herbi Rode… nt                  14.4       2.4          NA   9.6
+## # … with 2 more variables: brainwt <dbl>, bodywt <dbl>
 ```
 
 We can select more than one row or column at a time:
@@ -397,7 +393,7 @@ msleep[,c(1, 6)]
 ```
 
 ```
-## # A tibble: 83 x 2
+## # A tibble: 83 × 2
 ##    name                       sleep_total
 ##    <chr>                            <dbl>
 ##  1 Cheetah                           12.1
@@ -410,7 +406,7 @@ msleep[,c(1, 6)]
 ##  8 Vesper mouse                       7  
 ##  9 Dog                               10.1
 ## 10 Roe deer                           3  
-## # ... with 73 more rows
+## # … with 73 more rows
 ```
 
 ```r
@@ -426,7 +422,7 @@ unique(msleep[, "order"])
 ```
 
 ```
-## # A tibble: 19 x 1
+## # A tibble: 19 × 1
 ##    order          
 ##    <chr>          
 ##  1 Carnivora      
@@ -548,8 +544,7 @@ Note: we use the $ sign to create a new column on the left part of the command, 
   # add a sleep_total/sleep_rem ratio column to our msleep dataframe with $
 msleep$total_rem <- msleep$sleep_total/msleep$sleep_rem
 
-  # look at our dataframe again. It now contains 12 columns, one of them being the one we just created.
-View(msleep)
+  # look at our dataframe again. It now contains 12 columns, one of them being the one we just created. use the command "View(msleep)"
 ```
 
 
@@ -1053,14 +1048,14 @@ msleep[which(msleep[,"sleep_total"]>18),]
 ```
 
 ```
-## # A tibble: 4 x 12
+## # A tibble: 4 × 12
 ##   name    genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
 ##   <chr>   <chr> <chr> <chr> <chr>              <dbl>     <dbl>       <dbl> <dbl>
-## 1 Big br~ Epte~ inse~ Chir~ lc                  19.7       3.9       0.117   4.3
-## 2 Thick-~ Lutr~ carni Dide~ lc                  19.4       6.6      NA       4.6
-## 3 Little~ Myot~ inse~ Chir~ <NA>                19.9       2         0.2     4.1
-## 4 Giant ~ Prio~ inse~ Cing~ en                  18.1       6.1      NA       5.9
-## # ... with 3 more variables: brainwt <dbl>, bodywt <dbl>, total_rem <dbl>
+## 1 Big br… Epte… inse… Chir… lc                  19.7       3.9       0.117   4.3
+## 2 Thick-… Lutr… carni Dide… lc                  19.4       6.6      NA       4.6
+## 3 Little… Myot… inse… Chir… <NA>                19.9       2         0.2     4.1
+## 4 Giant … Prio… inse… Cing… en                  18.1       6.1      NA       5.9
+## # … with 3 more variables: brainwt <dbl>, bodywt <dbl>, total_rem <dbl>
 ```
 
 ```r
@@ -1070,12 +1065,12 @@ msleep[which(msleep[,"sleep_total"]>18 & msleep[,"order"] == "Chiroptera"),]
 ```
 
 ```
-## # A tibble: 2 x 12
+## # A tibble: 2 × 12
 ##   name    genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
 ##   <chr>   <chr> <chr> <chr> <chr>              <dbl>     <dbl>       <dbl> <dbl>
-## 1 Big br~ Epte~ inse~ Chir~ lc                  19.7       3.9       0.117   4.3
-## 2 Little~ Myot~ inse~ Chir~ <NA>                19.9       2         0.2     4.1
-## # ... with 3 more variables: brainwt <dbl>, bodywt <dbl>, total_rem <dbl>
+## 1 Big br… Epte… inse… Chir… lc                  19.7       3.9       0.117   4.3
+## 2 Little… Myot… inse… Chir… <NA>                19.9       2         0.2     4.1
+## # … with 3 more variables: brainwt <dbl>, bodywt <dbl>, total_rem <dbl>
 ```
 ## Practice Subsetting datasets/logicals
 
@@ -1423,13 +1418,7 @@ table(iris[,'sepalCategory'])
 ```r
 # how to get help for a function; you can also write help()
 ?ls
-```
 
-```
-## starting httpd help server ... done
-```
-
-```r
 # executing a command from a script; instead of copy/paste into the console, we can also select the command and press 'Ctrl'+'Enter' OR locate our cursor at the end of the line and press 'Ctrl'+Enter'
 
 # we can use 'tab' to complete names, just like in Bash
