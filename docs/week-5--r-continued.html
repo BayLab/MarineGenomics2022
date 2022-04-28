@@ -245,7 +245,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>tar -xzvf week5.tar.gz</code></pre>
 <div id="plotting" class="section level2 hasAnchor" number="6.1">
 <h2><span class="header-section-number">6.1</span> 2.1 Plotting<a href="week-5--r-continued.html#plotting" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Plots are very useful to help us understand our data and test hypotheses. Usually a plot or graph will visually display the relationship between two or more <strong>variables</strong>. Variables can be continuous, such as the number of cats, for categorical/factor, such as the type of cat.</p>
+<p>Plots are very useful to help us understand our data and test hypotheses. Usually a plot or graph will visually display the relationship between two or more <strong>variables</strong>. Variables can be continuous, such as the number of cats, or categorical, such as the type of cat.</p>
 <ul>
 <li>A few useful commands that we will cover include:
 <ul>
@@ -334,7 +334,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="histograms-and-box-plots" class="section level2 hasAnchor" number="6.4">
 <h2><span class="header-section-number">6.4</span> Histograms and box plots<a href="week-5--r-continued.html#histograms-and-box-plots" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>In addition to scatterplots you can make histograms and box plots in base R. Boxplots and historgrams both include a <strong>continuous variable</strong> and a <strong>categorical variable</strong>.</p>
+<p>In addition to scatter plots you can make histograms and box plots in base R. Boxplots and histograms both include a <strong>continuous variable</strong> and a <strong>categorical variable</strong>.</p>
 <p>Histograms are appropriate for counts, whereas box plots should be used to represent the characteristics of a distribution.</p>
 <p>Histograms are often used to assess the distribution of the data, and can be helpful when you want to assess the sums of a continuous variable within each group.</p>
 <p>Box plots are helpful when we want to compare the means and variation of values between groups. Box plots graphically represent the five most important descriptive values for a data set: the minimum value, the first quartile, the median, the third quartile, and the maximum value.</p>
@@ -585,8 +585,7 @@ How does the relationship between sepal width and length differ between the thre
 <span id="cb383-4"><a href="week-5--r-continued.html#cb383-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> mean_se, <span class="at">geom =</span> <span class="st">&quot;errorbar&quot;</span>, </span>
 <span id="cb383-5"><a href="week-5--r-continued.html#cb383-5" aria-hidden="true" tabindex="-1"></a>               <span class="fu">aes</span>(<span class="at">width=</span><span class="fl">0.1</span>), <span class="at">size=</span><span class="fl">0.5</span>)</span></code></pre></div>
 <p><img src="05-Week5_R_Introduction_continued_files/figure-html/5-23-1.png" width="768" />
-Line plots such as this are really great to assess change over time. It is important to note that in the scatter plot earlier each point was an individual chick, but now we see each point in the mean weight of all chicks at each timepoint.</p>
-<p>Also, looking at the plot above, what could you improve to let the viewer know more about the different axes and their variables?</p>
+Line plots such as this are really great to assess change over time. It is important to note that in the scatter plot earlier each point was an individual chick, but now we see each point in the mean weight of all chicks at each time point.</p>
 <p> </p>
 </div>
 <div id="group-exercise-on-data-visualization" class="section level2 hasAnchor" number="6.7">

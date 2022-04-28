@@ -27,7 +27,7 @@ tar -xzvf week5.tar.gz
 
 ## 2.1 Plotting 
 
-Plots are very useful to help us understand our data and test hypotheses. Usually a plot or graph will visually display the relationship between two or more **variables**. Variables can be continuous, such as the number of cats, for categorical/factor, such as the type of cat. 
+Plots are very useful to help us understand our data and test hypotheses. Usually a plot or graph will visually display the relationship between two or more **variables**. Variables can be continuous, such as the number of cats, or categorical, such as the type of cat. 
 
 * A few useful commands that we will cover include:
   + points()
@@ -164,7 +164,7 @@ legend("bottomright", legend=c(">=17hrs", "<17hrs"),
 
 ## Histograms and box plots
 
-In addition to scatterplots you can make histograms and box plots in base R. Boxplots and historgrams both include a **continuous variable** and a **categorical variable**. 
+In addition to scatter plots you can make histograms and box plots in base R. Boxplots and histograms both include a **continuous variable** and a **categorical variable**. 
 
 Histograms are appropriate for counts, whereas box plots should be used to represent the characteristics of a distribution.
 
@@ -510,9 +510,8 @@ ggplot(ChickWeight, aes(x=Time, y=weight, group=Diet, color=Diet))+
 ```
 
 <img src="05-Week5_R_Introduction_continued_files/figure-html/5-23-1.png" width="768" />
-Line plots such as this are really great to assess change over time. It is important to note that in the scatter plot earlier each point was an individual chick, but now we see each point in the mean weight of all chicks at each timepoint. 
+Line plots such as this are really great to assess change over time. It is important to note that in the scatter plot earlier each point was an individual chick, but now we see each point in the mean weight of all chicks at each time point. 
 
-Also, looking at the plot above, what could you improve to let the viewer know more about the different axes and their variables?
 
 &nbsp;
 
