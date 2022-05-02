@@ -6,10 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>1 Introduction to Marine Genomics | MarGen2022</title>
   <meta name="description" content="" />
-  <meta name="generator" content="bookdown 0.26.2 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="1 Introduction to Marine Genomics | MarGen2022" />
   <meta property="og:type" content="book" />
+  
   
   
   
@@ -30,6 +31,7 @@
   
 
 <link rel="next" href="week-1--welcome.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -47,16 +49,14 @@
 
 
 
-<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
-<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -215,6 +215,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.7" data-path="week-5--r-continued.html"><a href="week-5--r-continued.html#group-exercise-on-data-visualization"><i class="fa fa-check"></i><b>6.7</b> Group Exercise on Data Visualization</a></li>
 <li class="chapter" data-level="6.8" data-path="week-5--r-continued.html"><a href="week-5--r-continued.html#practice-problems-2.2"><i class="fa fa-check"></i><b>6.8</b> Practice Problems 2.2</a></li>
 </ul></li>
+<li class="chapter" data-level="7" data-path="population-structure-via-construct.html"><a href="population-structure-via-construct.html"><i class="fa fa-check"></i><b>7</b> Population Structure via conStruct</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="population-structure-via-construct.html"><a href="population-structure-via-construct.html#download-the-data"><i class="fa fa-check"></i><b>7.1</b> Download the data</a></li>
+<li class="chapter" data-level="7.2" data-path="population-structure-via-construct.html"><a href="population-structure-via-construct.html#update-our-compiler-in-bashunix-and-install-everything-for-r-in-the-terminal-in-bashunix-not-in-rstudio"><i class="fa fa-check"></i><b>7.2</b> update our compiler in bash/UNIX and install everything for R in the terminal (in bash/UNIX, NOT in Rstudio)</a></li>
+<li class="chapter" data-level="7.3" data-path="population-structure-via-construct.html"><a href="population-structure-via-construct.html#install-construct-in-r"><i class="fa fa-check"></i><b>7.3</b> install conStruct in R</a></li>
+<li class="chapter" data-level="7.4" data-path="population-structure-via-construct.html"><a href="population-structure-via-construct.html#read-in-the-data"><i class="fa fa-check"></i><b>7.4</b> read in the data</a></li>
+<li class="chapter" data-level="7.5" data-path="population-structure-via-construct.html"><a href="population-structure-via-construct.html#get-our-meta-data-read-into-r-and-ready-to-use"><i class="fa fa-check"></i><b>7.5</b> Get our meta data read into R and ready to use</a></li>
+<li class="chapter" data-level="7.6" data-path="population-structure-via-construct.html"><a href="population-structure-via-construct.html#run-a-structure-analysis"><i class="fa fa-check"></i><b>7.6</b> Run a structure analysis</a></li>
+<li class="chapter" data-level="7.7" data-path="population-structure-via-construct.html"><a href="population-structure-via-construct.html#incoorporate-geographic-distances-in-a-spatial-model"><i class="fa fa-check"></i><b>7.7</b> Incoorporate geographic distances in a spatial model</a></li>
+<li class="chapter" data-level="7.8" data-path="population-structure-via-construct.html"><a href="population-structure-via-construct.html#comparisons-across-different-values-of-k"><i class="fa fa-check"></i><b>7.8</b> Comparisons across different values of K</a></li>
+<li class="chapter" data-level="7.9" data-path="population-structure-via-construct.html"><a href="population-structure-via-construct.html#exercises"><i class="fa fa-check"></i><b>7.9</b> Exercises</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -237,8 +249,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <!--bookdown:title:end-->
 <!--bookdown:title:start-->
-<div id="introduction-to-marine-genomics" class="section level1 hasAnchor" number="1">
-<h1><span class="header-section-number">1</span> Introduction to Marine Genomics<a href="index.html#introduction-to-marine-genomics" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="introduction-to-marine-genomics" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Introduction to Marine Genomics</h1>
 <center>
 <p><img src="figs/margen.logo.jpg" width="300" height="400" /></p>
 </center>
@@ -246,15 +258,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The course consists of one 1.5 hour lecture per week. The lectures begin with a power point presentation where we introduce the weeks concept (for example, PCAs) and then are followed by a live coding demonstrations and exercises.</p>
 <p>The first 5 weeks are primarily training in bash/UNIX and R basics. The remaining weeks are focused on performing a specific analysis (PCA, GWAS, Fst-outlier analyses, etc).</p>
 <p>We provide all the data for the students to complete each weeks coding activies along with instructions for how to download the data.</p>
-<div id="cloud-computing-versus-individual-laptops" class="section level2 hasAnchor" number="1.1">
-<h2><span class="header-section-number">1.1</span> Cloud computing versus individual laptops<a href="index.html#cloud-computing-versus-individual-laptops" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="cloud-computing-versus-individual-laptops" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> Cloud computing versus individual laptops</h2>
 <p>This course was designed to be carried out on the NSF funded Extreme Science and Engineering Discovery Environment (XSEDE) cloud computing resource <a href="https://docs.jetstream-cloud.org/">Jetstream2</a>.</p>
 <p>Jetstream is a unique user-friendly cloud computing resource in that it provides the students with an environment with root privileges, making program installation less complicated. Jetstream also provides a Desktop simulator which allows students to transition between bash and R using the same exact directory paths as the instructor, reducing the confusion of students having unique file paths and providing a more streamlined approach to what for many students is their first coding class.</p>
 <p>Jetstream educational allocations can be applied for through <a href="https://portal.xsede.org/jetstream#allocations:education">XSEDE</a>. The process of applying for a jetstream allocation for educational purposes is relatively straightforward and simply requires a course description, the number of students anticipated to participate, and a calculation of the computing resources required, and the instructors CV. Allocations are typically approved in two to three days and can be submitted ~2 weeks prior to the start of the course.</p>
 <p>Alternatively, these course materials can be used on students and instructors individual laptops. The file paths will need to be modified and we cannot guarantee that the installation of programs and R packages will proceed as they did on Jetstream. Thus, progam installation will need to be verified for each week by the instructor.</p>
 </div>
-<div id="meet-our-instructors" class="section level2 hasAnchor" number="1.2">
-<h2><span class="header-section-number">1.2</span> Meet our instructors!<a href="index.html#meet-our-instructors" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="meet-our-instructors" class="section level2" number="1.2">
+<h2><span class="header-section-number">1.2</span> Meet our instructors!</h2>
 <center>
 <p><img src="figs/Erica.jpeg" width="350" height="300" /></p>
 </center>
@@ -272,8 +284,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </center>
 <p>Brooke Benson, Graduate student, teaching assistant (<a href="mailto:bebenson@ucdavis.edu" class="email">bebenson@ucdavis.edu</a>)</p>
 </div>
-<div id="schedule" class="section level2 hasAnchor" number="1.3">
-<h2><span class="header-section-number">1.3</span> Schedule<a href="index.html#schedule" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="schedule" class="section level2" number="1.3">
+<h2><span class="header-section-number">1.3</span> Schedule</h2>
 <p>Lecture Thursdays 12:10-1:30</p>
 <p>Office hours: virtual - will be determined based on poll</p>
 <p><img src="figs/urchins.JPG" /></p>

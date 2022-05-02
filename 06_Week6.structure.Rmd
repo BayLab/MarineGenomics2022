@@ -10,7 +10,7 @@ output:
 
 ```{r setupweek12, include=FALSE}
 knitr::opts_chunk$set(echo = F,error = F,fig.width = 8,message = FALSE)
-knitr::opts_knit$set(root.dir = "/Users/LeslieDO/LabNotebook/MarGenSQ22/MarineGenomics2022")
+knitr::opts_knit$set(root.dir = "/Users/LeslieDO/LabNotebook/MarGenSQ22/MarineGenomics2022/MarineGenomics/Week12/")
 ```
 
 # Population Structure via conStruct
@@ -99,6 +99,7 @@ We need to make sure that we have the file coding right and this can be confirme
 You can do the above by using wc -l to find the number of lines in the structure file. 
 
 ```{r, echo=T}
+
 
 conStruct.data <- structure2conStruct(infile="filtered_3699snps_100indcalifornicus.recode.strct_in",
                                       onerowperind = TRUE,
