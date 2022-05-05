@@ -251,10 +251,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">7</span> Population Structure via conStruct</h1>
 <p>For this week we will be exploring one way to document population genetic structure (An alternate way is PCA) via a “Structure” plot implemented in the R package conStruct.</p>
 <p>conStruct itself has a nice series of tutorials with example data that you can find <a href="https://cran.r-project.org/web/packages/conStruct/vignettes/format-data.html">here</a></p>
-<p>We’ll be using data from the <a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/mec.14589">Xuereb et al. paper on P. californicus</a>. This data consists of a vcf file that is in structure format and contains SNP data (3699 SNPs) from 717 individuals (this is the same data we used for our PCA plot in week 9 for pcadapt, and for week 11 for GEA).</p>
+<p>We’ll be using data from the <a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/mec.14589">Xuereb et al. paper on P. californicus</a>. This data consists of a vcf file that is in structure format and contains SNP data (3699 SNPs) from 717 individuals.</p>
 <div id="download-the-data" class="section level2" number="7.1">
 <h2><span class="header-section-number">7.1</span> Download the data</h2>
-<p>We’ll be using data from the <a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/mec.14589">Xuereb et al. paper on P. californicus</a>. This data consists of a vcf file that is in structure format and contains SNP data (3699 SNPs) from 100 individuals (this is the same data we used for our PCA plot in week 9 for pcadapt, and for week 11 for GEA, just with fewer individuals for this week).</p>
+<p>We’ll be using data from the <a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/mec.14589">Xuereb et al. paper on P. californicus</a>. This data consists of a vcf file that is in structure format and contains SNP data (3699 SNPs) from 100 individuals.</p>
 <p>We’ll download a metafile as well that has sample coordinates and names</p>
 <div class="sourceCode" id="cb391"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb391-1"><a href="population-structure-via-construct.html#cb391-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb391-2"><a href="population-structure-via-construct.html#cb391-2" aria-hidden="true" tabindex="-1"></a>wget https://raw.githubusercontent.com/BayLab/MarineGenomicsData/main/week12_semester.tar.gz</span>
@@ -441,8 +441,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## 
 ## SAMPLING FOR MODEL &#39;space_multiK&#39; NOW (CHAIN 1).
 ## Chain 1: 
-## Chain 1: Gradient evaluation took 0.007918 seconds
-## Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 79.18 seconds.
+## Chain 1: Gradient evaluation took 0.009 seconds
+## Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 90 seconds.
 ## Chain 1: Adjust your expectations accordingly!
 ## Chain 1: 
 ## Chain 1: 
@@ -460,9 +460,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Chain 1: Iteration: 9 / 10 [ 90%]  (Sampling)
 ## Chain 1: Iteration: 10 / 10 [100%]  (Sampling)
 ## Chain 1: 
-## Chain 1:  Elapsed Time: 0.192146 seconds (Warm-up)
-## Chain 1:                0.083554 seconds (Sampling)
-## Chain 1:                0.2757 seconds (Total)
+## Chain 1:  Elapsed Time: 0.10696 seconds (Warm-up)
+## Chain 1:                0.080729 seconds (Sampling)
+## Chain 1:                0.187689 seconds (Total)
 ## Chain 1:</code></pre>
 <div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb401-1"><a href="population-structure-via-construct.html#cb401-1" aria-hidden="true" tabindex="-1"></a><span class="co">#remake our structure plots</span></span>
 <span id="cb401-2"><a href="population-structure-via-construct.html#cb401-2" aria-hidden="true" tabindex="-1"></a></span>

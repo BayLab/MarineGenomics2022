@@ -16,12 +16,12 @@ For this week we will be exploring one way to document population genetic struct
 
 conStruct itself has a nice series of tutorials with example data that you can find [here](https://cran.r-project.org/web/packages/conStruct/vignettes/format-data.html)
 
-We'll be using data from the [Xuereb et al. paper on P. californicus](https://onlinelibrary.wiley.com/doi/abs/10.1111/mec.14589). This data consists of a vcf file that is in structure format and contains SNP data (3699 SNPs) from 717 individuals (this is the same data we used for our PCA plot in week 9 for pcadapt, and for week 11 for GEA). 
+We'll be using data from the [Xuereb et al. paper on P. californicus](https://onlinelibrary.wiley.com/doi/abs/10.1111/mec.14589). This data consists of a vcf file that is in structure format and contains SNP data (3699 SNPs) from 717 individuals. 
 
 
 ## Download the data
 
-We'll be using data from the [Xuereb et al. paper on P. californicus](https://onlinelibrary.wiley.com/doi/abs/10.1111/mec.14589). This data consists of a vcf file that is in structure format and contains SNP data (3699 SNPs) from 100 individuals (this is the same data we used for our PCA plot in week 9 for pcadapt, and for week 11 for GEA, just with fewer individuals for this week). 
+We'll be using data from the [Xuereb et al. paper on P. californicus](https://onlinelibrary.wiley.com/doi/abs/10.1111/mec.14589). This data consists of a vcf file that is in structure format and contains SNP data (3699 SNPs) from 100 individuals. 
 
 We'll download a metafile as well that has sample coordinates and names
 
@@ -258,8 +258,8 @@ my.run <- conStruct(spatial = TRUE,
 ## 
 ## SAMPLING FOR MODEL 'space_multiK' NOW (CHAIN 1).
 ## Chain 1: 
-## Chain 1: Gradient evaluation took 0.007918 seconds
-## Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 79.18 seconds.
+## Chain 1: Gradient evaluation took 0.009 seconds
+## Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 90 seconds.
 ## Chain 1: Adjust your expectations accordingly!
 ## Chain 1: 
 ## Chain 1: 
@@ -277,9 +277,9 @@ my.run <- conStruct(spatial = TRUE,
 ## Chain 1: Iteration: 9 / 10 [ 90%]  (Sampling)
 ## Chain 1: Iteration: 10 / 10 [100%]  (Sampling)
 ## Chain 1: 
-## Chain 1:  Elapsed Time: 0.192146 seconds (Warm-up)
-## Chain 1:                0.083554 seconds (Sampling)
-## Chain 1:                0.2757 seconds (Total)
+## Chain 1:  Elapsed Time: 0.10696 seconds (Warm-up)
+## Chain 1:                0.080729 seconds (Sampling)
+## Chain 1:                0.187689 seconds (Total)
 ## Chain 1:
 ```
 

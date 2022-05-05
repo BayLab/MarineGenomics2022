@@ -19,12 +19,12 @@ For this week we will be exploring one way to document population genetic struct
 
 conStruct itself has a nice series of tutorials with example data that you can find [here](https://cran.r-project.org/web/packages/conStruct/vignettes/format-data.html)
 
-We'll be using data from the [Xuereb et al. paper on P. californicus](https://onlinelibrary.wiley.com/doi/abs/10.1111/mec.14589). This data consists of a vcf file that is in structure format and contains SNP data (3699 SNPs) from 717 individuals (this is the same data we used for our PCA plot in week 9 for pcadapt, and for week 11 for GEA). 
+We'll be using data from the [Xuereb et al. paper on P. californicus](https://onlinelibrary.wiley.com/doi/abs/10.1111/mec.14589). This data consists of a vcf file that is in structure format and contains SNP data (3699 SNPs) from 717 individuals. 
 
 
 ## Download the data
 
-We'll be using data from the [Xuereb et al. paper on P. californicus](https://onlinelibrary.wiley.com/doi/abs/10.1111/mec.14589). This data consists of a vcf file that is in structure format and contains SNP data (3699 SNPs) from 100 individuals (this is the same data we used for our PCA plot in week 9 for pcadapt, and for week 11 for GEA, just with fewer individuals for this week). 
+We'll be using data from the [Xuereb et al. paper on P. californicus](https://onlinelibrary.wiley.com/doi/abs/10.1111/mec.14589). This data consists of a vcf file that is in structure format and contains SNP data (3699 SNPs) from 100 individuals. 
 
 We'll download a metafile as well that has sample coordinates and names
 
