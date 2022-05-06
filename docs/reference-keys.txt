@@ -75,3 +75,11 @@ run-a-structure-analysis
 incoorporate-geographic-distances-in-a-spatial-model
 comparisons-across-different-values-of-k
 exercises
+week-6--principle-component-analyses
+download-the-data-1
+installing-programs
+run-pcangsd-on-our-data
+setting-up-a-new-project-in-r
+reading-data-into-r
+group-exercises
+additional-exercise

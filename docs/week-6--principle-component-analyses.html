@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>1 Introduction to Marine Genomics | MarGen2022</title>
+  <title>8 Week 6- Principle Component Analyses | MarGen2022</title>
   <meta name="description" content="" />
   <meta name="generator" content="bookdown 0.26.2 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="1 Introduction to Marine Genomics | MarGen2022" />
+  <meta property="og:title" content="8 Week 6- Principle Component Analyses | MarGen2022" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="1 Introduction to Marine Genomics | MarGen2022" />
+  <meta name="twitter:title" content="8 Week 6- Principle Component Analyses | MarGen2022" />
   
   
   
@@ -28,8 +28,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
+<link rel="prev" href="population-structure-via-construct.html"/>
 
-<link rel="next" href="week-1--welcome.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -257,48 +257,185 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<!--bookdown:title:end-->
-<!--bookdown:title:start-->
-<div id="introduction-to-marine-genomics" class="section level1 hasAnchor" number="1">
-<h1><span class="header-section-number">1</span> Introduction to Marine Genomics<a href="index.html#introduction-to-marine-genomics" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<center>
-<p><img src="figs/margen.logo.jpg" width="300" height="400" /></p>
-</center>
-<p>Welcome to Marine Genomics 2022! This is a course on learning how to analyze genomic data for undergraduate students. We will focus on marine organisms but these lessons can easily be applied to any taxa. We required that students have a background in biology and have completed the general biology series. Additionally, it is helpful if students have taken a course in Evolution, though this was not a requirement. We do not require any coding experience in R or Bash/UNIX.</p>
-<p>The course consists of one 1.5 hour lecture per week. The lectures begin with a power point presentation where we introduce the weeks concept (for example, PCAs) and then are followed by a live coding demonstrations and exercises.</p>
-<p>The first 5 weeks are primarily training in bash/UNIX and R basics. The remaining weeks are focused on performing a specific analysis (PCA, GWAS, Fst-outlier analyses, etc).</p>
-<p>We provide all the data for the students to complete each weeks coding activies along with instructions for how to download the data.</p>
-<div id="cloud-computing-versus-individual-laptops" class="section level2 hasAnchor" number="1.1">
-<h2><span class="header-section-number">1.1</span> Cloud computing versus individual laptops<a href="index.html#cloud-computing-versus-individual-laptops" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>This course was designed to be carried out on the NSF funded Extreme Science and Engineering Discovery Environment (XSEDE) cloud computing resource <a href="https://docs.jetstream-cloud.org/">Jetstream2</a>.</p>
-<p>Jetstream is a unique user-friendly cloud computing resource in that it provides the students with an environment with root privileges, making program installation less complicated. Jetstream also provides a Desktop simulator which allows students to transition between bash and R using the same exact directory paths as the instructor, reducing the confusion of students having unique file paths and providing a more streamlined approach to what for many students is their first coding class.</p>
-<p>Jetstream educational allocations can be applied for through <a href="https://portal.xsede.org/jetstream#allocations:education">XSEDE</a>. The process of applying for a jetstream allocation for educational purposes is relatively straightforward and simply requires a course description, the number of students anticipated to participate, and a calculation of the computing resources required, and the instructors CV. Allocations are typically approved in two to three days and can be submitted ~2 weeks prior to the start of the course.</p>
-<p>Alternatively, these course materials can be used on students and instructors individual laptops. The file paths will need to be modified and we cannot guarantee that the installation of programs and R packages will proceed as they did on Jetstream. Thus, progam installation will need to be verified for each week by the instructor.</p>
+<div id="week-6--principle-component-analyses" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">8</span> Week 6- Principle Component Analyses<a href="week-6--principle-component-analyses.html#week-6--principle-component-analyses" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>In week 3 we mapped reads to a genome so we could call our genetic variants (SNPs) and generated bam files for each read file (= sequence data from an individual). Last week we started investigating population structure with structure plots via conStruct. We will now use these SNPs to plot patterns of population structure in a different way with principal component analyses.</p>
+<p>The first portion of this lesson will be performed in <strong>bash</strong> and then we will generate the plots in <strong>RStudio</strong>.</p>
+<div id="download-the-data-1" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> Download the data<a href="week-6--principle-component-analyses.html#download-the-data-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We first need to download the data. Use the link below to download it to jetstream, and then us the tar command to un-compress it.</p>
+<div class="sourceCode" id="cb406"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb406-1"><a href="week-6--principle-component-analyses.html#cb406-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb406-2"><a href="week-6--principle-component-analyses.html#cb406-2" aria-hidden="true" tabindex="-1"></a>wget https://raw.githubusercontent.com/BayLab/MarineGenomicsData/main/week7_2022.tar.gz</span>
+<span id="cb406-3"><a href="week-6--principle-component-analyses.html#cb406-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb406-4"><a href="week-6--principle-component-analyses.html#cb406-4" aria-hidden="true" tabindex="-1"></a>tar -xzvf week7_2022.tar.gz</span></code></pre></div>
+<p>Our data this week consists of genotype_likelihood files in beagle format and a bam.filelist which contains id information for our samples.</p>
+<div class="sourceCode" id="cb407"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb407-1"><a href="week-6--principle-component-analyses.html#cb407-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb407-2"><a href="week-6--principle-component-analyses.html#cb407-2" aria-hidden="true" tabindex="-1"></a>ls -lh MarineGenomicsData/Week7</span></code></pre></div>
 </div>
-<div id="meet-our-instructors" class="section level2 hasAnchor" number="1.2">
-<h2><span class="header-section-number">1.2</span> Meet our instructors!<a href="index.html#meet-our-instructors" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<center>
-<p><img src="figs/Erica.jpeg" width="350" height="300" /></p>
-</center>
-<p>Erica Nielsen, Postdoc, lead instructor (<a href="mailto:esnielsen@ucdavis.edu" class="email">esnielsen@ucdavis.edu</a>)– <a href="https://esnielsen.github.io/">Website</a>.</p>
-<center>
-<p><img src="figs/Tali.jpeg" width="300" height="300" /></p>
-</center>
-<p>Tali Magory, Postdoc, co-instructor (<a href="mailto:talimagory@gmail.com" class="email">talimagory@gmail.com</a>)</p>
-<center>
-<p><img src="figs/Leslie.jpg" width="250" height="300" /></p>
-</center>
-<p>Leslie Guerrero, Graduate student, co-instructor (<a href="mailto:leaguerrero@ucdavis.edu" class="email">leaguerrero@ucdavis.edu</a>)</p>
-<center>
-<p><img src="figs/Brooke.JPG" width="300" height="300" /></p>
-</center>
-<p>Brooke Benson, Graduate student, teaching assistant (<a href="mailto:bebenson@ucdavis.edu" class="email">bebenson@ucdavis.edu</a>)</p>
+<div id="installing-programs" class="section level2 hasAnchor" number="8.2">
+<h2><span class="header-section-number">8.2</span> Installing programs<a href="week-6--principle-component-analyses.html#installing-programs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We will also need to install a few programs. The code below installs the program pcangsd, and a few dependencies for pcangsd:</p>
+<div class="sourceCode" id="cb408"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb408-1"><a href="week-6--principle-component-analyses.html#cb408-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb408-2"><a href="week-6--principle-component-analyses.html#cb408-2" aria-hidden="true" tabindex="-1"></a>#install pip for python</span>
+<span id="cb408-3"><a href="week-6--principle-component-analyses.html#cb408-3" aria-hidden="true" tabindex="-1"></a>curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py</span>
+<span id="cb408-4"><a href="week-6--principle-component-analyses.html#cb408-4" aria-hidden="true" tabindex="-1"></a>python3 get-pip.py</span>
+<span id="cb408-5"><a href="week-6--principle-component-analyses.html#cb408-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb408-6"><a href="week-6--principle-component-analyses.html#cb408-6" aria-hidden="true" tabindex="-1"></a>#we need to add our home directory to the path for pip</span>
+<span id="cb408-7"><a href="week-6--principle-component-analyses.html#cb408-7" aria-hidden="true" tabindex="-1"></a>#look at path</span>
+<span id="cb408-8"><a href="week-6--principle-component-analyses.html#cb408-8" aria-hidden="true" tabindex="-1"></a>echo $PATH</span>
+<span id="cb408-9"><a href="week-6--principle-component-analyses.html#cb408-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb408-10"><a href="week-6--principle-component-analyses.html#cb408-10" aria-hidden="true" tabindex="-1"></a>#add the location of pip to our path</span>
+<span id="cb408-11"><a href="week-6--principle-component-analyses.html#cb408-11" aria-hidden="true" tabindex="-1"></a>export PATH=&quot;$HOME/.local/bin:$PATH&quot;</span>
+<span id="cb408-12"><a href="week-6--principle-component-analyses.html#cb408-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb408-13"><a href="week-6--principle-component-analyses.html#cb408-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb408-14"><a href="week-6--principle-component-analyses.html#cb408-14" aria-hidden="true" tabindex="-1"></a>#then install pcangsd</span>
+<span id="cb408-15"><a href="week-6--principle-component-analyses.html#cb408-15" aria-hidden="true" tabindex="-1"></a>git clone https://github.com/Rosemeis/pcangsd.git</span>
+<span id="cb408-16"><a href="week-6--principle-component-analyses.html#cb408-16" aria-hidden="true" tabindex="-1"></a>cd pcangsd/</span>
+<span id="cb408-17"><a href="week-6--principle-component-analyses.html#cb408-17" aria-hidden="true" tabindex="-1"></a>pip install --user -r requirements.txt #this installs additional requirements for pcangsd</span>
+<span id="cb408-18"><a href="week-6--principle-component-analyses.html#cb408-18" aria-hidden="true" tabindex="-1"></a>python3 setup.py build_ext --inplace</span></code></pre></div>
+<p>Check that it’s installed correctly.</p>
+<div class="sourceCode" id="cb409"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb409-1"><a href="week-6--principle-component-analyses.html#cb409-1" aria-hidden="true" tabindex="-1"></a>#navigate to your home directory</span>
+<span id="cb409-2"><a href="week-6--principle-component-analyses.html#cb409-2" aria-hidden="true" tabindex="-1"></a>cd</span>
+<span id="cb409-3"><a href="week-6--principle-component-analyses.html#cb409-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb409-4"><a href="week-6--principle-component-analyses.html#cb409-4" aria-hidden="true" tabindex="-1"></a>python3 pcangsd/pcangsd.py -h</span></code></pre></div>
+<p>You should see the help menu for pcangsd.</p>
 </div>
-<div id="schedule" class="section level2 hasAnchor" number="1.3">
-<h2><span class="header-section-number">1.3</span> Schedule<a href="index.html#schedule" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Lecture Thursdays 12:10-1:30</p>
-<p>Office hours: virtual - will be determined based on poll</p>
-<p><img src="figs/urchins.JPG" /></p>
+<div id="run-pcangsd-on-our-data" class="section level2 hasAnchor" number="8.3">
+<h2><span class="header-section-number">8.3</span> Run pcangsd on our data<a href="week-6--principle-component-analyses.html#run-pcangsd-on-our-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In population genomics analyses we often use multiple programs, which often have different input file formats. This is again why writing out the input/output formats in a pipeline is very useful! Have a look at the <a href="http://www.popgen.dk/software/index.php/PCAngsd">pcangsd</a> website and see what type of input is needed.</p>
+<div class="sourceCode" id="cb410"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb410-1"><a href="week-6--principle-component-analyses.html#cb410-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb410-2"><a href="week-6--principle-component-analyses.html#cb410-2" aria-hidden="true" tabindex="-1"></a>python3 ../../pcangsd/pcangsd.py -beagle genolike_beagle.beagle.gz -o pca_out -threads 28</span></code></pre></div>
+<p>This will generate a covariance matrix output file (the "*.cov" file). We can read this file into R and compute the eigenvectors and eigenvalues and make our plot.</p>
+</div>
+<div id="setting-up-a-new-project-in-r" class="section level2 hasAnchor" number="8.4">
+<h2><span class="header-section-number">8.4</span> Setting up a new project in R<a href="week-6--principle-component-analyses.html#setting-up-a-new-project-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We’ll first open a new <code>.R</code> script to keep track of our code and everything that we’re doing. Be sure to comment heavily with <code>#</code>. It may seem obvious what we’re doing now, but you will forget what certain lines of code do in a surprisingly short amount of time.</p>
+</div>
+<div id="reading-data-into-r" class="section level2 hasAnchor" number="8.5">
+<h2><span class="header-section-number">8.5</span> Reading data into R<a href="week-6--principle-component-analyses.html#reading-data-into-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>There are several ways to read data in R. Useful functions include <code>read.table()</code>, <code>getwd()</code>, and <code>setwd()</code></p>
+<p>R like many other programs is set to start in a specific direcotory, usually the desktop or homw directory. You can check and see what directory R is set in with the command <code>getwd()</code></p>
+<p>And of course all of this code is typed into our script and commented along the way.</p>
+<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb411-1"><a href="week-6--principle-component-analyses.html#cb411-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb411-2"><a href="week-6--principle-component-analyses.html#cb411-2" aria-hidden="true" tabindex="-1"></a><span class="co">#check working directory</span></span>
+<span id="cb411-3"><a href="week-6--principle-component-analyses.html#cb411-3" aria-hidden="true" tabindex="-1"></a><span class="co">#getwd()</span></span>
+<span id="cb411-4"><a href="week-6--principle-component-analyses.html#cb411-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb411-5"><a href="week-6--principle-component-analyses.html#cb411-5" aria-hidden="true" tabindex="-1"></a><span class="co">#should output</span></span>
+<span id="cb411-6"><a href="week-6--principle-component-analyses.html#cb411-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb411-7"><a href="week-6--principle-component-analyses.html#cb411-7" aria-hidden="true" tabindex="-1"></a><span class="co">#[1] &quot;/home/exouser&quot;</span></span></code></pre></div>
+<p>Thus in jetstream the working directory is set to our home directory, which will work fine for uploading data. If you need to change the directory you can use <code>setwd()</code> and provide it with the full directory path (e.g., "C:") and then confirm that it moved the directory with <code>getwd()</code>.</p>
+<p>In Rstudio you can also use the pull down menus <code>Session</code> to get and set your working directory. Similarly, the tab <code>Files</code> in the lower right will also allow you to set your working directory.</p>
+<p>Now we’ll read the data output by angsd into R using <code>read.table()</code> and <code>as.matrix()</code></p>
+<div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb412-1"><a href="week-6--principle-component-analyses.html#cb412-1" aria-hidden="true" tabindex="-1"></a>cov<span class="ot">&lt;-</span><span class="fu">as.matrix</span>(<span class="fu">read.table</span>(<span class="st">&quot;pca_out.cov&quot;</span>))</span></code></pre></div>
+<p>And then we can compute the eigenvalues from our covariance matrix with the function <code>eigen</code>.</p>
+<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb413-1"><a href="week-6--principle-component-analyses.html#cb413-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb413-2"><a href="week-6--principle-component-analyses.html#cb413-2" aria-hidden="true" tabindex="-1"></a>e<span class="ot">&lt;-</span><span class="fu">eigen</span>(cov)</span></code></pre></div>
+<p>And make a simple plot in base R</p>
+<div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb414-1"><a href="week-6--principle-component-analyses.html#cb414-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb414-2"><a href="week-6--principle-component-analyses.html#cb414-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb414-3"><a href="week-6--principle-component-analyses.html#cb414-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(e<span class="sc">$</span>vectors[,<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>])</span></code></pre></div>
+<p><img src="07-Week7.pca_files/figure-html/6-1-1.png" width="768" />
+We may be interested in how much of the variance our first two components explain. You can look at this in the <code>e</code> object under values. We divide the eigen values by the sum of all the values to get the percent explained by each value.</p>
+<div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb415-1"><a href="week-6--principle-component-analyses.html#cb415-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb415-2"><a href="week-6--principle-component-analyses.html#cb415-2" aria-hidden="true" tabindex="-1"></a>e<span class="sc">$</span>values<span class="sc">/</span><span class="fu">sum</span>(e<span class="sc">$</span>values)</span>
+<span id="cb415-3"><a href="week-6--principle-component-analyses.html#cb415-3" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] 0.24278761 0.07662213 0.07502757 0.07349541 0.07287943 0.07034540</span></span>
+<span id="cb415-4"><a href="week-6--principle-component-analyses.html#cb415-4" aria-hidden="true" tabindex="-1"></a><span class="do">##  [7] 0.06674509 0.06530546 0.05280345 0.04958515 0.04274839 0.03706328</span></span>
+<span id="cb415-5"><a href="week-6--principle-component-analyses.html#cb415-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [13] 0.03527164 0.03241500 0.00690499</span></span></code></pre></div>
+<p>We now want to make the colors match population labels. The information on which population each individual sample came from is in the bam.filelist file.</p>
+<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb416-1"><a href="week-6--principle-component-analyses.html#cb416-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb416-2"><a href="week-6--principle-component-analyses.html#cb416-2" aria-hidden="true" tabindex="-1"></a><span class="co">#read in the data</span></span>
+<span id="cb416-3"><a href="week-6--principle-component-analyses.html#cb416-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb416-4"><a href="week-6--principle-component-analyses.html#cb416-4" aria-hidden="true" tabindex="-1"></a>names<span class="ot">&lt;-</span><span class="fu">read.table</span>(<span class="st">&quot;bam.filelist&quot;</span>)</span>
+<span id="cb416-5"><a href="week-6--principle-component-analyses.html#cb416-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb416-6"><a href="week-6--principle-component-analyses.html#cb416-6" aria-hidden="true" tabindex="-1"></a><span class="co">#assign the rownames of the covariance matix the </span></span>
+<span id="cb416-7"><a href="week-6--principle-component-analyses.html#cb416-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb416-8"><a href="week-6--principle-component-analyses.html#cb416-8" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(cov)<span class="ot">&lt;-</span>names<span class="sc">$</span>V2</span></code></pre></div>
+<div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb417-1"><a href="week-6--principle-component-analyses.html#cb417-1" aria-hidden="true" tabindex="-1"></a><span class="co">#remake the plot with the colors we want</span></span>
+<span id="cb417-2"><a href="week-6--principle-component-analyses.html#cb417-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb417-3"><a href="week-6--principle-component-analyses.html#cb417-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(e<span class="sc">$</span>vectors[,<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>], <span class="at">col=</span><span class="fu">as.factor</span>(<span class="fu">rownames</span>(cov)), <span class="at">pch=</span><span class="dv">16</span>)</span></code></pre></div>
+<p><img src="07-Week7.pca_files/figure-html/6-2-1.png" width="768" /></p>
+<p>There is another column in the bam.filelist file that will allow us to color the populations based on region. Go ahead and modify your plots to have nice x and y labels that state the percent variance explained by each axis, and that are colored by region. You can also change the pch and any other parameters you would like.</p>
+</div>
+<div id="group-exercises" class="section level2 hasAnchor" number="8.6">
+<h2><span class="header-section-number">8.6</span> Group Exercises<a href="week-6--principle-component-analyses.html#group-exercises" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<blockquote>
+<h1 id="in-the-following-2-exercises-we-will-again-work-in-groups-to-re-create-our-pcas-but-with-the-stricter-snp-filtering-parameter-of-only-allowing-variant-sites-with-data-present-for-all-15-individuals." class="hasAnchor">In the following 2 exercises, we will again work in groups to re-create our PCAs, but with the stricter SNP filtering parameter of only allowing variant sites with data present for all 15 individuals.<a href="week-6--principle-component-analyses.html#in-the-following-2-exercises-we-will-again-work-in-groups-to-re-create-our-pcas-but-with-the-stricter-snp-filtering-parameter-of-only-allowing-variant-sites-with-data-present-for-all-15-individuals." class="anchor-section" aria-label="Anchor link to header"></a></h1>
+</blockquote>
+<blockquote>
+<p>Filtering genomic data is a bit of an art, as filtering more will allow for higher confidence in our SNPs, but will also likely lead us to remove true SNPs from the dataset thinking they are instead sequencing/mapping errors.</p>
+</blockquote>
+<blockquote>
+<p><strong>1.1</strong>) In R, upload the genotype likelihood maf file (genolike.beagle.maf.gz).</p>
+</blockquote>
+<blockquote>
+<p>Hint: the read.table() command may give an error since the file is zipped. Google how to use the R command read.table() with a gzfile to read the ‘maf.gz’ file. We will also want to keep the first row as a header - google the command or type “?read.table” into R to figure out how to keep the first line as variable names.</p>
+</blockquote>
+<blockquote>
+<p>Explore this .maf file- what are the columns and rows telling us? Which column can tell us the number of individuals each site has data for?</p>
+</blockquote>
+<blockquote>
+<p>Hint: have a look at <a href="http://www.popgen.dk/angsd/index.php/Allele_Frequencies">this webpage</a> to see the output format explanation</p>
+</blockquote>
+<blockquote>
+<p><strong>1.2</strong>) Filter the data so that we only use sites in which all 15 individuals have data present (i.e., subset by the column of interest from 1.1). Save this filtered dataset as an object called “gen_filt.” How many SNPs does this leave us? How many SNPs did we start with?</p>
+</blockquote>
+<blockquote>
+<p>Hint: you can look at section 5.8 of week 4 on subsetting in R.</p>
+</blockquote>
+<blockquote>
+<p><strong>2.1</strong>) Use the filtered file from exercise 1 in pcangsd to recalculate the covariance matrix and regenerate the pca plot. Can we use our gen dataframe as an input file for pcangsd?</p>
+</blockquote>
+<blockquote>
+<p>Read the original input file (genolike_beagle.beagle.gz) in R and see how the column names compare between it and our filtered .maf file.</p>
+</blockquote>
+<blockquote>
+<p><strong>2.2</strong>) We see that we need to change the column names of gen to match the beag format. Here we can use the function <code>merge(x, y, by = )</code>. Again, you can use “?merge” in R for more info on this command. Note: the function merge only works (properly) if the column names are the same.</p>
+</blockquote>
+<blockquote>
+<p>Change the column names to match across the two dataframes where they have the same info. To do this, first create a new column gen_filt called “marker,” where we will paste columns $chromo and $position as a single character separated by "_". Have a look <a href="https://www.marsja.se/how-to-concatenate-two-columns-or-more-in-r-stringr-tidyr/#:~:text=columns%20in%20R.-,How%20do%20I%20concatenate%20two%20columns%20in%20R%3F,B">here</a>.) on how to do this.</p>
+</blockquote>
+<blockquote>
+<p>Then use merge command by the column “marker,” calling this new object ‘beag_filt.’ Check how many columns and rows are in this object.</p>
+</blockquote>
+<blockquote>
+<p><strong>2.3</strong>) Pcangsd doesn’t want those extra columns that came from our merge lets get rid of them to leave the 48 columns that beagle needs. Use the “RC cola” notation to subset the dataframe, keeping only the first column and then columns 9-55.</p>
+</blockquote>
+<blockquote>
+<p><strong>2.4</strong>) Use the “write.table” command to save our beagle file as the new input for pcangsd. Save the output as “geno_like_filt.beagle.”</p>
+</blockquote>
+<blockquote>
+<p>Hint:By default write.table outputs a dataframe with row names, and we dont want that. Search how to have row names as False in the write.table command.
+Hint: The beage file will also require columns being separated by tabs. Search how to tab separate write.table outputs, and include that as well in the command.</p>
+</blockquote>
+<blockquote>
+<p><strong>2.5</strong>) We should now have our filtered beagle file in our R session directory. Let’s move back into terminal to run pcangsd again! First gzip the file (gzip geno_like_filt.beagle), then re-run the pcangsd command. Check your directories to make sure the input and output files are there.</p>
+</blockquote>
+<blockquote>
+<p><strong>2.6</strong>) Then we can go back to R and rerun our code to calculate the eigenvalues and eigenvectors for this covariance matrix. How does the plot compare to the non-filtered dataset? How much of the variance do the first 2 PCs explain in this filtered dataset?</p>
+</blockquote>
+</div>
+<div id="additional-exercise" class="section level2 hasAnchor" number="8.7">
+<h2><span class="header-section-number">8.7</span> Additional Exercise<a href="week-6--principle-component-analyses.html#additional-exercise" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<blockquote>
+<p>Remake the base R plot that we generated in class in ggplot. Use the group parameter in aes to group by region and/or population. Note, ggplot wants the data to be a dataframe and our data is a matrix. Use the function <code>as.data.frame(e$vectors)</code> to acheive this in the ggplot function. Don’t forget to load the ggplot2 package with `library(ggplot2)</p>
+</blockquote>
+<details>
+<summary>
+<span style="color: goldenrod;">Solution</span>
+</summary>
+<p>
+</p>
+</details>
+<blockquote>
+<p>Exercise 1 solution</p>
+</blockquote>
+<details>
+<summary>
+<span style="color: goldenrod;">Solution</span>
+</summary>
+<p>
+</p>
+</details>
 
 </div>
 </div>
@@ -307,8 +444,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
+<a href="population-structure-via-construct.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
-<a href="week-1--welcome.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

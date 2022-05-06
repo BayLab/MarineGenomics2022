@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>6 Week 5- R Continued | MarGen2022</title>
   <meta name="description" content="" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.26.2 and GitBook 2.6.7" />
 
   <meta property="og:title" content="6 Week 5- R Continued | MarGen2022" />
   <meta property="og:type" content="book" />
-  
   
   
   
@@ -31,7 +30,6 @@
   
 <link rel="prev" href="week-4---the-r-environment.html"/>
 <link rel="next" href="population-structure-via-construct.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -49,14 +47,16 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -227,6 +227,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.8" data-path="population-structure-via-construct.html"><a href="population-structure-via-construct.html#comparisons-across-different-values-of-k"><i class="fa fa-check"></i><b>7.8</b> Comparisons across different values of K</a></li>
 <li class="chapter" data-level="7.9" data-path="population-structure-via-construct.html"><a href="population-structure-via-construct.html#exercises"><i class="fa fa-check"></i><b>7.9</b> Exercises</a></li>
 </ul></li>
+<li class="chapter" data-level="8" data-path="week-6--principle-component-analyses.html"><a href="week-6--principle-component-analyses.html"><i class="fa fa-check"></i><b>8</b> Week 6- Principle Component Analyses</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="week-6--principle-component-analyses.html"><a href="week-6--principle-component-analyses.html#download-the-data-1"><i class="fa fa-check"></i><b>8.1</b> Download the data</a></li>
+<li class="chapter" data-level="8.2" data-path="week-6--principle-component-analyses.html"><a href="week-6--principle-component-analyses.html#installing-programs"><i class="fa fa-check"></i><b>8.2</b> Installing programs</a></li>
+<li class="chapter" data-level="8.3" data-path="week-6--principle-component-analyses.html"><a href="week-6--principle-component-analyses.html#run-pcangsd-on-our-data"><i class="fa fa-check"></i><b>8.3</b> Run pcangsd on our data</a></li>
+<li class="chapter" data-level="8.4" data-path="week-6--principle-component-analyses.html"><a href="week-6--principle-component-analyses.html#setting-up-a-new-project-in-r"><i class="fa fa-check"></i><b>8.4</b> Setting up a new project in R</a></li>
+<li class="chapter" data-level="8.5" data-path="week-6--principle-component-analyses.html"><a href="week-6--principle-component-analyses.html#reading-data-into-r"><i class="fa fa-check"></i><b>8.5</b> Reading data into R</a></li>
+<li class="chapter" data-level="8.6" data-path="week-6--principle-component-analyses.html"><a href="week-6--principle-component-analyses.html#group-exercises"><i class="fa fa-check"></i><b>8.6</b> Group Exercises</a></li>
+<li class="chapter" data-level="8.7" data-path="week-6--principle-component-analyses.html"><a href="week-6--principle-component-analyses.html#additional-exercise"><i class="fa fa-check"></i><b>8.7</b> Additional Exercise</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -247,16 +257,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="week-5--r-continued" class="section level1" number="6">
-<h1><span class="header-section-number">6</span> Week 5- R Continued</h1>
+<div id="week-5--r-continued" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">6</span> Week 5- R Continued<a href="week-5--r-continued.html#week-5--r-continued" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>We’re again drawing some of this material from the STEMinist_R materials which can be found <a href="https://github.com/ecalfee/STEMinist_R.git">here</a></p>
 <p>This class will take place with students typing directly into an R script for the exercises all of which can be found in the Week 5 file <a href="https://github.com/BayLab/MarineGenomicsData.git">here</a></p>
 <p>You can download just the R files for just this week via wget with the following link</p>
 <pre class="{html"><code>wget https://raw.githubusercontent.com/BayLab/MarineGenomicsData/main/week5.tar.gz</code></pre>
 <p>this is a compressed file which can be uncompressed via:</p>
 <pre><code>tar -xzvf week5.tar.gz</code></pre>
-<div id="plotting" class="section level2" number="6.1">
-<h2><span class="header-section-number">6.1</span> 2.1 Plotting</h2>
+<div id="plotting" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> 2.1 Plotting<a href="week-5--r-continued.html#plotting" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Plots are very useful to help us understand our data and test hypotheses. Usually a plot or graph will visually display the relationship between two or more <strong>variables</strong>. Variables can be continuous, such as the number of cats, or categorical, such as the type of cat.</p>
 <ul>
 <li>A few useful commands that we will cover include:
@@ -273,8 +283,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul>
 </div>
-<div id="scatterplots" class="section level2" number="6.2">
-<h2><span class="header-section-number">6.2</span> Scatterplots</h2>
+<div id="scatterplots" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> Scatterplots<a href="week-5--r-continued.html#scatterplots" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Scatterplots are useful when we have <strong>continuous variables</strong>, and want to assess the relationship between them. Usually we will have a predictor or independent variable, which we think has an influence on the other variable, called the response or dependent variable.</p>
 <p>Within our <code>msleep</code> dataframe let’s plot sleep_total by sleep_rem. Here we expect the total number of hours sleeping to have an effect on the total hours of REM, or dreaming, sleep.</p>
 <p> </p>
@@ -294,8 +304,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Also, note that plots generally show the independent “cause” variable on the x-axis, and the dependent or “effect” variable on the y.</p>
 <p> </p>
 </div>
-<div id="customizing-your-plot" class="section level2" number="6.3">
-<h2><span class="header-section-number">6.3</span> Customizing your plot</h2>
+<div id="customizing-your-plot" class="section level2 hasAnchor" number="6.3">
+<h2><span class="header-section-number">6.3</span> Customizing your plot<a href="week-5--r-continued.html#customizing-your-plot" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>There are several different arguments within plotting functions that can be used to customize your plot.
 <ul>
@@ -344,8 +354,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="05-Week5_R_Introduction_continued_files/figure-html/5-6-1.png" width="768" /></p>
 <p> </p>
 </div>
-<div id="histograms-and-box-plots" class="section level2" number="6.4">
-<h2><span class="header-section-number">6.4</span> Histograms and box plots</h2>
+<div id="histograms-and-box-plots" class="section level2 hasAnchor" number="6.4">
+<h2><span class="header-section-number">6.4</span> Histograms and box plots<a href="week-5--r-continued.html#histograms-and-box-plots" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In addition to scatter plots you can make histograms and box plots in base R. Boxplots and histograms both include a <strong>continuous variable</strong> and a <strong>categorical variable</strong>.</p>
 <p>Histograms are appropriate for counts, whereas box plots should be used to represent the characteristics of a distribution.</p>
 <p>Histograms are often used to assess the distribution of the data, and can be helpful when you want to assess the sums of a continuous variable within each group.</p>
@@ -375,10 +385,10 @@ A quick glance at this histogram tells us that our sleep_total variable looks re
 <p><img src="05-Week5_R_Introduction_continued_files/figure-html/5-9-1.png" width="768" /></p>
 <p>Which type of consumer shows the least variation in hours the species within it sleep?</p>
 </div>
-<div id="practice-problems-2.1" class="section level2" number="6.5">
-<h2><span class="header-section-number">6.5</span> Practice Problems 2.1</h2>
+<div id="practice-problems-2.1" class="section level2 hasAnchor" number="6.5">
+<h2><span class="header-section-number">6.5</span> Practice Problems 2.1<a href="week-5--r-continued.html#practice-problems-2.1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <blockquote>
-<h1 id="exercise-2.1">Exercise 2.1</h1>
+<h1 id="exercise-2.1" class="hasAnchor">Exercise 2.1<a href="week-5--r-continued.html#exercise-2.1" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Here we are interested in understanding the effect of different diets on the growth of baby chicks. The following exercises will help us test our hypothesis that diet type will lead to differences in growth, via chick weight.</p>
 <p>Read in the data using <code>data(ChickWeight)</code></p>
 </blockquote>
@@ -483,8 +493,8 @@ Note: if histogram has n breaks and n is less than 10, it will just use first n 
 </p>
 </details>
 </div>
-<div id="plotting-with-ggplot2" class="section level2" number="6.6">
-<h2><span class="header-section-number">6.6</span> 2.2 plotting with ggplot2</h2>
+<div id="plotting-with-ggplot2" class="section level2 hasAnchor" number="6.6">
+<h2><span class="header-section-number">6.6</span> 2.2 plotting with ggplot2<a href="week-5--r-continued.html#plotting-with-ggplot2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>GGPlot is a package that allows you to make a lot of different kinds of plots and has become increasingly popular. There are also many tutorials on how to use ggplot as well as example code that could be modified to fit the data you’re interested in plotting. There is a really helpful cheatsheat (here)[<a href="https://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf" class="uri">https://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf</a>]</p>
 <p>There is a little bit of a learning curve for ggplot as the syntax is structured differently than base R plotting. One thing that remains the same and is even more noticible in ggplot is the iterative process of building a plot, one aspect at a time.</p>
 <p>Let’s demonstrate what ggplot can do with the states data set</p>
@@ -600,8 +610,8 @@ How does the relationship between sepal width and length differ between the thre
 Line plots such as this are really great to assess change over time. It is important to note that in the scatter plot earlier each point was an individual chick, but now we see each point in the mean weight of all chicks at each time point.</p>
 <p> </p>
 </div>
-<div id="group-exercise-on-data-visualization" class="section level2" number="6.7">
-<h2><span class="header-section-number">6.7</span> Group Exercise on Data Visualization</h2>
+<div id="group-exercise-on-data-visualization" class="section level2 hasAnchor" number="6.7">
+<h2><span class="header-section-number">6.7</span> Group Exercise on Data Visualization<a href="week-5--r-continued.html#group-exercise-on-data-visualization" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Here we will go through an exercise using genomic data from <a href="https://onlinelibrary.wiley.com/doi/full/10.1111/jbi.14229">this study</a>.</p>
 <p>Let’s download and explore the data. In terminal run the following:</p>
 <div class="sourceCode" id="cb384"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb384-1"><a href="week-5--r-continued.html#cb384-1" aria-hidden="true" tabindex="-1"></a>wget https://raw.githubusercontent.com/BayLab/MarineGenomicsData/main/week5_2022.table.tar.gz</span>
@@ -623,7 +633,7 @@ Line plots such as this are really great to assess change over time. It is impor
 <p>We will do the following two exercises in groups of 2-3. You are welcome to draw out the plots first, then attempt to create them with R code (either base R or ggplot2). Make sure they are clear for others to interpret.</p>
 <p>There are many ways to accomplish each exercise, and therefore solutions are not given below. Students can share what they created in class.</p>
 <blockquote>
-<h1 id="group-exercise-1">Group Exercise 1</h1>
+<h1 id="group-exercise-1" class="hasAnchor">Group Exercise 1<a href="week-5--r-continued.html#group-exercise-1" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 </blockquote>
 <blockquote>
 <p>The central-margin theory suggest that genetic diversity should be highest within the center of the species’ distributional range. Let’s explore if this is true in our dataset.</p>
@@ -639,7 +649,7 @@ Line plots such as this are really great to assess change over time. It is impor
 <p>1.4 Design and plot a figure that will best show the relationship between genetic diversity and range position per species. Do we find that genetic diversity is higher towards the middle of the range in any species? Remember, smaller values of RP represent areas closer to the center of the range.</p>
 </blockquote>
 <blockquote>
-<h1 id="group-exercise-2">Group Exercise 2</h1>
+<h1 id="group-exercise-2" class="hasAnchor">Group Exercise 2<a href="week-5--r-continued.html#group-exercise-2" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 </blockquote>
 <blockquote>
 <p>The biogeography of an area is an important feature shaping genomic diversity of multiple species. In this second exercise, we want to compare the different regions (west vs south vs east coast bioregions) in the mean and range of genetic diversity values within each region.</p>
@@ -658,10 +668,10 @@ Line plots such as this are really great to assess change over time. It is impor
 </blockquote>
 <p> </p>
 </div>
-<div id="practice-problems-2.2" class="section level2" number="6.8">
-<h2><span class="header-section-number">6.8</span> Practice Problems 2.2</h2>
+<div id="practice-problems-2.2" class="section level2 hasAnchor" number="6.8">
+<h2><span class="header-section-number">6.8</span> Practice Problems 2.2<a href="week-5--r-continued.html#practice-problems-2.2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <blockquote>
-<h1 id="exercise-2.2-plotting-in-ggplot">Exercise 2.2 Plotting in ggplot</h1>
+<h1 id="exercise-2.2-plotting-in-ggplot" class="hasAnchor">Exercise 2.2 Plotting in ggplot<a href="week-5--r-continued.html#exercise-2.2-plotting-in-ggplot" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 </blockquote>
 <blockquote>
 <ol style="list-style-type: decimal">

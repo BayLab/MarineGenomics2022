@@ -1,0 +1,251 @@
+---
+title: 
+author: 
+date: 
+output:
+  bookdown::html_book:
+    toc: yes
+    css: toc.css
+---
+
+
+
+# Week 6- Principle Component Analyses 
+
+In week 3 we mapped reads to a genome so we could call our genetic variants (SNPs) and generated bam files for each read file (= sequence data from an individual). Last week we started investigating population structure with structure plots via conStruct. We will now use these SNPs to plot patterns of population structure in a different way with principal component analyses. 
+
+The first portion of this lesson will be performed in **bash** and then we will generate the plots in **RStudio**.
+
+## Download the data
+
+We first need to download the data. Use the link below to download it to jetstream, and then us the tar command to un-compress it.
+
+
+```html
+
+wget https://raw.githubusercontent.com/BayLab/MarineGenomicsData/main/week7_2022.tar.gz
+
+tar -xzvf week7_2022.tar.gz
+
+```
+
+Our data this week consists of genotype_likelihood files in beagle format and a bam.filelist which contains id information for our samples. 
+
+```html
+
+ls -lh MarineGenomicsData/Week7
+
+```
+
+## Installing programs
+
+We will also need to install a few programs. The code below installs the program pcangsd, and a few dependencies for pcangsd:
+
+```html
+
+#install pip for python
+curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+python3 get-pip.py
+
+#we need to add our home directory to the path for pip
+#look at path
+echo $PATH
+
+#add the location of pip to our path
+export PATH="$HOME/.local/bin:$PATH"
+
+
+#then install pcangsd
+git clone https://github.com/Rosemeis/pcangsd.git
+cd pcangsd/
+pip install --user -r requirements.txt #this installs additional requirements for pcangsd
+python3 setup.py build_ext --inplace
+
+```
+
+
+Check that it's installed correctly.
+
+```html
+#navigate to your home directory
+cd
+
+python3 pcangsd/pcangsd.py -h
+```
+
+
+You should see the help menu for pcangsd. 
+
+## Run pcangsd on our data
+
+In population genomics analyses we often use multiple programs, which often have different input file formats. This is again why writing out the input/output formats in a pipeline is very useful! Have a look at the [pcangsd](http://www.popgen.dk/software/index.php/PCAngsd) website and see what type of input is needed. 
+
+```html
+
+python3 ../../pcangsd/pcangsd.py -beagle genolike_beagle.beagle.gz -o pca_out -threads 28
+
+```
+
+
+This will generate a covariance matrix output file (the "*.cov" file). We can read this file into R and compute the eigenvectors and eigenvalues and make our plot. 
+
+## Setting up a new project in R
+
+We'll first open a new `.R` script to keep track of our code and everything that we're doing. Be sure to comment heavily with `#`. It may seem obvious what we're doing now, but you will forget what certain lines of code do in a surprisingly short amount of time. 
+
+
+## Reading data into R
+
+There are several ways to read data in R. Useful functions include `read.table()`, `getwd()`, and `setwd()`
+
+R like many other programs is set to start in a specific direcotory, usually the desktop or homw directory. You can check and see what directory R is set in with the command `getwd()`
+
+And of course all of this code is typed into our script and commented along the way.
+
+
+```r
+
+#check working directory
+#getwd()
+
+#should output
+
+#[1] "/home/exouser"
+
+```
+
+
+Thus in jetstream the working directory is set to our home directory, which will work fine for uploading data. If you need to change the directory you can use `setwd()` and provide it with the full directory path (e.g., "C:\Users\Yourname\Documents\MarineGenomics\") and then confirm that it moved the directory with `getwd()`. 
+
+In Rstudio you can also use the pull down menus `Session` to get and set your working directory. Similarly, the tab `Files` in the lower right will also allow you to set your working directory.
+
+
+Now we'll read the data output by angsd into R using `read.table()` and `as.matrix()`
+
+
+```r
+cov<-as.matrix(read.table("pca_out.cov"))
+```
+
+
+And then we can compute the eigenvalues from our covariance matrix with the function `eigen`.
+
+
+
+```r
+
+e<-eigen(cov)
+```
+
+And make a simple plot in base R
+
+
+
+```r
+
+
+plot(e$vectors[,1:2])
+```
+
+<img src="07-Week7.pca_files/figure-html/6-1-1.png" width="768" />
+We may be interested in how much of the variance our first two components explain. You can look at this in the `e` object under values. We divide the eigen values by the sum of all the values to get the percent explained by each value.
+
+
+```r
+
+e$values/sum(e$values)
+##  [1] 0.24278761 0.07662213 0.07502757 0.07349541 0.07287943 0.07034540
+##  [7] 0.06674509 0.06530546 0.05280345 0.04958515 0.04274839 0.03706328
+## [13] 0.03527164 0.03241500 0.00690499
+```
+
+
+We now want to make the colors match population labels. The information on which population each individual sample came from is in the bam.filelist file.
+
+
+
+```r
+
+#read in the data
+
+names<-read.table("bam.filelist")
+
+#assign the rownames of the covariance matix the 
+
+rownames(cov)<-names$V2
+```
+
+
+```r
+#remake the plot with the colors we want
+
+plot(e$vectors[,1:2], col=as.factor(rownames(cov)), pch=16)
+```
+
+<img src="07-Week7.pca_files/figure-html/6-2-1.png" width="768" />
+
+There is another column in the bam.filelist file that will allow us to color the populations based on region. Go ahead and modify your plots to have nice x and y labels that state the percent variance explained by each axis, and that are colored by region. You can also change the pch and any other parameters you would like.
+
+
+## Group Exercises
+> # In the following 2 exercises, we will again work in groups to re-create our PCAs, but with the stricter SNP filtering parameter of only allowing variant sites with data present for all 15 individuals. 
+
+>Filtering genomic data is a bit of an art, as filtering more will allow for higher confidence in our SNPs, but will also likely lead us to remove true SNPs from the dataset thinking they are instead sequencing/mapping errors. 
+
+> **1.1**) In R, upload the genotype likelihood maf file (genolike.beagle.maf.gz). 
+
+> Hint: the read.table() command may give an error since the file is zipped. Google how to use the R command read.table() with a gzfile to read the 'maf.gz' file. We will also want to keep the first row as a header - google the command or type "?read.table" into R to figure out how to keep the first line as variable names. 
+
+>Explore this .maf file- what are the columns and rows telling us? Which column can tell us the number of individuals each site has data for? 
+
+> Hint: have a look at [this webpage](http://www.popgen.dk/angsd/index.php/Allele_Frequencies) to see the output format explanation 
+
+> **1.2**) Filter the data so that we only use sites in which all 15 individuals have data present (i.e., subset by the column of interest from 1.1). Save this filtered dataset as an object called "gen_filt". How many SNPs does this leave us? How many SNPs did we start with? 
+
+> Hint: you can look at section 5.8 of week 4 on subsetting in R.
+
+
+>**2.1**) Use the filtered file from exercise 1 in pcangsd to recalculate the covariance matrix and regenerate the pca plot. Can we use our gen dataframe as an input file for pcangsd?
+
+>Read the original input file (genolike_beagle.beagle.gz) in R and see how the column names compare between it and our filtered .maf file. 
+
+
+> **2.2**) We see that we need to change the column names of gen to match the beag format. Here we can use the function `merge(x, y, by = )`. Again, you can use "?merge" in R for more info on this command. Note: the function merge only works (properly) if the column names are the same. 
+
+>Change the column names to match across the two dataframes where they have the same info. To do this, first create a new column gen_filt called "marker", where we will paste columns $chromo and $position as a single character separated by "_". Have a look [here](https://www.marsja.se/how-to-concatenate-two-columns-or-more-in-r-stringr-tidyr/#:~:text=columns%20in%20R.-,How%20do%20I%20concatenate%20two%20columns%20in%20R%3F,B).) on how to do this.
+
+>Then use merge command by the column "marker", calling this new object 'beag_filt'. Check how many columns and rows are in this object. 
+
+>**2.3**) Pcangsd doesn't want those extra columns that came from our merge lets get rid of them to leave the 48 columns that beagle needs. Use the "RC cola" notation to subset the dataframe, keeping only the first column and then columns 9-55.
+
+>**2.4**) Use the "write.table" command to save our beagle file as the new input for pcangsd. Save the output as "geno_like_filt.beagle".
+
+>Hint:By default write.table outputs a dataframe with row names, and we dont want that. Search how to have row names as False in the write.table command. 
+>Hint: The beage file will also require columns being separated by tabs. Search how to tab separate write.table outputs, and include that as well in the command. 
+
+>**2.5**) We should now have our filtered beagle file in our R session directory. Let's move back into terminal to run pcangsd again! First gzip the file (gzip geno_like_filt.beagle), then re-run the pcangsd command. Check your directories to make sure the input and output files are there. 
+
+
+ >**2.6**) Then we can go back to R and rerun our code to calculate the eigenvalues and eigenvectors for this covariance matrix. How does the plot compare to the non-filtered dataset? How much of the variance do the first 2 PCs explain in this filtered dataset?
+
+
+## Additional Exercise
+> Remake the base R plot that we generated in class in ggplot. Use the group parameter in aes to group by region and/or population. Note, ggplot wants the data to be a dataframe and our data is a matrix. Use the function `as.data.frame(e$vectors)` to acheive this in the ggplot function. Don't forget to load the ggplot2 package with `library(ggplot2)
+
+<details><summary><span style="color: goldenrod;">Solution</span></summary>
+<p>
+
+
+</p>
+</details>
+
+> Exercise 1 solution
+
+<details><summary><span style="color: goldenrod;">Solution</span></summary>
+<p>
+
+
+</p>
+</details>
+
+

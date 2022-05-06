@@ -1049,12 +1049,12 @@ msleep[which(msleep[,"sleep_total"]>18),]
 
 ```
 ## # A tibble: 4 × 12
-##   name   genus  vore  order conservation sleep_total sleep_rem sleep_cycle awake
-##   <chr>  <chr>  <chr> <chr> <chr>              <dbl>     <dbl>       <dbl> <dbl>
-## 1 Big b… Eptes… inse… Chir… lc                  19.7       3.9       0.117   4.3
-## 2 Thick… Lutre… carni Dide… lc                  19.4       6.6      NA       4.6
-## 3 Littl… Myotis inse… Chir… <NA>                19.9       2         0.2     4.1
-## 4 Giant… Priod… inse… Cing… en                  18.1       6.1      NA       5.9
+##   name    genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
+##   <chr>   <chr> <chr> <chr> <chr>              <dbl>     <dbl>       <dbl> <dbl>
+## 1 Big br… Epte… inse… Chir… lc                  19.7       3.9       0.117   4.3
+## 2 Thick-… Lutr… carni Dide… lc                  19.4       6.6      NA       4.6
+## 3 Little… Myot… inse… Chir… <NA>                19.9       2         0.2     4.1
+## 4 Giant … Prio… inse… Cing… en                  18.1       6.1      NA       5.9
 ## # … with 3 more variables: brainwt <dbl>, bodywt <dbl>, total_rem <dbl>
 ```
 
@@ -1066,10 +1066,10 @@ msleep[which(msleep[,"sleep_total"]>18 & msleep[,"order"] == "Chiroptera"),]
 
 ```
 ## # A tibble: 2 × 12
-##   name   genus  vore  order conservation sleep_total sleep_rem sleep_cycle awake
-##   <chr>  <chr>  <chr> <chr> <chr>              <dbl>     <dbl>       <dbl> <dbl>
-## 1 Big b… Eptes… inse… Chir… lc                  19.7       3.9       0.117   4.3
-## 2 Littl… Myotis inse… Chir… <NA>                19.9       2         0.2     4.1
+##   name    genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
+##   <chr>   <chr> <chr> <chr> <chr>              <dbl>     <dbl>       <dbl> <dbl>
+## 1 Big br… Epte… inse… Chir… lc                  19.7       3.9       0.117   4.3
+## 2 Little… Myot… inse… Chir… <NA>                19.9       2         0.2     4.1
 ## # … with 3 more variables: brainwt <dbl>, bodywt <dbl>, total_rem <dbl>
 ```
 ## Practice Subsetting datasets/logicals

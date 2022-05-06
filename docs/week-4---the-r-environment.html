@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>5 Week 4 - The R environment | MarGen2022</title>
   <meta name="description" content="" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.26.2 and GitBook 2.6.7" />
 
   <meta property="og:title" content="5 Week 4 - The R environment | MarGen2022" />
   <meta property="og:type" content="book" />
-  
   
   
   
@@ -31,7 +30,6 @@
   
 <link rel="prev" href="week-3--what-is-a-genetic-variant.html"/>
 <link rel="next" href="week-5--r-continued.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -49,14 +47,16 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -227,6 +227,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.8" data-path="population-structure-via-construct.html"><a href="population-structure-via-construct.html#comparisons-across-different-values-of-k"><i class="fa fa-check"></i><b>7.8</b> Comparisons across different values of K</a></li>
 <li class="chapter" data-level="7.9" data-path="population-structure-via-construct.html"><a href="population-structure-via-construct.html#exercises"><i class="fa fa-check"></i><b>7.9</b> Exercises</a></li>
 </ul></li>
+<li class="chapter" data-level="8" data-path="week-6--principle-component-analyses.html"><a href="week-6--principle-component-analyses.html"><i class="fa fa-check"></i><b>8</b> Week 6- Principle Component Analyses</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="week-6--principle-component-analyses.html"><a href="week-6--principle-component-analyses.html#download-the-data-1"><i class="fa fa-check"></i><b>8.1</b> Download the data</a></li>
+<li class="chapter" data-level="8.2" data-path="week-6--principle-component-analyses.html"><a href="week-6--principle-component-analyses.html#installing-programs"><i class="fa fa-check"></i><b>8.2</b> Installing programs</a></li>
+<li class="chapter" data-level="8.3" data-path="week-6--principle-component-analyses.html"><a href="week-6--principle-component-analyses.html#run-pcangsd-on-our-data"><i class="fa fa-check"></i><b>8.3</b> Run pcangsd on our data</a></li>
+<li class="chapter" data-level="8.4" data-path="week-6--principle-component-analyses.html"><a href="week-6--principle-component-analyses.html#setting-up-a-new-project-in-r"><i class="fa fa-check"></i><b>8.4</b> Setting up a new project in R</a></li>
+<li class="chapter" data-level="8.5" data-path="week-6--principle-component-analyses.html"><a href="week-6--principle-component-analyses.html#reading-data-into-r"><i class="fa fa-check"></i><b>8.5</b> Reading data into R</a></li>
+<li class="chapter" data-level="8.6" data-path="week-6--principle-component-analyses.html"><a href="week-6--principle-component-analyses.html#group-exercises"><i class="fa fa-check"></i><b>8.6</b> Group Exercises</a></li>
+<li class="chapter" data-level="8.7" data-path="week-6--principle-component-analyses.html"><a href="week-6--principle-component-analyses.html#additional-exercise"><i class="fa fa-check"></i><b>8.7</b> Additional Exercise</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -247,8 +257,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="week-4---the-r-environment" class="section level1" number="5">
-<h1><span class="header-section-number">5</span> Week 4 - The R environment</h1>
+<div id="week-4---the-r-environment" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">5</span> Week 4 - The R environment<a href="week-4---the-r-environment.html#week-4---the-r-environment" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>This lesson is modified from materials of the STEMinist_R lessons produced by several UC Davis graduate student and which can be found <a href="https://github.com/ecalfee/STEMinist_R.git">here</a>. We have made some modifications to the data carpentry tutorial to fit our course.</p>
 <p>Download the data from the MarineGenomicsData repository on git hub via wget in the terminal with the following link:
 (first we navigate to the MarineGenomics directory)</p>
@@ -260,8 +270,8 @@ wget https://raw.githubusercontent.com/BayLab/MarineGenomicsData/main/week4_2022
 </code></pre>
 <p>You can now open Rstudio by searching for Rstudio in Applications. When we first open Rstudio, it has 3 parts: the window to the left (console/terminal/jobs), and two windows to the right (environment/history/connections/tutorial and files/plots/packages/help/viewer). When we open a script, a fourth window will appear. We can change the location and size of these windows as we please, and we will get used to using them when we code in Rstudio.</p>
 <p>Before we begin coding, for good practice, let’s start by creating a Project. Working in a project allows us to save all our scripts in the same place, and to automatically have access to the files we are working with without repeatedly specifying paths. This will be especially important once you start working on multiple projects at a time.</p>
-<div id="create-a-project-in-rstudio" class="section level2" number="5.1">
-<h2><span class="header-section-number">5.1</span> Create a project in Rstudio</h2>
+<div id="create-a-project-in-rstudio" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Create a project in Rstudio<a href="week-4---the-r-environment.html#create-a-project-in-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Go to ‘File’ and select ‘New Project.’ You will then see this:
  </p>
 <p><img src="figs/jetstream/Project1.png" width="100%" />
@@ -275,8 +285,8 @@ Select the ‘Marine Genomics’ directory and then select ‘week4_2022’:
 Click ‘Open,’ and then ‘Create Project.’ You have now created a project (‘week4_2022.Rproj’) that is located together with the other files that we will be working with.</p>
 <p>There are a few types of files we can work with in Rstudio. The most basic file is an *.R file, which contains simple code. We will orientate ourselves with Rstudio using such a file.</p>
 </div>
-<div id="orientation-to-r-studio" class="section level2" number="5.2">
-<h2><span class="header-section-number">5.2</span> Orientation to R studio</h2>
+<div id="orientation-to-r-studio" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Orientation to R studio<a href="week-4---the-r-environment.html#orientation-to-r-studio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>When we work in R, we document our work using a script (for example, an R file). We can open a new R file by selecting File &gt; New File &gt; R Script, which generates a simple text file.
 It’s very important to add comments to our code, that explain the commands that we are using, by using the ‘#’ sign - anything that follows a ‘#’ is not code!
 Commenting on code is very important! It explains to someone else what your code does, and can even be useful when you revisit your own code after a few weeks/months/years. Be nice to your future self, comment your code.
@@ -306,8 +316,8 @@ We can use this script to copy (from the website) the commands we use and paste 
 <code>c()</code>=concatenate, aka link things together!</p>
 <div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="week-4---the-r-environment.html#cb191-1" aria-hidden="true" tabindex="-1"></a>animals <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;woof&quot;</span>, <span class="st">&quot;meow&quot;</span>, <span class="st">&quot;hiss&quot;</span>, <span class="st">&quot;baa&quot;</span>)</span></code></pre></div>
 </div>
-<div id="manipulating-a-vector-object" class="section level2" number="5.3">
-<h2><span class="header-section-number">5.3</span> Manipulating a vector object</h2>
+<div id="manipulating-a-vector-object" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> Manipulating a vector object<a href="week-4---the-r-environment.html#manipulating-a-vector-object" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We can get summaries of vectors with <code>summary()</code></p>
 <div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="week-4---the-r-environment.html#cb192-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(n)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
@@ -319,8 +329,8 @@ We can use this script to copy (from the website) the commands we use and paste 
 <div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="week-4---the-r-environment.html#cb196-1" aria-hidden="true" tabindex="-1"></a>animals[<span class="dv">3</span>]</span></code></pre></div>
 <pre><code>## [1] &quot;hiss&quot;</code></pre>
 </div>
-<div id="characterizing-a-dataframe" class="section level2" number="5.4">
-<h2><span class="header-section-number">5.4</span> Characterizing a dataframe</h2>
+<div id="characterizing-a-dataframe" class="section level2 hasAnchor" number="5.4">
+<h2><span class="header-section-number">5.4</span> Characterizing a dataframe<a href="week-4---the-r-environment.html#characterizing-a-dataframe" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We’ll now move from working with objects and vectors to working with dataframes:</p>
 <ul>
 <li>Here are a few useful functions:
@@ -397,8 +407,8 @@ colnames(), rownames() - column names, row names</p>
 <pre><code>## [1] &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</code></pre>
 <p>Rstudio also allows us to just look into the data file with <code>View()</code>. Type View(msleep) and we can see it now shows up on the top part of the window. We can also click on our dataframe in the ‘Environment.’</p>
 </div>
-<div id="how-to-access-parts-of-the-data" class="section level2" number="5.5">
-<h2><span class="header-section-number">5.5</span> How to access parts of the data</h2>
+<div id="how-to-access-parts-of-the-data" class="section level2 hasAnchor" number="5.5">
+<h2><span class="header-section-number">5.5</span> How to access parts of the data<a href="week-4---the-r-environment.html#how-to-access-parts-of-the-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We can also look at a single column at a time. There are three ways to access this: $, [,#] or [,“a”].</p>
 <p><strong>Quick Tip:</strong>
 Think about “rc cola” or “remote control car” to remember that [5,] means fifth row and [,5] means fifth column!</p>
@@ -529,8 +539,8 @@ Think about “rc cola” or “remote control car” to remember that [5,] mean
 ## [13] &quot;Perissodactyla&quot;  &quot;Pilosa&quot;          &quot;Primates&quot;        &quot;Proboscidea&quot;    
 ## [17] &quot;Rodentia&quot;        &quot;Scandentia&quot;      &quot;Soricomorpha&quot;</code></pre>
 </div>
-<div id="data-manipulation" class="section level2" number="5.6">
-<h2><span class="header-section-number">5.6</span> Data Manipulation</h2>
+<div id="data-manipulation" class="section level2 hasAnchor" number="5.6">
+<h2><span class="header-section-number">5.6</span> Data Manipulation<a href="week-4---the-r-environment.html#data-manipulation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>If your data is transposed in a way that isn’t useful to you, you can switch it:</p>
 <p>(Note that this often changes the class of each column! In R, each column must have the same type of data)</p>
 <div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="week-4---the-r-environment.html#cb231-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># t()</span></span>
@@ -564,10 +574,10 @@ Note: we use the $ sign to create a new column on the left part of the command, 
 <span id="cb241-4"><a href="week-4---the-r-environment.html#cb241-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb241-5"><a href="week-4---the-r-environment.html#cb241-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># look at our dataframe again. It now contains 12 columns, one of them being the one we just created. use the command &quot;View(msleep)&quot;</span></span></code></pre></div>
 </div>
-<div id="practice-exploring-a-dataframe" class="section level2" number="5.7">
-<h2><span class="header-section-number">5.7</span> Practice exploring a dataframe</h2>
+<div id="practice-exploring-a-dataframe" class="section level2 hasAnchor" number="5.7">
+<h2><span class="header-section-number">5.7</span> Practice exploring a dataframe<a href="week-4---the-r-environment.html#practice-exploring-a-dataframe" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <blockquote>
-<h2 id="exercise-1.1">EXERCISE 1.1</h2>
+<h2 id="exercise-1.1" class="hasAnchor">EXERCISE 1.1<a href="week-4---the-r-environment.html#exercise-1.1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 </blockquote>
 <blockquote>
 <p>Reminder of those useful commands: dataframename[row , col], str(), dim(), nrow(), unique(), length(), rownames(), summary(), min(), max(), mean(), range(), levels(), factor(), as.factor(), class(), ncol(), nrow(), table(), sum(), quantile(), var()</p>
@@ -766,8 +776,8 @@ Note: we use the $ sign to create a new column on the left part of the command, 
 </details>
 <p> </p>
 </div>
-<div id="subsetting-datasets-logicals" class="section level2" number="5.8">
-<h2><span class="header-section-number">5.8</span> Subsetting datasets &amp; logicals</h2>
+<div id="subsetting-datasets-logicals" class="section level2 hasAnchor" number="5.8">
+<h2><span class="header-section-number">5.8</span> Subsetting datasets &amp; logicals<a href="week-4---the-r-environment.html#subsetting-datasets-logicals" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>A few useful commands: equals <code>==</code>, does not equal <code>!=</code>, greater than <code>&gt;</code>, less than <code>&lt;</code>, and <code>&amp;</code>, and a pipe which can also indicate “and” <code>|</code>.</p>
 <p>Reminder there are two assignment operators in R <code>&lt;-</code> and a single equals sign <code>=</code>. The one you use really depends on how you learned to use R, and they are otherwise equivalent.</p>
 <p><strong>Logical conditions vs. assignment operators:</strong></p>
@@ -920,27 +930,27 @@ Note: we use the $ sign to create a new column on the left part of the command, 
 <span id="cb302-2"><a href="week-4---the-r-environment.html#cb302-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb302-3"><a href="week-4---the-r-environment.html#cb302-3" aria-hidden="true" tabindex="-1"></a>msleep[<span class="fu">which</span>(msleep[,<span class="st">&quot;sleep_total&quot;</span>]<span class="sc">&gt;</span><span class="dv">18</span>),]</span></code></pre></div>
 <pre><code>## # A tibble: 4 × 12
-##   name   genus  vore  order conservation sleep_total sleep_rem sleep_cycle awake
-##   &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
-## 1 Big b… Eptes… inse… Chir… lc                  19.7       3.9       0.117   4.3
-## 2 Thick… Lutre… carni Dide… lc                  19.4       6.6      NA       4.6
-## 3 Littl… Myotis inse… Chir… &lt;NA&gt;                19.9       2         0.2     4.1
-## 4 Giant… Priod… inse… Cing… en                  18.1       6.1      NA       5.9
+##   name    genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
+##   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
+## 1 Big br… Epte… inse… Chir… lc                  19.7       3.9       0.117   4.3
+## 2 Thick-… Lutr… carni Dide… lc                  19.4       6.6      NA       4.6
+## 3 Little… Myot… inse… Chir… &lt;NA&gt;                19.9       2         0.2     4.1
+## 4 Giant … Prio… inse… Cing… en                  18.1       6.1      NA       5.9
 ## # … with 3 more variables: brainwt &lt;dbl&gt;, bodywt &lt;dbl&gt;, total_rem &lt;dbl&gt;</code></pre>
 <div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="week-4---the-r-environment.html#cb304-1" aria-hidden="true" tabindex="-1"></a><span class="co"># what if we only want to see the bats that sleep more than 18 hours per 24 hour period?</span></span>
 <span id="cb304-2"><a href="week-4---the-r-environment.html#cb304-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb304-3"><a href="week-4---the-r-environment.html#cb304-3" aria-hidden="true" tabindex="-1"></a>msleep[<span class="fu">which</span>(msleep[,<span class="st">&quot;sleep_total&quot;</span>]<span class="sc">&gt;</span><span class="dv">18</span> <span class="sc">&amp;</span> msleep[,<span class="st">&quot;order&quot;</span>] <span class="sc">==</span> <span class="st">&quot;Chiroptera&quot;</span>),]</span></code></pre></div>
 <pre><code>## # A tibble: 2 × 12
-##   name   genus  vore  order conservation sleep_total sleep_rem sleep_cycle awake
-##   &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
-## 1 Big b… Eptes… inse… Chir… lc                  19.7       3.9       0.117   4.3
-## 2 Littl… Myotis inse… Chir… &lt;NA&gt;                19.9       2         0.2     4.1
+##   name    genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
+##   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
+## 1 Big br… Epte… inse… Chir… lc                  19.7       3.9       0.117   4.3
+## 2 Little… Myot… inse… Chir… &lt;NA&gt;                19.9       2         0.2     4.1
 ## # … with 3 more variables: brainwt &lt;dbl&gt;, bodywt &lt;dbl&gt;, total_rem &lt;dbl&gt;</code></pre>
 </div>
-<div id="practice-subsetting-datasetslogicals" class="section level2" number="5.9">
-<h2><span class="header-section-number">5.9</span> Practice Subsetting datasets/logicals</h2>
+<div id="practice-subsetting-datasetslogicals" class="section level2 hasAnchor" number="5.9">
+<h2><span class="header-section-number">5.9</span> Practice Subsetting datasets/logicals<a href="week-4---the-r-environment.html#practice-subsetting-datasetslogicals" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <blockquote>
-<h2 id="exercise-1.2-indexing-by-logical-statements">EXERCISE 1.2 indexing by logical statements</h2>
+<h2 id="exercise-1.2-indexing-by-logical-statements" class="hasAnchor">EXERCISE 1.2 indexing by logical statements<a href="week-4---the-r-environment.html#exercise-1.2-indexing-by-logical-statements" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 </blockquote>
 <blockquote>
 <p>A few useful commands: “==,” “!=,” “&gt;,” “&lt;,” “&amp;,” “|,” sum(), which(), table(), !</p>
@@ -1200,8 +1210,8 @@ How many plants with short sepals are there? How many long?</li>
 </p>
 </details>
 </div>
-<div id="a-few-tips-for-coding-in-rstudio" class="section level2" number="5.10">
-<h2><span class="header-section-number">5.10</span> A few tips for coding in Rstudio</h2>
+<div id="a-few-tips-for-coding-in-rstudio" class="section level2 hasAnchor" number="5.10">
+<h2><span class="header-section-number">5.10</span> A few tips for coding in Rstudio<a href="week-4---the-r-environment.html#a-few-tips-for-coding-in-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="week-4---the-r-environment.html#cb352-1" aria-hidden="true" tabindex="-1"></a><span class="co"># how to get help for a function; you can also write help()</span></span>
 <span id="cb352-2"><a href="week-4---the-r-environment.html#cb352-2" aria-hidden="true" tabindex="-1"></a>?ls</span>
 <span id="cb352-3"><a href="week-4---the-r-environment.html#cb352-3" aria-hidden="true" tabindex="-1"></a></span>

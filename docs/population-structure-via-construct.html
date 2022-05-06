@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>7 Population Structure via conStruct | MarGen2022</title>
   <meta name="description" content="" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.26.2 and GitBook 2.6.7" />
 
   <meta property="og:title" content="7 Population Structure via conStruct | MarGen2022" />
   <meta property="og:type" content="book" />
-  
   
   
   
@@ -30,8 +29,7 @@
   
   
 <link rel="prev" href="week-5--r-continued.html"/>
-
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<link rel="next" href="week-6--principle-component-analyses.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -49,14 +47,16 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -227,6 +227,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.8" data-path="population-structure-via-construct.html"><a href="population-structure-via-construct.html#comparisons-across-different-values-of-k"><i class="fa fa-check"></i><b>7.8</b> Comparisons across different values of K</a></li>
 <li class="chapter" data-level="7.9" data-path="population-structure-via-construct.html"><a href="population-structure-via-construct.html#exercises"><i class="fa fa-check"></i><b>7.9</b> Exercises</a></li>
 </ul></li>
+<li class="chapter" data-level="8" data-path="week-6--principle-component-analyses.html"><a href="week-6--principle-component-analyses.html"><i class="fa fa-check"></i><b>8</b> Week 6- Principle Component Analyses</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="week-6--principle-component-analyses.html"><a href="week-6--principle-component-analyses.html#download-the-data-1"><i class="fa fa-check"></i><b>8.1</b> Download the data</a></li>
+<li class="chapter" data-level="8.2" data-path="week-6--principle-component-analyses.html"><a href="week-6--principle-component-analyses.html#installing-programs"><i class="fa fa-check"></i><b>8.2</b> Installing programs</a></li>
+<li class="chapter" data-level="8.3" data-path="week-6--principle-component-analyses.html"><a href="week-6--principle-component-analyses.html#run-pcangsd-on-our-data"><i class="fa fa-check"></i><b>8.3</b> Run pcangsd on our data</a></li>
+<li class="chapter" data-level="8.4" data-path="week-6--principle-component-analyses.html"><a href="week-6--principle-component-analyses.html#setting-up-a-new-project-in-r"><i class="fa fa-check"></i><b>8.4</b> Setting up a new project in R</a></li>
+<li class="chapter" data-level="8.5" data-path="week-6--principle-component-analyses.html"><a href="week-6--principle-component-analyses.html#reading-data-into-r"><i class="fa fa-check"></i><b>8.5</b> Reading data into R</a></li>
+<li class="chapter" data-level="8.6" data-path="week-6--principle-component-analyses.html"><a href="week-6--principle-component-analyses.html#group-exercises"><i class="fa fa-check"></i><b>8.6</b> Group Exercises</a></li>
+<li class="chapter" data-level="8.7" data-path="week-6--principle-component-analyses.html"><a href="week-6--principle-component-analyses.html#additional-exercise"><i class="fa fa-check"></i><b>8.7</b> Additional Exercise</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -247,13 +257,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="population-structure-via-construct" class="section level1" number="7">
-<h1><span class="header-section-number">7</span> Population Structure via conStruct</h1>
+<div id="population-structure-via-construct" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">7</span> Population Structure via conStruct<a href="population-structure-via-construct.html#population-structure-via-construct" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>For this week we will be exploring one way to document population genetic structure (An alternate way is PCA) via a “Structure” plot implemented in the R package conStruct.</p>
 <p>conStruct itself has a nice series of tutorials with example data that you can find <a href="https://cran.r-project.org/web/packages/conStruct/vignettes/format-data.html">here</a></p>
 <p>We’ll be using data from the <a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/mec.14589">Xuereb et al. paper on P. californicus</a>. This data consists of a vcf file that is in structure format and contains SNP data (3699 SNPs) from 717 individuals.</p>
-<div id="download-the-data" class="section level2" number="7.1">
-<h2><span class="header-section-number">7.1</span> Download the data</h2>
+<div id="download-the-data" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> Download the data<a href="population-structure-via-construct.html#download-the-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We’ll be using data from the <a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/mec.14589">Xuereb et al. paper on P. californicus</a>. This data consists of a vcf file that is in structure format and contains SNP data (3699 SNPs) from 100 individuals.</p>
 <p>We’ll download a metafile as well that has sample coordinates and names</p>
 <div class="sourceCode" id="cb391"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb391-1"><a href="population-structure-via-construct.html#cb391-1" aria-hidden="true" tabindex="-1"></a></span>
@@ -265,8 +275,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb391-7"><a href="population-structure-via-construct.html#cb391-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb391-8"><a href="population-structure-via-construct.html#cb391-8" aria-hidden="true" tabindex="-1"></a>mv Week12 Week6-structure</span></code></pre></div>
 </div>
-<div id="update-our-compiler-in-bashunix-and-install-everything-for-r-in-the-terminal-in-bashunix-not-in-rstudio" class="section level2" number="7.2">
-<h2><span class="header-section-number">7.2</span> update our compiler in bash/UNIX and install everything for R in the terminal (in bash/UNIX, NOT in Rstudio)</h2>
+<div id="update-our-compiler-in-bashunix-and-install-everything-for-r-in-the-terminal-in-bashunix-not-in-rstudio" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> update our compiler in bash/UNIX and install everything for R in the terminal (in bash/UNIX, NOT in Rstudio)<a href="population-structure-via-construct.html#update-our-compiler-in-bashunix-and-install-everything-for-r-in-the-terminal-in-bashunix-not-in-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We need to follow this guide <a href="https://fahim-sikder.github.io/post/how-to-install-r-ubuntu-20/">here</a></p>
 <div class="sourceCode" id="cb392"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb392-1"><a href="population-structure-via-construct.html#cb392-1" aria-hidden="true" tabindex="-1"></a># first run this to get the compilers</span>
 <span id="cb392-2"><a href="population-structure-via-construct.html#cb392-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -298,8 +308,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb392-28"><a href="population-structure-via-construct.html#cb392-28" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb392-29"><a href="population-structure-via-construct.html#cb392-29" aria-hidden="true" tabindex="-1"></a>install.packages(&quot;rstan&quot;, repos = &quot;https://cloud.r-project.org/&quot;, dependencies = TRUE)</span></code></pre></div>
 </div>
-<div id="install-construct-in-r" class="section level2" number="7.3">
-<h2><span class="header-section-number">7.3</span> install conStruct in R</h2>
+<div id="install-construct-in-r" class="section level2 hasAnchor" number="7.3">
+<h2><span class="header-section-number">7.3</span> install conStruct in R<a href="population-structure-via-construct.html#install-construct-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Now that we have rstan installed we should be able to go into Rstudio and install conStruct (you could also stay in the terminal and run install.packages (“conStruct”) there if you want.)</p>
 <div class="sourceCode" id="cb393"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb393-1"><a href="population-structure-via-construct.html#cb393-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;conStruct&quot;, dependencies =T)</span></span>
 <span id="cb393-2"><a href="population-structure-via-construct.html#cb393-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -307,8 +317,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb393-4"><a href="population-structure-via-construct.html#cb393-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb393-5"><a href="population-structure-via-construct.html#cb393-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(conStruct)</span></code></pre></div>
 </div>
-<div id="read-in-the-data" class="section level2" number="7.4">
-<h2><span class="header-section-number">7.4</span> read in the data</h2>
+<div id="read-in-the-data" class="section level2 hasAnchor" number="7.4">
+<h2><span class="header-section-number">7.4</span> read in the data<a href="population-structure-via-construct.html#read-in-the-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This first step reads in our file which is in structure format and converts it to conStruct format (there are lots of file formats in population genetics, isn’t it fun?)</p>
 <p>We need to make sure that we have the file coding right and this can be confirmed by looking at the structure file in bash to make sure that our samples start at the 3rd row and 3rd column and that our missing data is encoded as a -9.</p>
 <p>You can do the above by using wc -l to find the number of lines in the structure file.</p>
@@ -319,8 +329,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb394-5"><a href="population-structure-via-construct.html#cb394-5" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">missing.datum =</span> <span class="sc">-</span><span class="dv">9</span>,</span>
 <span id="cb394-6"><a href="population-structure-via-construct.html#cb394-6" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">outfile =</span> <span class="st">&quot;Construct_100inds&quot;</span>)</span></code></pre></div>
 </div>
-<div id="get-our-meta-data-read-into-r-and-ready-to-use" class="section level2" number="7.5">
-<h2><span class="header-section-number">7.5</span> Get our meta data read into R and ready to use</h2>
+<div id="get-our-meta-data-read-into-r-and-ready-to-use" class="section level2 hasAnchor" number="7.5">
+<h2><span class="header-section-number">7.5</span> Get our meta data read into R and ready to use<a href="population-structure-via-construct.html#get-our-meta-data-read-into-r-and-ready-to-use" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This file contains the lat and lon of our samples as well as the site name and individual id.</p>
 <p>For conStruct we can make an object that contains the lat and lon and has the site name as the row names.</p>
 <div class="sourceCode" id="cb395"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb395-1"><a href="population-structure-via-construct.html#cb395-1" aria-hidden="true" tabindex="-1"></a><span class="co">#read in the data</span></span>
@@ -334,8 +344,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb395-9"><a href="population-structure-via-construct.html#cb395-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb395-10"><a href="population-structure-via-construct.html#cb395-10" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(sites)<span class="ot">&lt;-</span>meta<span class="sc">$</span>SITE[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">51</span><span class="sc">:</span><span class="dv">667</span>)]</span></code></pre></div>
 </div>
-<div id="run-a-structure-analysis" class="section level2" number="7.6">
-<h2><span class="header-section-number">7.6</span> Run a structure analysis</h2>
+<div id="run-a-structure-analysis" class="section level2 hasAnchor" number="7.6">
+<h2><span class="header-section-number">7.6</span> Run a structure analysis<a href="population-structure-via-construct.html#run-a-structure-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We now have our data read into conStruct and converted to conStruct format and our site information from the metadata in a matrix format.</p>
 <p>We can now run a structure analyses. For these analyses we chose a value of K (the number of clusters) and typically run the analyses for a range of K (2:7 for example).</p>
 <p>We’ll run K = 2 through K = 4 and then we’ll do some model comparison to discuss whether one of these is “better” than the other.</p>
@@ -408,8 +418,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb398-5"><a href="population-structure-via-construct.html#cb398-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">2</span>))</span></code></pre></div>
 <p><img src="06_Week6.structure_files/figure-html/unnamed-chunk-5-2.png" width="768" /></p>
 </div>
-<div id="incoorporate-geographic-distances-in-a-spatial-model" class="section level2" number="7.7">
-<h2><span class="header-section-number">7.7</span> Incoorporate geographic distances in a spatial model</h2>
+<div id="incoorporate-geographic-distances-in-a-spatial-model" class="section level2 hasAnchor" number="7.7">
+<h2><span class="header-section-number">7.7</span> Incoorporate geographic distances in a spatial model<a href="population-structure-via-construct.html#incoorporate-geographic-distances-in-a-spatial-model" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>One of the main advantages of using conStruct is the ability to incorporate within the model measures of geographic distance.</p>
 <p>Let’s do that for our K = 3 from above.</p>
 <p>First we need to calculate the geographic distance between our samples. There are many ways to do this, but we’ll take a simple approach of calculating the euclidean (straight-line) distance between each site.</p>
@@ -441,8 +451,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## 
 ## SAMPLING FOR MODEL &#39;space_multiK&#39; NOW (CHAIN 1).
 ## Chain 1: 
-## Chain 1: Gradient evaluation took 0.009 seconds
-## Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 90 seconds.
+## Chain 1: Gradient evaluation took 0.012425 seconds
+## Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 124.25 seconds.
 ## Chain 1: Adjust your expectations accordingly!
 ## Chain 1: 
 ## Chain 1: 
@@ -460,9 +470,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Chain 1: Iteration: 9 / 10 [ 90%]  (Sampling)
 ## Chain 1: Iteration: 10 / 10 [100%]  (Sampling)
 ## Chain 1: 
-## Chain 1:  Elapsed Time: 0.10696 seconds (Warm-up)
-## Chain 1:                0.080729 seconds (Sampling)
-## Chain 1:                0.187689 seconds (Total)
+## Chain 1:  Elapsed Time: 0.081033 seconds (Warm-up)
+## Chain 1:                0.080757 seconds (Sampling)
+## Chain 1:                0.16179 seconds (Total)
 ## Chain 1:</code></pre>
 <div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb401-1"><a href="population-structure-via-construct.html#cb401-1" aria-hidden="true" tabindex="-1"></a><span class="co">#remake our structure plots</span></span>
 <span id="cb401-2"><a href="population-structure-via-construct.html#cb401-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -487,15 +497,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb402-5"><a href="population-structure-via-construct.html#cb402-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">2</span>))</span></code></pre></div>
 <p><img src="06_Week6.structure_files/figure-html/unnamed-chunk-6-2.png" width="768" /></p>
 </div>
-<div id="comparisons-across-different-values-of-k" class="section level2" number="7.8">
-<h2><span class="header-section-number">7.8</span> Comparisons across different values of K</h2>
+<div id="comparisons-across-different-values-of-k" class="section level2 hasAnchor" number="7.8">
+<h2><span class="header-section-number">7.8</span> Comparisons across different values of K<a href="population-structure-via-construct.html#comparisons-across-different-values-of-k" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>You may want to show a single structure plot for one value of K and may want that one plot to be the “best” fitting model for your data.</p>
 <p>There are a few ways to do this, however most often there’s not a single “best” model and care should be taken as models with more parameters often appear to be a better fit, but are not necessarily more biologically meaningful.</p>
 <p>The vignette here has several ways in which you can choose an “optimal” K or several K <a href="https://cran.r-project.org/web/packages/conStruct/vignettes/model-comparison.html">here</a></p>
 <p>Note that the vignette on layer contributions only works with a spatial conStruct analyses.</p>
 </div>
-<div id="exercises" class="section level2" number="7.9">
-<h2><span class="header-section-number">7.9</span> Exercises</h2>
+<div id="exercises" class="section level2 hasAnchor" number="7.9">
+<h2><span class="header-section-number">7.9</span> Exercises<a href="population-structure-via-construct.html#exercises" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
 <li>change the colors in the plot. THe default red and blue for K = 2 is not very friendly for those with color blindness. Using the command <code>?make.structure.plot</code> determine how you would change the colors and then using this <a href="http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/#a-colorblind-friendly-palette">site</a> choose color-blind-friendly colors. Make a strucutre plot for K = 2 and K = 4 using your new colors.</li>
 </ol>
@@ -579,8 +589,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="week-5--r-continued.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="week-5--r-continued.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="week-6--principle-component-analyses.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
