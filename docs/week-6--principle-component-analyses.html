@@ -265,9 +265,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">8.1</span> Download the data<a href="week-6--principle-component-analyses.html#download-the-data-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We first need to download the data. Use the link below to download it to jetstream, and then us the tar command to un-compress it.</p>
 <div class="sourceCode" id="cb406"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb406-1"><a href="week-6--principle-component-analyses.html#cb406-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb406-2"><a href="week-6--principle-component-analyses.html#cb406-2" aria-hidden="true" tabindex="-1"></a>wget https://raw.githubusercontent.com/BayLab/MarineGenomicsData/main/week7_2022.tar.gz</span>
+<span id="cb406-2"><a href="week-6--principle-component-analyses.html#cb406-2" aria-hidden="true" tabindex="-1"></a>wget https://raw.githubusercontent.com/BayLab/MarineGenomicsData/main/Week7_2022.tar.gz</span>
 <span id="cb406-3"><a href="week-6--principle-component-analyses.html#cb406-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb406-4"><a href="week-6--principle-component-analyses.html#cb406-4" aria-hidden="true" tabindex="-1"></a>tar -xzvf week7_2022.tar.gz</span></code></pre></div>
+<span id="cb406-4"><a href="week-6--principle-component-analyses.html#cb406-4" aria-hidden="true" tabindex="-1"></a>tar -xzvf Week7_2022.tar.gz</span></code></pre></div>
 <p>Our data this week consists of genotype_likelihood files in beagle format and a bam.filelist which contains id information for our samples.</p>
 <div class="sourceCode" id="cb407"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb407-1"><a href="week-6--principle-component-analyses.html#cb407-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb407-2"><a href="week-6--principle-component-analyses.html#cb407-2" aria-hidden="true" tabindex="-1"></a>ls -lh MarineGenomicsData/Week7</span></code></pre></div>
@@ -291,20 +291,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb408-14"><a href="week-6--principle-component-analyses.html#cb408-14" aria-hidden="true" tabindex="-1"></a>#then install pcangsd</span>
 <span id="cb408-15"><a href="week-6--principle-component-analyses.html#cb408-15" aria-hidden="true" tabindex="-1"></a>git clone https://github.com/Rosemeis/pcangsd.git</span>
 <span id="cb408-16"><a href="week-6--principle-component-analyses.html#cb408-16" aria-hidden="true" tabindex="-1"></a>cd pcangsd/</span>
-<span id="cb408-17"><a href="week-6--principle-component-analyses.html#cb408-17" aria-hidden="true" tabindex="-1"></a>pip install --user -r requirements.txt #this installs additional requirements for pcangsd</span>
-<span id="cb408-18"><a href="week-6--principle-component-analyses.html#cb408-18" aria-hidden="true" tabindex="-1"></a>python3 setup.py build_ext --inplace</span></code></pre></div>
+<span id="cb408-17"><a href="week-6--principle-component-analyses.html#cb408-17" aria-hidden="true" tabindex="-1"></a>python setup.py build_ext --inplace</span>
+<span id="cb408-18"><a href="week-6--principle-component-analyses.html#cb408-18" aria-hidden="true" tabindex="-1"></a>pip3 install -e .</span></code></pre></div>
 <p>Check that it’s installed correctly.</p>
 <div class="sourceCode" id="cb409"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb409-1"><a href="week-6--principle-component-analyses.html#cb409-1" aria-hidden="true" tabindex="-1"></a>#navigate to your home directory</span>
 <span id="cb409-2"><a href="week-6--principle-component-analyses.html#cb409-2" aria-hidden="true" tabindex="-1"></a>cd</span>
 <span id="cb409-3"><a href="week-6--principle-component-analyses.html#cb409-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb409-4"><a href="week-6--principle-component-analyses.html#cb409-4" aria-hidden="true" tabindex="-1"></a>python3 pcangsd/pcangsd.py -h</span></code></pre></div>
+<span id="cb409-4"><a href="week-6--principle-component-analyses.html#cb409-4" aria-hidden="true" tabindex="-1"></a>python3 pcangsd/pcangsd/pcangsd.py -h</span></code></pre></div>
 <p>You should see the help menu for pcangsd.</p>
 </div>
 <div id="run-pcangsd-on-our-data" class="section level2 hasAnchor" number="8.3">
 <h2><span class="header-section-number">8.3</span> Run pcangsd on our data<a href="week-6--principle-component-analyses.html#run-pcangsd-on-our-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In population genomics analyses we often use multiple programs, which often have different input file formats. This is again why writing out the input/output formats in a pipeline is very useful! Have a look at the <a href="http://www.popgen.dk/software/index.php/PCAngsd">pcangsd</a> website and see what type of input is needed.</p>
-<div class="sourceCode" id="cb410"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb410-1"><a href="week-6--principle-component-analyses.html#cb410-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb410-2"><a href="week-6--principle-component-analyses.html#cb410-2" aria-hidden="true" tabindex="-1"></a>python3 ../../pcangsd/pcangsd.py -beagle genolike_beagle.beagle.gz -o pca_out -threads 28</span></code></pre></div>
+<div class="sourceCode" id="cb410"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb410-1"><a href="week-6--principle-component-analyses.html#cb410-1" aria-hidden="true" tabindex="-1"></a>cd</span>
+<span id="cb410-2"><a href="week-6--principle-component-analyses.html#cb410-2" aria-hidden="true" tabindex="-1"></a>cd home/exouser/Week7</span>
+<span id="cb410-3"><a href="week-6--principle-component-analyses.html#cb410-3" aria-hidden="true" tabindex="-1"></a>pcangsd --beagle /home/exouser/Week7/genolike_beagle.beagle.gz -o pca_out --threads 28</span>
+<span id="cb410-4"><a href="week-6--principle-component-analyses.html#cb410-4" aria-hidden="true" tabindex="-1"></a></span></code></pre></div>
 <p>This will generate a covariance matrix output file (the "*.cov" file). We can read this file into R and compute the eigenvectors and eigenvalues and make our plot.</p>
 </div>
 <div id="setting-up-a-new-project-in-r" class="section level2 hasAnchor" number="8.4">
@@ -322,8 +324,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb411-4"><a href="week-6--principle-component-analyses.html#cb411-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb411-5"><a href="week-6--principle-component-analyses.html#cb411-5" aria-hidden="true" tabindex="-1"></a><span class="co">#should output</span></span>
 <span id="cb411-6"><a href="week-6--principle-component-analyses.html#cb411-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb411-7"><a href="week-6--principle-component-analyses.html#cb411-7" aria-hidden="true" tabindex="-1"></a><span class="co">#[1] &quot;/home/exouser&quot;</span></span></code></pre></div>
-<p>Thus in jetstream the working directory is set to our home directory, which will work fine for uploading data. If you need to change the directory you can use <code>setwd()</code> and provide it with the full directory path (e.g., "C:") and then confirm that it moved the directory with <code>getwd()</code>.</p>
+<span id="cb411-7"><a href="week-6--principle-component-analyses.html#cb411-7" aria-hidden="true" tabindex="-1"></a><span class="co">#[1] &quot;/home/exouser/Week7&quot;</span></span></code></pre></div>
+<p>Thus in jetstream the working directory is set to our home directory, which will work fine for uploading data. If you need to change the directory you can use <code>setwd()</code> and provide it with the full directory path and then confirm that it moved the directory with <code>getwd()</code>.</p>
 <p>In Rstudio you can also use the pull down menus <code>Session</code> to get and set your working directory. Similarly, the tab <code>Files</code> in the lower right will also allow you to set your working directory.</p>
 <p>Now we’ll read the data output by angsd into R using <code>read.table()</code> and <code>as.matrix()</code></p>
 <div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb412-1"><a href="week-6--principle-component-analyses.html#cb412-1" aria-hidden="true" tabindex="-1"></a>cov<span class="ot">&lt;-</span><span class="fu">as.matrix</span>(<span class="fu">read.table</span>(<span class="st">&quot;pca_out.cov&quot;</span>))</span></code></pre></div>
@@ -341,7 +343,7 @@ We may be interested in how much of the variance our first two components explai
 <span id="cb415-3"><a href="week-6--principle-component-analyses.html#cb415-3" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] 0.24278761 0.07662213 0.07502757 0.07349541 0.07287943 0.07034540</span></span>
 <span id="cb415-4"><a href="week-6--principle-component-analyses.html#cb415-4" aria-hidden="true" tabindex="-1"></a><span class="do">##  [7] 0.06674509 0.06530546 0.05280345 0.04958515 0.04274839 0.03706328</span></span>
 <span id="cb415-5"><a href="week-6--principle-component-analyses.html#cb415-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [13] 0.03527164 0.03241500 0.00690499</span></span></code></pre></div>
-<p>We now want to make the colors match population labels. The information on which population each individual sample came from is in the bam.filelist file.</p>
+<p>We now want to make the colors match population labels. The information on which population each individual sample came from is in the bam.filelist file (second column).</p>
 <div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb416-1"><a href="week-6--principle-component-analyses.html#cb416-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb416-2"><a href="week-6--principle-component-analyses.html#cb416-2" aria-hidden="true" tabindex="-1"></a><span class="co">#read in the data</span></span>
 <span id="cb416-3"><a href="week-6--principle-component-analyses.html#cb416-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -354,45 +356,45 @@ We may be interested in how much of the variance our first two components explai
 <span id="cb417-2"><a href="week-6--principle-component-analyses.html#cb417-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb417-3"><a href="week-6--principle-component-analyses.html#cb417-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(e<span class="sc">$</span>vectors[,<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>], <span class="at">col=</span><span class="fu">as.factor</span>(<span class="fu">rownames</span>(cov)), <span class="at">pch=</span><span class="dv">16</span>)</span></code></pre></div>
 <p><img src="07-Week7.pca_files/figure-html/6-2-1.png" width="768" /></p>
-<p>There is another column in the bam.filelist file that will allow us to color the populations based on region. Go ahead and modify your plots to have nice x and y labels that state the percent variance explained by each axis, and that are colored by region. You can also change the pch and any other parameters you would like.</p>
+<p>There is another column in the bam.filelist file that will allow us to color the populations based on region (i.e. regions a or b). Go ahead and modify your plots to have nice x and y labels that state the percent variance explained by each axis, and that are colored by region. You can also change the pch and any other parameters you would like.</p>
 </div>
 <div id="group-exercises" class="section level2 hasAnchor" number="8.6">
 <h2><span class="header-section-number">8.6</span> Group Exercises<a href="week-6--principle-component-analyses.html#group-exercises" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<blockquote>
-<h1 id="in-the-following-2-exercises-we-will-again-work-in-groups-to-re-create-our-pcas-but-with-the-stricter-snp-filtering-parameter-of-only-allowing-variant-sites-with-data-present-for-all-15-individuals." class="hasAnchor">In the following 2 exercises, we will again work in groups to re-create our PCAs, but with the stricter SNP filtering parameter of only allowing variant sites with data present for all 15 individuals.<a href="week-6--principle-component-analyses.html#in-the-following-2-exercises-we-will-again-work-in-groups-to-re-create-our-pcas-but-with-the-stricter-snp-filtering-parameter-of-only-allowing-variant-sites-with-data-present-for-all-15-individuals." class="anchor-section" aria-label="Anchor link to header"></a></h1>
-</blockquote>
-<blockquote>
-<p>Filtering genomic data is a bit of an art, as filtering more will allow for higher confidence in our SNPs, but will also likely lead us to remove true SNPs from the dataset thinking they are instead sequencing/mapping errors.</p>
-</blockquote>
+<p>In the following 2 exercises, we will again work in groups to re-create our PCAs, but with the stricter SNP filtering parameter of only allowing variant sites with data present for all 15 individuals.</p>
+<p>Filtering genomic data is a bit of an art, as filtering more will allow for higher confidence in our SNPs, but will also likely lead us to remove true SNPs from the dataset thinking they are instead sequencing/mapping errors. Here, we are going to see if/how using a stricter filter changes our population structuring.</p>
+<p>Start by creating a new R file (File -&gt; New File -&gt; R Script), save it as Week7.exercises.R. In this R file, write the code that you will use for each step of the exercises below. Make sure you use ‘#’ before each line of code explaining what you are doing (anottated code = happy coder)!</p>
 <blockquote>
 <p><strong>1.1</strong>) In R, upload the genotype likelihood maf file (genolike.beagle.maf.gz).</p>
 </blockquote>
 <blockquote>
-<p>Hint: the read.table() command may give an error since the file is zipped. Google how to use the R command read.table() with a gzfile to read the ‘maf.gz’ file. We will also want to keep the first row as a header - google the command or type “?read.table” into R to figure out how to keep the first line as variable names.</p>
+<p>Hint: the read.table() command may give an error since the file is zipped. Google how to use the R command read.table() with a gzfile to read the ‘maf.gz’ file. We will also want to keep the first row as a header - google the command or type ‘?read.table’ into R to figure out how to keep the first line as variable names.</p>
 </blockquote>
 <blockquote>
-<p>Explore this .maf file- what are the columns and rows telling us? Which column can tell us the number of individuals each site has data for?</p>
+<p>Explore this .maf file- what are the columns and rows telling us? Which column can tell us the number of individuals each SNP has data for?</p>
 </blockquote>
 <blockquote>
 <p>Hint: have a look at <a href="http://www.popgen.dk/angsd/index.php/Allele_Frequencies">this webpage</a> to see the output format explanation</p>
 </blockquote>
 <blockquote>
-<p><strong>1.2</strong>) Filter the data so that we only use sites in which all 15 individuals have data present (i.e., subset by the column of interest from 1.1). Save this filtered dataset as an object called “gen_filt.” How many SNPs does this leave us? How many SNPs did we start with?</p>
+<p><strong>1.2</strong>) Filter the data so that we only use sites in which all 15 individuals have data present (i.e., subset by the column of interest from 1.1). Save this filtered dataset as an object called “gen_filt.” How many SNPs does this leave us? How does it compare to the number of SNPs of the unfiltered dataset?</p>
 </blockquote>
 <blockquote>
 <p>Hint: you can look at section 5.8 of week 4 on subsetting in R.</p>
 </blockquote>
 <blockquote>
-<p><strong>2.1</strong>) Use the filtered file from exercise 1 in pcangsd to recalculate the covariance matrix and regenerate the pca plot. Can we use our gen dataframe as an input file for pcangsd?</p>
+<p><strong>2.1</strong>) Use the filtered file from exercise 1 in pcangsd to recalculate the covariance matrix and regenerate the pca plot. Can we use our gen_filt dataframe as an input file for pcangsd?</p>
 </blockquote>
 <blockquote>
 <p>Read the original input file (genolike_beagle.beagle.gz) in R and see how the column names compare between it and our filtered .maf file.</p>
 </blockquote>
 <blockquote>
-<p><strong>2.2</strong>) We see that we need to change the column names of gen to match the beag format. Here we can use the function <code>merge(x, y, by = )</code>. Again, you can use “?merge” in R for more info on this command. Note: the function merge only works (properly) if the column names are the same.</p>
+<p><strong>2.2</strong>) We see that we need to change the column names of gen_filt to match the beagle format. Here we can use the function <code>merge(x, y, by = )</code>. Again, you can use ‘?merge’ in R for more info on this command.</p>
 </blockquote>
 <blockquote>
-<p>Change the column names to match across the two dataframes where they have the same info. To do this, first create a new column gen_filt called “marker,” where we will paste columns $chromo and $position as a single character separated by "_". Have a look <a href="https://www.marsja.se/how-to-concatenate-two-columns-or-more-in-r-stringr-tidyr/#:~:text=columns%20in%20R.-,How%20do%20I%20concatenate%20two%20columns%20in%20R%3F,B">here</a>.) on how to do this.</p>
+<p>Note: the function merge only works (properly) if the column names are the same.</p>
+</blockquote>
+<blockquote>
+<p>Change the column names to match across the two dataframes where they have the same info. To do this, first create a new column gen_filt called “marker,” where we will paste columns $chromo and $position as a single character separated by "_". Have a look <a href="https://www.marsja.se/how-to-concatenate-two-columns-or-more-in-r-stringr-tidyr/#:~:text=columns%20in%20R.-,How%20do%20I%20concatenate%20two%20columns%20in%20R%3F,B">here</a> on how to do this.</p>
 </blockquote>
 <blockquote>
 <p>Then use merge command by the column “marker,” calling this new object ‘beag_filt.’ Check how many columns and rows are in this object.</p>
@@ -404,11 +406,16 @@ We may be interested in how much of the variance our first two components explai
 <p><strong>2.4</strong>) Use the “write.table” command to save our beagle file as the new input for pcangsd. Save the output as “geno_like_filt.beagle.”</p>
 </blockquote>
 <blockquote>
-<p>Hint:By default write.table outputs a dataframe with row names, and we dont want that. Search how to have row names as False in the write.table command.
-Hint: The beage file will also require columns being separated by tabs. Search how to tab separate write.table outputs, and include that as well in the command.</p>
+<p>Hint 1: By default write.table outputs a dataframe with row names, and we dont want that. Search how to have row names as False in the write.table command.</p>
 </blockquote>
 <blockquote>
-<p><strong>2.5</strong>) We should now have our filtered beagle file in our R session directory. Let’s move back into terminal to run pcangsd again! First gzip the file (gzip geno_like_filt.beagle), then re-run the pcangsd command. Check your directories to make sure the input and output files are there.</p>
+<p>Hint 2: The beage file will also require columns being separated by tabs. Search how to tab separate write.table outputs, and include that as well in the command.</p>
+</blockquote>
+<blockquote>
+<p><strong>2.5</strong>) We should now have our filtered beagle file in our R session directory. Let’s move back into terminal to run pcangsd again!</p>
+</blockquote>
+<blockquote>
+<p>First gzip the file (‘gzip geno_like_filt.beagle’), then re-run the pcangsd command. Check your directories to make sure the input and output files are there.</p>
 </blockquote>
 <blockquote>
 <p><strong>2.6</strong>) Then we can go back to R and rerun our code to calculate the eigenvalues and eigenvectors for this covariance matrix. How does the plot compare to the non-filtered dataset? How much of the variance do the first 2 PCs explain in this filtered dataset?</p>
@@ -417,23 +424,49 @@ Hint: The beage file will also require columns being separated by tabs. Search h
 <div id="additional-exercise" class="section level2 hasAnchor" number="8.7">
 <h2><span class="header-section-number">8.7</span> Additional Exercise<a href="week-6--principle-component-analyses.html#additional-exercise" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <blockquote>
-<p>Remake the base R plot that we generated in class in ggplot. Use the group parameter in aes to group by region and/or population. Note, ggplot wants the data to be a dataframe and our data is a matrix. Use the function <code>as.data.frame(e$vectors)</code> to acheive this in the ggplot function. Don’t forget to load the ggplot2 package with `library(ggplot2)</p>
+<p>Remake the base R plot that we generated in class in ggplot. Use the group parameter in aes to group by region and/or population. Note, ggplot wants the data to be a dataframe and our data is a matrix. Use the function <code>as.data.frame(e$vectors)</code> to acheive this in the ggplot function. Don’t forget to load the ggplot2 package with `library(ggplot2)’</p>
 </blockquote>
 <details>
 <summary>
-<span style="color: goldenrod;">Solution</span>
+<span style="color: red;">Solution</span>
 </summary>
 <p>
-</p>
-</details>
-<blockquote>
-<p>Exercise 1 solution</p>
-</blockquote>
-<details>
-<summary>
-<span style="color: goldenrod;">Solution</span>
-</summary>
-<p>
+<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb418-1"><a href="week-6--principle-component-analyses.html#cb418-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb418-2"><a href="week-6--principle-component-analyses.html#cb418-2" aria-hidden="true" tabindex="-1"></a><span class="co"># we need to use the function as.data.frame to make our matrix a dataframe.</span></span>
+<span id="cb418-3"><a href="week-6--principle-component-analyses.html#cb418-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb418-4"><a href="week-6--principle-component-analyses.html#cb418-4" aria-hidden="true" tabindex="-1"></a>M<span class="ot">&lt;-</span><span class="fu">as.data.frame</span>(e<span class="sc">$</span>vectors[,<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>])</span>
+<span id="cb418-5"><a href="week-6--principle-component-analyses.html#cb418-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb418-6"><a href="week-6--principle-component-analyses.html#cb418-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb418-7"><a href="week-6--principle-component-analyses.html#cb418-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>M, <span class="fu">aes</span>(<span class="at">y=</span>V1, <span class="at">x=</span>V2, <span class="at">group=</span><span class="fu">as.factor</span>(names<span class="sc">$</span>V3), <span class="at">color=</span><span class="fu">as.factor</span>(names<span class="sc">$</span>V3)))<span class="sc">+</span></span>
+<span id="cb418-8"><a href="week-6--principle-component-analyses.html#cb418-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb418-9"><a href="week-6--principle-component-analyses.html#cb418-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()<span class="sc">+</span></span>
+<span id="cb418-10"><a href="week-6--principle-component-analyses.html#cb418-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">name=</span><span class="st">&quot;Region&quot;</span>, </span>
+<span id="cb418-11"><a href="week-6--principle-component-analyses.html#cb418-11" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;North&quot;</span>, </span>
+<span id="cb418-12"><a href="week-6--principle-component-analyses.html#cb418-12" aria-hidden="true" tabindex="-1"></a>                                <span class="st">&quot;South&quot;</span>), <span class="at">values =</span></span>
+<span id="cb418-13"><a href="week-6--principle-component-analyses.html#cb418-13" aria-hidden="true" tabindex="-1"></a>                       <span class="fu">c</span>(<span class="st">&quot;a&quot;</span><span class="ot">=</span><span class="st">&quot;slateblue&quot;</span>, </span>
+<span id="cb418-14"><a href="week-6--principle-component-analyses.html#cb418-14" aria-hidden="true" tabindex="-1"></a>                         <span class="st">&quot;b&quot;</span><span class="ot">=</span><span class="st">&quot;green&quot;</span>)) </span></code></pre></div>
+<p><img src="07-Week7.pca_files/figure-html/7-3-1.png" width="768" /></p>
+<div class="sourceCode" id="cb419"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb419-1"><a href="week-6--principle-component-analyses.html#cb419-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb419-2"><a href="week-6--principle-component-analyses.html#cb419-2" aria-hidden="true" tabindex="-1"></a><span class="co">#read in genotype likelihood data and filter by all individuals</span></span>
+<span id="cb419-3"><a href="week-6--principle-component-analyses.html#cb419-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb419-4"><a href="week-6--principle-component-analyses.html#cb419-4" aria-hidden="true" tabindex="-1"></a>gen<span class="ot">&lt;-</span><span class="fu">read.table</span>(<span class="fu">gzfile</span>(<span class="st">&quot;genolike_beagle.mafs.gz&quot;</span>), <span class="at">header=</span>T)</span>
+<span id="cb419-5"><a href="week-6--principle-component-analyses.html#cb419-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb419-6"><a href="week-6--principle-component-analyses.html#cb419-6" aria-hidden="true" tabindex="-1"></a><span class="co">#filter by nind == 15</span></span>
+<span id="cb419-7"><a href="week-6--principle-component-analyses.html#cb419-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb419-8"><a href="week-6--principle-component-analyses.html#cb419-8" aria-hidden="true" tabindex="-1"></a>gen_allIND<span class="ot">&lt;-</span>gen[gen<span class="sc">$</span>nInd<span class="sc">==</span><span class="dv">15</span>,]</span>
+<span id="cb419-9"><a href="week-6--principle-component-analyses.html#cb419-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb419-10"><a href="week-6--principle-component-analyses.html#cb419-10" aria-hidden="true" tabindex="-1"></a><span class="co">#find how many SNPs we had in the first dataset</span></span>
+<span id="cb419-11"><a href="week-6--principle-component-analyses.html#cb419-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb419-12"><a href="week-6--principle-component-analyses.html#cb419-12" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(gen)</span>
+<span id="cb419-13"><a href="week-6--principle-component-analyses.html#cb419-13" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 282950      7</span></span>
+<span id="cb419-14"><a href="week-6--principle-component-analyses.html#cb419-14" aria-hidden="true" tabindex="-1"></a><span class="co">#[1] 282950      7</span></span>
+<span id="cb419-15"><a href="week-6--principle-component-analyses.html#cb419-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb419-16"><a href="week-6--principle-component-analyses.html#cb419-16" aria-hidden="true" tabindex="-1"></a><span class="co">#how many do we have in the filtered dataset?</span></span>
+<span id="cb419-17"><a href="week-6--principle-component-analyses.html#cb419-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb419-18"><a href="week-6--principle-component-analyses.html#cb419-18" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(gen_allIND)</span>
+<span id="cb419-19"><a href="week-6--principle-component-analyses.html#cb419-19" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 31905     7</span></span>
+<span id="cb419-20"><a href="week-6--principle-component-analyses.html#cb419-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb419-21"><a href="week-6--principle-component-analyses.html#cb419-21" aria-hidden="true" tabindex="-1"></a><span class="co">#[1] 31905     7</span></span></code></pre></div>
 </p>
 </details>
 

@@ -27,9 +27,9 @@ We first need to download the data. Use the link below to download it to jetstre
 
 ```html
 
-wget https://raw.githubusercontent.com/BayLab/MarineGenomicsData/main/week7_2022.tar.gz
+wget https://raw.githubusercontent.com/BayLab/MarineGenomicsData/main/Week7_2022.tar.gz
 
-tar -xzvf week7_2022.tar.gz
+tar -xzvf Week7_2022.tar.gz
 
 ```
 
@@ -62,9 +62,8 @@ export PATH="$HOME/.local/bin:$PATH"
 #then install pcangsd
 git clone https://github.com/Rosemeis/pcangsd.git
 cd pcangsd/
-pip install --user -r requirements.txt #this installs additional requirements for pcangsd
-python3 setup.py build_ext --inplace
-
+python setup.py build_ext --inplace
+pip3 install -e .
 ```
 
 
@@ -74,7 +73,7 @@ Check that it's installed correctly.
 #navigate to your home directory
 cd
 
-python3 pcangsd/pcangsd.py -h
+python3 pcangsd/pcangsd/pcangsd.py -h
 ```
 
 
@@ -85,8 +84,10 @@ You should see the help menu for pcangsd.
 In population genomics analyses we often use multiple programs, which often have different input file formats. This is again why writing out the input/output formats in a pipeline is very useful! Have a look at the [pcangsd](http://www.popgen.dk/software/index.php/PCAngsd) website and see what type of input is needed. 
 
 ```html
+cd
+cd home/exouser/Week7
+pcangsd --beagle /home/exouser/Week7/genolike_beagle.beagle.gz -o pca_out --threads 28
 
-python3 ../../pcangsd/pcangsd.py -beagle genolike_beagle.beagle.gz -o pca_out -threads 28
 
 ```
 
@@ -113,12 +114,12 @@ And of course all of this code is typed into our script and commented along the 
 
 #should output
 
-#[1] "/home/exouser"
+#[1] "/home/exouser/Week7"
 
 ```
 
 
-Thus in jetstream the working directory is set to our home directory, which will work fine for uploading data. If you need to change the directory you can use `setwd()` and provide it with the full directory path (e.g., "C:\Users\Yourname\Documents\MarineGenomics\") and then confirm that it moved the directory with `getwd()`. 
+Thus in jetstream the working directory is set to our home directory, which will work fine for uploading data. If you need to change the directory you can use `setwd()` and provide it with the full directory path and then confirm that it moved the directory with `getwd()`. 
 
 In Rstudio you can also use the pull down menus `Session` to get and set your working directory. Similarly, the tab `Files` in the lower right will also allow you to set your working directory.
 
@@ -159,7 +160,7 @@ e$values/sum(e$values)
 ```
 
 
-We now want to make the colors match population labels. The information on which population each individual sample came from is in the bam.filelist file.
+We now want to make the colors match population labels. The information on which population each individual sample came from is in the bam.filelist file (second column).
 
 
 ```{r, echo=T}
@@ -180,35 +181,39 @@ plot(e$vectors[,1:2], col=as.factor(rownames(cov)), pch=16)
 
 ```
 
-There is another column in the bam.filelist file that will allow us to color the populations based on region. Go ahead and modify your plots to have nice x and y labels that state the percent variance explained by each axis, and that are colored by region. You can also change the pch and any other parameters you would like.
+There is another column in the bam.filelist file that will allow us to color the populations based on region (i.e. regions a or b). Go ahead and modify your plots to have nice x and y labels that state the percent variance explained by each axis, and that are colored by region. You can also change the pch and any other parameters you would like.
 
 
 ## Group Exercises
-> # In the following 2 exercises, we will again work in groups to re-create our PCAs, but with the stricter SNP filtering parameter of only allowing variant sites with data present for all 15 individuals. 
+In the following 2 exercises, we will again work in groups to re-create our PCAs, but with the stricter SNP filtering parameter of only allowing variant sites with data present for all 15 individuals. 
 
->Filtering genomic data is a bit of an art, as filtering more will allow for higher confidence in our SNPs, but will also likely lead us to remove true SNPs from the dataset thinking they are instead sequencing/mapping errors. 
+Filtering genomic data is a bit of an art, as filtering more will allow for higher confidence in our SNPs, but will also likely lead us to remove true SNPs from the dataset thinking they are instead sequencing/mapping errors. Here, we are going to see if/how using a stricter filter changes our population structuring.
+
+Start by creating a new R file (File -> New File -> R Script), save it as Week7.exercises.R. In this R file, write the code that you will use for each step of the exercises below. Make sure you use '#' before each line of code explaining what you are doing (anottated code = happy coder)!
 
 > **1.1**) In R, upload the genotype likelihood maf file (genolike.beagle.maf.gz). 
 
-> Hint: the read.table() command may give an error since the file is zipped. Google how to use the R command read.table() with a gzfile to read the 'maf.gz' file. We will also want to keep the first row as a header - google the command or type "?read.table" into R to figure out how to keep the first line as variable names. 
+> Hint: the read.table() command may give an error since the file is zipped. Google how to use the R command read.table() with a gzfile to read the 'maf.gz' file. We will also want to keep the first row as a header - google the command or type '?read.table' into R to figure out how to keep the first line as variable names. 
 
->Explore this .maf file- what are the columns and rows telling us? Which column can tell us the number of individuals each site has data for? 
+>Explore this .maf file- what are the columns and rows telling us? Which column can tell us the number of individuals each SNP has data for? 
 
 > Hint: have a look at [this webpage](http://www.popgen.dk/angsd/index.php/Allele_Frequencies) to see the output format explanation 
 
-> **1.2**) Filter the data so that we only use sites in which all 15 individuals have data present (i.e., subset by the column of interest from 1.1). Save this filtered dataset as an object called "gen_filt". How many SNPs does this leave us? How many SNPs did we start with? 
+> **1.2**) Filter the data so that we only use sites in which all 15 individuals have data present (i.e., subset by the column of interest from 1.1). Save this filtered dataset as an object called "gen_filt". How many SNPs does this leave us? How does it compare to the number of SNPs of the unfiltered dataset? 
 
 > Hint: you can look at section 5.8 of week 4 on subsetting in R.
 
 
->**2.1**) Use the filtered file from exercise 1 in pcangsd to recalculate the covariance matrix and regenerate the pca plot. Can we use our gen dataframe as an input file for pcangsd?
+>**2.1**) Use the filtered file from exercise 1 in pcangsd to recalculate the covariance matrix and regenerate the pca plot. Can we use our gen_filt dataframe as an input file for pcangsd?
 
 >Read the original input file (genolike_beagle.beagle.gz) in R and see how the column names compare between it and our filtered .maf file. 
 
 
-> **2.2**) We see that we need to change the column names of gen to match the beag format. Here we can use the function `merge(x, y, by = )`. Again, you can use "?merge" in R for more info on this command. Note: the function merge only works (properly) if the column names are the same. 
+> **2.2**) We see that we need to change the column names of gen_filt to match the beagle format. Here we can use the function `merge(x, y, by = )`. Again, you can use '?merge' in R for more info on this command. 
 
->Change the column names to match across the two dataframes where they have the same info. To do this, first create a new column gen_filt called "marker", where we will paste columns $chromo and $position as a single character separated by "_". Have a look [here](https://www.marsja.se/how-to-concatenate-two-columns-or-more-in-r-stringr-tidyr/#:~:text=columns%20in%20R.-,How%20do%20I%20concatenate%20two%20columns%20in%20R%3F,B).) on how to do this.
+>Note: the function merge only works (properly) if the column names are the same. 
+
+>Change the column names to match across the two dataframes where they have the same info. To do this, first create a new column gen_filt called "marker", where we will paste columns $chromo and $position as a single character separated by "_". Have a look [here](https://www.marsja.se/how-to-concatenate-two-columns-or-more-in-r-stringr-tidyr/#:~:text=columns%20in%20R.-,How%20do%20I%20concatenate%20two%20columns%20in%20R%3F,B) on how to do this.
 
 >Then use merge command by the column "marker", calling this new object 'beag_filt'. Check how many columns and rows are in this object. 
 
@@ -216,22 +221,23 @@ There is another column in the bam.filelist file that will allow us to color the
 
 >**2.4**) Use the "write.table" command to save our beagle file as the new input for pcangsd. Save the output as "geno_like_filt.beagle".
 
->Hint:By default write.table outputs a dataframe with row names, and we dont want that. Search how to have row names as False in the write.table command. 
->Hint: The beage file will also require columns being separated by tabs. Search how to tab separate write.table outputs, and include that as well in the command. 
+>Hint 1: By default write.table outputs a dataframe with row names, and we dont want that. Search how to have row names as False in the write.table command. 
 
->**2.5**) We should now have our filtered beagle file in our R session directory. Let's move back into terminal to run pcangsd again! First gzip the file (gzip geno_like_filt.beagle), then re-run the pcangsd command. Check your directories to make sure the input and output files are there. 
+>Hint 2: The beage file will also require columns being separated by tabs. Search how to tab separate write.table outputs, and include that as well in the command. 
 
+>**2.5**) We should now have our filtered beagle file in our R session directory. Let's move back into terminal to run pcangsd again! 
+
+>First gzip the file ('gzip geno_like_filt.beagle'), then re-run the pcangsd command. Check your directories to make sure the input and output files are there. 
 
  >**2.6**) Then we can go back to R and rerun our code to calculate the eigenvalues and eigenvectors for this covariance matrix. How does the plot compare to the non-filtered dataset? How much of the variance do the first 2 PCs explain in this filtered dataset?
 
 
 ## Additional Exercise
-> Remake the base R plot that we generated in class in ggplot. Use the group parameter in aes to group by region and/or population. Note, ggplot wants the data to be a dataframe and our data is a matrix. Use the function `as.data.frame(e$vectors)` to acheive this in the ggplot function. Don't forget to load the ggplot2 package with `library(ggplot2)
+> Remake the base R plot that we generated in class in ggplot. Use the group parameter in aes to group by region and/or population. Note, ggplot wants the data to be a dataframe and our data is a matrix. Use the function `as.data.frame(e$vectors)` to acheive this in the ggplot function. Don't forget to load the ggplot2 package with `library(ggplot2)'
 
-<details><summary><span style="color: goldenrod;">Solution</span></summary>
+<details><summary><span style="color: red;">Solution</span></summary>
 <p>
-
-```{r eval=FALSE, include=FALSE, label='6-4'}
+```{r, label='7-3', echo=T}
 
 # we need to use the function as.data.frame to make our matrix a dataframe.
 
@@ -246,18 +252,6 @@ ggplot(data=M, aes(y=V1, x=V2, group=as.factor(names$V3), color=as.factor(names$
                                 "South"), values =
                        c("a"="slateblue", 
                          "b"="green")) 
-                      
-```
-</p>
-</details>
-
-> Exercise 1 solution
-
-<details><summary><span style="color: goldenrod;">Solution</span></summary>
-<p>
-
-```{r eval=FALSE, include=FALSE}
-# read in the data
 
 #read in genotype likelihood data and filter by all individuals
 

@@ -529,7 +529,11 @@ tar -xzvf week5_2022.table.tar.gz
 
 &nbsp;
 
-Move the downloaded data into your working R directory. Then we can read the data table with the 'read.csv' command, calling our data.frame "gen.data"
+Move the downloaded data into your working R directory.
+
+Currently, the working directory is set to our home directory. In Rstudio you can change the working directory to the week5 directory we just downloaded data into by using the pull down menu `Session` to get and set your working directory. Similarly, the tab `Files` in the lower right will also allow you to set your working directory.
+
+Then we can read the data table with the 'read.csv' command, calling our data.frame "gen.data"
 
 ```html
 gen.data <- read.csv(file = 'margen.wk5.table.csv', sep = ';')

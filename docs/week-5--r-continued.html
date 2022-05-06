@@ -618,7 +618,9 @@ Line plots such as this are really great to assess change over time. It is impor
 <span id="cb384-2"><a href="week-5--r-continued.html#cb384-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb384-3"><a href="week-5--r-continued.html#cb384-3" aria-hidden="true" tabindex="-1"></a>tar -xzvf week5_2022.table.tar.gz</span></code></pre></div>
 <p> </p>
-<p>Move the downloaded data into your working R directory. Then we can read the data table with the ‘read.csv’ command, calling our data.frame “gen.data”</p>
+<p>Move the downloaded data into your working R directory.</p>
+<p>Currently, the working directory is set to our home directory. In Rstudio you can change the working directory to the week5 directory we just downloaded data into by using the pull down menu <code>Session</code> to get and set your working directory. Similarly, the tab <code>Files</code> in the lower right will also allow you to set your working directory.</p>
+<p>Then we can read the data table with the ‘read.csv’ command, calling our data.frame “gen.data”</p>
 <div class="sourceCode" id="cb385"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb385-1"><a href="week-5--r-continued.html#cb385-1" aria-hidden="true" tabindex="-1"></a>gen.data <span class="er">&lt;</span>- read.csv(file = &#39;margen.wk5.table.csv&#39;, sep = &#39;;&#39;)</span>
 <span id="cb385-2"><a href="week-5--r-continued.html#cb385-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb385-3"><a href="week-5--r-continued.html#cb385-3" aria-hidden="true" tabindex="-1"></a>gen.data</span>

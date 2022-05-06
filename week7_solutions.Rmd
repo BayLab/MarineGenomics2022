@@ -7,34 +7,8 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Exercise 1.1 solution
 
-
-```{r eval=FALSE, include=FALSE}
-# read in the data
-
-#read in genotype likelihood data and filter by all individuals
-
-gen<-read.table(gzfile("genolike_beagle.mafs.gz"), header=T)
-
-#filter by nind == 15
-
-gen_allIND<-gen[gen$nInd==15,]
-
-#find how many SNPs we had in the first dataset
-
-dim(gen)
-#[1] 282950      7
-
-#how many do we have in the filtered dataset?
-
-dim(gen_allIND)
-
-#[1] 31905     7
-
-```
-
-## Exercise 1.2 solution
+## Exercise 1.1-1.2 solution
 
 ```{r eval=FALSE, echo=FALSE}
 # read in the data
@@ -105,7 +79,7 @@ $ gzip geno_like_filt.beagle
 
 # and now we can run our pcangsd code
 
-$ python3 ../../pcangsd/pcangsd.py -beagle geno_like_filt.beagle.gz -o pca_out_allind -threads 28
+$ pcangsd --beagle geno_like_filt.beagle.gz -o pca_out_allind --threads 28
 ```
 
 ## Exercise 2.6 solution
@@ -123,6 +97,9 @@ e_allind<-eigen(cov_allind)
 plot(e_allind$vectors[,1:2])
 
 #how much variance does our pc explain
-e_allind$values/sum(e_allind$values)                              
+e_allind$values/sum(e_allind$values)  
+
+#plot with colors by region
+plot(e_allind$vectors[,1:2], col=as.factor(rownames(cov)), pch=16)
                                
 ```
