@@ -203,6 +203,7 @@ Start by creating a new R file (File -> New File -> R Script), save it as Week7.
 
 > Hint: you can look at section 5.8 of week 4 on subsetting in R.
 
+&nbsp;
 
 >**2.1**) Use the filtered file from exercise 1 in pcangsd to recalculate the covariance matrix and regenerate the pca plot. Can we use our gen_filt dataframe as an input file for pcangsd?
 
@@ -231,6 +232,7 @@ Start by creating a new R file (File -> New File -> R Script), save it as Week7.
 
  >**2.6**) Then we can go back to R and rerun our code to calculate the eigenvalues and eigenvectors for this covariance matrix. How does the plot compare to the non-filtered dataset? How much of the variance do the first 2 PCs explain in this filtered dataset?
 
+&nbsp;
 
 ## Additional Exercise
 > Remake the base R plot that we generated in class in ggplot. Use the group parameter in aes to group by region and/or population. Note, ggplot wants the data to be a dataframe and our data is a matrix. Use the function `as.data.frame(e$vectors)` to acheive this in the ggplot function. Don't forget to load the ggplot2 package with `library(ggplot2)'
@@ -252,25 +254,6 @@ ggplot(data=M, aes(y=V1, x=V2, group=as.factor(names$V3), color=as.factor(names$
                                 "South"), values =
                        c("a"="slateblue", 
                          "b"="green")) 
-
-#read in genotype likelihood data and filter by all individuals
-
-gen<-read.table(gzfile("genolike_beagle.mafs.gz"), header=T)
-
-#filter by nind == 15
-
-gen_allIND<-gen[gen$nInd==15,]
-
-#find how many SNPs we had in the first dataset
-
-dim(gen)
-#[1] 282950      7
-
-#how many do we have in the filtered dataset?
-
-dim(gen_allIND)
-
-#[1] 31905     7
 
 ```
 </p>

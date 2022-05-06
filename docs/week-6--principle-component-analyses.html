@@ -381,6 +381,7 @@ We may be interested in how much of the variance our first two components explai
 <blockquote>
 <p>Hint: you can look at section 5.8 of week 4 on subsetting in R.</p>
 </blockquote>
+<p> </p>
 <blockquote>
 <p><strong>2.1</strong>) Use the filtered file from exercise 1 in pcangsd to recalculate the covariance matrix and regenerate the pca plot. Can we use our gen_filt dataframe as an input file for pcangsd?</p>
 </blockquote>
@@ -420,6 +421,7 @@ We may be interested in how much of the variance our first two components explai
 <blockquote>
 <p><strong>2.6</strong>) Then we can go back to R and rerun our code to calculate the eigenvalues and eigenvectors for this covariance matrix. How does the plot compare to the non-filtered dataset? How much of the variance do the first 2 PCs explain in this filtered dataset?</p>
 </blockquote>
+<p> </p>
 </div>
 <div id="additional-exercise" class="section level2 hasAnchor" number="8.7">
 <h2><span class="header-section-number">8.7</span> Additional Exercise<a href="week-6--principle-component-analyses.html#additional-exercise" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -445,28 +447,7 @@ We may be interested in how much of the variance our first two components explai
 <span id="cb418-12"><a href="week-6--principle-component-analyses.html#cb418-12" aria-hidden="true" tabindex="-1"></a>                                <span class="st">&quot;South&quot;</span>), <span class="at">values =</span></span>
 <span id="cb418-13"><a href="week-6--principle-component-analyses.html#cb418-13" aria-hidden="true" tabindex="-1"></a>                       <span class="fu">c</span>(<span class="st">&quot;a&quot;</span><span class="ot">=</span><span class="st">&quot;slateblue&quot;</span>, </span>
 <span id="cb418-14"><a href="week-6--principle-component-analyses.html#cb418-14" aria-hidden="true" tabindex="-1"></a>                         <span class="st">&quot;b&quot;</span><span class="ot">=</span><span class="st">&quot;green&quot;</span>)) </span></code></pre></div>
-<p><img src="07-Week7.pca_files/figure-html/7-3-1.png" width="768" /></p>
-<div class="sourceCode" id="cb419"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb419-1"><a href="week-6--principle-component-analyses.html#cb419-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb419-2"><a href="week-6--principle-component-analyses.html#cb419-2" aria-hidden="true" tabindex="-1"></a><span class="co">#read in genotype likelihood data and filter by all individuals</span></span>
-<span id="cb419-3"><a href="week-6--principle-component-analyses.html#cb419-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb419-4"><a href="week-6--principle-component-analyses.html#cb419-4" aria-hidden="true" tabindex="-1"></a>gen<span class="ot">&lt;-</span><span class="fu">read.table</span>(<span class="fu">gzfile</span>(<span class="st">&quot;genolike_beagle.mafs.gz&quot;</span>), <span class="at">header=</span>T)</span>
-<span id="cb419-5"><a href="week-6--principle-component-analyses.html#cb419-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb419-6"><a href="week-6--principle-component-analyses.html#cb419-6" aria-hidden="true" tabindex="-1"></a><span class="co">#filter by nind == 15</span></span>
-<span id="cb419-7"><a href="week-6--principle-component-analyses.html#cb419-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb419-8"><a href="week-6--principle-component-analyses.html#cb419-8" aria-hidden="true" tabindex="-1"></a>gen_allIND<span class="ot">&lt;-</span>gen[gen<span class="sc">$</span>nInd<span class="sc">==</span><span class="dv">15</span>,]</span>
-<span id="cb419-9"><a href="week-6--principle-component-analyses.html#cb419-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb419-10"><a href="week-6--principle-component-analyses.html#cb419-10" aria-hidden="true" tabindex="-1"></a><span class="co">#find how many SNPs we had in the first dataset</span></span>
-<span id="cb419-11"><a href="week-6--principle-component-analyses.html#cb419-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb419-12"><a href="week-6--principle-component-analyses.html#cb419-12" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(gen)</span>
-<span id="cb419-13"><a href="week-6--principle-component-analyses.html#cb419-13" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 282950      7</span></span>
-<span id="cb419-14"><a href="week-6--principle-component-analyses.html#cb419-14" aria-hidden="true" tabindex="-1"></a><span class="co">#[1] 282950      7</span></span>
-<span id="cb419-15"><a href="week-6--principle-component-analyses.html#cb419-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb419-16"><a href="week-6--principle-component-analyses.html#cb419-16" aria-hidden="true" tabindex="-1"></a><span class="co">#how many do we have in the filtered dataset?</span></span>
-<span id="cb419-17"><a href="week-6--principle-component-analyses.html#cb419-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb419-18"><a href="week-6--principle-component-analyses.html#cb419-18" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(gen_allIND)</span>
-<span id="cb419-19"><a href="week-6--principle-component-analyses.html#cb419-19" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 31905     7</span></span>
-<span id="cb419-20"><a href="week-6--principle-component-analyses.html#cb419-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb419-21"><a href="week-6--principle-component-analyses.html#cb419-21" aria-hidden="true" tabindex="-1"></a><span class="co">#[1] 31905     7</span></span></code></pre></div>
+<img src="07-Week7.pca_files/figure-html/7-3-1.png" width="768" />
 </p>
 </details>
 
