@@ -10,7 +10,7 @@ output:
 
 
 
-# Week 6- Principle Component Analyses 
+# Week 7 - Principle Component Analyses 
 
 In week 3 we mapped reads to a genome so we could call our genetic variants (SNPs) and generated bam files for each read file (= sequence data from an individual). Last week we started investigating population structure with structure plots via conStruct. We will now use these SNPs to plot patterns of population structure in a different way with principal component analyses. 
 

@@ -258,8 +258,8 @@ my.run <- conStruct(spatial = TRUE,
 ## 
 ## SAMPLING FOR MODEL 'space_multiK' NOW (CHAIN 1).
 ## Chain 1: 
-## Chain 1: Gradient evaluation took 0.01197 seconds
-## Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 119.7 seconds.
+## Chain 1: Gradient evaluation took 0.012237 seconds
+## Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 122.37 seconds.
 ## Chain 1: Adjust your expectations accordingly!
 ## Chain 1: 
 ## Chain 1: 
@@ -277,9 +277,9 @@ my.run <- conStruct(spatial = TRUE,
 ## Chain 1: Iteration: 9 / 10 [ 90%]  (Sampling)
 ## Chain 1: Iteration: 10 / 10 [100%]  (Sampling)
 ## Chain 1: 
-## Chain 1:  Elapsed Time: 0.152631 seconds (Warm-up)
-## Chain 1:                0.132176 seconds (Sampling)
-## Chain 1:                0.284807 seconds (Total)
+## Chain 1:  Elapsed Time: 0.110957 seconds (Warm-up)
+## Chain 1:                0.100167 seconds (Sampling)
+## Chain 1:                0.211124 seconds (Total)
 ## Chain 1:
 ```
 
