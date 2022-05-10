@@ -264,13 +264,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="download-the-data-1" class="section level2 hasAnchor" number="8.1">
 <h2><span class="header-section-number">8.1</span> Download the data<a href="week-7---principle-component-analyses.html#download-the-data-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We first need to download the data. Use the link below to download it to jetstream, and then us the tar command to un-compress it.</p>
-<div class="sourceCode" id="cb406"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb406-1"><a href="week-7---principle-component-analyses.html#cb406-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb406-2"><a href="week-7---principle-component-analyses.html#cb406-2" aria-hidden="true" tabindex="-1"></a>wget https://raw.githubusercontent.com/BayLab/MarineGenomicsData/main/Week7_2022.tar.gz</span>
-<span id="cb406-3"><a href="week-7---principle-component-analyses.html#cb406-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb406-4"><a href="week-7---principle-component-analyses.html#cb406-4" aria-hidden="true" tabindex="-1"></a>tar -xzvf Week7_2022.tar.gz</span></code></pre></div>
+<div class="sourceCode" id="cb406"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb406-1"><a href="week-7---principle-component-analyses.html#cb406-1" aria-hidden="true" tabindex="-1"></a>cd </span>
+<span id="cb406-2"><a href="week-7---principle-component-analyses.html#cb406-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb406-3"><a href="week-7---principle-component-analyses.html#cb406-3" aria-hidden="true" tabindex="-1"></a>wget https://raw.githubusercontent.com/BayLab/MarineGenomicsData/main/Week7_2022.tar.gz</span>
+<span id="cb406-4"><a href="week-7---principle-component-analyses.html#cb406-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb406-5"><a href="week-7---principle-component-analyses.html#cb406-5" aria-hidden="true" tabindex="-1"></a>tar -xzvf Week7_2022.tar.gz</span></code></pre></div>
 <p>Our data this week consists of genotype_likelihood files in beagle format and a bam.filelist which contains id information for our samples.</p>
 <div class="sourceCode" id="cb407"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb407-1"><a href="week-7---principle-component-analyses.html#cb407-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb407-2"><a href="week-7---principle-component-analyses.html#cb407-2" aria-hidden="true" tabindex="-1"></a>ls -lh MarineGenomicsData/Week7</span></code></pre></div>
+<span id="cb407-2"><a href="week-7---principle-component-analyses.html#cb407-2" aria-hidden="true" tabindex="-1"></a>ls -lh Week7</span></code></pre></div>
 </div>
 <div id="installing-programs" class="section level2 hasAnchor" number="8.2">
 <h2><span class="header-section-number">8.2</span> Installing programs<a href="week-7---principle-component-analyses.html#installing-programs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -281,7 +282,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb408-4"><a href="week-7---principle-component-analyses.html#cb408-4" aria-hidden="true" tabindex="-1"></a>python3 get-pip.py</span>
 <span id="cb408-5"><a href="week-7---principle-component-analyses.html#cb408-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb408-6"><a href="week-7---principle-component-analyses.html#cb408-6" aria-hidden="true" tabindex="-1"></a>#we need to add our home directory to the path for pip</span>
-<span id="cb408-7"><a href="week-7---principle-component-analyses.html#cb408-7" aria-hidden="true" tabindex="-1"></a>#look at path</span>
+<span id="cb408-7"><a href="week-7---principle-component-analyses.html#cb408-7" aria-hidden="true" tabindex="-1"></a>#look at path (don&#39;t worry too much about this)</span>
 <span id="cb408-8"><a href="week-7---principle-component-analyses.html#cb408-8" aria-hidden="true" tabindex="-1"></a>echo $PATH</span>
 <span id="cb408-9"><a href="week-7---principle-component-analyses.html#cb408-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb408-10"><a href="week-7---principle-component-analyses.html#cb408-10" aria-hidden="true" tabindex="-1"></a>#add the location of pip to our path</span>
@@ -289,10 +290,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb408-12"><a href="week-7---principle-component-analyses.html#cb408-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb408-13"><a href="week-7---principle-component-analyses.html#cb408-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb408-14"><a href="week-7---principle-component-analyses.html#cb408-14" aria-hidden="true" tabindex="-1"></a>#then install pcangsd</span>
-<span id="cb408-15"><a href="week-7---principle-component-analyses.html#cb408-15" aria-hidden="true" tabindex="-1"></a>git clone https://github.com/Rosemeis/pcangsd.git</span>
-<span id="cb408-16"><a href="week-7---principle-component-analyses.html#cb408-16" aria-hidden="true" tabindex="-1"></a>cd pcangsd/</span>
-<span id="cb408-17"><a href="week-7---principle-component-analyses.html#cb408-17" aria-hidden="true" tabindex="-1"></a>python setup.py build_ext --inplace</span>
-<span id="cb408-18"><a href="week-7---principle-component-analyses.html#cb408-18" aria-hidden="true" tabindex="-1"></a>pip3 install -e .</span></code></pre></div>
+<span id="cb408-15"><a href="week-7---principle-component-analyses.html#cb408-15" aria-hidden="true" tabindex="-1"></a>cd</span>
+<span id="cb408-16"><a href="week-7---principle-component-analyses.html#cb408-16" aria-hidden="true" tabindex="-1"></a>git clone https://github.com/Rosemeis/pcangsd.git</span>
+<span id="cb408-17"><a href="week-7---principle-component-analyses.html#cb408-17" aria-hidden="true" tabindex="-1"></a>cd pcangsd/</span>
+<span id="cb408-18"><a href="week-7---principle-component-analyses.html#cb408-18" aria-hidden="true" tabindex="-1"></a>pip install --user -r requirements.txt</span>
+<span id="cb408-19"><a href="week-7---principle-component-analyses.html#cb408-19" aria-hidden="true" tabindex="-1"></a>python3 setup.py build_ext --inplace</span>
+<span id="cb408-20"><a href="week-7---principle-component-analyses.html#cb408-20" aria-hidden="true" tabindex="-1"></a>pip3 install -e .</span></code></pre></div>
 <p>Check that it’s installed correctly.</p>
 <div class="sourceCode" id="cb409"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb409-1"><a href="week-7---principle-component-analyses.html#cb409-1" aria-hidden="true" tabindex="-1"></a>#navigate to your home directory</span>
 <span id="cb409-2"><a href="week-7---principle-component-analyses.html#cb409-2" aria-hidden="true" tabindex="-1"></a>cd</span>
@@ -304,7 +307,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">8.3</span> Run pcangsd on our data<a href="week-7---principle-component-analyses.html#run-pcangsd-on-our-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In population genomics analyses we often use multiple programs, which often have different input file formats. This is again why writing out the input/output formats in a pipeline is very useful! Have a look at the <a href="http://www.popgen.dk/software/index.php/PCAngsd">pcangsd</a> website and see what type of input is needed.</p>
 <div class="sourceCode" id="cb410"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb410-1"><a href="week-7---principle-component-analyses.html#cb410-1" aria-hidden="true" tabindex="-1"></a>cd</span>
-<span id="cb410-2"><a href="week-7---principle-component-analyses.html#cb410-2" aria-hidden="true" tabindex="-1"></a>cd home/exouser/Week7</span>
+<span id="cb410-2"><a href="week-7---principle-component-analyses.html#cb410-2" aria-hidden="true" tabindex="-1"></a>cd /home/exouser/Week7</span>
 <span id="cb410-3"><a href="week-7---principle-component-analyses.html#cb410-3" aria-hidden="true" tabindex="-1"></a>pcangsd --beagle /home/exouser/Week7/genolike_beagle.beagle.gz -o pca_out --threads 28</span>
 <span id="cb410-4"><a href="week-7---principle-component-analyses.html#cb410-4" aria-hidden="true" tabindex="-1"></a></span></code></pre></div>
 <p>This will generate a covariance matrix output file (the "*.cov" file). We can read this file into R and compute the eigenvectors and eigenvalues and make our plot.</p>
@@ -322,9 +325,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb411-2"><a href="week-7---principle-component-analyses.html#cb411-2" aria-hidden="true" tabindex="-1"></a><span class="co">#check working directory</span></span>
 <span id="cb411-3"><a href="week-7---principle-component-analyses.html#cb411-3" aria-hidden="true" tabindex="-1"></a><span class="co">#getwd()</span></span>
 <span id="cb411-4"><a href="week-7---principle-component-analyses.html#cb411-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb411-5"><a href="week-7---principle-component-analyses.html#cb411-5" aria-hidden="true" tabindex="-1"></a><span class="co">#should output</span></span>
-<span id="cb411-6"><a href="week-7---principle-component-analyses.html#cb411-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb411-7"><a href="week-7---principle-component-analyses.html#cb411-7" aria-hidden="true" tabindex="-1"></a><span class="co">#[1] &quot;/home/exouser/Week7&quot;</span></span></code></pre></div>
+<span id="cb411-5"><a href="week-7---principle-component-analyses.html#cb411-5" aria-hidden="true" tabindex="-1"></a><span class="co">#can set working directory with:</span></span>
+<span id="cb411-6"><a href="week-7---principle-component-analyses.html#cb411-6" aria-hidden="true" tabindex="-1"></a><span class="co">#setwd(&quot;~/Week7&quot;)</span></span></code></pre></div>
 <p>Thus in jetstream the working directory is set to our home directory, which will work fine for uploading data. If you need to change the directory you can use <code>setwd()</code> and provide it with the full directory path and then confirm that it moved the directory with <code>getwd()</code>.</p>
 <p>In Rstudio you can also use the pull down menus <code>Session</code> to get and set your working directory. Similarly, the tab <code>Files</code> in the lower right will also allow you to set your working directory.</p>
 <p>Now we’ll read the data output by angsd into R using <code>read.table()</code> and <code>as.matrix()</code></p>

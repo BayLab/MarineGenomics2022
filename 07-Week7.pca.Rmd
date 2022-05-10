@@ -26,6 +26,7 @@ We first need to download the data. Use the link below to download it to jetstre
 
 
 ```html
+cd 
 
 wget https://raw.githubusercontent.com/BayLab/MarineGenomicsData/main/Week7_2022.tar.gz
 
@@ -37,7 +38,7 @@ Our data this week consists of genotype_likelihood files in beagle format and a 
 
 ```html
 
-ls -lh MarineGenomicsData/Week7
+ls -lh Week7
 
 ```
 
@@ -52,7 +53,7 @@ curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 python3 get-pip.py
 
 #we need to add our home directory to the path for pip
-#look at path
+#look at path (don't worry too much about this)
 echo $PATH
 
 #add the location of pip to our path
@@ -60,9 +61,11 @@ export PATH="$HOME/.local/bin:$PATH"
 
 
 #then install pcangsd
+cd
 git clone https://github.com/Rosemeis/pcangsd.git
 cd pcangsd/
-python setup.py build_ext --inplace
+pip install --user -r requirements.txt
+python3 setup.py build_ext --inplace
 pip3 install -e .
 ```
 
@@ -85,7 +88,7 @@ In population genomics analyses we often use multiple programs, which often have
 
 ```html
 cd
-cd home/exouser/Week7
+cd /home/exouser/Week7
 pcangsd --beagle /home/exouser/Week7/genolike_beagle.beagle.gz -o pca_out --threads 28
 
 
@@ -112,10 +115,8 @@ And of course all of this code is typed into our script and commented along the 
 #check working directory
 #getwd()
 
-#should output
-
-#[1] "/home/exouser/Week7"
-
+#can set working directory with:
+#setwd("~/Week7")
 ```
 
 
