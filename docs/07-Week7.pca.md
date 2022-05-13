@@ -239,6 +239,115 @@ Start by creating a new R file (File -> New File -> R Script), save it as Week7.
 
 &nbsp;
 
+<details><summary><span style="color: red;">Solution</span></summary>
+<p>
+Exercise 1.1-1.2 solution
+
+```r
+# read in the data
+
+#read in genotype likelihood data and filter by all individuals
+
+gen<-read.table(gzfile("genolike_beagle.mafs.gz"), header=T)
+
+#filter by nind == 15
+
+gen_filt<-gen[gen$nInd==15,]
+
+#find how many SNPs we had in the first dataset
+
+dim(gen)
+#[1] 282950      7
+
+#how many do we have in the filtered dataset?
+
+dim(gen_filt)
+
+#[1] 31905     7
+```
+
+Exercise 2.1-2.4 solution
+
+```r
+## read in the beagle formatted data
+beag<-read.table(gzfile("genolike_beagle.beagle.gz"), header=T)
+
+#look at the column names between the two datasets
+
+colnames(gen_filt)
+
+colnames(beag)
+
+#create new column marker with chromosome and position together, separated by "_"
+gen_filt$marker<-paste(gen_filt$chromo, gen_filt$position, sep="_")
+
+#then merge them by the marker column
+beag_filt<-merge(gen_filt, beag, by="marker")
+
+#that should return a dataframe with 31905 rows and 55 columns
+
+colnames(beag_filt)
+
+#we want the first column and then columns 9-55
+
+beag_filt_final<-beag_filt[,c(1,9:55)]
+
+#now we have a dataframe with 31905 rows and 48 columns
+
+#let's write a table that we can use to run in pcangsd
+
+write.table(beag_filt_final, "geno_like_filt.beagle", 
+            sep="\t",
+            row.names = F)
+#by default write.table outputs a dataframe with row names we dont want that
+            
+### This writes a file to our working directory. 
+```
+
+Exercise 2.5 solution
+
+In terminal, cd into the week7 directory and do the following
+
+```html
+$ gzip geno_like_filt.beagle
+
+# and now we can run our pcangsd code
+
+$ pcangsd --beagle geno_like_filt.beagle.gz -o pca_out_allind --threads 28
+```
+
+Exercise 2.6 solution
+
+```r
+#read in the new covariance matrix                               
+cov_allind<-as.matrix(read.table("pca_out_allind.cov"))
+
+#calculate eigenvalues
+e_allind<-eigen(cov_allind)
+```
+
+```r
+#plot the data
+plot(e_allind$vectors[,1:2])
+
+#how much variance does our pc explain
+e_allind$values/sum(e_allind$values)  
+
+#plot with colors by region
+plot(e_allind$vectors[,1:2], col=as.factor(rownames(cov)), pch=16)
+```
+
+Here's the new PCA:
+
+![](./figs/wk7.pca.sol.col.png)
+
+And here's new PCA colored by region:
+
+![](./figs/wk7.pca.sol.png)
+
+</p>
+</details>
+
 ## Additional Exercise
 > Remake the base R plot that we generated in class in ggplot. Use the group parameter in aes to group by region and/or population. Note, ggplot wants the data to be a dataframe and our data is a matrix. Use the function `as.data.frame(e$vectors)` to acheive this in the ggplot function. Don't forget to load the ggplot2 package with `library(ggplot2)'
 

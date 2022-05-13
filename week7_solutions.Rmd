@@ -103,3 +103,11 @@ e_allind$values/sum(e_allind$values)
 plot(e_allind$vectors[,1:2], col=as.factor(rownames(cov)), pch=16)
                                
 ```
+
+Here's the new PCA:
+
+![](./figs/wk7.pca.sol.col.png)
+
+And here's new PCA colored by region:
+
+![](./figs/wk7.pca.sol.png)
