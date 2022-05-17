@@ -83,3 +83,11 @@ setting-up-a-new-project-in-r
 reading-data-into-r
 group-exercises
 additional-exercise
+week-8--fst-and-outlier-analysis
+download-the-data-2
+getting-r-set-up
+finding-outliers-using-pcadapt
+pcadapt-exercises
+using-fst-to-find-outliers
+outflank-practice
+creature-of-the-week

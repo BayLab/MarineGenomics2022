@@ -15,7 +15,6 @@ knitr::opts_knit$set(root.dir = "/Users/ericaspotswoodnielsen/Desktop/PD_stuffie
 
 # Week 8- F<sub>st</sub> and outlier analysis
 
-The lecture for this week focused on *F<sub>st</sub>** and outlier analysis can be found [here](https://github.com/BayLab/MarineGenomics/blob/main/ppt/Week7.pdf).
 
 Last week we used PCA to take a broad look at whether populations were genetically distinct. This week we learn how to identify particular SNPs that are driving patterns of divergence between populations. These SNPs could represent signals of selection.
 
@@ -26,9 +25,11 @@ We will import the data and take a first look in **bash** and then we will do an
 We first need to download the data. Use the link below to download it to jetstream, and then us the tar command to un-compress it.
 
 ```{.html}
-wget https://raw.githubusercontent.com/BayLab/MarineGenomicsData/main/week7.tar.gz
+wget https://raw.githubusercontent.com/BayLab/MarineGenomicsData/main/week9_semester.tar.gz
+tar -xzvf week9_semester.tar.gz
 
-tar -xzvf week7.tar.gz
+cd MarineGenomics
+mv week9 Week8
 ```
 
 Again this week we are using the data from the [Xuereb et al. paper on P. californicus](https://onlinelibrary.wiley.com/doi/full/10.1111/mec.14589). Our data consists of a SNP file in [VCF format](https://samtools.github.io/hts-specs/VCFv4.2.pdf) and a metadata file which tells you which site each sample came from.
@@ -37,7 +38,7 @@ Let's navigate into the Week 7 directory and take a look at the vcf file:
 
 ``` {.html}
 
-cd MarineGenomicsData/Week8/
+cd MarineGenomics/Week8/
 
 head filtered_3699snps_californicus.vcf
 ```
@@ -51,8 +52,8 @@ Today we will be using two different packages: **pcadapt** and **OutFLANK** and 
 To save all of the progress we make today, first create your own script in the Week8 folder for this week named "Week8Script.R"
 
 ```{r, eval=F}
-install.packages("devtools")
-install.packages(c("BiocManager","vcfR","pcadapt"))
+# install.packages("devtools")
+# install.packages(c("BiocManager","vcfR","pcadapt"))
 # type "yes" when prompted
 
 ```
@@ -60,11 +61,11 @@ If you have an error reading "Warning in install.packages :
   package ?BiocManager? is not available for this version of R" Go to "Help", then "Check for Updates" and update your R version. You also may need to restart your R.
 
 ```{r, eval=F}
-BiocManager::install("qvalue") 
+# BiocManager::install("qvalue") 
 
 # When prompted, type "a" - this will take some time
 library(devtools)
-install_github("whitlock/OutFLANK")
+# install_github("whitlock/OutFLANK")
 
 ```
 
@@ -78,10 +79,13 @@ I always like to call the different R packages I plan to use at the very top of 
 
 ```{r, echo=T}
 library(pcadapt)
+library(vcfR)
 library(qvalue)
 ```
 
-Lets start by setting a working directory. I'm going to set it to where we downloaded the data for week 7. I also like to define the paths to my input files at the top of the script, that way if I want to use a slightly different input file or if I want to share my script it's easy to see how to change it.
+Lets start by setting a working directory. I also like to define the paths to my input files at the top of the script, that way if I want to use a slightly different input file or if I want to share my script it's easy to see how to change it. But first, set working directory to the Week 8 data from the drop down menu.
+
+
 
 ```{r, eval=F}
 #setwd("/home/margeno/MarineGenomicsData/Week7")
@@ -93,7 +97,7 @@ vcf.path="filtered_3699snps_californicus.vcf"
 meta.path="californicus_metadata.csv"
 ```
 
-Let's read in the genetic data from the VCF file. Because VCF is a common file format for SNP data, pcadapt comes with a special function for reading this type of file. You will get a warning message if you run on your own computer, but don't worry about it.
+Let's read in the genetic data from the VCF file. Because VCF is a common file format for SNP data, pcadapt comes with a special function for reading this type of file. You **will** get a warning message if you run on your own computer, but don't worry about it.
 
 ```{r, warning=F}
 genos <- read.pcadapt(vcf.path,type=c("vcf"))
@@ -297,6 +301,5 @@ table(outliers)
 </p>
 </details>
 
-## Creature of the Week!
-![Black Sea Devil Angler Fish (Image credit: Bluegreen Pictures/Alamy)](./figs/creatures/anglerfish.jpg)
+
 
