@@ -90,4 +90,3 @@ finding-outliers-using-pcadapt
 pcadapt-exercises
 using-fst-to-find-outliers
 outflank-practice
-creature-of-the-week

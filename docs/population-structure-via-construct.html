@@ -4,22 +4,23 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>7 Population Structure via conStruct | MarGen2022</title>
-  <meta name="description" content="" />
+  <title>7 Population Structure via conStruct | Week 8</title>
+  <meta name="description" content="7 Population Structure via conStruct | Week 8" />
   <meta name="generator" content="bookdown 0.26.2 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="7 Population Structure via conStruct | MarGen2022" />
+  <meta property="og:title" content="7 Population Structure via conStruct | Week 8" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="7 Population Structure via conStruct | MarGen2022" />
+  <meta name="twitter:title" content="7 Population Structure via conStruct | Week 8" />
   
   
   
 
+<meta name="author" content="Rachael Bay" />
 
 
 
@@ -237,6 +238,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.6" data-path="week-7---principle-component-analyses.html"><a href="week-7---principle-component-analyses.html#group-exercises"><i class="fa fa-check"></i><b>8.6</b> Group Exercises</a></li>
 <li class="chapter" data-level="8.7" data-path="week-7---principle-component-analyses.html"><a href="week-7---principle-component-analyses.html#additional-exercise"><i class="fa fa-check"></i><b>8.7</b> Additional Exercise</a></li>
 </ul></li>
+<li class="chapter" data-level="9" data-path="week-8--fst-and-outlier-analysis.html"><a href="week-8--fst-and-outlier-analysis.html"><i class="fa fa-check"></i><b>9</b> Week 8- F<sub>st</sub> and outlier analysis</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="week-8--fst-and-outlier-analysis.html"><a href="week-8--fst-and-outlier-analysis.html#download-the-data-2"><i class="fa fa-check"></i><b>9.1</b> Download the data</a></li>
+<li class="chapter" data-level="9.2" data-path="week-8--fst-and-outlier-analysis.html"><a href="week-8--fst-and-outlier-analysis.html#getting-r-set-up"><i class="fa fa-check"></i><b>9.2</b> Getting R set up</a></li>
+<li class="chapter" data-level="9.3" data-path="week-8--fst-and-outlier-analysis.html"><a href="week-8--fst-and-outlier-analysis.html#finding-outliers-using-pcadapt"><i class="fa fa-check"></i><b>9.3</b> Finding outliers using pcadapt</a></li>
+<li class="chapter" data-level="9.4" data-path="week-8--fst-and-outlier-analysis.html"><a href="week-8--fst-and-outlier-analysis.html#pcadapt-exercises"><i class="fa fa-check"></i><b>9.4</b> pcadapt Exercises</a></li>
+<li class="chapter" data-level="9.5" data-path="week-8--fst-and-outlier-analysis.html"><a href="week-8--fst-and-outlier-analysis.html#using-fst-to-find-outliers"><i class="fa fa-check"></i><b>9.5</b> Using F<sub>st</sub> to find outliers</a></li>
+<li class="chapter" data-level="9.6" data-path="week-8--fst-and-outlier-analysis.html"><a href="week-8--fst-and-outlier-analysis.html#outflank-practice"><i class="fa fa-check"></i><b>9.6</b> OutFLANK Practice</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -249,7 +259,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Week 8</a>
           </h1>
         </div>
 
@@ -451,8 +461,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## 
 ## SAMPLING FOR MODEL &#39;space_multiK&#39; NOW (CHAIN 1).
 ## Chain 1: 
-## Chain 1: Gradient evaluation took 0.009686 seconds
-## Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 96.86 seconds.
+## Chain 1: Gradient evaluation took 0.008525 seconds
+## Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 85.25 seconds.
 ## Chain 1: Adjust your expectations accordingly!
 ## Chain 1: 
 ## Chain 1: 
@@ -470,9 +480,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Chain 1: Iteration: 9 / 10 [ 90%]  (Sampling)
 ## Chain 1: Iteration: 10 / 10 [100%]  (Sampling)
 ## Chain 1: 
-## Chain 1:  Elapsed Time: 0.134064 seconds (Warm-up)
-## Chain 1:                0.086363 seconds (Sampling)
-## Chain 1:                0.220427 seconds (Total)
+## Chain 1:  Elapsed Time: 0.321835 seconds (Warm-up)
+## Chain 1:                8.60831 seconds (Sampling)
+## Chain 1:                8.93015 seconds (Total)
 ## Chain 1:</code></pre>
 <div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb401-1"><a href="population-structure-via-construct.html#cb401-1" aria-hidden="true" tabindex="-1"></a><span class="co">#remake our structure plots</span></span>
 <span id="cb401-2"><a href="population-structure-via-construct.html#cb401-2" aria-hidden="true" tabindex="-1"></a></span>
