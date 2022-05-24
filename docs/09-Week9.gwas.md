@@ -1,7 +1,7 @@
 ---
-title: "Week8_GWAS"
-author: "Serena Caplins"
-date: "5/12/2021"
+title: 
+author: 
+date: 
 output:
   bookdown::html_book:
     toc: yes
@@ -20,11 +20,11 @@ The data for this week consist of several files in beagle format, a genome index
 Let's start by downloading the data we will be working with this week:
 
 ```html
-wget https://raw.githubusercontent.com/BayLab/MarineGenomicsData/main/week8.tar.gz
+wget https://raw.githubusercontent.com/BayLab/MarineGenomicsData/main/Week9_2022.tar.gz
 
-tar -xzvf week8.tar.gz
+tar -xzvf Week9_2022.tar.gz
 ```
-Move the 'Week8' directory from MarineGenomicsData into MarineGenomics and change its name to Week9:
+Move the data from MarineGenomicsData into MarineGenomics and change its name to Week9:
 ```
 mv MarineGenomicsData/Week8 MarineGenomics/Week9
 ```
@@ -57,8 +57,6 @@ To do the test of genome wide association we need to take our Beagle file and te
 Let's move back to the terminal and execute this command:
 
 ``` {.html}
-cd MarineGenomics/Week9
-
 $HOME/angsd/angsd -doMaf 4 -beagle salmon_chr2_19ind.BEAGLE.PL.gz -yBin phenobin -doAsso 2 -fai Salmon.fai
 ```
 This example looks for associations between the genotypes (the genotype likelihood data - beagle file) and the phenotypes (male/female - binary 'phenobin' file). We are using the 'Salmon.fai' file as an index (remember we are using an index for the genome so that it is easier to search against it).
@@ -141,7 +139,6 @@ hist(lrt_filt$LRT, breaks=50)
 
 Everything looks good to proceed to making our manhattan plot.
 
-
 The function 'manhattan' requires each SNP to have it's own "name". Let's make a vector for row numbers that start with the letter 'r'. 
 
 
@@ -161,7 +158,7 @@ lrt_filt <- lrt_filt[!(lrt_filt$pvalue=="NaN" | lrt_filt$LRT=="Inf"| lrt_filt$pv
 Create the manhattan plot:
 
 ```r
-manhattan(lrt_filt, chr="Chromosome", bp="Position", p="pvalue", suggestiveline = F, genomewideline = F)
+qqman::manhattan(lrt_filt, chr="Chromosome", bp="Position", p="pvalue", suggestiveline = F, genomewideline = F)
 ```
 
 <img src="09-Week9.gwas_files/figure-html/8-2-1.png" width="672" />
@@ -188,7 +185,7 @@ x <- sample(c(1,0), 19, replace=T)
 write.table(x, "rando_pheno", row.names = F, col.names = F)
 ```
 And now use that phenotype file to run our association test again, making sure to specify a different output file.
-
+Let's go back to the terminal:
 ``` {.html}
 $HOME/angsd/angsd -doMaf 4 -beagle salmon_chr2_19ind.BEAGLE.PL.gz -yBin rando_pheno -doAsso 2 -fai Salmon.fai -out randotest
 ```
@@ -220,16 +217,16 @@ max(rando_filt$LRT, na.rm=T)
 ```
 ## [1] 12.33287
 ```
-The maximum value is 12.43623. This value was generated at random, so any value higher than this is expected to be generated not at random (which is what we are looking for). So we can highlight all of the SNPs that have an LRT greater than 12.43623 in our association test.
+The maximum value is ~12 This value was generated at random, so any value higher than this is expected to be generated not at random (which is what we are looking for). So we can highlight all of the SNPs that have an LRT greater than 12 in our association test.
 
 ```r
 #make a list of the candidates
-candidates <- lrt_filt[which(lrt_filt$LRT > 12.43623),]$SNP 
+candidates <- lrt_filt[which(lrt_filt$LRT > 12),]$SNP 
 ```
 Let's highlight this list of candidate loci in our manhattan plot:
 
 ```r
-manhattan(lrt_filt, chr="Chromosome", bp="Position",  p="pvalue", highlight = candidates, suggestiveline = F, genomewideline = F)
+qqman::manhattan(lrt_filt, chr="Chromosome", bp="Position",  p="pvalue", highlight = candidates, suggestiveline = F, genomewideline = F)
 ```
 
 <img src="09-Week9.gwas_files/figure-html/8-4-1.png" width="672" />
@@ -270,7 +267,7 @@ e$values/sum(e$values)
 ## [11]  0.0423030396  0.0368221717  0.0329494215  0.0316195242  0.0269138675
 ## [16]  0.0184940705  0.0149661517 -0.0006450986 -0.0107116466
 ```
-It looks like 13.8% is explained by the first axis.
+It looks like ~13% is explained by the first axis.
 
 Let's create the PCA plot:
 
@@ -283,9 +280,13 @@ e_df <- as.data.frame(e$vectors[,1:2])
 ```
 make a plot of the first two axes
 
+```r
+plotly::plot_ly(e_df, type = "scatter", mode = "markers", x=e_df$V1, y=e_df$V2, text=row.names(e_df))
+```
+
 ```{=html}
-<div id="htmlwidget-eb8fd56ad96f5d1be83c" style="width:672px;height:480px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-eb8fd56ad96f5d1be83c">{"x":{"visdat":{"4fb86c0656dc":["function () ","plotlyVisDat"]},"cur_data":"4fb86c0656dc","attrs":{"4fb86c0656dc":{"mode":"markers","x":[-0.519139785802849,-0.421668322093998,0.0728823589597481,-0.00945195017208254,0.164050295585754,0.0374794925622059,0.161893975465155,0.0167349431615272,0.217324975228053,0.205556689134182,0.235649945753755,-0.486973827070867,0.169393148665165,0.0652232253635954,0.0814548483289771,-0.110122505165937,0.214924885835122,0.0484035713690156,-0.100388847510803],"y":[-0.0126347016271288,0.0245300098185363,0.0722020301364673,-0.131409063184534,-0.276071775898028,0.155576443973626,-0.418972580420151,0.0898106283574495,0.368142497812644,0.360218778748402,0.293275329148616,-0.0298863719708143,-0.0478190017745415,0.0999834088658637,0.0181757283239082,0.100042658910541,-0.562109565077771,0.0225581007555425,0.0380157664014052],"text":["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19"],"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":[]},"yaxis":{"domain":[0,1],"automargin":true,"title":[]},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"mode":"markers","x":[-0.519139785802849,-0.421668322093998,0.0728823589597481,-0.00945195017208254,0.164050295585754,0.0374794925622059,0.161893975465155,0.0167349431615272,0.217324975228053,0.205556689134182,0.235649945753755,-0.486973827070867,0.169393148665165,0.0652232253635954,0.0814548483289771,-0.110122505165937,0.214924885835122,0.0484035713690156,-0.100388847510803],"y":[-0.0126347016271288,0.0245300098185363,0.0722020301364673,-0.131409063184534,-0.276071775898028,0.155576443973626,-0.418972580420151,0.0898106283574495,0.368142497812644,0.360218778748402,0.293275329148616,-0.0298863719708143,-0.0478190017745415,0.0999834088658637,0.0181757283239082,0.100042658910541,-0.562109565077771,0.0225581007555425,0.0380157664014052],"text":["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19"],"type":"scatter","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-1291c197f20c861a6d30" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1291c197f20c861a6d30">{"x":{"visdat":{"5f608b97ce6":["function () ","plotlyVisDat"]},"cur_data":"5f608b97ce6","attrs":{"5f608b97ce6":{"mode":"markers","x":[-0.519139785802849,-0.421668322093998,0.0728823589597481,-0.00945195017208254,0.164050295585754,0.0374794925622059,0.161893975465155,0.0167349431615272,0.217324975228053,0.205556689134182,0.235649945753755,-0.486973827070867,0.169393148665165,0.0652232253635954,0.0814548483289771,-0.110122505165937,0.214924885835122,0.0484035713690156,-0.100388847510803],"y":[-0.0126347016271288,0.0245300098185363,0.0722020301364673,-0.131409063184534,-0.276071775898028,0.155576443973626,-0.418972580420151,0.0898106283574495,0.368142497812644,0.360218778748402,0.293275329148616,-0.0298863719708143,-0.0478190017745415,0.0999834088658637,0.0181757283239082,0.100042658910541,-0.562109565077771,0.0225581007555425,0.0380157664014052],"text":["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19"],"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":[]},"yaxis":{"domain":[0,1],"automargin":true,"title":[]},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"mode":"markers","x":[-0.519139785802849,-0.421668322093998,0.0728823589597481,-0.00945195017208254,0.164050295585754,0.0374794925622059,0.161893975465155,0.0167349431615272,0.217324975228053,0.205556689134182,0.235649945753755,-0.486973827070867,0.169393148665165,0.0652232253635954,0.0814548483289771,-0.110122505165937,0.214924885835122,0.0484035713690156,-0.100388847510803],"y":[-0.0126347016271288,0.0245300098185363,0.0722020301364673,-0.131409063184534,-0.276071775898028,0.155576443973626,-0.418972580420151,0.0898106283574495,0.368142497812644,0.360218778748402,0.293275329148616,-0.0298863719708143,-0.0478190017745415,0.0999834088658637,0.0181757283239082,0.100042658910541,-0.562109565077771,0.0225581007555425,0.0380157664014052],"text":["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19"],"type":"scatter","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 ```
 Use the cursor to identify the points that are clustered apart from the others. If you select the points on the left most of the screen, you will find they are rows 1, 2, and 12
 
@@ -324,7 +325,7 @@ lrt_filt2 <- lrt_filt2[!(lrt_filt2$pvalue=="NaN" | lrt_filt2$LRT=="Inf"| lrt_fil
 lrt_filt2$pvalue<-dchisq(lrt_filt2$LRT, df=1)
 
 #make our plot
-manhattan(lrt_filt2, chr="Chromosome", bp="Position", p="pvalue")
+qqman::manhattan(lrt_filt2, chr="Chromosome", bp="Position", p="pvalue")
 ```
                  
 </p>

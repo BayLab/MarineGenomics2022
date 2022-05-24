@@ -1,14 +1,14 @@
 ---
-title: "Week8_GWAS"
-author: "Serena Caplins"
-date: "5/12/2021"
+title: 
+author: 
+date: 
 output:
   bookdown::html_book:
     toc: yes
     css: toc.css
 ---
 
-```{r setup8, include=FALSE}
+```{r setup8, include=FALSE, warning=F}
 knitr::opts_chunk$set(echo = TRUE)
 knitr::opts_knit$set(root.dir = "/Users/Tali/Desktop/Marine Genomics 2022/MarineGenomics2022/data/Week9_gwas/MarineGenomicsData/Week9")
 ```
@@ -23,11 +23,11 @@ The data for this week consist of several files in beagle format, a genome index
 Let's start by downloading the data we will be working with this week:
 
 ```html
-wget https://raw.githubusercontent.com/BayLab/MarineGenomicsData/main/week8.tar.gz
+wget https://raw.githubusercontent.com/BayLab/MarineGenomicsData/main/Week9_2022.tar.gz
 
-tar -xzvf week8.tar.gz
+tar -xzvf Week9_2022.tar.gz
 ```
-Move the 'Week8' directory from MarineGenomicsData into MarineGenomics and change its name to Week9:
+Move the data from MarineGenomicsData into MarineGenomics and change its name to Week9:
 ```
 mv MarineGenomicsData/Week8 MarineGenomics/Week9
 ```
@@ -59,8 +59,6 @@ To do the test of genome wide association we need to take our Beagle file and te
 Let's move back to the terminal and execute this command:
 
 ``` {.html}
-cd MarineGenomics/Week9
-
 $HOME/angsd/angsd -doMaf 4 -beagle salmon_chr2_19ind.BEAGLE.PL.gz -yBin phenobin -doAsso 2 -fai Salmon.fai
 ```
 This example looks for associations between the genotypes (the genotype likelihood data - beagle file) and the phenotypes (male/female - binary 'phenobin' file). We are using the 'Salmon.fai' file as an index (remember we are using an index for the genome so that it is easier to search against it).
@@ -111,8 +109,8 @@ hist(lrt_filt$LRT, breaks=50)
 Everything looks good to proceed to making our manhattan plot.
 ```{r, include=F}
 require(qqman)
+require(plotly)
 ```
-
 The function 'manhattan' requires each SNP to have it's own "name". Let's make a vector for row numbers that start with the letter 'r'. 
 
 ```{r, eval=T}
@@ -130,7 +128,7 @@ lrt_filt <- lrt_filt[!(lrt_filt$pvalue=="NaN" | lrt_filt$LRT=="Inf"| lrt_filt$pv
 ```
 Create the manhattan plot:
 ```{r, label='8-2', echo=T}
-manhattan(lrt_filt, chr="Chromosome", bp="Position", p="pvalue", suggestiveline = F, genomewideline = F)
+qqman::manhattan(lrt_filt, chr="Chromosome", bp="Position", p="pvalue", suggestiveline = F, genomewideline = F)
 ```
 
 Let's look at a qq-plot of our pvalues to check the model fit
@@ -151,7 +149,7 @@ x <- sample(c(1,0), 19, replace=T)
 write.table(x, "rando_pheno", row.names = F, col.names = F)
 ```
 And now use that phenotype file to run our association test again, making sure to specify a different output file.
-
+Let's go back to the terminal:
 ``` {.html}
 $HOME/angsd/angsd -doMaf 4 -beagle salmon_chr2_19ind.BEAGLE.PL.gz -yBin rando_pheno -doAsso 2 -fai Salmon.fai -out randotest
 ```
@@ -173,14 +171,14 @@ rando_filt <- lrt_rando[!(lrt_rando$LRT==-999 | lrt_rando$LRT<= 0 | lrt_rando$LR
 max(rando_filt$LRT, na.rm=T)
 
 ```
-The maximum value is 12.43623. This value was generated at random, so any value higher than this is expected to be generated not at random (which is what we are looking for). So we can highlight all of the SNPs that have an LRT greater than 12.43623 in our association test.
+The maximum value is ~12 This value was generated at random, so any value higher than this is expected to be generated not at random (which is what we are looking for). So we can highlight all of the SNPs that have an LRT greater than 12 in our association test.
 ```{r, echo=T}
 #make a list of the candidates
-candidates <- lrt_filt[which(lrt_filt$LRT > 12.43623),]$SNP 
+candidates <- lrt_filt[which(lrt_filt$LRT > 12),]$SNP 
 ```
 Let's highlight this list of candidate loci in our manhattan plot:
 ```{r, label='8-4', echo=T}
-manhattan(lrt_filt, chr="Chromosome", bp="Position",  p="pvalue", highlight = candidates, suggestiveline = F, genomewideline = F)
+qqman::manhattan(lrt_filt, chr="Chromosome", bp="Position",  p="pvalue", highlight = candidates, suggestiveline = F, genomewideline = F)
 ```
 
 Comparing our results to the Kijas et al. 2018 paper, we have a similar pattern of many SNPs across the chromosome showing a relationship with phenotype (sex). Interestingly this paper found that there are three chromosomes that are associated with sex in Atlantic Salmon, but not all chromosomes give a strong signal in all individuals. For example, only three male individuals were found to have a clear association with chromosome 2, and the other males in the study were found to have an association with chromosomes 3 and 6. 
@@ -211,7 +209,7 @@ e <- eigen(cov)
 #how much variation are we explaining here?
 e$values/sum(e$values)
 ```
-It looks like 13.8% is explained by the first axis.
+It looks like ~13% is explained by the first axis.
 
 Let's create the PCA plot:
 ```{r, label='8-5', echo=T}
@@ -222,7 +220,7 @@ Let's create the PCA plot:
 e_df <- as.data.frame(e$vectors[,1:2])
 ```
 make a plot of the first two axes
-```{r, echo=F}
+```{r, echo=T}
 plotly::plot_ly(e_df, type = "scatter", mode = "markers", x=e_df$V1, y=e_df$V2, text=row.names(e_df))
 ```
 Use the cursor to identify the points that are clustered apart from the others. If you select the points on the left most of the screen, you will find they are rows 1, 2, and 12
@@ -261,7 +259,7 @@ lrt_filt2 <- lrt_filt2[!(lrt_filt2$pvalue=="NaN" | lrt_filt2$LRT=="Inf"| lrt_fil
 lrt_filt2$pvalue<-dchisq(lrt_filt2$LRT, df=1)
 
 #make our plot
-manhattan(lrt_filt2, chr="Chromosome", bp="Position", p="pvalue")
+qqman::manhattan(lrt_filt2, chr="Chromosome", bp="Position", p="pvalue")
 ```                
                  
 </p>
