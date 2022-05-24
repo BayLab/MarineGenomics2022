@@ -257,10 +257,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10" data-path="week-9-genome-wide-association-study-gwas.html"><a href="week-9-genome-wide-association-study-gwas.html"><i class="fa fa-check"></i><b>10</b> Week 9: Genome wide association study (GWAS)</a>
 <ul>
 <li class="chapter" data-level="10.1" data-path="week-9-genome-wide-association-study-gwas.html"><a href="week-9-genome-wide-association-study-gwas.html#load-in-the-data"><i class="fa fa-check"></i><b>10.1</b> load in the data</a></li>
-<li class="chapter" data-level="10.2" data-path="week-9-genome-wide-association-study-gwas.html"><a href="week-9-genome-wide-association-study-gwas.html#the-data"><i class="fa fa-check"></i><b>10.2</b> The data</a></li>
-<li class="chapter" data-level="10.3" data-path="week-9-genome-wide-association-study-gwas.html"><a href="week-9-genome-wide-association-study-gwas.html#take-beagle-file-and-generate-lrt-file"><i class="fa fa-check"></i><b>10.3</b> take Beagle file and generate lrt file</a></li>
-<li class="chapter" data-level="10.4" data-path="week-9-genome-wide-association-study-gwas.html"><a href="week-9-genome-wide-association-study-gwas.html#take-lrt-file-and-make-a-manhattan-plot"><i class="fa fa-check"></i><b>10.4</b> take lrt file and make a manhattan plot</a></li>
-<li class="chapter" data-level="10.5" data-path="week-9-genome-wide-association-study-gwas.html"><a href="week-9-genome-wide-association-study-gwas.html#exercises-1"><i class="fa fa-check"></i><b>10.5</b> Exercises</a></li>
+<li class="chapter" data-level="10.2" data-path="week-9-genome-wide-association-study-gwas.html"><a href="week-9-genome-wide-association-study-gwas.html#install-packages-in-r"><i class="fa fa-check"></i><b>10.2</b> install packages in R</a></li>
+<li class="chapter" data-level="10.3" data-path="week-9-genome-wide-association-study-gwas.html"><a href="week-9-genome-wide-association-study-gwas.html#the-data"><i class="fa fa-check"></i><b>10.3</b> The data</a></li>
+<li class="chapter" data-level="10.4" data-path="week-9-genome-wide-association-study-gwas.html"><a href="week-9-genome-wide-association-study-gwas.html#take-beagle-file-and-generate-lrt-file"><i class="fa fa-check"></i><b>10.4</b> take Beagle file and generate lrt file</a></li>
+<li class="chapter" data-level="10.5" data-path="week-9-genome-wide-association-study-gwas.html"><a href="week-9-genome-wide-association-study-gwas.html#take-lrt-file-and-make-a-manhattan-plot"><i class="fa fa-check"></i><b>10.5</b> take lrt file and make a manhattan plot</a></li>
+<li class="chapter" data-level="10.6" data-path="week-9-genome-wide-association-study-gwas.html"><a href="week-9-genome-wide-association-study-gwas.html#exercises-1"><i class="fa fa-check"></i><b>10.6</b> Exercises</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -476,8 +477,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## 
 ## SAMPLING FOR MODEL &#39;space_multiK&#39; NOW (CHAIN 1).
 ## Chain 1: 
-## Chain 1: Gradient evaluation took 0.021 seconds
-## Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 210 seconds.
+## Chain 1: Gradient evaluation took 0.016 seconds
+## Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 160 seconds.
 ## Chain 1: Adjust your expectations accordingly!
 ## Chain 1: 
 ## Chain 1: 
@@ -495,9 +496,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Chain 1: Iteration: 9 / 10 [ 90%]  (Sampling)
 ## Chain 1: Iteration: 10 / 10 [100%]  (Sampling)
 ## Chain 1: 
-## Chain 1:  Elapsed Time: 0.202 seconds (Warm-up)
-## Chain 1:                0.564 seconds (Sampling)
-## Chain 1:                0.766 seconds (Total)
+## Chain 1:  Elapsed Time: 0.196 seconds (Warm-up)
+## Chain 1:                0.134 seconds (Sampling)
+## Chain 1:                0.33 seconds (Total)
 ## Chain 1:</code></pre>
 <div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb403-1"><a href="population-structure-via-construct.html#cb403-1" aria-hidden="true" tabindex="-1"></a><span class="co">#remake our structure plots</span></span>
 <span id="cb403-2"><a href="population-structure-via-construct.html#cb403-2" aria-hidden="true" tabindex="-1"></a></span>

@@ -17,11 +17,10 @@ This week we're going to show you how to perform a genome wide association study
 ## load in the data 
 
 The data for this week consist of several files in beagle format, a genome index file (.fai), and a few small text files.
+Let's start by downloading the data we will be working with this week:
 
 ```html
-
 wget https://raw.githubusercontent.com/BayLab/MarineGenomicsData/main/week8.tar.gz
-
 
 tar -xzvf week8.tar.gz
 ```
@@ -29,14 +28,11 @@ Move the 'Week8' directory from MarineGenomicsData into MarineGenomics and chang
 ```
 mv MarineGenomicsData/Week8 MarineGenomics/Week9
 ```
-
-
-#and one more file that was too big to upload with the others
-
+and one more file that was too big to upload with the others
+``` {.html}
 cd MarineGenomics/Week9
 
 wget https://raw.githubusercontent.com/BayLab/MarineGenomicsData/main/salmon_chr6_19ind.BEAGLE.PL.gz
-
 ```
 
 Now that we've finished downloading the data, let's open Rsutdio and install the package necessary for our today's lesson
@@ -58,22 +54,20 @@ The data we're working on for the GWAS comes from the paper by Kijas et al. 2018
 
 To do the test of genome wide association we need to take our Beagle file and test whether there is an association with our phenotype (in this case whether a fish has a male or female phenotype). The phenotypes are coded as 0 = Female and 1 = Male in the `phenobin` file. 
 
-Let's move back to the termianl and execute this command:
+Let's move back to the terminal and execute this command:
 
-```html
+``` {.html}
 cd MarineGenomics/Week9
 
 $HOME/angsd/angsd -doMaf 4 -beagle salmon_chr2_19ind.BEAGLE.PL.gz -yBin phenobin -doAsso 2 -fai Salmon.fai
-
 ```
 This example looks for associations between the genotypes (the genotype likelihood data - beagle file) and the phenotypes (male/female - binary 'phenobin' file). We are using the 'Salmon.fai' file as an index (remember we are using an index for the genome so that it is easier to search against it).
-This will generate several output files labeled `angsdput`. We'll use the file with the lrt0 extension to plot our manattan plot.
+This will generate several output files labeled `angsdput`. We'll use the file with the `lrt0` extension to plot our manattan plot.
 
 Let's go back to Rstudio:
 
 ## take lrt file and make a manhattan plot
-LRT is the likelihood ratio statistic. This statistic is chi square distributed with one degree of freedom. Sites that fails one of the filters are given the value -999.000000. 
-
+LRT is the likelihood ratio statistic. This statistic is chi square distributed with one degree of freedom. Sites that fails one of the filters are given the value -999. 
 
 
 ```r
@@ -131,7 +125,7 @@ length(lrt$LRT)-length(which(lrt$LRT == -999))
 ```
 The answer is 13863.
 
-Let's remove the values that are not -999 and that are negative and asign them to a new object called 'lrt_filt'.
+Let's remove the values that are not -999 and or negative and assign them to a new object called 'lrt_filt'.
 
 ```r
 lrt_filt <- lrt[-c(which(lrt$LRT == -999),which(lrt$LRT <= 0)),]
@@ -164,7 +158,6 @@ lrt_filt$pvalue<-dchisq(lrt_filt$LRT, df=1)
 #we also need to make sure we don't have any tricky values like those below
 lrt_filt <- lrt_filt[!(lrt_filt$pvalue=="NaN" | lrt_filt$LRT=="Inf"| lrt_filt$pvalue=="Inf"),]
 ```
-
 Create the manhattan plot:
 
 ```r
@@ -172,21 +165,16 @@ manhattan(lrt_filt, chr="Chromosome", bp="Position", p="pvalue", suggestiveline 
 ```
 
 <img src="09-Week9.gwas_files/figure-html/8-2-1.png" width="672" />
-
 Let's look at a qq-plot of our pvalues to check the model fit
-
 
 ```r
 qq(lrt_filt$pvalue)
 ```
 
 <img src="09-Week9.gwas_files/figure-html/8-3-1.png" width="672" />
-
 This looks a bit weird, we would expect it to be mostly a straight line with some deviations at the upper right. If we were moving forward with this analyses we'd want to do more filtering of our data.
 
 We can highlight the values that exceed a threshold. There are several ways to determine a threshold, but one is to make a vector of random phenotypes and re-run our association test. We can then set the highest LRT value from the random phenotype test as our upper limit for our plot with the actual phenotypes.
-
-
 
 ```r
 #make a vector with 19 1's and 0's
@@ -197,13 +185,10 @@ x <- sample(c(1,0), 19, replace=T)
 
 write.table(x, "rando_pheno", row.names = F, col.names = F)
 ```
-
 And now use that phenotype file to run our association test again, making sure to specify a different output file.
 
-```html
-
+``` {.html}
 $HOME/angsd/angsd -doMaf 4 -beagle salmon_chr2_19ind.BEAGLE.PL.gz -yBin rando_pheno -doAsso 2 -fai Salmon.fai -out randotest
-
 ```
 And rerun the code in R to see what our maximum LRT values are in this random phenotype test.
 
@@ -226,25 +211,22 @@ summary(rando_filt$LRT, na.rm=T)
 #we have some Inf values we also need to remove, let's add those to our filtering line above
 rando_filt <- lrt_rando[!(lrt_rando$LRT==-999 | lrt_rando$LRT<= 0 | lrt_rando$LRT == Inf),]
 
-#Let's look at the maximum value of LRT
+#let's look at the maximum value of LRT
 max(rando_filt$LRT, na.rm=T)
 ```
 
 ```
 ## [1] 12.33287
 ```
-
 The maximum value is 12.43623. This value was generated at random, so any value higher than this is expected to be generated not at random (which is what we are looking for). So we can highlight all of the SNPs that have an LRT greater than 12.43623 in our association test.
-
 
 ```r
 #make a list of the candidates
 candidates <- lrt_filt[which(lrt_filt$LRT > 12.43623),]$SNP 
 ```
-
+Let's highlight this list of candidate loci in our manhattan plot:
 
 ```r
-#refer to that list of candidates with the highlight parameter
 manhattan(lrt_filt, chr="Chromosome", bp="Position",  p="pvalue", highlight = candidates, suggestiveline = F, genomewideline = F)
 ```
 
@@ -254,7 +236,7 @@ Comparing our results to the Kijas et al. 2018 paper, we have a similar pattern 
 
 These results highlight the fluid nature of sex determination in animals, even those with a genetic basis to sex determination.
 
-For the exercise you'll take a closer look at chromosome 6, where you'll try to find the individuals that are male from a PCA plot.
+For these exercises you'll take a closer look at chromosome 6, where you'll try to find the individuals that are males from a PCA plot.
 
 ## Exercises
 
@@ -263,20 +245,17 @@ For the exercise you'll take a closer look at chromosome 6, where you'll try to 
 <details><summary><span style="color: orange;">Solution</span></summary>
 <p>
 
-```html
-#run pcangsd on our chr6 data
+Run pcangsd on our chr6 data
+``` {.html}
 pcangsd -b salmon_chr6_19ind.BEAGLE.PL.gz -o pca6_out -t 28
-
 ```
 In R make a PCA plot
-
 
 ```r
 #read in the data
 cov <- as.matrix(read.table("pca6_out.cov"))
 
 #compute the eigen values
-
 e <- eigen(cov)
 
 #how much variation are we explaining here?
@@ -289,23 +268,9 @@ e$values/sum(e$values)
 ## [11]  0.0423030396  0.0368221717  0.0329494215  0.0316195242  0.0269138675
 ## [16]  0.0184940705  0.0149661517 -0.0006450986 -0.0107116466
 ```
-
-```r
-#looks like 12.7% is explained by the first axis
-```
+It looks like 13.8% is explained by the first axis.
 
 Let's create the PCA plot:
-
-```r
-#First, we'll install a new package called 'plotly' that lets us create interactive plots:
-#install.packages("plotly")
-
-#create a dataframe from the first two PC in object e
-e_df <- as.data.frame(e$vectors[,1:2])
-
-#make a plot of the first two axes
-plotly::plot_ly(e_df, x=e_df$V1, y=e_df$V2, text=row.names(e_df))
-```
 
 ```
 ## No trace type specified:
@@ -320,8 +285,8 @@ plotly::plot_ly(e_df, x=e_df$V1, y=e_df$V2, text=row.names(e_df))
 ```
 
 ```{=html}
-<div id="htmlwidget-72eee51348bf77816618" style="width:672px;height:480px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-72eee51348bf77816618">{"x":{"visdat":{"653c190f1afc":["function () ","plotlyVisDat"]},"cur_data":"653c190f1afc","attrs":{"653c190f1afc":{"x":[-0.519139785802849,-0.421668322093998,0.0728823589597481,-0.00945195017208254,0.164050295585754,0.0374794925622059,0.161893975465155,0.0167349431615272,0.217324975228053,0.205556689134182,0.235649945753755,-0.486973827070867,0.169393148665165,0.0652232253635954,0.0814548483289771,-0.110122505165937,0.214924885835122,0.0484035713690156,-0.100388847510803],"y":[-0.0126347016271288,0.0245300098185363,0.0722020301364673,-0.131409063184534,-0.276071775898028,0.155576443973626,-0.418972580420151,0.0898106283574495,0.368142497812644,0.360218778748402,0.293275329148616,-0.0298863719708143,-0.0478190017745415,0.0999834088658637,0.0181757283239082,0.100042658910541,-0.562109565077771,0.0225581007555425,0.0380157664014052],"text":["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19"],"alpha_stroke":1,"sizes":[10,100],"spans":[1,20]}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":[]},"yaxis":{"domain":[0,1],"automargin":true,"title":[]},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[-0.519139785802849,-0.421668322093998,0.0728823589597481,-0.00945195017208254,0.164050295585754,0.0374794925622059,0.161893975465155,0.0167349431615272,0.217324975228053,0.205556689134182,0.235649945753755,-0.486973827070867,0.169393148665165,0.0652232253635954,0.0814548483289771,-0.110122505165937,0.214924885835122,0.0484035713690156,-0.100388847510803],"y":[-0.0126347016271288,0.0245300098185363,0.0722020301364673,-0.131409063184534,-0.276071775898028,0.155576443973626,-0.418972580420151,0.0898106283574495,0.368142497812644,0.360218778748402,0.293275329148616,-0.0298863719708143,-0.0478190017745415,0.0999834088658637,0.0181757283239082,0.100042658910541,-0.562109565077771,0.0225581007555425,0.0380157664014052],"text":["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19"],"type":"scatter","mode":"markers","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-a22ba076de48c026e343" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-a22ba076de48c026e343">{"x":{"visdat":{"2520d1f3c13":["function () ","plotlyVisDat"]},"cur_data":"2520d1f3c13","attrs":{"2520d1f3c13":{"x":[-0.519139785802849,-0.421668322093998,0.0728823589597481,-0.00945195017208254,0.164050295585754,0.0374794925622059,0.161893975465155,0.0167349431615272,0.217324975228053,0.205556689134182,0.235649945753755,-0.486973827070867,0.169393148665165,0.0652232253635954,0.0814548483289771,-0.110122505165937,0.214924885835122,0.0484035713690156,-0.100388847510803],"y":[-0.0126347016271288,0.0245300098185363,0.0722020301364673,-0.131409063184534,-0.276071775898028,0.155576443973626,-0.418972580420151,0.0898106283574495,0.368142497812644,0.360218778748402,0.293275329148616,-0.0298863719708143,-0.0478190017745415,0.0999834088658637,0.0181757283239082,0.100042658910541,-0.562109565077771,0.0225581007555425,0.0380157664014052],"text":["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19"],"alpha_stroke":1,"sizes":[10,100],"spans":[1,20]}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":[]},"yaxis":{"domain":[0,1],"automargin":true,"title":[]},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[-0.519139785802849,-0.421668322093998,0.0728823589597481,-0.00945195017208254,0.164050295585754,0.0374794925622059,0.161893975465155,0.0167349431615272,0.217324975228053,0.205556689134182,0.235649945753755,-0.486973827070867,0.169393148665165,0.0652232253635954,0.0814548483289771,-0.110122505165937,0.214924885835122,0.0484035713690156,-0.100388847510803],"y":[-0.0126347016271288,0.0245300098185363,0.0722020301364673,-0.131409063184534,-0.276071775898028,0.155576443973626,-0.418972580420151,0.0898106283574495,0.368142497812644,0.360218778748402,0.293275329148616,-0.0298863719708143,-0.0478190017745415,0.0999834088658637,0.0181757283239082,0.100042658910541,-0.562109565077771,0.0225581007555425,0.0380157664014052],"text":["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19"],"type":"scatter","mode":"markers","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 ```
 Use the cursor to identify the points that are clustered apart from the others. If you select the points on the left most of the screen, you will find they are rows 1, 2, and 12
 
@@ -332,49 +297,35 @@ The other two points that are leftmost from the remaining points are 16 and 19, 
 &nbsp;
 
 
-> 2. Make a manhattan plot for chromosome 6. You will need to make a new phenotype file that has 1's for all the males identified in problem 1. Alterntatively, you can make a phenotype file from table 1 in Kilas et al. 2018, setting the animals that were found to be male on chr 6 to 1 and all other animals to 0.
+> 2. Make a manhattan plot for chromosome 6. Use a phenotype file called `pheno_chr6`. 
 
 <details><summary><span style="color: orange;">Solution</span></summary>
 <p>
 
-and now we can run our pcangsd code
-
-
 ```r
-#make a phenotype file, note you can also do this in nano or vim in the terminal. Whichever makes sense for you.
-pheno_chr6 <- c(1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 0, 1, 0, 1, 1, 0, 0)
+#In the terminal, run the command in angsd again using the chr6 BEAGLE file and the 'pheno_chr6' file.
 
-
-write.table(pheno_chr6, file = "phenobin_ch6", row.names = F, col.names = F )
+# $HOME/angsd/angsd -doMaf 4 -beagle salmon_chr6_19ind.BEAGLE.PL.gz -yBin pheno_chr6 -doAsso 2 -fai Salmon.fai -out chr6_out                 
                 
+#and then we can remake our manhattan plot
 
-#then in the terminal run our command in angsd again using the chr6 BEAGLE file and the phenotype file we just made
-
-
-# $HOME/angsd/angsd -doMaf 4 -beagle salmon_chr6_19ind.BEAGLE.PL.gz -yBin phenobin_ch6 -doAsso 2 -fai Salmon.fai -out chr6_out                 
-                
-#and then we can remake our manhattan plot by copying and pasting the code above
-
-lrt <- read.table(gzfile("chr6_out.lrt0.gz"), header=T, sep="\t")
+lrt2 <- read.table(gzfile("chr6_out.lrt0.gz"), header=T, sep="\t")
 
 #look at it
-str(lrt)
+str(lrt2)
 
 #remove the values that are not -999 and that are negative
-
-lrt_filt<-lrt[-c(which(lrt$LRT == -999),which(lrt$LRT <= 0)),]                 
-lrt_filt$SNP <- paste("r",1:length(lrt_filt$Chromosome), sep="")
+lrt_filt2 <- lrt2[-c(which(lrt2$LRT == -999),which(lrt2$LRT <= 0)),]                 
+lrt_filt2$SNP <- paste("r",1:length(lrt_filt2$Chromosome), sep="")
 
 #we also need to make sure we don't have any tricky values like those below
-lrt_filt<-lrt_filt[-c(which(lrt_filt$pvalue == "NaN" ),
-                      which(lrt_filt$pvalue == "Inf"),
-                      which(lrt_filt$LRT == "Inf")),]
+lrt_filt2 <- lrt_filt2[!(lrt_filt2$pvalue=="NaN" | lrt_filt2$LRT=="Inf"| lrt_filt2$pvalue=="Inf"),]
                       
 #get pvalues
-lrt_filt$pvalue<-dchisq(lrt_filt$LRT, df=1)
+lrt_filt2$pvalue<-dchisq(lrt_filt2$LRT, df=1)
 
 #make our plot
-manhattan(lrt_filt, chr="Chromosome", bp="Position", p="pvalue")
+manhattan(lrt_filt2, chr="Chromosome", bp="Position", p="pvalue")
 ```
                  
 </p>

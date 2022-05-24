@@ -92,6 +92,7 @@ using-fst-to-find-outliers
 outflank-practice
 week-9-genome-wide-association-study-gwas
 load-in-the-data
+install-packages-in-r
 the-data
 take-beagle-file-and-generate-lrt-file
 take-lrt-file-and-make-a-manhattan-plot
