@@ -212,15 +212,16 @@ e$values/sum(e$values)
 It looks like 13.8% is explained by the first axis.
 
 Let's create the PCA plot:
-```{r, label='8-5', echo=F}
+```{r, label='8-5', echo=T}
 #First, we'll install a new package called 'plotly' that lets us create interactive plots:
 #install.packages("plotly")
 
 #create a dataframe from the first two PC in object e
 e_df <- as.data.frame(e$vectors[,1:2])
-
-#make a plot of the first two axes
-plotly::plot_ly(e_df, x=e_df$V1, y=e_df$V2, text=row.names(e_df))
+```
+make a plot of the first two axes
+```{r, echo=F}
+plotly::plot_ly(e_df, type = "scatter", mode = "markers", x=e_df$V1, y=e_df$V2, text=row.names(e_df))
 ```
 Use the cursor to identify the points that are clustered apart from the others. If you select the points on the left most of the screen, you will find they are rows 1, 2, and 12
 
