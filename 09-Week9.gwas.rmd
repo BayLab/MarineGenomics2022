@@ -10,10 +10,9 @@ output:
 
 ```{r setup8, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-knitr::opts_knit$set(root.dir = "/Users/ericaspotswoodnielsen/Desktop/PD_stuffies/teaching/MarineGenomics2022/data/Week9_gwas/MarineGenomicsData/Week9")
 ```
 
-# Week 8: Genome wide association study (GWAS)
+# Week 9: Genome wide association study (GWAS)
 
 This week we're going to show you how to perform a genome wide association study or GWAS.  
 
@@ -31,18 +30,26 @@ wget https://raw.githubusercontent.com/BayLab/MarineGenomicsData/main/week8.tar.
 
 
 tar -xzvf week8.tar.gz
+```
+Move the 'Week8' directory from MarineGenomicsData into MarineGenomics and change its name to Week9:
+```
+mv MarineGenomicsData/Week8 MarineGenomics/Week9
+```
+
 
 #and one more file that was too big to upload with the others
 
-cd MarineGenomicsData/week8
+cd MarineGenomics/Week9
 
 wget https://raw.githubusercontent.com/BayLab/MarineGenomicsData/main/salmon_chr6_19ind.BEAGLE.PL.gz
 
 ```
 
+Now that we've finished downloading the data, let's open Rsutdio and install the package necessary for our today's lesson
+
 ## install packages in R
 
-We'll be using the package `qqman` to make a manhattan plot.
+We'll be using the package `qqman` to make a manhattan plot. Make sure not to copy the # sign into the R console/script.
 
 ```{r, echo=T}
 
@@ -50,125 +57,93 @@ We'll be using the package `qqman` to make a manhattan plot.
 
 ```
 
-## install angsd and pcangsd (again?)
-
-If you missed week 6 and didn't get pcangsd or angsd(week 3) installed. Here are the scripts to install them.They take a few minutes to install. There is no need to install these again if you installed them last time. 
-
-### install angsd
-
-```html
-cd
-  git clone --recursive https://github.com/samtools/htslib.git
-  git clone https://github.com/ANGSD/angsd.git 
-  cd htslib;make;cd ../angsd ;make HTSSRC=../htslib
-   
-cd
-```
-### for pcangsd
-```html
-install pip for python
-
-curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-python3 get-pip.py
-```
-
-we need to add our home directory to the path for pip
-look at path echo $PATH
-
-add the location of pip to our path
-```html
-export PATH="$HOME/.local/bin:$PATH"
-```
-
-then install pcangsd
-
-```html
-git clone https://github.com/Rosemeis/pcangsd.git
-cd pcangsd/
-pip install --user -r requirements.txt #this installs additional requirements for pcangsd
-python3 setup.py build_ext --inplace
-```
-
 ## The data
 
-The data we're working on for the GWAS comes from the paper by Kijas et al. 2018 where they studied the genetic basis of sex determination in the atlantic Salmon. The paper can be found [here](https://www.nature.com/articles/s41598-018-23984-1#Sec2). In short they examined the genetic basis of sex in 19 salmon for which they have whole genome sequence data. We'll only be looking at two chromosomes (2 and 6) of this data.
+The data we're working on for the GWAS comes from the paper by Kijas et al. 2018 where they studied the genetic basis of sex determination in the atlantic Salmon. The paper can be found [here](https://www.nature.com/articles/s41598-018-23984-1#Sec2) or on Canvas. In short they examined the genetic basis of sex in 19 salmon for which they have whole genome sequence data. We'll only be looking at two chromosomes (2 and 6) of this data.
 
 ## take Beagle file and generate lrt file
 
 To do the test of genome wide association we need to take our Beagle file and test whether there is an association with our phenotype (in this case whether a fish has a male or female phenotype). The phenotypes are coded as 0 = Female and 1 = Male in the `phenobin` file. 
 
+Let's move back to the termianl and execute this command:
+
 ```html
+cd MarineGenomics/Week9
+
 $HOME/angsd/angsd -doMaf 4 -beagle salmon_chr2_19ind.BEAGLE.PL.gz -yBin phenobin -doAsso 2 -fai Salmon.fai
 
 ```
-
+This example looks for associations between the genotypes (the genotype likelihood data - beagle file) and the phenotypes (male/female - binary 'phenobin' file). We are using the 'Salmon.fai' file as an index (remember we are using an index for the genome so that it is easier to search against it).
 This will generate several output files labeled `angsdput`. We'll use the file with the lrt0 extension to plot our manattan plot.
 
+Let's go back to Rstudio:
+
 ## take lrt file and make a manhattan plot
+LRT is the likelihood ratio statistic. This statistic is chi square distributed with one degree of freedom. Sites that fails one of the filters are given the value -999.000000. 
 
-```{r, eval=F}
-#in R
-#set working directory
-
-setwd("/home/margeno/MarineGenomicsData/Week8")
-```
 
 ```{r, include=T}
+#Set the working directory for this week's directory
+setwd("~/MarineGenomics/Week9")
+
 #read in the data
-lrt<-read.table(gzfile("angsdput.lrt0.gz"), header=T, sep="\t")
+lrt <- read.table(gzfile("angsdput.lrt0.gz"), header=T, sep="\t")
 
 #look at it
 str(lrt)
 
-#we have a few LRT values that are -999, we should remove them. How many do we have?
+#we have a few LRT values that are -999, that means that the test failed. we should remove them. How many do we have?
 length(which(lrt$LRT == -999))
-#210597 #most are filtered out
+```
+The answer is 210597.
 
+How many LRT values (in this case, loci) do we have in total?
+```{r, include=T}
 length(lrt$LRT)
-#224460
+```
+The answer is 224460, meaning that most are filtered out.
 
+How many do we have left when we remove loci with failed tests?
+```{r, include=T}
 length(lrt$LRT)-length(which(lrt$LRT == -999))
-#[1] 13863
+```
+The answer is 13863.
 
-
-#remove the values that are not -999 and that are negative
-
-lrt_filt<-lrt[-c(which(lrt$LRT == -999),which(lrt$LRT <= 0)),]
+Let's remove the values that are not -999 and that are negative and asign them to a new object called 'lrt_filt'.
+```{r, include=T}
+lrt_filt <- lrt[-c(which(lrt$LRT == -999),which(lrt$LRT <= 0)),]
 ```
 
+We can look at a histogram of the filtered LRT results:
 ```{r, label='8-1', echo=T}
-
 hist(lrt_filt$LRT, breaks=50)
 ```
 
-
 Everything looks good to proceed to making our manhattan plot.
-
 ```{r, include=F}
-
 require(qqman)
 ```
 
-```{r, eval=F}
-require (qqman)
-```
-the function manhattan requires each SNP to have it's own "name". Let's make a vector for rownumbers that start with the letter r. We also need to convert our LRT values to pvalues. We'll use the command `dchisq` to get pvalues.
+The function 'manhattan' requires each SNP to have it's own "name". Let's make a vector for row numbers that start with the letter 'r'. 
 
 ```{r, eval=T}
-lrt_filt$SNP<-paste("r",1:length(lrt_filt$Chromosome), sep="")
-
-#we also need to make sure we don't have any tricky values like those below
-lrt_filt<-lrt_filt[-c(which(lrt_filt$pvalue == "NaN" ),
-                      which(lrt_filt$pvalue == "Inf"),
-                      which(lrt_filt$LRT == "Inf")),]
-                      
-#get pvalues
-lrt_filt$pvalue<-dchisq(lrt_filt$LRT, df=1)
+lrt_filt$SNP <- paste("r",1:length(lrt_filt$Chromosome), sep="")
 ```
 
+We also need to convert our LRT values to pvalues. We'll use the command `dchisq` to get pvalues from the LRT values.
+```{r, eval=T}
+#get pvalues
+lrt_filt$pvalue<-dchisq(lrt_filt$LRT, df=1)
+
+#we also need to make sure we don't have any tricky values like those below
+lrt_filt <- lrt_filt[!(lrt_filt$pvalue=="NaN" | lrt_filt$LRT=="Inf"| lrt_filt$pvalue=="Inf"),]
+
+```
+
+Create the manhattan plot:
 ```{r, label='8-2', echo=T}
 
-manhattan(lrt_filt, chr="Chromosome", bp="Position", p="pvalue")
+manhattan(lrt_filt, chr="Chromosome", bp="Position", p="pvalue", suggestiveline = F, genomewideline = F)
 
 ```
 
@@ -176,23 +151,23 @@ Let's look at a qq-plot of our pvalues to check the model fit
 
 ```{r, label='8-3', echo=T}
 
-qqnorm(lrt_filt$pvalue)
+qq(lrt_filt$pvalue)
 
 ```
 
 This looks a bit weird, we would expect it to be mostly a straight line with some deviations at the upper right. If we were moving forward with this analyses we'd want to do more filtering of our data.
 
-We can highlight the values that are exceed a threshold. There are several ways to determine a threshold, but one is to make a vector of random phenotypes and re-run our association test. We can then set the highest LRT value from the random phenotype test as our upper limit for our plot with the actual phenotypes.
+We can highlight the values that exceed a threshold. There are several ways to determine a threshold, but one is to make a vector of random phenotypes and re-run our association test. We can then set the highest LRT value from the random phenotype test as our upper limit for our plot with the actual phenotypes.
 
 
 ```{r, echo=T}
 #make a vector with 19 1's and 0's
 
-x<-sample(c(1,0), 19, replace=T)
+x <- sample(c(1,0), 19, replace=T)
 
-#write this to our week 8 directory
+#write this to our week 9 directory
 
-write.table(x, "rando_pheno", row.names = F)
+write.table(x, "rando_pheno", row.names = F, col.names = F)
 
 ```
 
@@ -203,8 +178,6 @@ And now use that phenotype file to run our association test again, making sure t
 $HOME/angsd/angsd -doMaf 4 -beagle salmon_chr2_19ind.BEAGLE.PL.gz -yBin rando_pheno -doAsso 2 -fai Salmon.fai -out randotest
 
 ```
-
-
 And rerun the code in R to see what our maximum LRT values are in this random phenotype test.
 
 ```{r, echo=T}
@@ -353,8 +326,3 @@ manhattan(lrt_filt, chr="Chromosome", bp="Position", p="pvalue")
                  
 </p>
 </details>
-
-## Creature of the Week!
-![The lovely Mantis Shrimp (image credit: Dorothea OLDANI,Unsplash)](./figs/creatures/mantisshrimp.png)
-
-
