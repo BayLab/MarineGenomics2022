@@ -250,13 +250,16 @@ str(lrt2)
 
 #remove the values that are not -999 and that are negative
 lrt_filt2 <- lrt2[-c(which(lrt2$LRT == -999),which(lrt2$LRT <= 0)),]                 
+
+#make a vector for row numbers that start with the letter 'r'. 
 lrt_filt2$SNP <- paste("r",1:length(lrt_filt2$Chromosome), sep="")
+
+#get pvalues
+lrt_filt2$pvalue <- dchisq(lrt_filt2$LRT, df=1)
 
 #we also need to make sure we don't have any tricky values like those below
 lrt_filt2 <- lrt_filt2[!(lrt_filt2$pvalue=="NaN" | lrt_filt2$LRT=="Inf"| lrt_filt2$pvalue=="Inf"),]
                       
-#get pvalues
-lrt_filt2$pvalue<-dchisq(lrt_filt2$LRT, df=1)
 
 #make our plot
 qqman::manhattan(lrt_filt2, chr="Chromosome", bp="Position", p="pvalue")
