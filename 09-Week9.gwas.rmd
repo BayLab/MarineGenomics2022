@@ -259,7 +259,6 @@ lrt_filt2$pvalue <- dchisq(lrt_filt2$LRT, df=1)
 
 #we also need to make sure we don't have any tricky values like those below
 lrt_filt2 <- lrt_filt2[!(lrt_filt2$pvalue=="NaN" | lrt_filt2$LRT=="Inf"| lrt_filt2$pvalue=="Inf"),]
-                      
 
 #make our plot
 qqman::manhattan(lrt_filt2, chr="Chromosome", bp="Position", p="pvalue")
