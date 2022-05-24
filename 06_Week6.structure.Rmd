@@ -10,7 +10,7 @@ output:
 
 ```{r setupweek12, include=FALSE}
 knitr::opts_chunk$set(echo = F,error = F,fig.width = 8,message = FALSE)
-knitr::opts_knit$set(root.dir = "/Users/ericaspotswoodnielsen/Desktop/PD_stuffies/teaching/MarineGenomics2022/data/week6_structure")
+knitr::opts_knit$set(root.dir = "/Users/Tali/Desktop/Marine Genomics 2022/MarineGenomics2022/data/Week6_structure")
 ```
 
 # Population Structure via conStruct

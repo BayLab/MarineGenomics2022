@@ -4,22 +4,23 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>5 Week 4 - The R environment | MarGen2022</title>
-  <meta name="description" content="" />
-  <meta name="generator" content="bookdown 0.26.2 and GitBook 2.6.7" />
+  <title>5 Week 4 - The R environment | Week8_GWAS</title>
+  <meta name="description" content="5 Week 4 - The R environment | Week8_GWAS" />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="5 Week 4 - The R environment | MarGen2022" />
+  <meta property="og:title" content="5 Week 4 - The R environment | Week8_GWAS" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="5 Week 4 - The R environment | MarGen2022" />
+  <meta name="twitter:title" content="5 Week 4 - The R environment | Week8_GWAS" />
   
   
   
 
+<meta name="author" content="Serena Caplins" />
 
 
 
@@ -50,6 +51,13 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -246,6 +254,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.5" data-path="week-8--fst-and-outlier-analysis.html"><a href="week-8--fst-and-outlier-analysis.html#using-fst-to-find-outliers"><i class="fa fa-check"></i><b>9.5</b> Using F<sub>st</sub> to find outliers</a></li>
 <li class="chapter" data-level="9.6" data-path="week-8--fst-and-outlier-analysis.html"><a href="week-8--fst-and-outlier-analysis.html#outflank-practice"><i class="fa fa-check"></i><b>9.6</b> OutFLANK Practice</a></li>
 </ul></li>
+<li class="chapter" data-level="10" data-path="week-9-genome-wide-association-study-gwas.html"><a href="week-9-genome-wide-association-study-gwas.html"><i class="fa fa-check"></i><b>10</b> Week 9: Genome wide association study (GWAS)</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="week-9-genome-wide-association-study-gwas.html"><a href="week-9-genome-wide-association-study-gwas.html#load-in-the-data"><i class="fa fa-check"></i><b>10.1</b> load in the data</a></li>
+<li class="chapter" data-level="10.2" data-path="week-9-genome-wide-association-study-gwas.html"><a href="week-9-genome-wide-association-study-gwas.html#the-data"><i class="fa fa-check"></i><b>10.2</b> The data</a></li>
+<li class="chapter" data-level="10.3" data-path="week-9-genome-wide-association-study-gwas.html"><a href="week-9-genome-wide-association-study-gwas.html#take-beagle-file-and-generate-lrt-file"><i class="fa fa-check"></i><b>10.3</b> take Beagle file and generate lrt file</a></li>
+<li class="chapter" data-level="10.4" data-path="week-9-genome-wide-association-study-gwas.html"><a href="week-9-genome-wide-association-study-gwas.html#take-lrt-file-and-make-a-manhattan-plot"><i class="fa fa-check"></i><b>10.4</b> take lrt file and make a manhattan plot</a></li>
+<li class="chapter" data-level="10.5" data-path="week-9-genome-wide-association-study-gwas.html"><a href="week-9-genome-wide-association-study-gwas.html#exercises-1"><i class="fa fa-check"></i><b>10.5</b> Exercises</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -258,7 +274,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Week8_GWAS</a>
           </h1>
         </div>
 
@@ -372,30 +388,30 @@ We can use this script to copy (from the website) the commands we use and paste 
 <span id="cb200-2"><a href="week-4---the-r-environment.html#cb200-2" aria-hidden="true" tabindex="-1"></a><span class="co"># tail() -look at the end of the data file</span></span>
 <span id="cb200-3"><a href="week-4---the-r-environment.html#cb200-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb200-4"><a href="week-4---the-r-environment.html#cb200-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(msleep)</span></code></pre></div>
-<pre><code>## # A tibble: 6 × 11
+<pre><code>## # A tibble: 6 x 11
 ##   name    genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
 ##   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
-## 1 Cheetah Acin… carni Carn… lc                  12.1      NA        NA      11.9
-## 2 Owl mo… Aotus omni  Prim… &lt;NA&gt;                17         1.8      NA       7  
-## 3 Mounta… Aplo… herbi Rode… nt                  14.4       2.4      NA       9.6
-## 4 Greate… Blar… omni  Sori… lc                  14.9       2.3       0.133   9.1
-## 5 Cow     Bos   herbi Arti… domesticated         4         0.7       0.667  20  
-## 6 Three-… Brad… herbi Pilo… &lt;NA&gt;                14.4       2.2       0.767   9.6
-## # … with 2 more variables: brainwt &lt;dbl&gt;, bodywt &lt;dbl&gt;</code></pre>
+## 1 Cheetah Acin~ carni Carn~ lc                  12.1      NA        NA      11.9
+## 2 Owl mo~ Aotus omni  Prim~ &lt;NA&gt;                17         1.8      NA       7  
+## 3 Mounta~ Aplo~ herbi Rode~ nt                  14.4       2.4      NA       9.6
+## 4 Greate~ Blar~ omni  Sori~ lc                  14.9       2.3       0.133   9.1
+## 5 Cow     Bos   herbi Arti~ domesticated         4         0.7       0.667  20  
+## 6 Three-~ Brad~ herbi Pilo~ &lt;NA&gt;                14.4       2.2       0.767   9.6
+## # ... with 2 more variables: brainwt &lt;dbl&gt;, bodywt &lt;dbl&gt;</code></pre>
 <div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="week-4---the-r-environment.html#cb202-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(msleep)</span></code></pre></div>
-<pre><code>## # A tibble: 6 × 11
+<pre><code>## # A tibble: 6 x 11
 ##   name    genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
 ##   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
-## 1 Tenrec  Tenr… omni  Afro… &lt;NA&gt;                15.6       2.3      NA       8.4
-## 2 Tree s… Tupa… omni  Scan… &lt;NA&gt;                 8.9       2.6       0.233  15.1
-## 3 Bottle… Turs… carni Ceta… &lt;NA&gt;                 5.2      NA        NA      18.8
-## 4 Genet   Gene… carni Carn… &lt;NA&gt;                 6.3       1.3      NA      17.7
-## 5 Arctic… Vulp… carni Carn… &lt;NA&gt;                12.5      NA        NA      11.5
-## 6 Red fox Vulp… carni Carn… &lt;NA&gt;                 9.8       2.4       0.35   14.2
-## # … with 2 more variables: brainwt &lt;dbl&gt;, bodywt &lt;dbl&gt;</code></pre>
+## 1 Tenrec  Tenr~ omni  Afro~ &lt;NA&gt;                15.6       2.3      NA       8.4
+## 2 Tree s~ Tupa~ omni  Scan~ &lt;NA&gt;                 8.9       2.6       0.233  15.1
+## 3 Bottle~ Turs~ carni Ceta~ &lt;NA&gt;                 5.2      NA        NA      18.8
+## 4 Genet   Gene~ carni Carn~ &lt;NA&gt;                 6.3       1.3      NA      17.7
+## 5 Arctic~ Vulp~ carni Carn~ &lt;NA&gt;                12.5      NA        NA      11.5
+## 6 Red fox Vulp~ carni Carn~ &lt;NA&gt;                 9.8       2.4       0.35   14.2
+## # ... with 2 more variables: brainwt &lt;dbl&gt;, bodywt &lt;dbl&gt;</code></pre>
 <div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="week-4---the-r-environment.html#cb204-1" aria-hidden="true" tabindex="-1"></a><span class="co"># str()</span></span>
 <span id="cb204-2"><a href="week-4---the-r-environment.html#cb204-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(msleep)</span></code></pre></div>
-<pre><code>## tibble [83 × 11] (S3: tbl_df/tbl/data.frame)
+<pre><code>## tibble [83 x 11] (S3: tbl_df/tbl/data.frame)
 ##  $ name        : chr [1:83] &quot;Cheetah&quot; &quot;Owl monkey&quot; &quot;Mountain beaver&quot; &quot;Greater short-tailed shrew&quot; ...
 ##  $ genus       : chr [1:83] &quot;Acinonyx&quot; &quot;Aotus&quot; &quot;Aplodontia&quot; &quot;Blarina&quot; ...
 ##  $ vore        : chr [1:83] &quot;carni&quot; &quot;omni&quot; &quot;herbi&quot; &quot;omni&quot; ...
@@ -423,7 +439,7 @@ colnames(), rownames() - column names, row names</p>
 Think about “rc cola” or “remote control car” to remember that [5,] means fifth row and [,5] means fifth column!</p>
 <p>Each way has it’s own advantages:</p>
 <div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="week-4---the-r-environment.html#cb208-1" aria-hidden="true" tabindex="-1"></a>msleep[,<span class="dv">3</span>]</span></code></pre></div>
-<pre><code>## # A tibble: 83 × 1
+<pre><code>## # A tibble: 83 x 1
 ##    vore 
 ##    &lt;chr&gt;
 ##  1 carni
@@ -436,9 +452,9 @@ Think about “rc cola” or “remote control car” to remember that [5,] mean
 ##  8 &lt;NA&gt; 
 ##  9 carni
 ## 10 herbi
-## # … with 73 more rows</code></pre>
+## # ... with 73 more rows</code></pre>
 <div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="week-4---the-r-environment.html#cb210-1" aria-hidden="true" tabindex="-1"></a>msleep[, <span class="st">&quot;vore&quot;</span>]</span></code></pre></div>
-<pre><code>## # A tibble: 83 × 1
+<pre><code>## # A tibble: 83 x 1
 ##    vore 
 ##    &lt;chr&gt;
 ##  1 carni
@@ -451,7 +467,7 @@ Think about “rc cola” or “remote control car” to remember that [5,] mean
 ##  8 &lt;NA&gt; 
 ##  9 carni
 ## 10 herbi
-## # … with 73 more rows</code></pre>
+## # ... with 73 more rows</code></pre>
 <div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="week-4---the-r-environment.html#cb212-1" aria-hidden="true" tabindex="-1"></a>msleep<span class="sc">$</span>vore</span></code></pre></div>
 <pre><code>##  [1] &quot;carni&quot;   &quot;omni&quot;    &quot;herbi&quot;   &quot;omni&quot;    &quot;herbi&quot;   &quot;herbi&quot;   &quot;carni&quot;  
 ##  [8] NA        &quot;carni&quot;   &quot;herbi&quot;   &quot;herbi&quot;   &quot;herbi&quot;   &quot;omni&quot;    &quot;herbi&quot;  
@@ -472,22 +488,22 @@ Think about “rc cola” or “remote control car” to remember that [5,] mean
 <pre><code>## [1] &quot;numeric&quot;</code></pre>
 <p>We can also look at a single row at a time. There are two ways to access this: 1. by indicating the row number in square brackets next to the name of the dataframe <code>name[#,]</code> and by calling the actual name of the row (if your rows have names) <code>name["a",]</code>.</p>
 <div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="week-4---the-r-environment.html#cb218-1" aria-hidden="true" tabindex="-1"></a>msleep[<span class="dv">3</span>,]</span></code></pre></div>
-<pre><code>## # A tibble: 1 × 11
+<pre><code>## # A tibble: 1 x 11
 ##   name    genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
 ##   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
-## 1 Mounta… Aplo… herbi Rode… nt                  14.4       2.4          NA   9.6
-## # … with 2 more variables: brainwt &lt;dbl&gt;, bodywt &lt;dbl&gt;</code></pre>
+## 1 Mounta~ Aplo~ herbi Rode~ nt                  14.4       2.4          NA   9.6
+## # ... with 2 more variables: brainwt &lt;dbl&gt;, bodywt &lt;dbl&gt;</code></pre>
 <div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="week-4---the-r-environment.html#cb220-1" aria-hidden="true" tabindex="-1"></a>msleep[msleep<span class="sc">$</span>name <span class="sc">==</span> <span class="st">&quot;Mountain beaver&quot;</span>,]</span></code></pre></div>
-<pre><code>## # A tibble: 1 × 11
+<pre><code>## # A tibble: 1 x 11
 ##   name    genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
 ##   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
-## 1 Mounta… Aplo… herbi Rode… nt                  14.4       2.4          NA   9.6
-## # … with 2 more variables: brainwt &lt;dbl&gt;, bodywt &lt;dbl&gt;</code></pre>
+## 1 Mounta~ Aplo~ herbi Rode~ nt                  14.4       2.4          NA   9.6
+## # ... with 2 more variables: brainwt &lt;dbl&gt;, bodywt &lt;dbl&gt;</code></pre>
 <p>We can select more than one row or column at a time:</p>
 <div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="week-4---the-r-environment.html#cb222-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># see two columns</span></span>
 <span id="cb222-2"><a href="week-4---the-r-environment.html#cb222-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb222-3"><a href="week-4---the-r-environment.html#cb222-3" aria-hidden="true" tabindex="-1"></a>msleep[,<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">6</span>)]</span></code></pre></div>
-<pre><code>## # A tibble: 83 × 2
+<pre><code>## # A tibble: 83 x 2
 ##    name                       sleep_total
 ##    &lt;chr&gt;                            &lt;dbl&gt;
 ##  1 Cheetah                           12.1
@@ -500,14 +516,14 @@ Think about “rc cola” or “remote control car” to remember that [5,] mean
 ##  8 Vesper mouse                       7  
 ##  9 Dog                               10.1
 ## 10 Roe deer                           3  
-## # … with 73 more rows</code></pre>
+## # ... with 73 more rows</code></pre>
 <div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="week-4---the-r-environment.html#cb224-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># and make a new data frame from these subsets</span></span>
 <span id="cb224-2"><a href="week-4---the-r-environment.html#cb224-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb224-3"><a href="week-4---the-r-environment.html#cb224-3" aria-hidden="true" tabindex="-1"></a>subsleep <span class="ot">&lt;-</span> msleep[,<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">6</span>)]</span></code></pre></div>
 <p>But what if we actually care about how many <strong>unique</strong> things are in a column?</p>
 <div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="week-4---the-r-environment.html#cb225-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># unique()</span></span>
 <span id="cb225-2"><a href="week-4---the-r-environment.html#cb225-2" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(msleep[, <span class="st">&quot;order&quot;</span>])</span></code></pre></div>
-<pre><code>## # A tibble: 19 × 1
+<pre><code>## # A tibble: 19 x 1
 ##    order          
 ##    &lt;chr&gt;          
 ##  1 Carnivora      
@@ -938,23 +954,23 @@ Note: we use the $ sign to create a new column on the left part of the command, 
 <div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="week-4---the-r-environment.html#cb302-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># which four species are these?</span></span>
 <span id="cb302-2"><a href="week-4---the-r-environment.html#cb302-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb302-3"><a href="week-4---the-r-environment.html#cb302-3" aria-hidden="true" tabindex="-1"></a>msleep[<span class="fu">which</span>(msleep[,<span class="st">&quot;sleep_total&quot;</span>]<span class="sc">&gt;</span><span class="dv">18</span>),]</span></code></pre></div>
-<pre><code>## # A tibble: 4 × 12
+<pre><code>## # A tibble: 4 x 12
 ##   name    genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
 ##   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
-## 1 Big br… Epte… inse… Chir… lc                  19.7       3.9       0.117   4.3
-## 2 Thick-… Lutr… carni Dide… lc                  19.4       6.6      NA       4.6
-## 3 Little… Myot… inse… Chir… &lt;NA&gt;                19.9       2         0.2     4.1
-## 4 Giant … Prio… inse… Cing… en                  18.1       6.1      NA       5.9
-## # … with 3 more variables: brainwt &lt;dbl&gt;, bodywt &lt;dbl&gt;, total_rem &lt;dbl&gt;</code></pre>
+## 1 Big br~ Epte~ inse~ Chir~ lc                  19.7       3.9       0.117   4.3
+## 2 Thick-~ Lutr~ carni Dide~ lc                  19.4       6.6      NA       4.6
+## 3 Little~ Myot~ inse~ Chir~ &lt;NA&gt;                19.9       2         0.2     4.1
+## 4 Giant ~ Prio~ inse~ Cing~ en                  18.1       6.1      NA       5.9
+## # ... with 3 more variables: brainwt &lt;dbl&gt;, bodywt &lt;dbl&gt;, total_rem &lt;dbl&gt;</code></pre>
 <div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="week-4---the-r-environment.html#cb304-1" aria-hidden="true" tabindex="-1"></a><span class="co"># what if we only want to see the bats that sleep more than 18 hours per 24 hour period?</span></span>
 <span id="cb304-2"><a href="week-4---the-r-environment.html#cb304-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb304-3"><a href="week-4---the-r-environment.html#cb304-3" aria-hidden="true" tabindex="-1"></a>msleep[<span class="fu">which</span>(msleep[,<span class="st">&quot;sleep_total&quot;</span>]<span class="sc">&gt;</span><span class="dv">18</span> <span class="sc">&amp;</span> msleep[,<span class="st">&quot;order&quot;</span>] <span class="sc">==</span> <span class="st">&quot;Chiroptera&quot;</span>),]</span></code></pre></div>
-<pre><code>## # A tibble: 2 × 12
+<pre><code>## # A tibble: 2 x 12
 ##   name    genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
 ##   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
-## 1 Big br… Epte… inse… Chir… lc                  19.7       3.9       0.117   4.3
-## 2 Little… Myot… inse… Chir… &lt;NA&gt;                19.9       2         0.2     4.1
-## # … with 3 more variables: brainwt &lt;dbl&gt;, bodywt &lt;dbl&gt;, total_rem &lt;dbl&gt;</code></pre>
+## 1 Big br~ Epte~ inse~ Chir~ lc                  19.7       3.9       0.117   4.3
+## 2 Little~ Myot~ inse~ Chir~ &lt;NA&gt;                19.9       2         0.2     4.1
+## # ... with 3 more variables: brainwt &lt;dbl&gt;, bodywt &lt;dbl&gt;, total_rem &lt;dbl&gt;</code></pre>
 </div>
 <div id="practice-subsetting-datasetslogicals" class="section level2 hasAnchor" number="5.9">
 <h2><span class="header-section-number">5.9</span> Practice Subsetting datasets/logicals<a href="week-4---the-r-environment.html#practice-subsetting-datasetslogicals" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -1222,17 +1238,17 @@ How many plants with short sepals are there? How many long?</li>
 <div id="a-few-tips-for-coding-in-rstudio" class="section level2 hasAnchor" number="5.10">
 <h2><span class="header-section-number">5.10</span> A few tips for coding in Rstudio<a href="week-4---the-r-environment.html#a-few-tips-for-coding-in-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="week-4---the-r-environment.html#cb352-1" aria-hidden="true" tabindex="-1"></a><span class="co"># how to get help for a function; you can also write help()</span></span>
-<span id="cb352-2"><a href="week-4---the-r-environment.html#cb352-2" aria-hidden="true" tabindex="-1"></a>?ls</span>
-<span id="cb352-3"><a href="week-4---the-r-environment.html#cb352-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb352-4"><a href="week-4---the-r-environment.html#cb352-4" aria-hidden="true" tabindex="-1"></a><span class="co"># executing a command from a script; instead of copy/paste into the console, we can also select the command and press &#39;Ctrl&#39;+&#39;Enter&#39; OR locate our cursor at the end of the line and press &#39;Ctrl&#39;+Enter&#39;</span></span>
-<span id="cb352-5"><a href="week-4---the-r-environment.html#cb352-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb352-6"><a href="week-4---the-r-environment.html#cb352-6" aria-hidden="true" tabindex="-1"></a><span class="co"># we can use &#39;tab&#39; to complete names, just like in Bash</span></span>
-<span id="cb352-7"><a href="week-4---the-r-environment.html#cb352-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb352-8"><a href="week-4---the-r-environment.html#cb352-8" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;Ctrl&#39;+ L cleans our Console.</span></span>
-<span id="cb352-9"><a href="week-4---the-r-environment.html#cb352-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb352-10"><a href="week-4---the-r-environment.html#cb352-10" aria-hidden="true" tabindex="-1"></a><span class="co"># we can use the &#39;up&#39; arrow on our keypad to go back to the command we&#39;ve used previously. </span></span>
-<span id="cb352-11"><a href="week-4---the-r-environment.html#cb352-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb352-12"><a href="week-4---the-r-environment.html#cb352-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Don&#39;t forget to save your work!</span></span></code></pre></div>
+<span id="cb352-2"><a href="week-4---the-r-environment.html#cb352-2" aria-hidden="true" tabindex="-1"></a>?ls</span></code></pre></div>
+<pre><code>## starting httpd help server ... done</code></pre>
+<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="week-4---the-r-environment.html#cb354-1" aria-hidden="true" tabindex="-1"></a><span class="co"># executing a command from a script; instead of copy/paste into the console, we can also select the command and press &#39;Ctrl&#39;+&#39;Enter&#39; OR locate our cursor at the end of the line and press &#39;Ctrl&#39;+Enter&#39;</span></span>
+<span id="cb354-2"><a href="week-4---the-r-environment.html#cb354-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb354-3"><a href="week-4---the-r-environment.html#cb354-3" aria-hidden="true" tabindex="-1"></a><span class="co"># we can use &#39;tab&#39; to complete names, just like in Bash</span></span>
+<span id="cb354-4"><a href="week-4---the-r-environment.html#cb354-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb354-5"><a href="week-4---the-r-environment.html#cb354-5" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;Ctrl&#39;+ L cleans our Console.</span></span>
+<span id="cb354-6"><a href="week-4---the-r-environment.html#cb354-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb354-7"><a href="week-4---the-r-environment.html#cb354-7" aria-hidden="true" tabindex="-1"></a><span class="co"># we can use the &#39;up&#39; arrow on our keypad to go back to the command we&#39;ve used previously. </span></span>
+<span id="cb354-8"><a href="week-4---the-r-environment.html#cb354-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb354-9"><a href="week-4---the-r-environment.html#cb354-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Don&#39;t forget to save your work!</span></span></code></pre></div>
 
 </div>
 </div>

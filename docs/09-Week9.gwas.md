@@ -8,10 +8,7 @@ output:
     css: toc.css
 ---
 
-```{r setup8, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-knitr::opts_knit$set(root.dir = "/Users/Tali/Desktop/Marine Genomics 2022/MarineGenomics2022/data/Week9_gwas/MarineGenomicsData/Week9")
-```
+
 
 # Week 9: Genome wide association study (GWAS)
 
@@ -48,10 +45,9 @@ Now that we've finished downloading the data, let's open Rsutdio and install the
 
 We'll be using the package `qqman` to make a manhattan plot. Make sure not to copy the # sign into the R console/script.
 
-```{r, echo=T}
 
+```r
 # install.packages("qqman")
-
 ```
 
 ## The data
@@ -79,7 +75,8 @@ Let's go back to Rstudio:
 LRT is the likelihood ratio statistic. This statistic is chi square distributed with one degree of freedom. Sites that fails one of the filters are given the value -999.000000. 
 
 
-```{r, include=T}
+
+```r
 #Set the working directory for this week's directory
 #setwd("~/MarineGenomics/Week9")
 
@@ -88,76 +85,110 @@ lrt <- read.table(gzfile("angsdput.lrt0.gz"), header=T, sep="\t")
 
 #look at it
 str(lrt)
+```
 
+```
+## 'data.frame':	224460 obs. of  8 variables:
+##  $ Chromosome   : int  2 2 2 2 2 2 2 2 2 2 ...
+##  $ Position     : int  13 59 74 153 548 550 613 1182 1361 1533 ...
+##  $ Major        : Factor w/ 4 levels "A","C","G","T": 3 3 3 2 2 2 2 2 2 2 ...
+##  $ Minor        : Factor w/ 4 levels "A","C","G","T": 4 1 1 3 4 4 1 4 1 1 ...
+##  $ Frequency    : num  0.237 0.5 0.316 0.184 0.316 ...
+##  $ N            : int  19 19 19 19 19 19 19 19 19 19 ...
+##  $ LRT          : num  -999 -999 -999 -999 -999 -999 -999 -999 -999 -999 ...
+##  $ high_WT.HE.HO: Factor w/ 803 levels "0/0/19","0/1/18",..: 125 67 679 198 679 679 372 327 358 372 ...
+```
+
+```r
 #we have a few LRT values that are -999, that means that the test failed. we should remove them. How many do we have?
 length(which(lrt$LRT == -999))
+```
+
+```
+## [1] 210597
 ```
 The answer is 210597.
 
 How many LRT values (in this case, loci) do we have in total?
-```{r, include=T}
+
+```r
 length(lrt$LRT)
+```
+
+```
+## [1] 224460
 ```
 The answer is 224460, meaning that most are filtered out.
 
 How many do we have left when we remove loci with failed tests?
-```{r, include=T}
+
+```r
 length(lrt$LRT)-length(which(lrt$LRT == -999))
+```
+
+```
+## [1] 13863
 ```
 The answer is 13863.
 
 Let's remove the values that are not -999 and that are negative and asign them to a new object called 'lrt_filt'.
-```{r, include=T}
+
+```r
 lrt_filt <- lrt[-c(which(lrt$LRT == -999),which(lrt$LRT <= 0)),]
 ```
 
 We can look at a histogram of the filtered LRT results:
-```{r, label='8-1', echo=T}
+
+```r
 hist(lrt_filt$LRT, breaks=50)
 ```
 
+<img src="09-Week9.gwas_files/figure-html/8-1-1.png" width="672" />
+
 Everything looks good to proceed to making our manhattan plot.
-```{r, include=F}
-require(qqman)
-```
+
 
 The function 'manhattan' requires each SNP to have it's own "name". Let's make a vector for row numbers that start with the letter 'r'. 
 
-```{r, eval=T}
+
+```r
 lrt_filt$SNP <- paste("r",1:length(lrt_filt$Chromosome), sep="")
 ```
 
 We also need to convert our LRT values to pvalues. We'll use the command `dchisq` to get pvalues from the LRT values.
-```{r, eval=T}
+
+```r
 #get pvalues
 lrt_filt$pvalue<-dchisq(lrt_filt$LRT, df=1)
 
 #we also need to make sure we don't have any tricky values like those below
 lrt_filt <- lrt_filt[!(lrt_filt$pvalue=="NaN" | lrt_filt$LRT=="Inf"| lrt_filt$pvalue=="Inf"),]
-
 ```
 
 Create the manhattan plot:
-```{r, label='8-2', echo=T}
 
+```r
 manhattan(lrt_filt, chr="Chromosome", bp="Position", p="pvalue", suggestiveline = F, genomewideline = F)
-
 ```
+
+<img src="09-Week9.gwas_files/figure-html/8-2-1.png" width="672" />
 
 Let's look at a qq-plot of our pvalues to check the model fit
 
-```{r, label='8-3', echo=T}
 
+```r
 qq(lrt_filt$pvalue)
-
 ```
+
+<img src="09-Week9.gwas_files/figure-html/8-3-1.png" width="672" />
 
 This looks a bit weird, we would expect it to be mostly a straight line with some deviations at the upper right. If we were moving forward with this analyses we'd want to do more filtering of our data.
 
 We can highlight the values that exceed a threshold. There are several ways to determine a threshold, but one is to make a vector of random phenotypes and re-run our association test. We can then set the highest LRT value from the random phenotype test as our upper limit for our plot with the actual phenotypes.
 
 
-```{r, echo=T}
+
+```r
 #make a vector with 19 1's and 0's
 
 x <- sample(c(1,0), 19, replace=T)
@@ -165,7 +196,6 @@ x <- sample(c(1,0), 19, replace=T)
 #write this to our week 9 directory
 
 write.table(x, "rando_pheno", row.names = F, col.names = F)
-
 ```
 
 And now use that phenotype file to run our association test again, making sure to specify a different output file.
@@ -177,38 +207,48 @@ $HOME/angsd/angsd -doMaf 4 -beagle salmon_chr2_19ind.BEAGLE.PL.gz -yBin rando_ph
 ```
 And rerun the code in R to see what our maximum LRT values are in this random phenotype test.
 
-```{r, echo=T}
 
+```r
 lrt_rando <- read.table(gzfile("randotest.lrt0.gz"), header=T, sep="\t")
 
 #we need to remove those -999 values again
 rando_filt <- lrt_rando[!(lrt_rando$LRT==-999 | lrt_rando$LRT<= 0),]
 
 summary(rando_filt$LRT, na.rm=T)
+```
 
+```
+##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max.     NA's 
+## 0.000001 0.214816 0.669551      Inf 2.029913      Inf        1
+```
+
+```r
 #we have some Inf values we also need to remove, let's add those to our filtering line above
 rando_filt <- lrt_rando[!(lrt_rando$LRT==-999 | lrt_rando$LRT<= 0 | lrt_rando$LRT == Inf),]
 
 #Let's look at the maximum value of LRT
 max(rando_filt$LRT, na.rm=T)
+```
 
+```
+## [1] 12.33287
 ```
 
 The maximum value is 12.43623. This value was generated at random, so any value higher than this is expected to be generated not at random (which is what we are looking for). So we can highlight all of the SNPs that have an LRT greater than 12.43623 in our association test.
 
-```{r, echo=T}
 
+```r
 #make a list of the candidates
 candidates <- lrt_filt[which(lrt_filt$LRT > 12.43623),]$SNP 
-
 ```
 
-```{r, label='8-4', echo=T}
 
+```r
 #refer to that list of candidates with the highlight parameter
 manhattan(lrt_filt, chr="Chromosome", bp="Position",  p="pvalue", highlight = candidates, suggestiveline = F, genomewideline = F)
-
 ```
+
+<img src="09-Week9.gwas_files/figure-html/8-4-1.png" width="672" />
 
 Comparing our results to the Kijas et al. 2018 paper, we have a similar pattern of many SNPs across the chromosome showing a relationship with phenotype (sex). Interestingly this paper found that there are three chromosomes that are associated with sex in Atlantic Salmon, but not all chromosomes give a strong signal in all individuals. For example, only three male individuals were found to have a clear association with chromosome 2, and the other males in the study were found to have an association with chromosomes 3 and 6. 
 
@@ -230,7 +270,8 @@ pcangsd -b salmon_chr6_19ind.BEAGLE.PL.gz -o pca6_out -t 28
 ```
 In R make a PCA plot
 
-```{r, echo=T}
+
+```r
 #read in the data
 cov <- as.matrix(read.table("pca6_out.cov"))
 
@@ -240,12 +281,22 @@ e <- eigen(cov)
 
 #how much variation are we explaining here?
 e$values/sum(e$values)
+```
 
+```
+##  [1]  0.1379496011  0.1246126748  0.0969103029  0.0920252715  0.0774570788
+##  [6]  0.0685079248  0.0605808079  0.0554445095  0.0493884028  0.0444119246
+## [11]  0.0423030396  0.0368221717  0.0329494215  0.0316195242  0.0269138675
+## [16]  0.0184940705  0.0149661517 -0.0006450986 -0.0107116466
+```
+
+```r
 #looks like 12.7% is explained by the first axis
 ```
 
 Let's create the PCA plot:
-```{r, label='8-5', echo=T}
+
+```r
 #First, we'll install a new package called 'plotly' that lets us create interactive plots:
 #install.packages("plotly")
 
@@ -254,7 +305,23 @@ e_df <- as.data.frame(e$vectors[,1:2])
 
 #make a plot of the first two axes
 plotly::plot_ly(e_df, x=e_df$V1, y=e_df$V2, text=row.names(e_df))
+```
 
+```
+## No trace type specified:
+##   Based on info supplied, a 'scatter' trace seems appropriate.
+##   Read more about this trace type -> https://plotly.com/r/reference/#scatter
+```
+
+```
+## No scatter mode specifed:
+##   Setting the mode to markers
+##   Read more about this attribute -> https://plotly.com/r/reference/#scatter-mode
+```
+
+```{=html}
+<div id="htmlwidget-72eee51348bf77816618" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-72eee51348bf77816618">{"x":{"visdat":{"653c190f1afc":["function () ","plotlyVisDat"]},"cur_data":"653c190f1afc","attrs":{"653c190f1afc":{"x":[-0.519139785802849,-0.421668322093998,0.0728823589597481,-0.00945195017208254,0.164050295585754,0.0374794925622059,0.161893975465155,0.0167349431615272,0.217324975228053,0.205556689134182,0.235649945753755,-0.486973827070867,0.169393148665165,0.0652232253635954,0.0814548483289771,-0.110122505165937,0.214924885835122,0.0484035713690156,-0.100388847510803],"y":[-0.0126347016271288,0.0245300098185363,0.0722020301364673,-0.131409063184534,-0.276071775898028,0.155576443973626,-0.418972580420151,0.0898106283574495,0.368142497812644,0.360218778748402,0.293275329148616,-0.0298863719708143,-0.0478190017745415,0.0999834088658637,0.0181757283239082,0.100042658910541,-0.562109565077771,0.0225581007555425,0.0380157664014052],"text":["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19"],"alpha_stroke":1,"sizes":[10,100],"spans":[1,20]}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":[]},"yaxis":{"domain":[0,1],"automargin":true,"title":[]},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[-0.519139785802849,-0.421668322093998,0.0728823589597481,-0.00945195017208254,0.164050295585754,0.0374794925622059,0.161893975465155,0.0167349431615272,0.217324975228053,0.205556689134182,0.235649945753755,-0.486973827070867,0.169393148665165,0.0652232253635954,0.0814548483289771,-0.110122505165937,0.214924885835122,0.0484035713690156,-0.100388847510803],"y":[-0.0126347016271288,0.0245300098185363,0.0722020301364673,-0.131409063184534,-0.276071775898028,0.155576443973626,-0.418972580420151,0.0898106283574495,0.368142497812644,0.360218778748402,0.293275329148616,-0.0298863719708143,-0.0478190017745415,0.0999834088658637,0.0181757283239082,0.100042658910541,-0.562109565077771,0.0225581007555425,0.0380157664014052],"text":["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19"],"type":"scatter","mode":"markers","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 ```
 Use the cursor to identify the points that are clustered apart from the others. If you select the points on the left most of the screen, you will find they are rows 1, 2, and 12
 
@@ -272,7 +339,8 @@ The other two points that are leftmost from the remaining points are 16 and 19, 
 
 and now we can run our pcangsd code
 
-```{r, label='8-6', echo=T, eval=F}
+
+```r
 #make a phenotype file, note you can also do this in nano or vim in the terminal. Whichever makes sense for you.
 pheno_chr6 <- c(1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 0, 1, 0, 1, 1, 0, 0)
 
@@ -307,8 +375,7 @@ lrt_filt$pvalue<-dchisq(lrt_filt$LRT, df=1)
 
 #make our plot
 manhattan(lrt_filt, chr="Chromosome", bp="Position", p="pvalue")
-
-```                
+```
                  
 </p>
 </details>

@@ -90,3 +90,9 @@ finding-outliers-using-pcadapt
 pcadapt-exercises
 using-fst-to-find-outliers
 outflank-practice
+week-9-genome-wide-association-study-gwas
+load-in-the-data
+the-data
+take-beagle-file-and-generate-lrt-file
+take-lrt-file-and-make-a-manhattan-plot
+exercises-1

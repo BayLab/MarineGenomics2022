@@ -4,22 +4,23 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3 Week 2-Working With Files | MarGen2022</title>
-  <meta name="description" content="" />
-  <meta name="generator" content="bookdown 0.26.2 and GitBook 2.6.7" />
+  <title>3 Week 2-Working With Files | Week8_GWAS</title>
+  <meta name="description" content="3 Week 2-Working With Files | Week8_GWAS" />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="3 Week 2-Working With Files | MarGen2022" />
+  <meta property="og:title" content="3 Week 2-Working With Files | Week8_GWAS" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3 Week 2-Working With Files | MarGen2022" />
+  <meta name="twitter:title" content="3 Week 2-Working With Files | Week8_GWAS" />
   
   
   
 
+<meta name="author" content="Serena Caplins" />
 
 
 
@@ -50,6 +51,13 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -246,6 +254,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.5" data-path="week-8--fst-and-outlier-analysis.html"><a href="week-8--fst-and-outlier-analysis.html#using-fst-to-find-outliers"><i class="fa fa-check"></i><b>9.5</b> Using F<sub>st</sub> to find outliers</a></li>
 <li class="chapter" data-level="9.6" data-path="week-8--fst-and-outlier-analysis.html"><a href="week-8--fst-and-outlier-analysis.html#outflank-practice"><i class="fa fa-check"></i><b>9.6</b> OutFLANK Practice</a></li>
 </ul></li>
+<li class="chapter" data-level="10" data-path="week-9-genome-wide-association-study-gwas.html"><a href="week-9-genome-wide-association-study-gwas.html"><i class="fa fa-check"></i><b>10</b> Week 9: Genome wide association study (GWAS)</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="week-9-genome-wide-association-study-gwas.html"><a href="week-9-genome-wide-association-study-gwas.html#load-in-the-data"><i class="fa fa-check"></i><b>10.1</b> load in the data</a></li>
+<li class="chapter" data-level="10.2" data-path="week-9-genome-wide-association-study-gwas.html"><a href="week-9-genome-wide-association-study-gwas.html#the-data"><i class="fa fa-check"></i><b>10.2</b> The data</a></li>
+<li class="chapter" data-level="10.3" data-path="week-9-genome-wide-association-study-gwas.html"><a href="week-9-genome-wide-association-study-gwas.html#take-beagle-file-and-generate-lrt-file"><i class="fa fa-check"></i><b>10.3</b> take Beagle file and generate lrt file</a></li>
+<li class="chapter" data-level="10.4" data-path="week-9-genome-wide-association-study-gwas.html"><a href="week-9-genome-wide-association-study-gwas.html#take-lrt-file-and-make-a-manhattan-plot"><i class="fa fa-check"></i><b>10.4</b> take lrt file and make a manhattan plot</a></li>
+<li class="chapter" data-level="10.5" data-path="week-9-genome-wide-association-study-gwas.html"><a href="week-9-genome-wide-association-study-gwas.html#exercises-1"><i class="fa fa-check"></i><b>10.5</b> Exercises</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -258,7 +274,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Week8_GWAS</a>
           </h1>
         </div>
 
