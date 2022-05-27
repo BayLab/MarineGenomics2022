@@ -11,7 +11,7 @@ output:
 ```{r setup6, include=FALSE}
 knitr::opts_chunk$set(fig.width = 8, collapse = TRUE)
 knitr::opts_chunk$set(echo = TRUE)
-knitr::opts_knit$set(root.dir = '/Users/Tali/Desktop/Marine Genomics 2022/MarineGenomics2022/data/Week7_pca/MarineGenomicsData/Week7')
+knitr::opts_knit$set(root.dir = '/Users/ericaspotswoodnielsen/Desktop/PD_stuffies/teaching/MarineGenomics2022/data/Week7_pca/MarineGenomicsData/Week7')
 ```
 
 # Week 7 - Principle Component Analyses 

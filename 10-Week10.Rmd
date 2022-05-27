@@ -15,8 +15,6 @@ knitr::opts_knit$set(root.dir = "/Users/ericaspotswoodnielsen/Desktop/PD_stuffie
 
 # Genome Environment Association
 
-The lecture for this week can be found [here](https://github.com/BayLab/MarineGenomicsSemester/blob/main/ppt/MarineGenomics_Lecture_w11.pdf).
-
 All of the code presented in this weeks class comes modified from a former Marine Genomics student and recent UC Davis graduate, Camille Rumberger! Thank you Camille!
 
 ## Download the data
@@ -25,18 +23,27 @@ For this week we are again using data from the wonderful Xuereb et al. 2018 pape
 And consistes of a vcf file with 3966 Snps from 685 pacific sea cucumbers. 
 
 ```html
+cd
 
 wget https://raw.githubusercontent.com/BayLab/MarineGenomicsData/main/week11_semester.tar.gz
+
 tar -xzvf week11_semester.tar.gz
+
+mv MarineGenomics/Week11 MarineGenomics/Week10
 
 ```
 
 ## install a compiler for Unix/bash
 
-Run this command below in the terminal. It's necesary to install several R packages.
+Run this command below in the terminal. It's neccessary to install several R packages.
 
 ```html
-sudo apt install libgdal-dev
+sudo apt update
+
+sudo apt-get install libgdal-dev
+
+sudo apt-get install libudunits2-dev
+
 
 ```
 
@@ -44,15 +51,21 @@ sudo apt install libgdal-dev
 ## install R packages
 
 
-```{r echo=T, message=FALSE, warning=F}
+```{r echo=F, message=FALSE, warning=F}
 
 #devtools::install_github("bcm-uga/lfmm")
 
 
 # get packages
-#install.packages(c('lfmm','psych','vegan','ggplot2','data.table','sdmpredictors','rgdal','raster'), dependencies = T)
-#install.packages("BiocManager")
-#BiocManager::install("LEA", force=T)
+
+# install.packages("sf", dependencies = T)
+
+# install.packages(c('lfmm','psych','vegan','ggplot2','data.table','sdmpredictors', 'rgdal','raster'), dependencies = T)
+#  devtools::install_github("lifewatch/s")
+
+# install.packages("BiocManager")
+# BiocManager::install("LEA", force=T)  ## choose (a) to update
+
 
 # call programs
 library(lfmm)
@@ -143,16 +156,18 @@ write.env(sites_environ_matrix_nas, "sites_environ_matrix.env")
 
 ## Make a Map of our environmental data
 
-We now have enough information to make a pretty plot of one of our environmental parameters.
+We now have enough information to make a nice map of one of our environmental parameters.
+
 
 ```{r, label='geamap', echo=T}
-library(sdmpredictors)
+# library(sdmpredictors)
 
 #download a raster file for env variable that we want to look at
 
 #what are are min amd max lat and lon
 
 range(sites_environ$Name.lon)
+range(sites_environ$Name.lat)
 
 #crop file to fit the area we want
 ne.pacific<-extent(-140, -120, 40, 60)
@@ -180,22 +195,19 @@ Now we need to load in our genetic data. We have data in a vcf file format and t
 
 ```{r, echo=T, message=FALSE, warning=FALSE}
 
-#convert our vcf file to lfmm
+# convert our vcf file to lfmm
 
 vcf2lfmm('filtered_3699snps_californicus_685inds.recode.vcf', 'filtered_3699snps_californicus.lfmm')
 
 sea_cuc_lfmm<-read.lfmm('filtered_3699snps_californicus_685inds.recode.lfmm')
 
-#and convert to geno
+# and convert to geno
 
 lfmm2geno('filtered_3699snps_californicus_685inds.recode.lfmm', 'filtered_3699snps_californicus_685inds.recode.geno')
 
-#read in geno file
+# read in geno file
 
 sea_cuc_geno<-read.geno('filtered_3699snps_californicus_685inds.recode.geno')
-
-
-
 
 ```
 
@@ -206,8 +218,8 @@ sea_cuc_geno<-read.geno('filtered_3699snps_californicus_685inds.recode.geno')
 
 # create a snmf object
 
-sea_cuc200.snmf <- snmf("filtered_3699snps_californicus_685.geno", K = 1:10, entropy=T, ploidy = 2, project = "new")
-project=load.snmfProject("filtered_3699snps_californicus.snmfProject")
+sea_cuc200.snmf <- snmf("filtered_3699snps_californicus_685inds.recode.geno", K = 1:10, entropy=T, ploidy = 2, project = "new")
+project=load.snmfProject("filtered_3699snps_californicus_685inds.recode.snmfProject")
 
 #plot values of cross-entropy criteron of k
 plot(sea_cuc200.snmf)
@@ -220,10 +232,9 @@ This plot tells us which value of K we should use when running the next analyses
 
 However, for the purposes of time we're going to do the next step with a k=1 and a rep=1. 
 
-```{r, echo=T, message=FALSE}
+```{r, echo=F, message=FALSE}
 
 # Genome scan for selection using environmental variables 
-#remove.lfmmProject('Spurp.prelim.snps24.lfmmProject')
 
 sea_cuc_lfmm <- lfmm("filtered_3699snps_californicus_685inds.recode.lfmm", "sites_environ_matrix.env", K=1, rep=1, project = "new")
 
@@ -235,7 +246,7 @@ project = load.lfmmProject("filtered_3699snps_californicus_685inds.lfmmProject")
 Now we can check and see which of our environmental variables is association with genomic variation
 
 ```{r, label="histograms", echo=T}
-#get the z scores from each run
+#get the z scores from each env variable
 
 zs1 <- z.scores(sea_cuc_lfmm, K=1, d=1)
 zs2 <- z.scores(sea_cuc_lfmm, K=1, d=2)
@@ -280,18 +291,21 @@ candidates.1 = order(adj.p.val1)[w]
 
 length(candidates.1)
 
-#this is for our first variable Mean Chlorphyl
+#These are the candidate loci related to our first variable Mean Chlorphyl
 
 
 ```
 
-
 ## Exercises
 
 
-1. Pick your favorite environmental variable from the bio-oracle website. For marine variables you can use the command `list_layers(c("Bio-ORACLE","MARSPEC"))$layer_code` to view the different Bio-Oracle and MARSPEC environmental layers. For Terrestrial layers use: `list_layers("WorldClim")$layer_code` Then download the layer you choose and store it as an object with `load_layers()`
-Now decide which region you want to plot. If you're interested in getting most of California you can use these coords with the function extent(-125, -115, 30, 40), and then use that to crop your environmental layers and make a plot similiar to the one we made in class.
+1. Pick your favorite environmental variable from the bio-oracle website. 
 
+For marine variables you can use the command `list_layers(c("Bio-ORACLE","MARSPEC"))$layer_code` to view the different Bio-Oracle and MARSPEC environmental layers. For Terrestrial layers use: `list_layers("WorldClim")$layer_code` Then download the layer you choose and store it as an object with `load_layers()`
+
+Now decide which region you want to plot. If you're interested in getting most of California you can use these coords with the function extent(-125, -115, 30, 40). 
+
+Crop your environmental layer and make a plot similar to the one we made in class.
 
 <details><summary><span style="color: DarkCyan;">Solution</span></summary>
 <p>
@@ -324,7 +338,7 @@ plot(precip_w.crop,col=my.colors(1000),axes=FALSE, box=FALSE)
 
 
 
-2. Use the script for determining the number of candidates for the first environmental variable, find the number of candidates for the other four variables. Are these the same or different SNPs? (hint use merge() or intersect() to find out if the lists of candidates overlap) 
+2. Using the script for determining the number of candidates for the first environmental variable, find the number of candidates for the other four variables. Are these the same or different SNPs? (hint: have a look at [this webpage](https://r-coder.com/list-r/) on how to compare lists in R) 
 
 
 <details><summary><span style="color: DarkCyan;">Solution</span></summary>
@@ -377,9 +391,7 @@ length(candidates.5)
 </details>
 
 
-
-
-
+## Inferring functionality of our candidate SNPs
 
 
 ## Download the data
@@ -395,80 +407,19 @@ tar -xzvf week10.tar.gz
 ```
 
 
-
-## Install Transdecoder
-
-We'll use transdecoder to identify coding regions in our nucleotide sequences. 
-
-```html
-
-sudo apt update #this just updates our currently installed packages
-
-sudo apt install transdecoder
-
-```
-
-
-## Run Transdecoder
-
-Transdecoder is run in two parts, the first `TransDecoder.LongOrfs` identifies open read frames or regions that contain either a start or stop codon. This is followed by `TransDecoder.Predict` which 
-
-```html
-
-TransDecoder.LongOrfs -t candidate_fastas.fa
-
-TransDecoder.Predict -t candidate_fastas.fa
-
-```
-
-This produces an output directory and pulls from that several files with different extensions (.gff3, .bed, .cds, .pep) which correspond to different formats specifically, `.gff3` is a general feature format file (version 3) and contains information about each of our sequences. The `.bed` format is a browser extensible data format which describes the chromosome, position and length of our sequences, the `.cds` contains the nucleotide sequences for the open reading frames, and finally the file we want is the `.pep` file which contains our open reading frames from our regions converted into protein codes.
-
 ## Run NCBI-BLAST
 
 NCBI-BLAST is commonly called "blast" and stands for Basic Local Alignment Search Tool. This program is often a part of the annotation process as it compares your sequences (or query) to those contained in a database. As such blast results are highly dependent on the database in which you search for results and whether your species of interest (or a close relative) is present in that database. This program can be run in the command line, but in my testing I found it to be incredibly slow on jetstream. So We're going to run our file on the NCBI-BLAST web browser which should only take a few minutes as we only have 14 protein sequences. 
 
-Once you have the `.pep` file from transdecoder, navigate to the web browser on jetstream (the default is firefox). Search for NCBI-Blast. 
+Find the fasta file we just downloaded in our Week 10 folder on the desktop and open it (this may take a few seconds). Navigate to the web browser on jetstream (the default is firefox). Search for NCBI-Blast. 
 
-We'll do a protein to protein search (blastp) against the nr database, which contains protein sequences from a variety of taxa, but does not include SRA data (which would include the genome sequence for our sea cucumbers). 
-
+We'll do a translated nucleotide to protein search (blastx). Copy and paste the nucleotide sequence of our first genomic region of interest. In the organism box, you can filter your search to only match with other sea cucumber sequences.  
 
 ## What did we find?
 
-Nine out of our 14 protein sequences came back with a blast hit. Many of those that found a hit in Blast were for the other sea cucumber species Parastichipus ja. Many of these sequences are listed as "uncharacterized" or "hypothetical" protein meaning that there has not yet been any downstream classification of these sequences. This is a pretty common result for marine organisms, as they are rarely as highly studied as model organisms such as Drosophila or zebra fish. 
+We got some hits! Many of those that found a hit in Blast were for the other sea cucumber species. Many of these sequences are listed as "uncharacterized" or "hypothetical" protein meaning that there has not yet been any downstream classification of these sequences. This is a pretty common result for marine organisms, as they are rarely as highly studied as model organisms such as Drosophila or zebra fish. 
 
 
 ## The importance of Genomic Architecture
 
-Even though we often don't get satisfying answers about which genes are doing what in Marine Genomics, we can learn a lot about trait evolution from using Fst outliers and tests of Genome Wide Association. These tests give us some idea of the number of genes and their effect on a given trait and that in turn has big implications on how that trait can respond to evolution. And that in turn has implications for climate change, conservation, and biodiversity.  
-
-
-
-## Exercises
-
-> # Practice Questions:
-
-> 1. Instead of doing a blast search for the protein translated sequences, do one for the nucleotide sequences. Use the original `candidate_fastas.fa file, and do a blastn for somewhat similar sequences. How do these results differ from our search with the translated open reading frames? Why? Try again as a megablast for highly similar sequences (you can do this by editing your original search). How do these differ?
-
-<details><summary><span style="color: SeaGreen;">Solution</span></summary>
-<p>
-
-```{r echo=T}
-#coming soon :) 
-```
-</p>
-</details>
-
-
-> 2. Now use the `.cds` file from transdecoder which contains the open reading frame as nucleotides. 
-
-<details><summary><span style="color: SeaGreen;">Solution</span></summary>
-<p>
-
-```{r echo=T}
-#coming soon :) 
-```
-</p>
-</details>
-
-## Creature of the Week!
-![Vaquita Porpoise (image credit: Brendan Hunter)](./figs/creatures/vaquitaporpoise.jpg)
+Even though we often don't get satisfying answers about which genes are doing what in Marine Genomics, we can learn a lot about trait evolution from using outlier detection tests. These tests give us some idea of the number of genes and their effect on a given trait and that in turn has big implications on how that trait can respond to evolution. And that in turn has implications for climate change, conservation, and biodiversity.  

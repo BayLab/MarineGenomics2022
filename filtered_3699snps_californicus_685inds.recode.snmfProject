@@ -1,0 +1,6 @@
+new("snmfProject", snmfProject.file = "filtered_3699snps_californicus_685inds.recode.snmfProject", 
+    projDir = "./", snmfDir = "filtered_3699snps_californicus_685inds.recode.snmf/", 
+    input.file = "filtered_3699snps_californicus_685inds.recode.geno", 
+    runs = list(), K = integer(0), snmfClass.files = logical(0), 
+    n = integer(0), L = integer(0), creationTime = structure(1653510151.73197, class = c("POSIXct", 
+    "POSIXt")))

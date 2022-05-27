@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>6 Week 5- R Continued | MarGen2022</title>
   <meta name="description" content="" />
-  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.26.2 and GitBook 2.6.7" />
 
   <meta property="og:title" content="6 Week 5- R Continued | MarGen2022" />
   <meta property="og:type" content="book" />
@@ -262,6 +262,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.5" data-path="week-9-genome-wide-association-study-gwas.html"><a href="week-9-genome-wide-association-study-gwas.html#take-lrt-file-and-make-a-manhattan-plot"><i class="fa fa-check"></i><b>10.5</b> take lrt file and make a manhattan plot</a></li>
 <li class="chapter" data-level="10.6" data-path="week-9-genome-wide-association-study-gwas.html"><a href="week-9-genome-wide-association-study-gwas.html#exercises-1"><i class="fa fa-check"></i><b>10.6</b> Exercises</a></li>
 </ul></li>
+<li class="chapter" data-level="11" data-path="genome-environment-association.html"><a href="genome-environment-association.html"><i class="fa fa-check"></i><b>11</b> Genome Environment Association</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="genome-environment-association.html"><a href="genome-environment-association.html#download-the-data-3"><i class="fa fa-check"></i><b>11.1</b> Download the data</a></li>
+<li class="chapter" data-level="11.2" data-path="genome-environment-association.html"><a href="genome-environment-association.html#install-a-compiler-for-unixbash"><i class="fa fa-check"></i><b>11.2</b> install a compiler for Unix/bash</a></li>
+<li class="chapter" data-level="11.3" data-path="genome-environment-association.html"><a href="genome-environment-association.html#install-r-packages"><i class="fa fa-check"></i><b>11.3</b> install R packages</a></li>
+<li class="chapter" data-level="11.4" data-path="genome-environment-association.html"><a href="genome-environment-association.html#get-the-environmental-data"><i class="fa fa-check"></i><b>11.4</b> Get the Environmental Data</a></li>
+<li class="chapter" data-level="11.5" data-path="genome-environment-association.html"><a href="genome-environment-association.html#extract-site-specific-information-from-our-envirornmental-layers"><i class="fa fa-check"></i><b>11.5</b> Extract Site Specific Information from our Envirornmental Layers</a></li>
+<li class="chapter" data-level="11.6" data-path="genome-environment-association.html"><a href="genome-environment-association.html#make-a-map-of-our-environmental-data"><i class="fa fa-check"></i><b>11.6</b> Make a Map of our environmental data</a></li>
+<li class="chapter" data-level="11.7" data-path="genome-environment-association.html"><a href="genome-environment-association.html#load-in-genetic-data"><i class="fa fa-check"></i><b>11.7</b> Load in genetic data</a></li>
+<li class="chapter" data-level="11.8" data-path="genome-environment-association.html"><a href="genome-environment-association.html#exercises-2"><i class="fa fa-check"></i><b>11.8</b> Exercises</a></li>
+<li class="chapter" data-level="11.9" data-path="genome-environment-association.html"><a href="genome-environment-association.html#inferring-functionality-of-our-candidate-snps"><i class="fa fa-check"></i><b>11.9</b> Inferring functionality of our candidate SNPs</a></li>
+<li class="chapter" data-level="11.10" data-path="genome-environment-association.html"><a href="genome-environment-association.html#download-the-data-4"><i class="fa fa-check"></i><b>11.10</b> Download the data</a></li>
+<li class="chapter" data-level="11.11" data-path="genome-environment-association.html"><a href="genome-environment-association.html#run-ncbi-blast"><i class="fa fa-check"></i><b>11.11</b> Run NCBI-BLAST</a></li>
+<li class="chapter" data-level="11.12" data-path="genome-environment-association.html"><a href="genome-environment-association.html#what-did-we-find"><i class="fa fa-check"></i><b>11.12</b> What did we find?</a></li>
+<li class="chapter" data-level="11.13" data-path="genome-environment-association.html"><a href="genome-environment-association.html#the-importance-of-genomic-architecture"><i class="fa fa-check"></i><b>11.13</b> The importance of Genomic Architecture</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -314,16 +330,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Within our <code>msleep</code> dataframe let’s plot sleep_total by sleep_rem. Here we expect the total number of hours sleeping to have an effect on the total hours of REM, or dreaming, sleep.</p>
 <p> </p>
 <p>First install the package ‘ggplot2,’ then run the following:</p>
-<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="week-5--r-continued.html#cb357-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb357-2"><a href="week-5--r-continued.html#cb357-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb357-3"><a href="week-5--r-continued.html#cb357-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(msleep)</span></code></pre></div>
-<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="week-5--r-continued.html#cb358-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb358-2"><a href="week-5--r-continued.html#cb358-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(msleep<span class="sc">$</span>sleep_total, msleep<span class="sc">$</span>sleep_rem)</span></code></pre></div>
+<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="week-5--r-continued.html#cb355-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb355-2"><a href="week-5--r-continued.html#cb355-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb355-3"><a href="week-5--r-continued.html#cb355-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(msleep)</span></code></pre></div>
+<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="week-5--r-continued.html#cb356-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb356-2"><a href="week-5--r-continued.html#cb356-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(msleep<span class="sc">$</span>sleep_total, msleep<span class="sc">$</span>sleep_rem)</span></code></pre></div>
 <p><img src="05-Week5_R_Introduction_continued_files/figure-html/5-1-1.png" width="768" /></p>
-<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="week-5--r-continued.html#cb359-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb359-2"><a href="week-5--r-continued.html#cb359-2" aria-hidden="true" tabindex="-1"></a><span class="co"># or plot response variable as a function &quot;~&quot; of the predictor variable. When we use ~, the dependent variable is always on the left hand side. </span></span></code></pre></div>
-<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="week-5--r-continued.html#cb360-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb360-2"><a href="week-5--r-continued.html#cb360-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(msleep<span class="sc">$</span>sleep_total<span class="sc">~</span>msleep<span class="sc">$</span>sleep_rem) <span class="co">#you&#39;ll notice this swaps the x and y axis</span></span></code></pre></div>
+<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="week-5--r-continued.html#cb357-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb357-2"><a href="week-5--r-continued.html#cb357-2" aria-hidden="true" tabindex="-1"></a><span class="co"># or plot response variable as a function &quot;~&quot; of the predictor variable. When we use ~, the dependent variable is always on the left hand side. </span></span></code></pre></div>
+<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="week-5--r-continued.html#cb358-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb358-2"><a href="week-5--r-continued.html#cb358-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(msleep<span class="sc">$</span>sleep_total<span class="sc">~</span>msleep<span class="sc">$</span>sleep_rem) <span class="co">#you&#39;ll notice this swaps the x and y axis</span></span></code></pre></div>
 <p><img src="05-Week5_R_Introduction_continued_files/figure-html/5-2-1.png" width="768" /></p>
 <p>From looking at this plot, does it look like there’s a relationship between hours of sleep and hours of REM? What does each point represent on these graphs?</p>
 <p>Also, note that plots generally show the independent “cause” variable on the x-axis, and the dependent or “effect” variable on the y.</p>
@@ -346,36 +362,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>There are <strong>many</strong> color options in R. For some general colors you can write the name (blue, red, green, etc). There are apparently 657 named colors in R (including “slateblue3,” and “peachpuff4”) but you can also use the color hexidecimal code for a given color. There are several comprehensives guides for colors in R online and one of which can be found <a href="https://www.nceas.ucsb.edu/sites/default/files/2020-04/colorPaletteCheatsheet.pdf">here</a></p>
 <p> </p>
 <p>Let’s remake the total_sleep against sleep_rem plot and add-in some modifiers</p>
-<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb361-1"><a href="week-5--r-continued.html#cb361-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Choose a pch and make the color blue and give it a bottom+left border</span></span>
-<span id="cb361-2"><a href="week-5--r-continued.html#cb361-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(msleep<span class="sc">$</span>sleep_total<span class="sc">~</span>msleep<span class="sc">$</span>sleep_rem, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>, <span class="at">bty=</span><span class="st">&quot;L&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="week-5--r-continued.html#cb359-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Choose a pch and make the color blue and give it a bottom+left border</span></span>
+<span id="cb359-2"><a href="week-5--r-continued.html#cb359-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(msleep<span class="sc">$</span>sleep_total<span class="sc">~</span>msleep<span class="sc">$</span>sleep_rem, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>, <span class="at">bty=</span><span class="st">&quot;L&quot;</span>)</span></code></pre></div>
 <p><img src="05-Week5_R_Introduction_continued_files/figure-html/5-3-1.png" width="768" /></p>
 <p>We can change the axes and title labels using “xlab,” “ylab,” and “main” arguments. Let’s add labels to our plot.</p>
-<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb362-1"><a href="week-5--r-continued.html#cb362-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Choose a pch and make the color blue and give it a bottom+left border</span></span>
-<span id="cb362-2"><a href="week-5--r-continued.html#cb362-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(msleep<span class="sc">$</span>sleep_total<span class="sc">~</span>msleep<span class="sc">$</span>sleep_rem, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>, <span class="at">bty=</span><span class="st">&quot;L&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;REM Sleep (hours)&quot;</span>, <span class="at">ylab=</span> <span class="st">&quot;Total Sleep (hours)&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="week-5--r-continued.html#cb360-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Choose a pch and make the color blue and give it a bottom+left border</span></span>
+<span id="cb360-2"><a href="week-5--r-continued.html#cb360-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(msleep<span class="sc">$</span>sleep_total<span class="sc">~</span>msleep<span class="sc">$</span>sleep_rem, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>, <span class="at">bty=</span><span class="st">&quot;L&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;REM Sleep (hours)&quot;</span>, <span class="at">ylab=</span> <span class="st">&quot;Total Sleep (hours)&quot;</span>) </span></code></pre></div>
 <p><img src="05-Week5_R_Introduction_continued_files/figure-html/5-4-1.png" width="768" /></p>
 <p> </p>
 <p>We can also add lines to an existing plot with <code>ablines()</code>. Let’s add a line fit from a linear model to our plot.</p>
-<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb363-1"><a href="week-5--r-continued.html#cb363-1" aria-hidden="true" tabindex="-1"></a><span class="co">#first make a plot</span></span>
-<span id="cb363-2"><a href="week-5--r-continued.html#cb363-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(msleep<span class="sc">$</span>sleep_total<span class="sc">~</span>msleep<span class="sc">$</span>sleep_rem, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>, <span class="at">bty=</span><span class="st">&quot;L&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;REM Sleep (hours)&quot;</span>, <span class="at">ylab=</span> <span class="st">&quot;Total Sleep (hours)&quot;</span>) </span>
-<span id="cb363-3"><a href="week-5--r-continued.html#cb363-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb363-4"><a href="week-5--r-continued.html#cb363-4" aria-hidden="true" tabindex="-1"></a><span class="co">#then add a line. The function lm runs a linear model on our x, y values.</span></span>
-<span id="cb363-5"><a href="week-5--r-continued.html#cb363-5" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(msleep<span class="sc">$</span>sleep_total<span class="sc">~</span>msleep<span class="sc">$</span>sleep_rem))</span></code></pre></div>
+<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb361-1"><a href="week-5--r-continued.html#cb361-1" aria-hidden="true" tabindex="-1"></a><span class="co">#first make a plot</span></span>
+<span id="cb361-2"><a href="week-5--r-continued.html#cb361-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(msleep<span class="sc">$</span>sleep_total<span class="sc">~</span>msleep<span class="sc">$</span>sleep_rem, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>, <span class="at">bty=</span><span class="st">&quot;L&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;REM Sleep (hours)&quot;</span>, <span class="at">ylab=</span> <span class="st">&quot;Total Sleep (hours)&quot;</span>) </span>
+<span id="cb361-3"><a href="week-5--r-continued.html#cb361-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb361-4"><a href="week-5--r-continued.html#cb361-4" aria-hidden="true" tabindex="-1"></a><span class="co">#then add a line. The function lm runs a linear model on our x, y values.</span></span>
+<span id="cb361-5"><a href="week-5--r-continued.html#cb361-5" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(msleep<span class="sc">$</span>sleep_total<span class="sc">~</span>msleep<span class="sc">$</span>sleep_rem))</span></code></pre></div>
 <p><img src="05-Week5_R_Introduction_continued_files/figure-html/5-5-1.png" width="768" /></p>
 <p> </p>
 <p>This adds a line of best fit, that minimizes the distance of those points from that line. These lines help us assess the overall pattern in the data. From the points and the line, does it look like there is a correlation?</p>
 <p>You can add a legend to a plot with <code>legend()</code> which needs you to specify the location.</p>
 <p>To do this, let’s make a cutoff for our points and color them by points above and below the cutoff. We’ll use our subsetting skills from last week. Feel free to review that section (5.8).</p>
-<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb364-1"><a href="week-5--r-continued.html#cb364-1" aria-hidden="true" tabindex="-1"></a><span class="co">#start by defining points by whether they are greater than sleep_total 16 and storing</span></span>
-<span id="cb364-2"><a href="week-5--r-continued.html#cb364-2" aria-hidden="true" tabindex="-1"></a><span class="co">#first make a empty column named colors within the msleep dataframe</span></span>
-<span id="cb364-3"><a href="week-5--r-continued.html#cb364-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb364-4"><a href="week-5--r-continued.html#cb364-4" aria-hidden="true" tabindex="-1"></a>msleep<span class="sc">$</span>colors<span class="ot">=</span><span class="cn">NA</span></span>
-<span id="cb364-5"><a href="week-5--r-continued.html#cb364-5" aria-hidden="true" tabindex="-1"></a><span class="co">#store the colors &quot;red&quot; or &quot;black&quot; in the color column for the rows that satsify the following criteria.</span></span>
-<span id="cb364-6"><a href="week-5--r-continued.html#cb364-6" aria-hidden="true" tabindex="-1"></a>msleep<span class="sc">$</span>colors[msleep<span class="sc">$</span>sleep_total <span class="sc">&gt;=</span> <span class="dv">17</span>] <span class="ot">&lt;-</span><span class="st">&quot;red&quot;</span></span>
-<span id="cb364-7"><a href="week-5--r-continued.html#cb364-7" aria-hidden="true" tabindex="-1"></a>msleep<span class="sc">$</span>colors[msleep<span class="sc">$</span>sleep_total <span class="sc">&lt;</span> <span class="dv">17</span>] <span class="ot">&lt;-</span><span class="st">&quot;black&quot;</span></span></code></pre></div>
-<div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb365-1"><a href="week-5--r-continued.html#cb365-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(msleep<span class="sc">$</span>sleep_total<span class="sc">~</span>msleep<span class="sc">$</span>sleep_rem, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">col=</span>msleep<span class="sc">$</span>colors, <span class="at">bty=</span><span class="st">&quot;L&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;REM Sleep (hours)&quot;</span>, <span class="at">ylab=</span> <span class="st">&quot;Total Sleep (hours)&quot;</span>) </span>
-<span id="cb365-2"><a href="week-5--r-continued.html#cb365-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb365-3"><a href="week-5--r-continued.html#cb365-3" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;bottomright&quot;</span>, <span class="at">legend=</span><span class="fu">c</span>(<span class="st">&quot;&gt;=17hrs&quot;</span>, <span class="st">&quot;&lt;17hrs&quot;</span>),</span>
-<span id="cb365-4"><a href="week-5--r-continued.html#cb365-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">fill =</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;black&quot;</span>), <span class="at">cex=</span><span class="fl">0.8</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb362-1"><a href="week-5--r-continued.html#cb362-1" aria-hidden="true" tabindex="-1"></a><span class="co">#start by defining points by whether they are greater than sleep_total 16 and storing</span></span>
+<span id="cb362-2"><a href="week-5--r-continued.html#cb362-2" aria-hidden="true" tabindex="-1"></a><span class="co">#first make a empty column named colors within the msleep dataframe</span></span>
+<span id="cb362-3"><a href="week-5--r-continued.html#cb362-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb362-4"><a href="week-5--r-continued.html#cb362-4" aria-hidden="true" tabindex="-1"></a>msleep<span class="sc">$</span>colors<span class="ot">=</span><span class="cn">NA</span></span>
+<span id="cb362-5"><a href="week-5--r-continued.html#cb362-5" aria-hidden="true" tabindex="-1"></a><span class="co">#store the colors &quot;red&quot; or &quot;black&quot; in the color column for the rows that satsify the following criteria.</span></span>
+<span id="cb362-6"><a href="week-5--r-continued.html#cb362-6" aria-hidden="true" tabindex="-1"></a>msleep<span class="sc">$</span>colors[msleep<span class="sc">$</span>sleep_total <span class="sc">&gt;=</span> <span class="dv">17</span>] <span class="ot">&lt;-</span><span class="st">&quot;red&quot;</span></span>
+<span id="cb362-7"><a href="week-5--r-continued.html#cb362-7" aria-hidden="true" tabindex="-1"></a>msleep<span class="sc">$</span>colors[msleep<span class="sc">$</span>sleep_total <span class="sc">&lt;</span> <span class="dv">17</span>] <span class="ot">&lt;-</span><span class="st">&quot;black&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb363-1"><a href="week-5--r-continued.html#cb363-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(msleep<span class="sc">$</span>sleep_total<span class="sc">~</span>msleep<span class="sc">$</span>sleep_rem, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">col=</span>msleep<span class="sc">$</span>colors, <span class="at">bty=</span><span class="st">&quot;L&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;REM Sleep (hours)&quot;</span>, <span class="at">ylab=</span> <span class="st">&quot;Total Sleep (hours)&quot;</span>) </span>
+<span id="cb363-2"><a href="week-5--r-continued.html#cb363-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb363-3"><a href="week-5--r-continued.html#cb363-3" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;bottomright&quot;</span>, <span class="at">legend=</span><span class="fu">c</span>(<span class="st">&quot;&gt;=17hrs&quot;</span>, <span class="st">&quot;&lt;17hrs&quot;</span>),</span>
+<span id="cb363-4"><a href="week-5--r-continued.html#cb363-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">fill =</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;black&quot;</span>), <span class="at">cex=</span><span class="fl">0.8</span>)</span></code></pre></div>
 <p><img src="05-Week5_R_Introduction_continued_files/figure-html/5-6-1.png" width="768" /></p>
 <p> </p>
 </div>
@@ -387,26 +403,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Box plots are helpful when we want to compare the means and variation of values between groups. Box plots graphically represent the five most important descriptive values for a data set: the minimum value, the first quartile, the median, the third quartile, and the maximum value.</p>
 <p>The same parameter options (pch, col, ylab, xlab, etc) apply for these plots as well as scatterplots.</p>
 <p>R will automatically plot a barplot if you give to the <code>plot()</code> function a continuous variable and a factor. If you have a vector stored as a character converting it to a factor via <code>as.factor</code> will make a boxplot.</p>
-<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="week-5--r-continued.html#cb366-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb366-2"><a href="week-5--r-continued.html#cb366-2" aria-hidden="true" tabindex="-1"></a><span class="co">#let&#39;s make a histogram of sleep_total and fill it with the color palette rainbow() which needs to know how many colors to use</span></span>
-<span id="cb366-3"><a href="week-5--r-continued.html#cb366-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb366-4"><a href="week-5--r-continued.html#cb366-4" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(msleep<span class="sc">$</span>sleep_total, <span class="at">col=</span><span class="fu">rainbow</span>(<span class="dv">10</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb364-1"><a href="week-5--r-continued.html#cb364-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb364-2"><a href="week-5--r-continued.html#cb364-2" aria-hidden="true" tabindex="-1"></a><span class="co">#let&#39;s make a histogram of sleep_total and fill it with the color palette rainbow() which needs to know how many colors to use</span></span>
+<span id="cb364-3"><a href="week-5--r-continued.html#cb364-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb364-4"><a href="week-5--r-continued.html#cb364-4" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(msleep<span class="sc">$</span>sleep_total, <span class="at">col=</span><span class="fu">rainbow</span>(<span class="dv">10</span>))</span></code></pre></div>
 <p><img src="05-Week5_R_Introduction_continued_files/figure-html/5-7-1.png" width="768" />
 A quick glance at this histogram tells us that our sleep_total variable looks relatively normally distributed. This is important to know for many statistical tests.</p>
 <p> </p>
 <p>Let’s try making a box plot, comparing the amount and variation in amount of sleep across the different biological orders (how would you find out how many unique orders are in msleep?)</p>
-<div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb367-1"><a href="week-5--r-continued.html#cb367-1" aria-hidden="true" tabindex="-1"></a><span class="co">#let&#39;s make a boxplot of sleep_total and order making each one a different color </span></span>
-<span id="cb367-2"><a href="week-5--r-continued.html#cb367-2" aria-hidden="true" tabindex="-1"></a><span class="co">#using plot it would look like the following (code is silenced as it give same plot as below):</span></span>
-<span id="cb367-3"><a href="week-5--r-continued.html#cb367-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb367-4"><a href="week-5--r-continued.html#cb367-4" aria-hidden="true" tabindex="-1"></a><span class="co">#plot(msleep$sleep_total~as.factor(msleep$order), col=rainbow(19)) </span></span>
-<span id="cb367-5"><a href="week-5--r-continued.html#cb367-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb367-6"><a href="week-5--r-continued.html#cb367-6" aria-hidden="true" tabindex="-1"></a><span class="co">#or we can do the following:</span></span>
-<span id="cb367-7"><a href="week-5--r-continued.html#cb367-7" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(msleep<span class="sc">$</span>sleep_total<span class="sc">~</span><span class="fu">as.factor</span>(msleep<span class="sc">$</span>order), <span class="at">col=</span><span class="fu">rainbow</span>(<span class="dv">19</span>)) </span></code></pre></div>
+<div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb365-1"><a href="week-5--r-continued.html#cb365-1" aria-hidden="true" tabindex="-1"></a><span class="co">#let&#39;s make a boxplot of sleep_total and order making each one a different color </span></span>
+<span id="cb365-2"><a href="week-5--r-continued.html#cb365-2" aria-hidden="true" tabindex="-1"></a><span class="co">#using plot it would look like the following (code is silenced as it give same plot as below):</span></span>
+<span id="cb365-3"><a href="week-5--r-continued.html#cb365-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb365-4"><a href="week-5--r-continued.html#cb365-4" aria-hidden="true" tabindex="-1"></a><span class="co">#plot(msleep$sleep_total~as.factor(msleep$order), col=rainbow(19)) </span></span>
+<span id="cb365-5"><a href="week-5--r-continued.html#cb365-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb365-6"><a href="week-5--r-continued.html#cb365-6" aria-hidden="true" tabindex="-1"></a><span class="co">#or we can do the following:</span></span>
+<span id="cb365-7"><a href="week-5--r-continued.html#cb365-7" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(msleep<span class="sc">$</span>sleep_total<span class="sc">~</span><span class="fu">as.factor</span>(msleep<span class="sc">$</span>order), <span class="at">col=</span><span class="fu">rainbow</span>(<span class="dv">19</span>)) </span></code></pre></div>
 <p><img src="05-Week5_R_Introduction_continued_files/figure-html/5-8-1.png" width="768" /></p>
 <p>One thing to note is that most plots in R will order factors in alphabetical order. And if axis label names are long, the names might not all be shown (as on the x-axis on the plot above), or the labels might overlap. There are many ways to edit the axes to counter each of these things, which can be searched online.</p>
 <p> </p>
 <p>Another example looking at sleep variation across the different types of consumers (carnivore, herbivore, insectivore and omnivore):</p>
-<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb368-1"><a href="week-5--r-continued.html#cb368-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(msleep<span class="sc">$</span>sleep_total<span class="sc">~</span><span class="fu">as.factor</span>(msleep<span class="sc">$</span>vore),<span class="at">col=</span><span class="fu">rainbow</span>(<span class="dv">4</span>), <span class="at">xlab=</span><span class="st">&quot;Consumer type&quot;</span>, <span class="at">ylab=</span> <span class="st">&quot;Total Sleep (hours)&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="week-5--r-continued.html#cb366-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(msleep<span class="sc">$</span>sleep_total<span class="sc">~</span><span class="fu">as.factor</span>(msleep<span class="sc">$</span>vore),<span class="at">col=</span><span class="fu">rainbow</span>(<span class="dv">4</span>), <span class="at">xlab=</span><span class="st">&quot;Consumer type&quot;</span>, <span class="at">ylab=</span> <span class="st">&quot;Total Sleep (hours)&quot;</span>)</span></code></pre></div>
 <p><img src="05-Week5_R_Introduction_continued_files/figure-html/5-9-1.png" width="768" /></p>
 <p>Which type of consumer shows the least variation in hours the species within it sleep?</p>
 </div>
@@ -417,9 +433,9 @@ A quick glance at this histogram tells us that our sleep_total variable looks re
 <p>Here we are interested in understanding the effect of different diets on the growth of baby chicks. The following exercises will help us test our hypothesis that diet type will lead to differences in growth, via chick weight.</p>
 <p>Read in the data using <code>data(ChickWeight)</code></p>
 </blockquote>
-<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb369-1"><a href="week-5--r-continued.html#cb369-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Note: this dataset can also be accessed directly from the ChickWeight package in R </span></span>
-<span id="cb369-2"><a href="week-5--r-continued.html#cb369-2" aria-hidden="true" tabindex="-1"></a><span class="co"># (see ?ChickWeight)</span></span>
-<span id="cb369-3"><a href="week-5--r-continued.html#cb369-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;ChickWeight&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb367-1"><a href="week-5--r-continued.html#cb367-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Note: this dataset can also be accessed directly from the ChickWeight package in R </span></span>
+<span id="cb367-2"><a href="week-5--r-continued.html#cb367-2" aria-hidden="true" tabindex="-1"></a><span class="co"># (see ?ChickWeight)</span></span>
+<span id="cb367-3"><a href="week-5--r-continued.html#cb367-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;ChickWeight&quot;</span>)</span></code></pre></div>
 <blockquote>
 <ol style="list-style-type: decimal">
 <li>First, explore the data.
@@ -432,10 +448,10 @@ How many different diets are in the experiment?</li>
 <span style="color: red;">Solution</span>
 </summary>
 <p>
-<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb370-1"><a href="week-5--r-continued.html#cb370-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(ChickWeight<span class="sc">$</span>Chick))</span>
-<span id="cb370-2"><a href="week-5--r-continued.html#cb370-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 50</span></span>
-<span id="cb370-3"><a href="week-5--r-continued.html#cb370-3" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(ChickWeight<span class="sc">$</span>Diet))</span>
-<span id="cb370-4"><a href="week-5--r-continued.html#cb370-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 4</span></span></code></pre></div>
+<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb368-1"><a href="week-5--r-continued.html#cb368-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(ChickWeight<span class="sc">$</span>Chick))</span>
+<span id="cb368-2"><a href="week-5--r-continued.html#cb368-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 50</span></span>
+<span id="cb368-3"><a href="week-5--r-continued.html#cb368-3" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(ChickWeight<span class="sc">$</span>Diet))</span>
+<span id="cb368-4"><a href="week-5--r-continued.html#cb368-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 4</span></span></code></pre></div>
 </p>
 </details>
 <blockquote>
@@ -448,9 +464,9 @@ How many different diets are in the experiment?</li>
 <span style="color: red;">Solution</span>
 </summary>
 <p>
-<div class="sourceCode" id="cb371"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb371-1"><a href="week-5--r-continued.html#cb371-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ChickWeight<span class="sc">$</span>weight <span class="sc">~</span> ChickWeight<span class="sc">$</span>Time, </span>
-<span id="cb371-2"><a href="week-5--r-continued.html#cb371-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Time (days)&quot;</span>, </span>
-<span id="cb371-3"><a href="week-5--r-continued.html#cb371-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Weight (gm)&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb369-1"><a href="week-5--r-continued.html#cb369-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ChickWeight<span class="sc">$</span>weight <span class="sc">~</span> ChickWeight<span class="sc">$</span>Time, </span>
+<span id="cb369-2"><a href="week-5--r-continued.html#cb369-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Time (days)&quot;</span>, </span>
+<span id="cb369-3"><a href="week-5--r-continued.html#cb369-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Weight (gm)&quot;</span>)</span></code></pre></div>
 <p><img src="05-Week5_R_Introduction_continued_files/figure-html/5-10-1.png" width="768" />
 Does it look like there is a change in chick weight over time? Does that change differ across chicks?</p>
 </p>
@@ -465,10 +481,10 @@ Does it look like there is a change in chick weight over time? Does that change 
 <span style="color: red;">Solution</span>
 </summary>
 <p>
-<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="week-5--r-continued.html#cb372-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(ChickWeight<span class="sc">$</span>weight[ChickWeight<span class="sc">$</span>Time <span class="sc">==</span> <span class="fu">max</span>(ChickWeight<span class="sc">$</span>Time)], </span>
-<span id="cb372-2"><a href="week-5--r-continued.html#cb372-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Weight (gm)&quot;</span>, </span>
-<span id="cb372-3"><a href="week-5--r-continued.html#cb372-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Weights at final day of experiment&quot;</span>, </span>
-<span id="cb372-4"><a href="week-5--r-continued.html#cb372-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="fu">rainbow</span>(<span class="dv">10</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb370-1"><a href="week-5--r-continued.html#cb370-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(ChickWeight<span class="sc">$</span>weight[ChickWeight<span class="sc">$</span>Time <span class="sc">==</span> <span class="fu">max</span>(ChickWeight<span class="sc">$</span>Time)], </span>
+<span id="cb370-2"><a href="week-5--r-continued.html#cb370-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Weight (gm)&quot;</span>, </span>
+<span id="cb370-3"><a href="week-5--r-continued.html#cb370-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Weights at final day of experiment&quot;</span>, </span>
+<span id="cb370-4"><a href="week-5--r-continued.html#cb370-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="fu">rainbow</span>(<span class="dv">10</span>))</span></code></pre></div>
 <p><img src="05-Week5_R_Introduction_continued_files/figure-html/5-11-1.png" width="768" />
 What does this tell us about the distribution of the data?</p>
 </p>
@@ -483,13 +499,13 @@ What does this tell us about the distribution of the data?</p>
 <span style="color: red;">Solution</span>
 </summary>
 <p>
-<div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb373-1"><a href="week-5--r-continued.html#cb373-1" aria-hidden="true" tabindex="-1"></a>my.new <span class="ot">=</span> ChickWeight[ChickWeight<span class="sc">$</span>Time <span class="sc">==</span> <span class="fu">max</span>(ChickWeight<span class="sc">$</span>Time), ]</span>
-<span id="cb373-2"><a href="week-5--r-continued.html#cb373-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(weight <span class="sc">~</span> Diet, </span>
-<span id="cb373-3"><a href="week-5--r-continued.html#cb373-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">data =</span> my.new, </span>
-<span id="cb373-4"><a href="week-5--r-continued.html#cb373-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">&quot;Diet&quot;</span>, </span>
-<span id="cb373-5"><a href="week-5--r-continued.html#cb373-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">&quot;Weight (gm)&quot;</span>, </span>
-<span id="cb373-6"><a href="week-5--r-continued.html#cb373-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">&quot;Final weights given diet type&quot;</span>, </span>
-<span id="cb373-7"><a href="week-5--r-continued.html#cb373-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;orange&quot;</span>, <span class="st">&quot;green&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb371"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb371-1"><a href="week-5--r-continued.html#cb371-1" aria-hidden="true" tabindex="-1"></a>my.new <span class="ot">=</span> ChickWeight[ChickWeight<span class="sc">$</span>Time <span class="sc">==</span> <span class="fu">max</span>(ChickWeight<span class="sc">$</span>Time), ]</span>
+<span id="cb371-2"><a href="week-5--r-continued.html#cb371-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(weight <span class="sc">~</span> Diet, </span>
+<span id="cb371-3"><a href="week-5--r-continued.html#cb371-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">data =</span> my.new, </span>
+<span id="cb371-4"><a href="week-5--r-continued.html#cb371-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">&quot;Diet&quot;</span>, </span>
+<span id="cb371-5"><a href="week-5--r-continued.html#cb371-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">&quot;Weight (gm)&quot;</span>, </span>
+<span id="cb371-6"><a href="week-5--r-continued.html#cb371-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">&quot;Final weights given diet type&quot;</span>, </span>
+<span id="cb371-7"><a href="week-5--r-continued.html#cb371-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;orange&quot;</span>, <span class="st">&quot;green&quot;</span>))</span></code></pre></div>
 <p><img src="05-Week5_R_Introduction_continued_files/figure-html/5-12-1.png" width="768" />
 From this plot, do you think it’s reasonable to assume that our hypothesis is correct (that diet affects weight)? If so, which diet leads to the highest growth in chicks?</p>
 </p>
@@ -497,9 +513,9 @@ From this plot, do you think it’s reasonable to assume that our hypothesis is 
 <blockquote>
 <p>Try using the package R Color Brewer to generate color palettes. Go to <a href="http://colorbrewer2.org/" class="uri">http://colorbrewer2.org/</a> to vizualize palettes. You can choose palettes that are colorblind safe, print friendly, etc.</p>
 </blockquote>
-<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb374-1"><a href="week-5--r-continued.html#cb374-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install R Color Brewer</span></span>
-<span id="cb374-2"><a href="week-5--r-continued.html#cb374-2" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages(&quot;RColorBrewer&quot;)</span></span>
-<span id="cb374-3"><a href="week-5--r-continued.html#cb374-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;RColorBrewer&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="week-5--r-continued.html#cb372-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install R Color Brewer</span></span>
+<span id="cb372-2"><a href="week-5--r-continued.html#cb372-2" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages(&quot;RColorBrewer&quot;)</span></span>
+<span id="cb372-3"><a href="week-5--r-continued.html#cb372-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;RColorBrewer&quot;</span>)</span></code></pre></div>
 <blockquote>
 <ol start="4" style="list-style-type: decimal">
 <li>Define a color pallete with 10 colors and re-plot the histogram of the weights of the chicks at the final day of the experiments in these colors
@@ -511,9 +527,9 @@ Note: if histogram has n breaks and n is less than 10, it will just use first n 
 <span style="color: red;">Solution</span>
 </summary>
 <p>
-<div class="sourceCode" id="cb375"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb375-1"><a href="week-5--r-continued.html#cb375-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RColorBrewer)</span>
-<span id="cb375-2"><a href="week-5--r-continued.html#cb375-2" aria-hidden="true" tabindex="-1"></a>my.colors <span class="ot">=</span> <span class="fu">brewer.pal</span>(<span class="dv">10</span>, <span class="st">&quot;Paired&quot;</span>)</span>
-<span id="cb375-3"><a href="week-5--r-continued.html#cb375-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(ChickWeight<span class="sc">$</span>weight[ChickWeight<span class="sc">$</span>Time <span class="sc">==</span> <span class="fu">max</span>(ChickWeight<span class="sc">$</span>Time)], <span class="at">xlab =</span> <span class="st">&quot;Weight (gm)&quot;</span>,<span class="at">main =</span> <span class="st">&quot;Weights at final day of experiment&quot;</span>, <span class="at">col =</span> my.colors)</span></code></pre></div>
+<div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb373-1"><a href="week-5--r-continued.html#cb373-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RColorBrewer)</span>
+<span id="cb373-2"><a href="week-5--r-continued.html#cb373-2" aria-hidden="true" tabindex="-1"></a>my.colors <span class="ot">=</span> <span class="fu">brewer.pal</span>(<span class="dv">10</span>, <span class="st">&quot;Paired&quot;</span>)</span>
+<span id="cb373-3"><a href="week-5--r-continued.html#cb373-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(ChickWeight<span class="sc">$</span>weight[ChickWeight<span class="sc">$</span>Time <span class="sc">==</span> <span class="fu">max</span>(ChickWeight<span class="sc">$</span>Time)], <span class="at">xlab =</span> <span class="st">&quot;Weight (gm)&quot;</span>,<span class="at">main =</span> <span class="st">&quot;Weights at final day of experiment&quot;</span>, <span class="at">col =</span> my.colors)</span></code></pre></div>
 <img src="05-Week5_R_Introduction_continued_files/figure-html/5-13-1.png" width="768" />
 </p>
 </details>
@@ -523,114 +539,114 @@ Note: if histogram has n breaks and n is less than 10, it will just use first n 
 <p>GGPlot is a package that allows you to make a lot of different kinds of plots and has become increasingly popular. There are also many tutorials on how to use ggplot as well as example code that could be modified to fit the data you’re interested in plotting. There is a really helpful cheatsheat (here)[<a href="https://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf" class="uri">https://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf</a>]</p>
 <p>There is a little bit of a learning curve for ggplot as the syntax is structured differently than base R plotting. One thing that remains the same and is even more noticible in ggplot is the iterative process of building a plot, one aspect at a time.</p>
 <p>Let’s demonstrate what ggplot can do with the states data set</p>
-<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb376-1"><a href="week-5--r-continued.html#cb376-1" aria-hidden="true" tabindex="-1"></a><span class="co">#load in the data</span></span>
-<span id="cb376-2"><a href="week-5--r-continued.html#cb376-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(state)</span>
-<span id="cb376-3"><a href="week-5--r-continued.html#cb376-3" aria-hidden="true" tabindex="-1"></a>states <span class="ot">=</span> <span class="fu">as.data.frame</span>(state.x77) <span class="co"># convert data to a familiar format - data frame</span></span>
-<span id="cb376-4"><a href="week-5--r-continued.html#cb376-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(states) <span class="co"># let&#39;s take a look at the dataframe</span></span>
-<span id="cb376-5"><a href="week-5--r-continued.html#cb376-5" aria-hidden="true" tabindex="-1"></a><span class="do">## &#39;data.frame&#39;:    50 obs. of  8 variables:</span></span>
-<span id="cb376-6"><a href="week-5--r-continued.html#cb376-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ Population: num  3615 365 2212 2110 21198 ...</span></span>
-<span id="cb376-7"><a href="week-5--r-continued.html#cb376-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ Income    : num  3624 6315 4530 3378 5114 ...</span></span>
-<span id="cb376-8"><a href="week-5--r-continued.html#cb376-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ Illiteracy: num  2.1 1.5 1.8 1.9 1.1 0.7 1.1 0.9 1.3 2 ...</span></span>
-<span id="cb376-9"><a href="week-5--r-continued.html#cb376-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ Life Exp  : num  69 69.3 70.5 70.7 71.7 ...</span></span>
-<span id="cb376-10"><a href="week-5--r-continued.html#cb376-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ Murder    : num  15.1 11.3 7.8 10.1 10.3 6.8 3.1 6.2 10.7 13.9 ...</span></span>
-<span id="cb376-11"><a href="week-5--r-continued.html#cb376-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ HS Grad   : num  41.3 66.7 58.1 39.9 62.6 63.9 56 54.6 52.6 40.6 ...</span></span>
-<span id="cb376-12"><a href="week-5--r-continued.html#cb376-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ Frost     : num  20 152 15 65 20 166 139 103 11 60 ...</span></span>
-<span id="cb376-13"><a href="week-5--r-continued.html#cb376-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ Area      : num  50708 566432 113417 51945 156361 ...</span></span>
-<span id="cb376-14"><a href="week-5--r-continued.html#cb376-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb376-15"><a href="week-5--r-continued.html#cb376-15" aria-hidden="true" tabindex="-1"></a><span class="co">#make an initial ggplot</span></span>
-<span id="cb376-16"><a href="week-5--r-continued.html#cb376-16" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>states) </span></code></pre></div>
+<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb374-1"><a href="week-5--r-continued.html#cb374-1" aria-hidden="true" tabindex="-1"></a><span class="co">#load in the data</span></span>
+<span id="cb374-2"><a href="week-5--r-continued.html#cb374-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(state)</span>
+<span id="cb374-3"><a href="week-5--r-continued.html#cb374-3" aria-hidden="true" tabindex="-1"></a>states <span class="ot">=</span> <span class="fu">as.data.frame</span>(state.x77) <span class="co"># convert data to a familiar format - data frame</span></span>
+<span id="cb374-4"><a href="week-5--r-continued.html#cb374-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(states) <span class="co"># let&#39;s take a look at the dataframe</span></span>
+<span id="cb374-5"><a href="week-5--r-continued.html#cb374-5" aria-hidden="true" tabindex="-1"></a><span class="do">## &#39;data.frame&#39;:    50 obs. of  8 variables:</span></span>
+<span id="cb374-6"><a href="week-5--r-continued.html#cb374-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ Population: num  3615 365 2212 2110 21198 ...</span></span>
+<span id="cb374-7"><a href="week-5--r-continued.html#cb374-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ Income    : num  3624 6315 4530 3378 5114 ...</span></span>
+<span id="cb374-8"><a href="week-5--r-continued.html#cb374-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ Illiteracy: num  2.1 1.5 1.8 1.9 1.1 0.7 1.1 0.9 1.3 2 ...</span></span>
+<span id="cb374-9"><a href="week-5--r-continued.html#cb374-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ Life Exp  : num  69 69.3 70.5 70.7 71.7 ...</span></span>
+<span id="cb374-10"><a href="week-5--r-continued.html#cb374-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ Murder    : num  15.1 11.3 7.8 10.1 10.3 6.8 3.1 6.2 10.7 13.9 ...</span></span>
+<span id="cb374-11"><a href="week-5--r-continued.html#cb374-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ HS Grad   : num  41.3 66.7 58.1 39.9 62.6 63.9 56 54.6 52.6 40.6 ...</span></span>
+<span id="cb374-12"><a href="week-5--r-continued.html#cb374-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ Frost     : num  20 152 15 65 20 166 139 103 11 60 ...</span></span>
+<span id="cb374-13"><a href="week-5--r-continued.html#cb374-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ Area      : num  50708 566432 113417 51945 156361 ...</span></span>
+<span id="cb374-14"><a href="week-5--r-continued.html#cb374-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb374-15"><a href="week-5--r-continued.html#cb374-15" aria-hidden="true" tabindex="-1"></a><span class="co">#make an initial ggplot</span></span>
+<span id="cb374-16"><a href="week-5--r-continued.html#cb374-16" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>states) </span></code></pre></div>
 <p><img src="05-Week5_R_Introduction_continued_files/figure-html/5-14-1.png" width="768" /></p>
 <p>We just see a grey box. In order to tell ggplot what to put in the box we use the <code>aes()</code>. The <code>aes()</code> function stands for aesthetics and will be used to specify our axes and how we want the data grouped.</p>
-<div class="sourceCode" id="cb377"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb377-1"><a href="week-5--r-continued.html#cb377-1" aria-hidden="true" tabindex="-1"></a><span class="co">#lets make a scatterplot of population and income</span></span>
-<span id="cb377-2"><a href="week-5--r-continued.html#cb377-2" aria-hidden="true" tabindex="-1"></a><span class="co">#we specify which axes we want to be x and y with aes()</span></span>
-<span id="cb377-3"><a href="week-5--r-continued.html#cb377-3" aria-hidden="true" tabindex="-1"></a><span class="co">#we&#39;ll then use geom_point to tell it to make a scatterplot using the data we specified in the first command</span></span>
-<span id="cb377-4"><a href="week-5--r-continued.html#cb377-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>states, <span class="fu">aes</span>(<span class="at">x=</span>Population, <span class="at">y=</span>Income))<span class="sc">+</span><span class="fu">geom_point</span>() </span></code></pre></div>
+<div class="sourceCode" id="cb375"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb375-1"><a href="week-5--r-continued.html#cb375-1" aria-hidden="true" tabindex="-1"></a><span class="co">#lets make a scatterplot of population and income</span></span>
+<span id="cb375-2"><a href="week-5--r-continued.html#cb375-2" aria-hidden="true" tabindex="-1"></a><span class="co">#we specify which axes we want to be x and y with aes()</span></span>
+<span id="cb375-3"><a href="week-5--r-continued.html#cb375-3" aria-hidden="true" tabindex="-1"></a><span class="co">#we&#39;ll then use geom_point to tell it to make a scatterplot using the data we specified in the first command</span></span>
+<span id="cb375-4"><a href="week-5--r-continued.html#cb375-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>states, <span class="fu">aes</span>(<span class="at">x=</span>Population, <span class="at">y=</span>Income))<span class="sc">+</span><span class="fu">geom_point</span>() </span></code></pre></div>
 <p><img src="05-Week5_R_Introduction_continued_files/figure-html/5-15-1.png" width="768" /></p>
 <p>There are many types of plots in ggplot that can be called with <code>geom_</code> including <code>geom_line</code>, <code>geom_boxplot</code> <code>geom_bar</code> and many others!</p>
 <p>Let’s add a line to our plot that of best fit for Population ~ Income. Each time we add something to our plot we use the <code>+</code> sign. We’ll use <code>geom_smooth()</code> to draw a line with the method for <code>lm</code> which stands for linear model.</p>
-<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="week-5--r-continued.html#cb378-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb378-2"><a href="week-5--r-continued.html#cb378-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>states, <span class="fu">aes</span>(<span class="at">x=</span>Population, <span class="at">y=</span>Income))<span class="sc">+</span><span class="fu">geom_point</span>()<span class="sc">+</span><span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>) </span>
-<span id="cb378-3"><a href="week-5--r-continued.html#cb378-3" aria-hidden="true" tabindex="-1"></a><span class="do">## `geom_smooth()` using formula &#39;y ~ x&#39;</span></span></code></pre></div>
+<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb376-1"><a href="week-5--r-continued.html#cb376-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb376-2"><a href="week-5--r-continued.html#cb376-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>states, <span class="fu">aes</span>(<span class="at">x=</span>Population, <span class="at">y=</span>Income))<span class="sc">+</span><span class="fu">geom_point</span>()<span class="sc">+</span><span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>) </span>
+<span id="cb376-3"><a href="week-5--r-continued.html#cb376-3" aria-hidden="true" tabindex="-1"></a><span class="do">## `geom_smooth()` using formula &#39;y ~ x&#39;</span></span></code></pre></div>
 <p><img src="05-Week5_R_Introduction_continued_files/figure-html/5-16-1.png" width="768" /></p>
 <p>As you can already see ggplot works with many more parameters drawn in default than plotting in base R. For example, the background of our plot is grey the confidence interval of our line is drawn for us and is shaded dark grey and the line of best fit is in blue. All of these things can be modified if we wish. Many of these options can easily be changed with the <code>theme_</code> functions.</p>
 <p>Let’s change to a minimal theme which removes the gray backgroun in the back of the plot. Play around with the other themes to see what they change.</p>
-<div class="sourceCode" id="cb379"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb379-1"><a href="week-5--r-continued.html#cb379-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb379-2"><a href="week-5--r-continued.html#cb379-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>states, <span class="fu">aes</span>(<span class="at">x=</span>Population, <span class="at">y=</span>Income))<span class="sc">+</span><span class="fu">geom_point</span>()<span class="sc">+</span><span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>)<span class="sc">+</span><span class="fu">theme_minimal</span>() </span>
-<span id="cb379-3"><a href="week-5--r-continued.html#cb379-3" aria-hidden="true" tabindex="-1"></a><span class="do">## `geom_smooth()` using formula &#39;y ~ x&#39;</span></span></code></pre></div>
+<div class="sourceCode" id="cb377"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb377-1"><a href="week-5--r-continued.html#cb377-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb377-2"><a href="week-5--r-continued.html#cb377-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>states, <span class="fu">aes</span>(<span class="at">x=</span>Population, <span class="at">y=</span>Income))<span class="sc">+</span><span class="fu">geom_point</span>()<span class="sc">+</span><span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>)<span class="sc">+</span><span class="fu">theme_minimal</span>() </span>
+<span id="cb377-3"><a href="week-5--r-continued.html#cb377-3" aria-hidden="true" tabindex="-1"></a><span class="do">## `geom_smooth()` using formula &#39;y ~ x&#39;</span></span></code></pre></div>
 <p><img src="05-Week5_R_Introduction_continued_files/figure-html/5-17-1.png" width="768" /></p>
 <p>Another plot example, looking at the relationship between Income and Illiteracy, colored by the population size.</p>
-<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb380-1"><a href="week-5--r-continued.html#cb380-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>states, <span class="fu">aes</span>(<span class="at">x=</span>Income, <span class="at">y=</span>Illiteracy, <span class="at">color=</span>Population)) <span class="sc">+</span><span class="fu">geom_point</span>()<span class="sc">+</span><span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>, <span class="at">color=</span><span class="st">&quot;red&quot;</span>)<span class="sc">+</span><span class="fu">theme_classic</span>() </span>
-<span id="cb380-2"><a href="week-5--r-continued.html#cb380-2" aria-hidden="true" tabindex="-1"></a><span class="do">## `geom_smooth()` using formula &#39;y ~ x&#39;</span></span></code></pre></div>
+<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="week-5--r-continued.html#cb378-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>states, <span class="fu">aes</span>(<span class="at">x=</span>Income, <span class="at">y=</span>Illiteracy, <span class="at">color=</span>Population)) <span class="sc">+</span><span class="fu">geom_point</span>()<span class="sc">+</span><span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>, <span class="at">color=</span><span class="st">&quot;red&quot;</span>)<span class="sc">+</span><span class="fu">theme_classic</span>() </span>
+<span id="cb378-2"><a href="week-5--r-continued.html#cb378-2" aria-hidden="true" tabindex="-1"></a><span class="do">## `geom_smooth()` using formula &#39;y ~ x&#39;</span></span></code></pre></div>
 <p><img src="05-Week5_R_Introduction_continued_files/figure-html/5-18-1.png" width="768" />
 Looking at this plot, what is it telling us? Is there anything you would change to assess the data better?</p>
 <p>Let’s use the <code>msleep</code> data set to explore what ggplot can do with character vectors. Make a plot of total sleep against REM sleep and then group by “vore.”</p>
-<div class="sourceCode" id="cb381"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb381-1"><a href="week-5--r-continued.html#cb381-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb381-2"><a href="week-5--r-continued.html#cb381-2" aria-hidden="true" tabindex="-1"></a><span class="co"># because our vore vector is a character vector we must convert it to a factor before we can use it to group or color</span></span>
-<span id="cb381-3"><a href="week-5--r-continued.html#cb381-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb381-4"><a href="week-5--r-continued.html#cb381-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(msleep, <span class="fu">aes</span>(<span class="at">y=</span>sleep_total, <span class="at">x=</span>sleep_rem, <span class="at">group=</span><span class="fu">as.factor</span>(vore), <span class="at">color=</span><span class="fu">as.factor</span>(vore))) <span class="sc">+</span><span class="fu">geom_point</span>()</span>
-<span id="cb381-5"><a href="week-5--r-continued.html#cb381-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: Removed 22 rows containing missing values (geom_point).</span></span></code></pre></div>
+<div class="sourceCode" id="cb379"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb379-1"><a href="week-5--r-continued.html#cb379-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb379-2"><a href="week-5--r-continued.html#cb379-2" aria-hidden="true" tabindex="-1"></a><span class="co"># because our vore vector is a character vector we must convert it to a factor before we can use it to group or color</span></span>
+<span id="cb379-3"><a href="week-5--r-continued.html#cb379-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb379-4"><a href="week-5--r-continued.html#cb379-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(msleep, <span class="fu">aes</span>(<span class="at">y=</span>sleep_total, <span class="at">x=</span>sleep_rem, <span class="at">group=</span><span class="fu">as.factor</span>(vore), <span class="at">color=</span><span class="fu">as.factor</span>(vore))) <span class="sc">+</span><span class="fu">geom_point</span>()</span>
+<span id="cb379-5"><a href="week-5--r-continued.html#cb379-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: Removed 22 rows containing missing values (geom_point).</span></span></code></pre></div>
 <p><img src="05-Week5_R_Introduction_continued_files/figure-html/5-19-1.png" width="768" /></p>
 <p>That looks fine, but we may want to add axis labels and change the legend. The code below does just that and changes the theme.</p>
-<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb382-1"><a href="week-5--r-continued.html#cb382-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as we add things to the plot the line can get really long, you can hit enter after the plus sign to start a new line</span></span>
-<span id="cb382-2"><a href="week-5--r-continued.html#cb382-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb382-3"><a href="week-5--r-continued.html#cb382-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(msleep, <span class="fu">aes</span>(<span class="at">y=</span>sleep_total, <span class="at">x=</span>sleep_rem, <span class="at">group=</span><span class="fu">as.factor</span>(vore), <span class="at">color=</span><span class="fu">as.factor</span>(vore)))<span class="sc">+</span></span>
-<span id="cb382-4"><a href="week-5--r-continued.html#cb382-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb382-5"><a href="week-5--r-continued.html#cb382-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y=</span> <span class="st">&quot;Total Sleep (hours)&quot;</span>, <span class="at">x=</span> <span class="st">&quot;REM sleep (hours)&quot;</span>)<span class="sc">+</span></span>
-<span id="cb382-6"><a href="week-5--r-continued.html#cb382-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
-<span id="cb382-7"><a href="week-5--r-continued.html#cb382-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">name=</span><span class="st">&quot;Diet&quot;</span>, </span>
-<span id="cb382-8"><a href="week-5--r-continued.html#cb382-8" aria-hidden="true" tabindex="-1"></a>                        <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Carnivore&quot;</span>, </span>
-<span id="cb382-9"><a href="week-5--r-continued.html#cb382-9" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">&quot;Herbivore&quot;</span>, </span>
-<span id="cb382-10"><a href="week-5--r-continued.html#cb382-10" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">&quot;Insectivore&quot;</span>, </span>
-<span id="cb382-11"><a href="week-5--r-continued.html#cb382-11" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">&quot;Omnivore&quot;</span>, </span>
-<span id="cb382-12"><a href="week-5--r-continued.html#cb382-12" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">&quot;NA&quot;</span>), </span>
-<span id="cb382-13"><a href="week-5--r-continued.html#cb382-13" aria-hidden="true" tabindex="-1"></a>                        <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;carni&quot;</span><span class="ot">=</span><span class="st">&quot;blue&quot;</span>, </span>
-<span id="cb382-14"><a href="week-5--r-continued.html#cb382-14" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">&quot;herbi&quot;</span><span class="ot">=</span><span class="st">&quot;red&quot;</span>, </span>
-<span id="cb382-15"><a href="week-5--r-continued.html#cb382-15" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">&quot;insecti&quot;</span><span class="ot">=</span><span class="st">&quot;green&quot;</span>, </span>
-<span id="cb382-16"><a href="week-5--r-continued.html#cb382-16" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">&quot;omni&quot;</span><span class="ot">=</span><span class="st">&quot;brown&quot;</span>, </span>
-<span id="cb382-17"><a href="week-5--r-continued.html#cb382-17" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">&quot;NA&quot;</span><span class="ot">=</span><span class="st">&quot;orange&quot;</span>))</span>
-<span id="cb382-18"><a href="week-5--r-continued.html#cb382-18" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: Removed 22 rows containing missing values (geom_point).</span></span></code></pre></div>
+<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb380-1"><a href="week-5--r-continued.html#cb380-1" aria-hidden="true" tabindex="-1"></a><span class="co"># as we add things to the plot the line can get really long, you can hit enter after the plus sign to start a new line</span></span>
+<span id="cb380-2"><a href="week-5--r-continued.html#cb380-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb380-3"><a href="week-5--r-continued.html#cb380-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(msleep, <span class="fu">aes</span>(<span class="at">y=</span>sleep_total, <span class="at">x=</span>sleep_rem, <span class="at">group=</span><span class="fu">as.factor</span>(vore), <span class="at">color=</span><span class="fu">as.factor</span>(vore)))<span class="sc">+</span></span>
+<span id="cb380-4"><a href="week-5--r-continued.html#cb380-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb380-5"><a href="week-5--r-continued.html#cb380-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y=</span> <span class="st">&quot;Total Sleep (hours)&quot;</span>, <span class="at">x=</span> <span class="st">&quot;REM sleep (hours)&quot;</span>)<span class="sc">+</span></span>
+<span id="cb380-6"><a href="week-5--r-continued.html#cb380-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb380-7"><a href="week-5--r-continued.html#cb380-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">name=</span><span class="st">&quot;Diet&quot;</span>, </span>
+<span id="cb380-8"><a href="week-5--r-continued.html#cb380-8" aria-hidden="true" tabindex="-1"></a>                        <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Carnivore&quot;</span>, </span>
+<span id="cb380-9"><a href="week-5--r-continued.html#cb380-9" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">&quot;Herbivore&quot;</span>, </span>
+<span id="cb380-10"><a href="week-5--r-continued.html#cb380-10" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">&quot;Insectivore&quot;</span>, </span>
+<span id="cb380-11"><a href="week-5--r-continued.html#cb380-11" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">&quot;Omnivore&quot;</span>, </span>
+<span id="cb380-12"><a href="week-5--r-continued.html#cb380-12" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">&quot;NA&quot;</span>), </span>
+<span id="cb380-13"><a href="week-5--r-continued.html#cb380-13" aria-hidden="true" tabindex="-1"></a>                        <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;carni&quot;</span><span class="ot">=</span><span class="st">&quot;blue&quot;</span>, </span>
+<span id="cb380-14"><a href="week-5--r-continued.html#cb380-14" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">&quot;herbi&quot;</span><span class="ot">=</span><span class="st">&quot;red&quot;</span>, </span>
+<span id="cb380-15"><a href="week-5--r-continued.html#cb380-15" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">&quot;insecti&quot;</span><span class="ot">=</span><span class="st">&quot;green&quot;</span>, </span>
+<span id="cb380-16"><a href="week-5--r-continued.html#cb380-16" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">&quot;omni&quot;</span><span class="ot">=</span><span class="st">&quot;brown&quot;</span>, </span>
+<span id="cb380-17"><a href="week-5--r-continued.html#cb380-17" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">&quot;NA&quot;</span><span class="ot">=</span><span class="st">&quot;orange&quot;</span>))</span>
+<span id="cb380-18"><a href="week-5--r-continued.html#cb380-18" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: Removed 22 rows containing missing values (geom_point).</span></span></code></pre></div>
 <p><img src="05-Week5_R_Introduction_continued_files/figure-html/5-20-1.png" width="768" />
 Our plot at this point is getting very clunky. You can assign what we have so far to an object and continue to add parameters without having to copy and paste the whole plot.</p>
-<div class="sourceCode" id="cb383"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb383-1"><a href="week-5--r-continued.html#cb383-1" aria-hidden="true" tabindex="-1"></a><span class="co">#assign to an object</span></span>
-<span id="cb383-2"><a href="week-5--r-continued.html#cb383-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb383-3"><a href="week-5--r-continued.html#cb383-3" aria-hidden="true" tabindex="-1"></a>g<span class="ot">&lt;-</span><span class="fu">ggplot</span>(msleep, <span class="fu">aes</span>(<span class="at">y=</span>sleep_total, <span class="at">x=</span>sleep_rem, <span class="at">group=</span><span class="fu">as.factor</span>(vore), <span class="at">color=</span><span class="fu">as.factor</span>(vore)))<span class="sc">+</span></span>
-<span id="cb383-4"><a href="week-5--r-continued.html#cb383-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb383-5"><a href="week-5--r-continued.html#cb383-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y=</span> <span class="st">&quot;Total Sleep (hours)&quot;</span>, <span class="at">x=</span> <span class="st">&quot;REM sleep (hours)&quot;</span>)<span class="sc">+</span></span>
-<span id="cb383-6"><a href="week-5--r-continued.html#cb383-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
-<span id="cb383-7"><a href="week-5--r-continued.html#cb383-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">name=</span><span class="st">&quot;Diet&quot;</span>, </span>
-<span id="cb383-8"><a href="week-5--r-continued.html#cb383-8" aria-hidden="true" tabindex="-1"></a>                        <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Carnivore&quot;</span>, </span>
-<span id="cb383-9"><a href="week-5--r-continued.html#cb383-9" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">&quot;Herbivore&quot;</span>, </span>
-<span id="cb383-10"><a href="week-5--r-continued.html#cb383-10" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">&quot;Insectivore&quot;</span>, </span>
-<span id="cb383-11"><a href="week-5--r-continued.html#cb383-11" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">&quot;Omnivore&quot;</span>, </span>
-<span id="cb383-12"><a href="week-5--r-continued.html#cb383-12" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">&quot;NA&quot;</span>), </span>
-<span id="cb383-13"><a href="week-5--r-continued.html#cb383-13" aria-hidden="true" tabindex="-1"></a>                        <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;carni&quot;</span><span class="ot">=</span><span class="st">&quot;blue&quot;</span>, </span>
-<span id="cb383-14"><a href="week-5--r-continued.html#cb383-14" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">&quot;herbi&quot;</span><span class="ot">=</span><span class="st">&quot;red&quot;</span>, </span>
-<span id="cb383-15"><a href="week-5--r-continued.html#cb383-15" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">&quot;insecti&quot;</span><span class="ot">=</span><span class="st">&quot;green&quot;</span>, </span>
-<span id="cb383-16"><a href="week-5--r-continued.html#cb383-16" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">&quot;omni&quot;</span><span class="ot">=</span><span class="st">&quot;brown&quot;</span>, </span>
-<span id="cb383-17"><a href="week-5--r-continued.html#cb383-17" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">&quot;NA&quot;</span><span class="ot">=</span><span class="st">&quot;orange&quot;</span>))</span>
-<span id="cb383-18"><a href="week-5--r-continued.html#cb383-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb383-19"><a href="week-5--r-continued.html#cb383-19" aria-hidden="true" tabindex="-1"></a>g</span>
-<span id="cb383-20"><a href="week-5--r-continued.html#cb383-20" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: Removed 22 rows containing missing values (geom_point).</span></span></code></pre></div>
+<div class="sourceCode" id="cb381"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb381-1"><a href="week-5--r-continued.html#cb381-1" aria-hidden="true" tabindex="-1"></a><span class="co">#assign to an object</span></span>
+<span id="cb381-2"><a href="week-5--r-continued.html#cb381-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb381-3"><a href="week-5--r-continued.html#cb381-3" aria-hidden="true" tabindex="-1"></a>g<span class="ot">&lt;-</span><span class="fu">ggplot</span>(msleep, <span class="fu">aes</span>(<span class="at">y=</span>sleep_total, <span class="at">x=</span>sleep_rem, <span class="at">group=</span><span class="fu">as.factor</span>(vore), <span class="at">color=</span><span class="fu">as.factor</span>(vore)))<span class="sc">+</span></span>
+<span id="cb381-4"><a href="week-5--r-continued.html#cb381-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb381-5"><a href="week-5--r-continued.html#cb381-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y=</span> <span class="st">&quot;Total Sleep (hours)&quot;</span>, <span class="at">x=</span> <span class="st">&quot;REM sleep (hours)&quot;</span>)<span class="sc">+</span></span>
+<span id="cb381-6"><a href="week-5--r-continued.html#cb381-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb381-7"><a href="week-5--r-continued.html#cb381-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">name=</span><span class="st">&quot;Diet&quot;</span>, </span>
+<span id="cb381-8"><a href="week-5--r-continued.html#cb381-8" aria-hidden="true" tabindex="-1"></a>                        <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Carnivore&quot;</span>, </span>
+<span id="cb381-9"><a href="week-5--r-continued.html#cb381-9" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">&quot;Herbivore&quot;</span>, </span>
+<span id="cb381-10"><a href="week-5--r-continued.html#cb381-10" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">&quot;Insectivore&quot;</span>, </span>
+<span id="cb381-11"><a href="week-5--r-continued.html#cb381-11" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">&quot;Omnivore&quot;</span>, </span>
+<span id="cb381-12"><a href="week-5--r-continued.html#cb381-12" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">&quot;NA&quot;</span>), </span>
+<span id="cb381-13"><a href="week-5--r-continued.html#cb381-13" aria-hidden="true" tabindex="-1"></a>                        <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;carni&quot;</span><span class="ot">=</span><span class="st">&quot;blue&quot;</span>, </span>
+<span id="cb381-14"><a href="week-5--r-continued.html#cb381-14" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">&quot;herbi&quot;</span><span class="ot">=</span><span class="st">&quot;red&quot;</span>, </span>
+<span id="cb381-15"><a href="week-5--r-continued.html#cb381-15" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">&quot;insecti&quot;</span><span class="ot">=</span><span class="st">&quot;green&quot;</span>, </span>
+<span id="cb381-16"><a href="week-5--r-continued.html#cb381-16" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">&quot;omni&quot;</span><span class="ot">=</span><span class="st">&quot;brown&quot;</span>, </span>
+<span id="cb381-17"><a href="week-5--r-continued.html#cb381-17" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">&quot;NA&quot;</span><span class="ot">=</span><span class="st">&quot;orange&quot;</span>))</span>
+<span id="cb381-18"><a href="week-5--r-continued.html#cb381-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb381-19"><a href="week-5--r-continued.html#cb381-19" aria-hidden="true" tabindex="-1"></a>g</span>
+<span id="cb381-20"><a href="week-5--r-continued.html#cb381-20" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: Removed 22 rows containing missing values (geom_point).</span></span></code></pre></div>
 <p><img src="05-Week5_R_Introduction_continued_files/figure-html/5-21-1.png" width="768" />
 This example is a great way to begin to explore how the relationship between total sleep and REM sleep varies across species with different diets, but overall still shows the correlation at the whole group level.</p>
 <p>If we want to dive deeper and compare the relationship between two continuous variables, and how that relationship differs between groups/characters, we can use whats called a ‘facet wrap.’</p>
 <p>For example in the iris dataframe we may be interested in looking at the relationship between Sepal.Length and Sepal.Width for each species. You can look at all of these together with <code>facet_wrap</code> or <code>facet_grid</code>.</p>
-<div class="sourceCode" id="cb384"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb384-1"><a href="week-5--r-continued.html#cb384-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb384-2"><a href="week-5--r-continued.html#cb384-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">y=</span>Sepal.Length, <span class="at">x=</span>Sepal.Width, <span class="at">group=</span>Species, <span class="at">color=</span>Species))<span class="sc">+</span></span>
-<span id="cb384-3"><a href="week-5--r-continued.html#cb384-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb384-4"><a href="week-5--r-continued.html#cb384-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Species)<span class="sc">+</span></span>
-<span id="cb384-5"><a href="week-5--r-continued.html#cb384-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>)</span>
-<span id="cb384-6"><a href="week-5--r-continued.html#cb384-6" aria-hidden="true" tabindex="-1"></a><span class="do">## `geom_smooth()` using formula &#39;y ~ x&#39;</span></span></code></pre></div>
+<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb382-1"><a href="week-5--r-continued.html#cb382-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb382-2"><a href="week-5--r-continued.html#cb382-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">y=</span>Sepal.Length, <span class="at">x=</span>Sepal.Width, <span class="at">group=</span>Species, <span class="at">color=</span>Species))<span class="sc">+</span></span>
+<span id="cb382-3"><a href="week-5--r-continued.html#cb382-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb382-4"><a href="week-5--r-continued.html#cb382-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Species)<span class="sc">+</span></span>
+<span id="cb382-5"><a href="week-5--r-continued.html#cb382-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>)</span>
+<span id="cb382-6"><a href="week-5--r-continued.html#cb382-6" aria-hidden="true" tabindex="-1"></a><span class="do">## `geom_smooth()` using formula &#39;y ~ x&#39;</span></span></code></pre></div>
 <p><img src="05-Week5_R_Introduction_continued_files/figure-html/5-22-1.png" width="768" />
 How does the relationship between sepal width and length differ between the three species?</p>
 <p> </p>
 <p>Finally in ggplot we may be interested in seeing the mean values plotted with error bars for several groups. You can use the function <code>stat_summary</code> to find the mean and error around that mean for the given grouping.</p>
 <p>Here’s a plot looking at the mean chickweight by diet.</p>
-<div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb385-1"><a href="week-5--r-continued.html#cb385-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(ChickWeight, <span class="fu">aes</span>(<span class="at">x=</span>Time, <span class="at">y=</span>weight, <span class="at">group=</span>Diet, <span class="at">color=</span>Diet))<span class="sc">+</span></span>
-<span id="cb385-2"><a href="week-5--r-continued.html#cb385-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun=</span>mean, <span class="at">geom=</span><span class="st">&quot;point&quot;</span>, <span class="at">size=</span><span class="dv">1</span>)<span class="sc">+</span></span>
-<span id="cb385-3"><a href="week-5--r-continued.html#cb385-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun=</span>mean, <span class="at">geom=</span><span class="st">&quot;line&quot;</span>, <span class="at">size=</span><span class="dv">1</span>)<span class="sc">+</span></span>
-<span id="cb385-4"><a href="week-5--r-continued.html#cb385-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> mean_se, <span class="at">geom =</span> <span class="st">&quot;errorbar&quot;</span>, </span>
-<span id="cb385-5"><a href="week-5--r-continued.html#cb385-5" aria-hidden="true" tabindex="-1"></a>               <span class="fu">aes</span>(<span class="at">width=</span><span class="fl">0.1</span>), <span class="at">size=</span><span class="fl">0.5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb383"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb383-1"><a href="week-5--r-continued.html#cb383-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(ChickWeight, <span class="fu">aes</span>(<span class="at">x=</span>Time, <span class="at">y=</span>weight, <span class="at">group=</span>Diet, <span class="at">color=</span>Diet))<span class="sc">+</span></span>
+<span id="cb383-2"><a href="week-5--r-continued.html#cb383-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun=</span>mean, <span class="at">geom=</span><span class="st">&quot;point&quot;</span>, <span class="at">size=</span><span class="dv">1</span>)<span class="sc">+</span></span>
+<span id="cb383-3"><a href="week-5--r-continued.html#cb383-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun=</span>mean, <span class="at">geom=</span><span class="st">&quot;line&quot;</span>, <span class="at">size=</span><span class="dv">1</span>)<span class="sc">+</span></span>
+<span id="cb383-4"><a href="week-5--r-continued.html#cb383-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> mean_se, <span class="at">geom =</span> <span class="st">&quot;errorbar&quot;</span>, </span>
+<span id="cb383-5"><a href="week-5--r-continued.html#cb383-5" aria-hidden="true" tabindex="-1"></a>               <span class="fu">aes</span>(<span class="at">width=</span><span class="fl">0.1</span>), <span class="at">size=</span><span class="fl">0.5</span>)</span></code></pre></div>
 <p><img src="05-Week5_R_Introduction_continued_files/figure-html/5-23-1.png" width="768" />
 Line plots such as this are really great to assess change over time. It is important to note that in the scatter plot earlier each point was an individual chick, but now we see each point in the mean weight of all chicks at each time point.</p>
 <p> </p>
@@ -639,18 +655,18 @@ Line plots such as this are really great to assess change over time. It is impor
 <h2><span class="header-section-number">6.7</span> Group Exercise on Data Visualization<a href="week-5--r-continued.html#group-exercise-on-data-visualization" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Here we will go through an exercise using genomic data from <a href="https://onlinelibrary.wiley.com/doi/full/10.1111/jbi.14229">this study</a>.</p>
 <p>Let’s download and explore the data. In terminal run the following:</p>
-<div class="sourceCode" id="cb386"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb386-1"><a href="week-5--r-continued.html#cb386-1" aria-hidden="true" tabindex="-1"></a>wget https://raw.githubusercontent.com/BayLab/MarineGenomicsData/main/week5_2022.table.tar.gz</span>
-<span id="cb386-2"><a href="week-5--r-continued.html#cb386-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb386-3"><a href="week-5--r-continued.html#cb386-3" aria-hidden="true" tabindex="-1"></a>tar -xzvf week5_2022.table.tar.gz</span></code></pre></div>
+<div class="sourceCode" id="cb384"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb384-1"><a href="week-5--r-continued.html#cb384-1" aria-hidden="true" tabindex="-1"></a>wget https://raw.githubusercontent.com/BayLab/MarineGenomicsData/main/week5_2022.table.tar.gz</span>
+<span id="cb384-2"><a href="week-5--r-continued.html#cb384-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb384-3"><a href="week-5--r-continued.html#cb384-3" aria-hidden="true" tabindex="-1"></a>tar -xzvf week5_2022.table.tar.gz</span></code></pre></div>
 <p> </p>
 <p>Move the downloaded data into your working R directory.</p>
 <p>Currently, the working directory is set to our home directory. In Rstudio you can change the working directory to the week5 directory we just downloaded data into by using the pull down menu <code>Session</code> to get and set your working directory. Similarly, the tab <code>Files</code> in the lower right will also allow you to set your working directory.</p>
 <p>Then we can read the data table with the ‘read.csv’ command, calling our data.frame “gen.data”</p>
-<div class="sourceCode" id="cb387"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb387-1"><a href="week-5--r-continued.html#cb387-1" aria-hidden="true" tabindex="-1"></a>gen.data <span class="er">&lt;</span>- read.csv(file = &#39;margen.wk5.table.csv&#39;, sep = &#39;;&#39;)</span>
-<span id="cb387-2"><a href="week-5--r-continued.html#cb387-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb387-3"><a href="week-5--r-continued.html#cb387-3" aria-hidden="true" tabindex="-1"></a>gen.data</span>
-<span id="cb387-4"><a href="week-5--r-continued.html#cb387-4" aria-hidden="true" tabindex="-1"></a>str(gen.data)</span>
-<span id="cb387-5"><a href="week-5--r-continued.html#cb387-5" aria-hidden="true" tabindex="-1"></a>View(gen.data)</span></code></pre></div>
+<div class="sourceCode" id="cb385"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb385-1"><a href="week-5--r-continued.html#cb385-1" aria-hidden="true" tabindex="-1"></a>gen.data <span class="er">&lt;</span>- read.csv(file = &#39;margen.wk5.table.csv&#39;, sep = &#39;;&#39;)</span>
+<span id="cb385-2"><a href="week-5--r-continued.html#cb385-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb385-3"><a href="week-5--r-continued.html#cb385-3" aria-hidden="true" tabindex="-1"></a>gen.data</span>
+<span id="cb385-4"><a href="week-5--r-continued.html#cb385-4" aria-hidden="true" tabindex="-1"></a>str(gen.data)</span>
+<span id="cb385-5"><a href="week-5--r-continued.html#cb385-5" aria-hidden="true" tabindex="-1"></a>View(gen.data)</span></code></pre></div>
 <p>Looking at this dataframe we see the following variables:</p>
 <p>1- genomic diversity (GD; specifically expected heterozygosity values)</p>
 <p>2- range position (RP; distance, in km, each site is from the center of the species’ range)</p>
@@ -710,12 +726,12 @@ Line plots such as this are really great to assess change over time. It is impor
 <span style="color: red;">Solution</span>
 </summary>
 <p>
-<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb388-1"><a href="week-5--r-continued.html#cb388-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we can just use the geom_smooth command from above and ggplot takes care of the rest!</span></span>
-<span id="cb388-2"><a href="week-5--r-continued.html#cb388-2" aria-hidden="true" tabindex="-1"></a><span class="co"># The code below will only work if you stored your plot in object g.</span></span>
-<span id="cb388-3"><a href="week-5--r-continued.html#cb388-3" aria-hidden="true" tabindex="-1"></a>g<span class="sc">+</span><span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>)</span>
-<span id="cb388-4"><a href="week-5--r-continued.html#cb388-4" aria-hidden="true" tabindex="-1"></a><span class="do">## `geom_smooth()` using formula &#39;y ~ x&#39;</span></span>
-<span id="cb388-5"><a href="week-5--r-continued.html#cb388-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: Removed 22 rows containing non-finite values (stat_smooth).</span></span>
-<span id="cb388-6"><a href="week-5--r-continued.html#cb388-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: Removed 22 rows containing missing values (geom_point).</span></span></code></pre></div>
+<div class="sourceCode" id="cb386"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb386-1"><a href="week-5--r-continued.html#cb386-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we can just use the geom_smooth command from above and ggplot takes care of the rest!</span></span>
+<span id="cb386-2"><a href="week-5--r-continued.html#cb386-2" aria-hidden="true" tabindex="-1"></a><span class="co"># The code below will only work if you stored your plot in object g.</span></span>
+<span id="cb386-3"><a href="week-5--r-continued.html#cb386-3" aria-hidden="true" tabindex="-1"></a>g<span class="sc">+</span><span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>)</span>
+<span id="cb386-4"><a href="week-5--r-continued.html#cb386-4" aria-hidden="true" tabindex="-1"></a><span class="do">## `geom_smooth()` using formula &#39;y ~ x&#39;</span></span>
+<span id="cb386-5"><a href="week-5--r-continued.html#cb386-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: Removed 22 rows containing non-finite values (stat_smooth).</span></span>
+<span id="cb386-6"><a href="week-5--r-continued.html#cb386-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: Removed 22 rows containing missing values (geom_point).</span></span></code></pre></div>
 <img src="05-Week5_R_Introduction_continued_files/figure-html/5-24-1.png" width="768" />
 </p>
 </details>
@@ -729,8 +745,8 @@ Line plots such as this are really great to assess change over time. It is impor
 <span style="color: red;">Solution</span>
 </summary>
 <p>
-<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="week-5--r-continued.html#cb389-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb389-2"><a href="week-5--r-continued.html#cb389-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(msleep, <span class="fu">aes</span>(<span class="at">y=</span>sleep_total, <span class="at">x=</span><span class="fu">as.factor</span>(vore), <span class="at">fill=</span><span class="fu">as.factor</span>(vore)))<span class="sc">+</span><span class="fu">geom_boxplot</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb387-1"><a href="week-5--r-continued.html#cb387-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb387-2"><a href="week-5--r-continued.html#cb387-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(msleep, <span class="fu">aes</span>(<span class="at">y=</span>sleep_total, <span class="at">x=</span><span class="fu">as.factor</span>(vore), <span class="at">fill=</span><span class="fu">as.factor</span>(vore)))<span class="sc">+</span><span class="fu">geom_boxplot</span>()</span></code></pre></div>
 <img src="05-Week5_R_Introduction_continued_files/figure-html/5-25-1.png" width="768" />
 </p>
 </details>
@@ -744,8 +760,8 @@ Line plots such as this are really great to assess change over time. It is impor
 <span style="color: red;">Solution</span>
 </summary>
 <p>
-<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="week-5--r-continued.html#cb390-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb390-2"><a href="week-5--r-continued.html#cb390-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(midwest, <span class="fu">aes</span>(<span class="at">y=</span>area, <span class="at">x=</span>popdensity, <span class="at">col=</span><span class="fu">as.factor</span>(state)))<span class="sc">+</span><span class="fu">geom_point</span>()<span class="sc">+</span><span class="fu">facet_grid</span>(<span class="sc">~</span>state)</span></code></pre></div>
+<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb388-1"><a href="week-5--r-continued.html#cb388-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb388-2"><a href="week-5--r-continued.html#cb388-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(midwest, <span class="fu">aes</span>(<span class="at">y=</span>area, <span class="at">x=</span>popdensity, <span class="at">col=</span><span class="fu">as.factor</span>(state)))<span class="sc">+</span><span class="fu">geom_point</span>()<span class="sc">+</span><span class="fu">facet_grid</span>(<span class="sc">~</span>state)</span></code></pre></div>
 <img src="05-Week5_R_Introduction_continued_files/figure-html/5-26-1.png" width="768" />
 </p>
 </details>
@@ -759,12 +775,12 @@ Line plots such as this are really great to assess change over time. It is impor
 <span style="color: red;">Solution</span>
 </summary>
 <p>
-<div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb391-1"><a href="week-5--r-continued.html#cb391-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb391-2"><a href="week-5--r-continued.html#cb391-2" aria-hidden="true" tabindex="-1"></a><span class="co">#we can subset our data first and store the subset in a new dataframe</span></span>
-<span id="cb391-3"><a href="week-5--r-continued.html#cb391-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb391-4"><a href="week-5--r-continued.html#cb391-4" aria-hidden="true" tabindex="-1"></a>il<span class="ot">&lt;-</span>midwest[midwest<span class="sc">$</span>state <span class="sc">==</span> <span class="st">&quot;IL&quot;</span>,]</span>
-<span id="cb391-5"><a href="week-5--r-continued.html#cb391-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb391-6"><a href="week-5--r-continued.html#cb391-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(il, <span class="fu">aes</span>(<span class="at">x=</span>popdensity, <span class="at">y=</span>poptotal))<span class="sc">+</span><span class="fu">geom_point</span>() </span></code></pre></div>
+<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="week-5--r-continued.html#cb389-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb389-2"><a href="week-5--r-continued.html#cb389-2" aria-hidden="true" tabindex="-1"></a><span class="co">#we can subset our data first and store the subset in a new dataframe</span></span>
+<span id="cb389-3"><a href="week-5--r-continued.html#cb389-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb389-4"><a href="week-5--r-continued.html#cb389-4" aria-hidden="true" tabindex="-1"></a>il<span class="ot">&lt;-</span>midwest[midwest<span class="sc">$</span>state <span class="sc">==</span> <span class="st">&quot;IL&quot;</span>,]</span>
+<span id="cb389-5"><a href="week-5--r-continued.html#cb389-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb389-6"><a href="week-5--r-continued.html#cb389-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(il, <span class="fu">aes</span>(<span class="at">x=</span>popdensity, <span class="at">y=</span>poptotal))<span class="sc">+</span><span class="fu">geom_point</span>() </span></code></pre></div>
 <p><img src="05-Week5_R_Introduction_continued_files/figure-html/5-27-1.png" width="768" /></p>
 </p>
 </details>
@@ -778,18 +794,17 @@ Line plots such as this are really great to assess change over time. It is impor
 <span style="color: red;">Solution</span>
 </summary>
 <p>
-<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb392-1"><a href="week-5--r-continued.html#cb392-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(midwest, <span class="fu">aes</span>(<span class="at">x=</span>state, <span class="at">y=</span>popdensity, <span class="at">color=</span>state))<span class="sc">+</span></span>
-<span id="cb392-2"><a href="week-5--r-continued.html#cb392-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.y=</span>mean, <span class="at">geom=</span><span class="st">&quot;point&quot;</span>, <span class="at">size=</span><span class="dv">1</span>)<span class="sc">+</span></span>
-<span id="cb392-3"><a href="week-5--r-continued.html#cb392-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.y=</span>mean, <span class="at">geom=</span><span class="st">&quot;line&quot;</span>, <span class="at">size=</span><span class="dv">1</span>)<span class="sc">+</span></span>
-<span id="cb392-4"><a href="week-5--r-continued.html#cb392-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> mean_se, <span class="at">geom =</span> <span class="st">&quot;errorbar&quot;</span>, </span>
-<span id="cb392-5"><a href="week-5--r-continued.html#cb392-5" aria-hidden="true" tabindex="-1"></a>               <span class="fu">aes</span>(<span class="at">width=</span><span class="fl">0.1</span>), <span class="at">size=</span><span class="fl">0.5</span>)<span class="sc">+</span></span>
-<span id="cb392-6"><a href="week-5--r-continued.html#cb392-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
-<span id="cb392-7"><a href="week-5--r-continued.html#cb392-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values=</span><span class="fu">rainbow</span>(<span class="dv">5</span>))</span>
-<span id="cb392-8"><a href="week-5--r-continued.html#cb392-8" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: `fun.y` is deprecated. Use `fun` instead.</span></span>
-<span id="cb392-9"><a href="week-5--r-continued.html#cb392-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb392-10"><a href="week-5--r-continued.html#cb392-10" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: `fun.y` is deprecated. Use `fun` instead.</span></span>
-<span id="cb392-11"><a href="week-5--r-continued.html#cb392-11" aria-hidden="true" tabindex="-1"></a><span class="do">## geom_path: Each group consists of only one observation. Do you need to adjust</span></span>
-<span id="cb392-12"><a href="week-5--r-continued.html#cb392-12" aria-hidden="true" tabindex="-1"></a><span class="do">## the group aesthetic?</span></span></code></pre></div>
+<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="week-5--r-continued.html#cb390-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(midwest, <span class="fu">aes</span>(<span class="at">x=</span>state, <span class="at">y=</span>popdensity, <span class="at">color=</span>state))<span class="sc">+</span></span>
+<span id="cb390-2"><a href="week-5--r-continued.html#cb390-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.y=</span>mean, <span class="at">geom=</span><span class="st">&quot;point&quot;</span>, <span class="at">size=</span><span class="dv">1</span>)<span class="sc">+</span></span>
+<span id="cb390-3"><a href="week-5--r-continued.html#cb390-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.y=</span>mean, <span class="at">geom=</span><span class="st">&quot;line&quot;</span>, <span class="at">size=</span><span class="dv">1</span>)<span class="sc">+</span></span>
+<span id="cb390-4"><a href="week-5--r-continued.html#cb390-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> mean_se, <span class="at">geom =</span> <span class="st">&quot;errorbar&quot;</span>, </span>
+<span id="cb390-5"><a href="week-5--r-continued.html#cb390-5" aria-hidden="true" tabindex="-1"></a>               <span class="fu">aes</span>(<span class="at">width=</span><span class="fl">0.1</span>), <span class="at">size=</span><span class="fl">0.5</span>)<span class="sc">+</span></span>
+<span id="cb390-6"><a href="week-5--r-continued.html#cb390-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb390-7"><a href="week-5--r-continued.html#cb390-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values=</span><span class="fu">rainbow</span>(<span class="dv">5</span>))</span>
+<span id="cb390-8"><a href="week-5--r-continued.html#cb390-8" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: `fun.y` is deprecated. Use `fun` instead.</span></span>
+<span id="cb390-9"><a href="week-5--r-continued.html#cb390-9" aria-hidden="true" tabindex="-1"></a><span class="do">## `fun.y` is deprecated. Use `fun` instead.</span></span>
+<span id="cb390-10"><a href="week-5--r-continued.html#cb390-10" aria-hidden="true" tabindex="-1"></a><span class="do">## geom_path: Each group consists of only one observation. Do you need to adjust</span></span>
+<span id="cb390-11"><a href="week-5--r-continued.html#cb390-11" aria-hidden="true" tabindex="-1"></a><span class="do">## the group aesthetic?</span></span></code></pre></div>
 <img src="05-Week5_R_Introduction_continued_files/figure-html/5-28-1.png" width="768" />
 </p>
 </details>

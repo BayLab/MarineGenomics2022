@@ -677,8 +677,7 @@ ggplot(midwest, aes(x=state, y=popdensity, color=state))+
   theme_minimal()+
   scale_color_manual(values=rainbow(5))
 ## Warning: `fun.y` is deprecated. Use `fun` instead.
-
-## Warning: `fun.y` is deprecated. Use `fun` instead.
+## `fun.y` is deprecated. Use `fun` instead.
 ## geom_path: Each group consists of only one observation. Do you need to adjust
 ## the group aesthetic?
 ```
