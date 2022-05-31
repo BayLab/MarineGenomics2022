@@ -35,7 +35,9 @@ mv MarineGenomics/Week11 MarineGenomics/Week10
 
 ## install a compiler for Unix/bash
 
-Run this command below in the terminal. It's neccessary to install several R packages.
+Run this command below in the terminal from the home directory. It's necessary to install several R packages.
+
+Make sure to respond with a lower case "y" and not "Y" when prompted.
 
 ```html
 sudo apt update
@@ -44,13 +46,12 @@ sudo apt-get install libgdal-dev
 
 sudo apt-get install libudunits2-dev
 
-
 ```
 
 
 ## install R packages
 
-Make sure to run all of the commands below (without the #) to install and load programs we will be using. 
+Make sure to run all of the commands below (without the #) to install and load programs we will be using. You may get warnings during the installation but feel free to ignore them.
 
 ```{r echo=T, message=FALSE, warning=F}
 
@@ -58,10 +59,12 @@ Make sure to run all of the commands below (without the #) to install and load p
 
 # install.packages("sf", dependencies = T)
 
-# install.packages(c('lfmm','psych','vegan','ggplot2','data.table','sdmpredictors', 'rgdal','raster'), dependencies = T)
-#  devtools::install_github("lifewatch/s")
+# install.packages(c('lfmm','vegan','data.table','sdmpredictors', 'rgdal','raster'), dependencies = T)
+
+# install.packages("psych", dependencies = T)
 
 # install.packages("BiocManager")
+
 # BiocManager::install("LEA", force=T)  ## choose (a) to update
 
 library(lfmm)
@@ -80,14 +83,17 @@ library(raster)
 
 ## Get the Environmental Data
 
+Now we need to download the environmental data for our study. Make sure to go into the correct working directory in R (MarineGenomics/Week10).
 
-now we need to download the environmental data for our study. We're just going to look at a few variables but there are many others that you could choose from here: https://www.bio-oracle.org/explore-data.php
+We're just going to look at a few variables but there are many others that you could choose from here: https://www.bio-oracle.org/explore-data.php
 
 Note that this step is rather time consuming, thus it's best to download the data once and save it as an environment file, which you can upload each time you want to modify your script.
 
 ```{r echo=T, message=FALSE, warning=FALSE, results=F}
 
-#load the environmental data and store it as objects that we can use later
+# load the environmental data and store it as objects that we can use later
+
+# This will give you warning messages, but feel free to ignore them.
 
 environ <- load_layers(layercodes = c("BO_chlomean","BO_ph", "BO_salinity","BO_sstmax","BO_sstmean"))
 
@@ -156,20 +162,17 @@ We now have enough information to make a nice map of one of our environmental pa
 
 
 ```{r, label='geamap', echo=T}
-# library(sdmpredictors)
-
-#download a raster file for env variable that we want to look at
 
 #what are are min amd max lat and lon
 
 range(sites_environ$Name.lon)
 range(sites_environ$Name.lat)
 
-#crop file to fit the area we want
+# define the area we want to map
 ne.pacific<-extent(-140, -120, 40, 60)
 
+# crop the map we are interested in (here it is maximum sea surface temp)
 sst_max.crop<-crop(sst_max, ne.pacific)
-
 
 #make a nice color ramp and plot the map
 
@@ -228,7 +231,7 @@ This plot tells us which value of K we should use when running the next analyses
 
 However, for the purposes of time we're going to do the next step with a k=1 and a rep=1. 
 
-```{r, echo=F, message=FALSE}
+```{r, echo=T, message=FALSE}
 
 # Genome scan for selection using environmental variables 
 
@@ -253,18 +256,18 @@ zs5 <- z.scores(sea_cuc_lfmm, K=1, d=5)
 # compute the genomic inflation factor lambda
 
 lambda1=median(zs1^2)/qchisq(0.5, df=1)
-lambda2=median(zs2^2)/qchisq(0.5, df=1)
-lambda3=median(zs3^2)/qchisq(0.5, df=1)
-lambda4=median(zs4^2)/qchisq(0.5, df=1)
-lambda5=median(zs5^2)/qchisq(0.5, df=1)
+lambda2=median(zs2^2)/qchisq(0.5, df=2)
+lambda3=median(zs3^2)/qchisq(0.5, df=3)
+lambda4=median(zs4^2)/qchisq(0.5, df=4)
+lambda5=median(zs5^2)/qchisq(0.5, df=5)
 
 #then compute adjusted p-values
 
 adj.p.val1<-pchisq(zs1^2/lambda1, df=1, lower=F)
-adj.p.val2<-pchisq(zs2^2/lambda2, df=1, lower=F)
-adj.p.val3<-pchisq(zs3^2/lambda3, df=1, lower=F)
-adj.p.val4<-pchisq(zs4^2/lambda4, df=1, lower=F)
-adj.p.val5<-pchisq(zs5^2/lambda5, df=1, lower=F)
+adj.p.val2<-pchisq(zs2^2/lambda2, df=2, lower=F)
+adj.p.val3<-pchisq(zs3^2/lambda3, df=3, lower=F)
+adj.p.val4<-pchisq(zs4^2/lambda4, df=4, lower=F)
+adj.p.val5<-pchisq(zs5^2/lambda5, df=5, lower=F)
 
 #then plot that p-value
 
@@ -396,6 +399,8 @@ You'll download one fasta file that contains the 17 regions in which we found ou
 
 ```html
 
+cd
+
 wget https://raw.githubusercontent.com/BayLab/MarineGenomicsData/main/week10.tar.gz
 
 tar -xzvf week10.tar.gz
@@ -405,7 +410,7 @@ tar -xzvf week10.tar.gz
 
 ## Run NCBI-BLAST
 
-NCBI-BLAST is commonly called "blast" and stands for Basic Local Alignment Search Tool. This program is often a part of the annotation process as it compares your sequences (or query) to those contained in a database. As such blast results are highly dependent on the database in which you search for results and whether your species of interest (or a close relative) is present in that database. This program can be run in the command line, but in my testing I found it to be incredibly slow on jetstream. So We're going to run our file on the NCBI-BLAST web browser which should only take a few minutes as we only have 14 protein sequences. 
+NCBI-BLAST is commonly called "blast" and stands for Basic Local Alignment Search Tool. This program is often a part of the annotation process as it compares your sequences (or query) to those contained in a database. As such blast results are highly dependent on the database in which you search for results and whether your species of interest (or a close relative) is present in that database. This program can be run in the command line, but in my testing I found it to be incredibly slow on jetstream. We're going to run our file on the NCBI-BLAST web browser which should only take a few minutes.
 
 Find the fasta file we just downloaded in our Week 10 folder on the desktop and open it (this may take a few seconds). Navigate to the web browser on jetstream (the default is firefox). Search for NCBI-Blast. 
 
@@ -418,4 +423,6 @@ We got some hits! Many of those that found a hit in Blast were for the other sea
 
 ## The importance of Genomic Architecture
 
-Even though we often don't get satisfying answers about which genes are doing what in Marine Genomics, we can learn a lot about trait evolution from using outlier detection tests. These tests give us some idea of the number of genes and their effect on a given trait and that in turn has big implications on how that trait can respond to evolution. And that in turn has implications for climate change, conservation, and biodiversity.  
+Even though we often don't get satisfying answers about which genes are doing what in Marine Genomics, we can learn a lot about trait evolution from using outlier detection tests. These tests give us some idea of the number of genes and their effect on a given trait and that in turn has big implications on how that trait can respond to evolution. And that in turn has implications for climate change, conservation, and biodiversity. 
+
+## 

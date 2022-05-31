@@ -277,6 +277,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.11" data-path="genome-environment-association.html"><a href="genome-environment-association.html#run-ncbi-blast"><i class="fa fa-check"></i><b>11.11</b> Run NCBI-BLAST</a></li>
 <li class="chapter" data-level="11.12" data-path="genome-environment-association.html"><a href="genome-environment-association.html#what-did-we-find"><i class="fa fa-check"></i><b>11.12</b> What did we find?</a></li>
 <li class="chapter" data-level="11.13" data-path="genome-environment-association.html"><a href="genome-environment-association.html#the-importance-of-genomic-architecture"><i class="fa fa-check"></i><b>11.13</b> The importance of Genomic Architecture</a></li>
+<li class="chapter" data-level="11.14" data-path="genome-environment-association.html"><a href="genome-environment-association.html#section"><i class="fa fa-check"></i><b>11.14</b> </a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -315,53 +316,58 @@ And consistes of a vcf file with 3966 Snps from 685 pacific sea cucumbers.</p>
 </div>
 <div id="install-a-compiler-for-unixbash" class="section level2 hasAnchor" number="11.2">
 <h2><span class="header-section-number">11.2</span> install a compiler for Unix/bash<a href="genome-environment-association.html#install-a-compiler-for-unixbash" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Run this command below in the terminal. It’s neccessary to install several R packages.</p>
+<p>Run this command below in the terminal from the home directory. It’s necessary to install several R packages.</p>
+<p>Make sure to respond with a lower case “y” and not “Y” when prompted.</p>
 <div class="sourceCode" id="cb504"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb504-1"><a href="genome-environment-association.html#cb504-1" aria-hidden="true" tabindex="-1"></a>sudo apt update</span>
 <span id="cb504-2"><a href="genome-environment-association.html#cb504-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb504-3"><a href="genome-environment-association.html#cb504-3" aria-hidden="true" tabindex="-1"></a>sudo apt-get install libgdal-dev</span>
 <span id="cb504-4"><a href="genome-environment-association.html#cb504-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb504-5"><a href="genome-environment-association.html#cb504-5" aria-hidden="true" tabindex="-1"></a>sudo apt-get install libudunits2-dev</span>
-<span id="cb504-6"><a href="genome-environment-association.html#cb504-6" aria-hidden="true" tabindex="-1"></a></span></code></pre></div>
+<span id="cb504-5"><a href="genome-environment-association.html#cb504-5" aria-hidden="true" tabindex="-1"></a>sudo apt-get install libudunits2-dev</span></code></pre></div>
 </div>
 <div id="install-r-packages" class="section level2 hasAnchor" number="11.3">
 <h2><span class="header-section-number">11.3</span> install R packages<a href="genome-environment-association.html#install-r-packages" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Make sure to run all of the commands below (without the #) to install and load programs we will be using.</p>
+<p>Make sure to run all of the commands below (without the #) to install and load programs we will be using. You may get warnings during the installation but feel free to ignore them.</p>
 <div class="sourceCode" id="cb505"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb505-1"><a href="genome-environment-association.html#cb505-1" aria-hidden="true" tabindex="-1"></a><span class="co"># devtools::install_github(&quot;bcm-uga/lfmm&quot;)</span></span>
 <span id="cb505-2"><a href="genome-environment-association.html#cb505-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb505-3"><a href="genome-environment-association.html#cb505-3" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;sf&quot;, dependencies = T)</span></span>
 <span id="cb505-4"><a href="genome-environment-association.html#cb505-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb505-5"><a href="genome-environment-association.html#cb505-5" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(c(&#39;lfmm&#39;,&#39;psych&#39;,&#39;vegan&#39;,&#39;ggplot2&#39;,&#39;data.table&#39;,&#39;sdmpredictors&#39;, &#39;rgdal&#39;,&#39;raster&#39;), dependencies = T)</span></span>
-<span id="cb505-6"><a href="genome-environment-association.html#cb505-6" aria-hidden="true" tabindex="-1"></a><span class="co">#  devtools::install_github(&quot;lifewatch/s&quot;)</span></span>
-<span id="cb505-7"><a href="genome-environment-association.html#cb505-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb505-8"><a href="genome-environment-association.html#cb505-8" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;BiocManager&quot;)</span></span>
-<span id="cb505-9"><a href="genome-environment-association.html#cb505-9" aria-hidden="true" tabindex="-1"></a><span class="co"># BiocManager::install(&quot;LEA&quot;, force=T)  ## choose (a) to update</span></span>
+<span id="cb505-5"><a href="genome-environment-association.html#cb505-5" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(c(&#39;lfmm&#39;,&#39;vegan&#39;,&#39;data.table&#39;,&#39;sdmpredictors&#39;, &#39;rgdal&#39;,&#39;raster&#39;), dependencies = T)</span></span>
+<span id="cb505-6"><a href="genome-environment-association.html#cb505-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb505-7"><a href="genome-environment-association.html#cb505-7" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;psych&quot;, dependencies = T)</span></span>
+<span id="cb505-8"><a href="genome-environment-association.html#cb505-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb505-9"><a href="genome-environment-association.html#cb505-9" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;BiocManager&quot;)</span></span>
 <span id="cb505-10"><a href="genome-environment-association.html#cb505-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb505-11"><a href="genome-environment-association.html#cb505-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lfmm)</span>
-<span id="cb505-12"><a href="genome-environment-association.html#cb505-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
-<span id="cb505-13"><a href="genome-environment-association.html#cb505-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vegan)</span>
-<span id="cb505-14"><a href="genome-environment-association.html#cb505-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(LEA)</span>
-<span id="cb505-15"><a href="genome-environment-association.html#cb505-15" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
-<span id="cb505-16"><a href="genome-environment-association.html#cb505-16" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sdmpredictors)</span>
-<span id="cb505-17"><a href="genome-environment-association.html#cb505-17" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(leaflet)</span>
-<span id="cb505-18"><a href="genome-environment-association.html#cb505-18" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb505-19"><a href="genome-environment-association.html#cb505-19" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rgdal)</span>
-<span id="cb505-20"><a href="genome-environment-association.html#cb505-20" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(raster)</span></code></pre></div>
+<span id="cb505-11"><a href="genome-environment-association.html#cb505-11" aria-hidden="true" tabindex="-1"></a><span class="co"># BiocManager::install(&quot;LEA&quot;, force=T)  ## choose (a) to update</span></span>
+<span id="cb505-12"><a href="genome-environment-association.html#cb505-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb505-13"><a href="genome-environment-association.html#cb505-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lfmm)</span>
+<span id="cb505-14"><a href="genome-environment-association.html#cb505-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
+<span id="cb505-15"><a href="genome-environment-association.html#cb505-15" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vegan)</span>
+<span id="cb505-16"><a href="genome-environment-association.html#cb505-16" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(LEA)</span>
+<span id="cb505-17"><a href="genome-environment-association.html#cb505-17" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
+<span id="cb505-18"><a href="genome-environment-association.html#cb505-18" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sdmpredictors)</span>
+<span id="cb505-19"><a href="genome-environment-association.html#cb505-19" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(leaflet)</span>
+<span id="cb505-20"><a href="genome-environment-association.html#cb505-20" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb505-21"><a href="genome-environment-association.html#cb505-21" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rgdal)</span>
+<span id="cb505-22"><a href="genome-environment-association.html#cb505-22" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(raster)</span></code></pre></div>
 </div>
 <div id="get-the-environmental-data" class="section level2 hasAnchor" number="11.4">
 <h2><span class="header-section-number">11.4</span> Get the Environmental Data<a href="genome-environment-association.html#get-the-environmental-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>now we need to download the environmental data for our study. We’re just going to look at a few variables but there are many others that you could choose from here: <a href="https://www.bio-oracle.org/explore-data.php" class="uri">https://www.bio-oracle.org/explore-data.php</a></p>
+<p>Now we need to download the environmental data for our study. Make sure to go into the correct working directory in R (MarineGenomics/Week10).</p>
+<p>We’re just going to look at a few variables but there are many others that you could choose from here: <a href="https://www.bio-oracle.org/explore-data.php" class="uri">https://www.bio-oracle.org/explore-data.php</a></p>
 <p>Note that this step is rather time consuming, thus it’s best to download the data once and save it as an environment file, which you can upload each time you want to modify your script.</p>
-<div class="sourceCode" id="cb506"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb506-1"><a href="genome-environment-association.html#cb506-1" aria-hidden="true" tabindex="-1"></a><span class="co">#load the environmental data and store it as objects that we can use later</span></span>
+<div class="sourceCode" id="cb506"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb506-1"><a href="genome-environment-association.html#cb506-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load the environmental data and store it as objects that we can use later</span></span>
 <span id="cb506-2"><a href="genome-environment-association.html#cb506-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb506-3"><a href="genome-environment-association.html#cb506-3" aria-hidden="true" tabindex="-1"></a>environ <span class="ot">&lt;-</span> <span class="fu">load_layers</span>(<span class="at">layercodes =</span> <span class="fu">c</span>(<span class="st">&quot;BO_chlomean&quot;</span>,<span class="st">&quot;BO_ph&quot;</span>, <span class="st">&quot;BO_salinity&quot;</span>,<span class="st">&quot;BO_sstmax&quot;</span>,<span class="st">&quot;BO_sstmean&quot;</span>))</span>
+<span id="cb506-3"><a href="genome-environment-association.html#cb506-3" aria-hidden="true" tabindex="-1"></a><span class="co"># This will give you warning messages, but feel free to ignore them.</span></span>
 <span id="cb506-4"><a href="genome-environment-association.html#cb506-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb506-5"><a href="genome-environment-association.html#cb506-5" aria-hidden="true" tabindex="-1"></a><span class="co">#now put each layer into it&#39;s own object</span></span>
+<span id="cb506-5"><a href="genome-environment-association.html#cb506-5" aria-hidden="true" tabindex="-1"></a>environ <span class="ot">&lt;-</span> <span class="fu">load_layers</span>(<span class="at">layercodes =</span> <span class="fu">c</span>(<span class="st">&quot;BO_chlomean&quot;</span>,<span class="st">&quot;BO_ph&quot;</span>, <span class="st">&quot;BO_salinity&quot;</span>,<span class="st">&quot;BO_sstmax&quot;</span>,<span class="st">&quot;BO_sstmean&quot;</span>))</span>
 <span id="cb506-6"><a href="genome-environment-association.html#cb506-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb506-7"><a href="genome-environment-association.html#cb506-7" aria-hidden="true" tabindex="-1"></a>chlomean<span class="ot">&lt;-</span><span class="fu">load_layers</span>(<span class="st">&quot;BO_chlomean&quot;</span>)</span>
-<span id="cb506-8"><a href="genome-environment-association.html#cb506-8" aria-hidden="true" tabindex="-1"></a>ph<span class="ot">&lt;-</span><span class="fu">load_layers</span>(<span class="st">&quot;BO_ph&quot;</span>)</span>
-<span id="cb506-9"><a href="genome-environment-association.html#cb506-9" aria-hidden="true" tabindex="-1"></a>salinity<span class="ot">&lt;-</span><span class="fu">load_layers</span>(<span class="st">&quot;BO_salinity&quot;</span>)</span>
-<span id="cb506-10"><a href="genome-environment-association.html#cb506-10" aria-hidden="true" tabindex="-1"></a>sst_max<span class="ot">&lt;-</span><span class="fu">load_layers</span>(<span class="st">&quot;BO_sstmax&quot;</span>)</span>
-<span id="cb506-11"><a href="genome-environment-association.html#cb506-11" aria-hidden="true" tabindex="-1"></a>sst_mean<span class="ot">&lt;-</span><span class="fu">load_layers</span>(<span class="st">&quot;BO_sstmean&quot;</span>)</span></code></pre></div>
+<span id="cb506-7"><a href="genome-environment-association.html#cb506-7" aria-hidden="true" tabindex="-1"></a><span class="co">#now put each layer into it&#39;s own object</span></span>
+<span id="cb506-8"><a href="genome-environment-association.html#cb506-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb506-9"><a href="genome-environment-association.html#cb506-9" aria-hidden="true" tabindex="-1"></a>chlomean<span class="ot">&lt;-</span><span class="fu">load_layers</span>(<span class="st">&quot;BO_chlomean&quot;</span>)</span>
+<span id="cb506-10"><a href="genome-environment-association.html#cb506-10" aria-hidden="true" tabindex="-1"></a>ph<span class="ot">&lt;-</span><span class="fu">load_layers</span>(<span class="st">&quot;BO_ph&quot;</span>)</span>
+<span id="cb506-11"><a href="genome-environment-association.html#cb506-11" aria-hidden="true" tabindex="-1"></a>salinity<span class="ot">&lt;-</span><span class="fu">load_layers</span>(<span class="st">&quot;BO_salinity&quot;</span>)</span>
+<span id="cb506-12"><a href="genome-environment-association.html#cb506-12" aria-hidden="true" tabindex="-1"></a>sst_max<span class="ot">&lt;-</span><span class="fu">load_layers</span>(<span class="st">&quot;BO_sstmax&quot;</span>)</span>
+<span id="cb506-13"><a href="genome-environment-association.html#cb506-13" aria-hidden="true" tabindex="-1"></a>sst_mean<span class="ot">&lt;-</span><span class="fu">load_layers</span>(<span class="st">&quot;BO_sstmean&quot;</span>)</span></code></pre></div>
 <p>Now we’ll read in our metadata, which has lat and lon for each sample</p>
 <div class="sourceCode" id="cb507"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb507-1"><a href="genome-environment-association.html#cb507-1" aria-hidden="true" tabindex="-1"></a>meta<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;californicus_metadata.csv&quot;</span>)</span>
 <span id="cb507-2"><a href="genome-environment-association.html#cb507-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -408,21 +414,17 @@ And consistes of a vcf file with 3966 Snps from 685 pacific sea cucumbers.</p>
 <div id="make-a-map-of-our-environmental-data" class="section level2 hasAnchor" number="11.6">
 <h2><span class="header-section-number">11.6</span> Make a Map of our environmental data<a href="genome-environment-association.html#make-a-map-of-our-environmental-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We now have enough information to make a nice map of one of our environmental parameters.</p>
-<div class="sourceCode" id="cb513"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb513-1"><a href="genome-environment-association.html#cb513-1" aria-hidden="true" tabindex="-1"></a><span class="co"># library(sdmpredictors)</span></span>
+<div class="sourceCode" id="cb513"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb513-1"><a href="genome-environment-association.html#cb513-1" aria-hidden="true" tabindex="-1"></a><span class="co">#what are are min amd max lat and lon</span></span>
 <span id="cb513-2"><a href="genome-environment-association.html#cb513-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb513-3"><a href="genome-environment-association.html#cb513-3" aria-hidden="true" tabindex="-1"></a><span class="co">#download a raster file for env variable that we want to look at</span></span>
-<span id="cb513-4"><a href="genome-environment-association.html#cb513-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb513-5"><a href="genome-environment-association.html#cb513-5" aria-hidden="true" tabindex="-1"></a><span class="co">#what are are min amd max lat and lon</span></span>
-<span id="cb513-6"><a href="genome-environment-association.html#cb513-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb513-7"><a href="genome-environment-association.html#cb513-7" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(sites_environ<span class="sc">$</span>Name.lon)</span></code></pre></div>
+<span id="cb513-3"><a href="genome-environment-association.html#cb513-3" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(sites_environ<span class="sc">$</span>Name.lon)</span></code></pre></div>
 <pre><code>## [1] 48.40822 57.82796</code></pre>
 <div class="sourceCode" id="cb515"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb515-1"><a href="genome-environment-association.html#cb515-1" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(sites_environ<span class="sc">$</span>Name.lat)</span></code></pre></div>
 <pre><code>## [1] -134.7153 -123.3799</code></pre>
-<div class="sourceCode" id="cb517"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb517-1"><a href="genome-environment-association.html#cb517-1" aria-hidden="true" tabindex="-1"></a><span class="co">#crop file to fit the area we want</span></span>
+<div class="sourceCode" id="cb517"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb517-1"><a href="genome-environment-association.html#cb517-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define the area we want to map</span></span>
 <span id="cb517-2"><a href="genome-environment-association.html#cb517-2" aria-hidden="true" tabindex="-1"></a>ne.pacific<span class="ot">&lt;-</span><span class="fu">extent</span>(<span class="sc">-</span><span class="dv">140</span>, <span class="sc">-</span><span class="dv">120</span>, <span class="dv">40</span>, <span class="dv">60</span>)</span>
 <span id="cb517-3"><a href="genome-environment-association.html#cb517-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb517-4"><a href="genome-environment-association.html#cb517-4" aria-hidden="true" tabindex="-1"></a>sst_max.crop<span class="ot">&lt;-</span><span class="fu">crop</span>(sst_max, ne.pacific)</span>
-<span id="cb517-5"><a href="genome-environment-association.html#cb517-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb517-4"><a href="genome-environment-association.html#cb517-4" aria-hidden="true" tabindex="-1"></a><span class="co"># crop the map we are interested in (here it is maximum sea surface temp)</span></span>
+<span id="cb517-5"><a href="genome-environment-association.html#cb517-5" aria-hidden="true" tabindex="-1"></a>sst_max.crop<span class="ot">&lt;-</span><span class="fu">crop</span>(sst_max, ne.pacific)</span>
 <span id="cb517-6"><a href="genome-environment-association.html#cb517-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb517-7"><a href="genome-environment-association.html#cb517-7" aria-hidden="true" tabindex="-1"></a><span class="co">#make a nice color ramp and plot the map</span></span>
 <span id="cb517-8"><a href="genome-environment-association.html#cb517-8" aria-hidden="true" tabindex="-1"></a></span>
@@ -474,7 +476,7 @@ And consistes of a vcf file with 3966 Snps from 685 pacific sea cucumbers.</p>
 ## To remove the project, use:
 ##  remove.snmfProject(&quot;filtered_3699snps_californicus_685inds.recode.snmfProject&quot;)
 ## 
-## [1] 1590358168
+## [1] 9365711
 ## [1] &quot;*************************************&quot;
 ## [1] &quot;*          create.dataset            *&quot;
 ## [1] &quot;*************************************&quot;
@@ -482,7 +484,7 @@ And consistes of a vcf file with 3966 Snps from 685 pacific sea cucumbers.</p>
 ## 
 ##         -n (number of individuals)                 685
 ##         -L (number of loci)                        3699
-##         -s (seed random init)                      1590358168
+##         -s (seed random init)                      9365711
 ##         -r (percentage of masked data)             0.05
 ##         -x (genotype file in .geno format)         /Users/ericaspotswoodnielsen/Desktop/PD_stuffies/teaching/MarineGenomics2022/data/Week10_gea/filtered_3699snps_californicus_685inds.recode.geno
 ##         -o (output file in .geno format)           /Users/ericaspotswoodnielsen/Desktop/PD_stuffies/teaching/MarineGenomics2022/data/Week10_gea/filtered_3699snps_californicus_685inds.recode.snmf/masked/filtered_3699snps_californicus_685inds.recode_I.geno
@@ -502,7 +504,7 @@ And consistes of a vcf file with 3966 Snps from 685 pacific sea cucumbers.</p>
 ##         -g (ancestral frequencies file)        /Users/ericaspotswoodnielsen/Desktop/PD_stuffies/teaching/MarineGenomics2022/data/Week10_gea/filtered_3699snps_californicus_685inds.recode.snmf/K1/run1/filtered_3699snps_californicus_685inds.recode_r1.1.G
 ##         -i (number max of iterations)          200
 ##         -a (regularization parameter)          10
-##         -s (seed random init)                  140193617866904
+##         -s (seed random init)                  140256461383887
 ##         -e (tolerance error)                   1E-05
 ##         -p (number of processes)               1
 ##         - diploid
@@ -512,7 +514,7 @@ And consistes of a vcf file with 3966 Snps from 685 pacific sea cucumbers.</p>
 ## 
 ## Main algorithm:
 ## 
-## Least-square error: 472212.349547
+## Least-square error: 472536.568415
 ## Write individual ancestry coefficient file /Users/ericaspotswoodnielsen/Desktop/PD_stuffies/teaching/MarineGenomics2022/data/Week10_gea/filtered_3699snps_californicus_685inds.recode.snmf/K1/run1/filtered_3699snps_californicus_685inds.recode_r1.1.Q:     OK.
 ## Write ancestral allele frequency coefficient file /Users/ericaspotswoodnielsen/Desktop/PD_stuffies/teaching/MarineGenomics2022/data/Week10_gea/filtered_3699snps_californicus_685inds.recode.snmf/K1/run1/filtered_3699snps_californicus_685inds.recode_r1.1.G:  OK.
 ## 
@@ -530,8 +532,8 @@ And consistes of a vcf file with 3966 Snps from 685 pacific sea cucumbers.</p>
 ##         -i (with masked genotypes)         /Users/ericaspotswoodnielsen/Desktop/PD_stuffies/teaching/MarineGenomics2022/data/Week10_gea/filtered_3699snps_californicus_685inds.recode.snmf/masked/filtered_3699snps_californicus_685inds.recode_I.geno
 ##         - diploid
 ## 
-## Cross-Entropy (all data):     0.334457
-## Cross-Entropy (masked data):  0.34181
+## Cross-Entropy (all data):     0.334561
+## Cross-Entropy (masked data):  0.339532
 ## The project is saved into :
 ##  filtered_3699snps_californicus_685inds.recode.snmfProject 
 ## 
@@ -554,7 +556,7 @@ And consistes of a vcf file with 3966 Snps from 685 pacific sea cucumbers.</p>
 ##         -g (ancestral frequencies file)        /Users/ericaspotswoodnielsen/Desktop/PD_stuffies/teaching/MarineGenomics2022/data/Week10_gea/filtered_3699snps_californicus_685inds.recode.snmf/K2/run1/filtered_3699snps_californicus_685inds.recode_r1.2.G
 ##         -i (number max of iterations)          200
 ##         -a (regularization parameter)          10
-##         -s (seed random init)                  140193617866904
+##         -s (seed random init)                  4304333007
 ##         -e (tolerance error)                   1E-05
 ##         -p (number of processes)               1
 ##         - diploid
@@ -564,10 +566,10 @@ And consistes of a vcf file with 3966 Snps from 685 pacific sea cucumbers.</p>
 ## 
 ## Main algorithm:
 ##  [                                                                           ]
-##  [===============]
-## Number of iterations: 41
+##  [========]
+## Number of iterations: 21
 ## 
-## Least-square error: 466421.024121
+## Least-square error: 466551.565336
 ## Write individual ancestry coefficient file /Users/ericaspotswoodnielsen/Desktop/PD_stuffies/teaching/MarineGenomics2022/data/Week10_gea/filtered_3699snps_californicus_685inds.recode.snmf/K2/run1/filtered_3699snps_californicus_685inds.recode_r1.2.Q:     OK.
 ## Write ancestral allele frequency coefficient file /Users/ericaspotswoodnielsen/Desktop/PD_stuffies/teaching/MarineGenomics2022/data/Week10_gea/filtered_3699snps_californicus_685inds.recode.snmf/K2/run1/filtered_3699snps_californicus_685inds.recode_r1.2.G:  OK.
 ## 
@@ -585,8 +587,8 @@ And consistes of a vcf file with 3966 Snps from 685 pacific sea cucumbers.</p>
 ##         -i (with masked genotypes)         /Users/ericaspotswoodnielsen/Desktop/PD_stuffies/teaching/MarineGenomics2022/data/Week10_gea/filtered_3699snps_californicus_685inds.recode.snmf/masked/filtered_3699snps_californicus_685inds.recode_I.geno
 ##         - diploid
 ## 
-## Cross-Entropy (all data):     0.328621
-## Cross-Entropy (masked data):  0.337932
+## Cross-Entropy (all data):     0.32872
+## Cross-Entropy (masked data):  0.336065
 ## The project is saved into :
 ##  filtered_3699snps_californicus_685inds.recode.snmfProject 
 ## 
@@ -609,7 +611,7 @@ And consistes of a vcf file with 3966 Snps from 685 pacific sea cucumbers.</p>
 ##         -g (ancestral frequencies file)        /Users/ericaspotswoodnielsen/Desktop/PD_stuffies/teaching/MarineGenomics2022/data/Week10_gea/filtered_3699snps_californicus_685inds.recode.snmf/K3/run1/filtered_3699snps_californicus_685inds.recode_r1.3.G
 ##         -i (number max of iterations)          200
 ##         -a (regularization parameter)          10
-##         -s (seed random init)                  140193617866904
+##         -s (seed random init)                  140256461383887
 ##         -e (tolerance error)                   1E-05
 ##         -p (number of processes)               1
 ##         - diploid
@@ -620,9 +622,9 @@ And consistes of a vcf file with 3966 Snps from 685 pacific sea cucumbers.</p>
 ## Main algorithm:
 ##  [                                                                           ]
 ##  [==================]
-## Number of iterations: 49
+## Number of iterations: 47
 ## 
-## Least-square error: 463342.425816
+## Least-square error: 463625.862766
 ## Write individual ancestry coefficient file /Users/ericaspotswoodnielsen/Desktop/PD_stuffies/teaching/MarineGenomics2022/data/Week10_gea/filtered_3699snps_californicus_685inds.recode.snmf/K3/run1/filtered_3699snps_californicus_685inds.recode_r1.3.Q:     OK.
 ## Write ancestral allele frequency coefficient file /Users/ericaspotswoodnielsen/Desktop/PD_stuffies/teaching/MarineGenomics2022/data/Week10_gea/filtered_3699snps_californicus_685inds.recode.snmf/K3/run1/filtered_3699snps_californicus_685inds.recode_r1.3.G:  OK.
 ## 
@@ -640,8 +642,8 @@ And consistes of a vcf file with 3966 Snps from 685 pacific sea cucumbers.</p>
 ##         -i (with masked genotypes)         /Users/ericaspotswoodnielsen/Desktop/PD_stuffies/teaching/MarineGenomics2022/data/Week10_gea/filtered_3699snps_californicus_685inds.recode.snmf/masked/filtered_3699snps_californicus_685inds.recode_I.geno
 ##         - diploid
 ## 
-## Cross-Entropy (all data):     0.324724
-## Cross-Entropy (masked data):  0.336388
+## Cross-Entropy (all data):     0.324817
+## Cross-Entropy (masked data):  0.334556
 ## The project is saved into :
 ##  filtered_3699snps_californicus_685inds.recode.snmfProject 
 ## 
@@ -664,7 +666,7 @@ And consistes of a vcf file with 3966 Snps from 685 pacific sea cucumbers.</p>
 ##         -g (ancestral frequencies file)        /Users/ericaspotswoodnielsen/Desktop/PD_stuffies/teaching/MarineGenomics2022/data/Week10_gea/filtered_3699snps_californicus_685inds.recode.snmf/K4/run1/filtered_3699snps_californicus_685inds.recode_r1.4.G
 ##         -i (number max of iterations)          200
 ##         -a (regularization parameter)          10
-##         -s (seed random init)                  140193617866904
+##         -s (seed random init)                  140256461383887
 ##         -e (tolerance error)                   1E-05
 ##         -p (number of processes)               1
 ##         - diploid
@@ -674,10 +676,10 @@ And consistes of a vcf file with 3966 Snps from 685 pacific sea cucumbers.</p>
 ## 
 ## Main algorithm:
 ##  [                                                                           ]
-##  [===========================================================================]
-## Number of iterations: 200
+##  [=====================================================]
+## Number of iterations: 141
 ## 
-## Least-square error: 461408.323850
+## Least-square error: 461718.499304
 ## Write individual ancestry coefficient file /Users/ericaspotswoodnielsen/Desktop/PD_stuffies/teaching/MarineGenomics2022/data/Week10_gea/filtered_3699snps_californicus_685inds.recode.snmf/K4/run1/filtered_3699snps_californicus_685inds.recode_r1.4.Q:     OK.
 ## Write ancestral allele frequency coefficient file /Users/ericaspotswoodnielsen/Desktop/PD_stuffies/teaching/MarineGenomics2022/data/Week10_gea/filtered_3699snps_californicus_685inds.recode.snmf/K4/run1/filtered_3699snps_californicus_685inds.recode_r1.4.G:  OK.
 ## 
@@ -695,8 +697,8 @@ And consistes of a vcf file with 3966 Snps from 685 pacific sea cucumbers.</p>
 ##         -i (with masked genotypes)         /Users/ericaspotswoodnielsen/Desktop/PD_stuffies/teaching/MarineGenomics2022/data/Week10_gea/filtered_3699snps_californicus_685inds.recode.snmf/masked/filtered_3699snps_californicus_685inds.recode_I.geno
 ##         - diploid
 ## 
-## Cross-Entropy (all data):     0.323547
-## Cross-Entropy (masked data):  0.337187
+## Cross-Entropy (all data):     0.323648
+## Cross-Entropy (masked data):  0.335533
 ## The project is saved into :
 ##  filtered_3699snps_californicus_685inds.recode.snmfProject 
 ## 
@@ -719,7 +721,7 @@ And consistes of a vcf file with 3966 Snps from 685 pacific sea cucumbers.</p>
 ##         -g (ancestral frequencies file)        /Users/ericaspotswoodnielsen/Desktop/PD_stuffies/teaching/MarineGenomics2022/data/Week10_gea/filtered_3699snps_californicus_685inds.recode.snmf/K5/run1/filtered_3699snps_californicus_685inds.recode_r1.5.G
 ##         -i (number max of iterations)          200
 ##         -a (regularization parameter)          10
-##         -s (seed random init)                  140193617866904
+##         -s (seed random init)                  9365711
 ##         -e (tolerance error)                   1E-05
 ##         -p (number of processes)               1
 ##         - diploid
@@ -729,10 +731,10 @@ And consistes of a vcf file with 3966 Snps from 685 pacific sea cucumbers.</p>
 ## 
 ## Main algorithm:
 ##  [                                                                           ]
-##  [===========================================================================]
-## Number of iterations: 200
+##  [=====================================]
+## Number of iterations: 100
 ## 
-## Least-square error: 460432.958315
+## Least-square error: 460616.483758
 ## Write individual ancestry coefficient file /Users/ericaspotswoodnielsen/Desktop/PD_stuffies/teaching/MarineGenomics2022/data/Week10_gea/filtered_3699snps_californicus_685inds.recode.snmf/K5/run1/filtered_3699snps_californicus_685inds.recode_r1.5.Q:     OK.
 ## Write ancestral allele frequency coefficient file /Users/ericaspotswoodnielsen/Desktop/PD_stuffies/teaching/MarineGenomics2022/data/Week10_gea/filtered_3699snps_californicus_685inds.recode.snmf/K5/run1/filtered_3699snps_californicus_685inds.recode_r1.5.G:  OK.
 ## 
@@ -750,8 +752,8 @@ And consistes of a vcf file with 3966 Snps from 685 pacific sea cucumbers.</p>
 ##         -i (with masked genotypes)         /Users/ericaspotswoodnielsen/Desktop/PD_stuffies/teaching/MarineGenomics2022/data/Week10_gea/filtered_3699snps_californicus_685inds.recode.snmf/masked/filtered_3699snps_californicus_685inds.recode_I.geno
 ##         - diploid
 ## 
-## Cross-Entropy (all data):     0.322778
-## Cross-Entropy (masked data):  0.337622
+## Cross-Entropy (all data):     0.323286
+## Cross-Entropy (masked data):  0.336629
 ## The project is saved into :
 ##  filtered_3699snps_californicus_685inds.recode.snmfProject 
 ## 
@@ -774,7 +776,7 @@ And consistes of a vcf file with 3966 Snps from 685 pacific sea cucumbers.</p>
 ##         -g (ancestral frequencies file)        /Users/ericaspotswoodnielsen/Desktop/PD_stuffies/teaching/MarineGenomics2022/data/Week10_gea/filtered_3699snps_californicus_685inds.recode.snmf/K6/run1/filtered_3699snps_californicus_685inds.recode_r1.6.G
 ##         -i (number max of iterations)          200
 ##         -a (regularization parameter)          10
-##         -s (seed random init)                  140193617866904
+##         -s (seed random init)                  140256461383887
 ##         -e (tolerance error)                   1E-05
 ##         -p (number of processes)               1
 ##         - diploid
@@ -787,7 +789,7 @@ And consistes of a vcf file with 3966 Snps from 685 pacific sea cucumbers.</p>
 ##  [===========================================================================]
 ## Number of iterations: 200
 ## 
-## Least-square error: 459131.022250
+## Least-square error: 459185.149524
 ## Write individual ancestry coefficient file /Users/ericaspotswoodnielsen/Desktop/PD_stuffies/teaching/MarineGenomics2022/data/Week10_gea/filtered_3699snps_californicus_685inds.recode.snmf/K6/run1/filtered_3699snps_californicus_685inds.recode_r1.6.Q:     OK.
 ## Write ancestral allele frequency coefficient file /Users/ericaspotswoodnielsen/Desktop/PD_stuffies/teaching/MarineGenomics2022/data/Week10_gea/filtered_3699snps_californicus_685inds.recode.snmf/K6/run1/filtered_3699snps_californicus_685inds.recode_r1.6.G:  OK.
 ## 
@@ -805,8 +807,8 @@ And consistes of a vcf file with 3966 Snps from 685 pacific sea cucumbers.</p>
 ##         -i (with masked genotypes)         /Users/ericaspotswoodnielsen/Desktop/PD_stuffies/teaching/MarineGenomics2022/data/Week10_gea/filtered_3699snps_californicus_685inds.recode.snmf/masked/filtered_3699snps_californicus_685inds.recode_I.geno
 ##         - diploid
 ## 
-## Cross-Entropy (all data):     0.322109
-## Cross-Entropy (masked data):  0.338576
+## Cross-Entropy (all data):     0.322025
+## Cross-Entropy (masked data):  0.337312
 ## The project is saved into :
 ##  filtered_3699snps_californicus_685inds.recode.snmfProject 
 ## 
@@ -829,7 +831,7 @@ And consistes of a vcf file with 3966 Snps from 685 pacific sea cucumbers.</p>
 ##         -g (ancestral frequencies file)        /Users/ericaspotswoodnielsen/Desktop/PD_stuffies/teaching/MarineGenomics2022/data/Week10_gea/filtered_3699snps_californicus_685inds.recode.snmf/K7/run1/filtered_3699snps_californicus_685inds.recode_r1.7.G
 ##         -i (number max of iterations)          200
 ##         -a (regularization parameter)          10
-##         -s (seed random init)                  1590358168
+##         -s (seed random init)                  140256461383887
 ##         -e (tolerance error)                   1E-05
 ##         -p (number of processes)               1
 ##         - diploid
@@ -839,10 +841,10 @@ And consistes of a vcf file with 3966 Snps from 685 pacific sea cucumbers.</p>
 ## 
 ## Main algorithm:
 ##  [                                                                           ]
-##  [===================]
-## Number of iterations: 52
+##  [=====================================]
+## Number of iterations: 98
 ## 
-## Least-square error: 458228.146133
+## Least-square error: 457878.063140
 ## Write individual ancestry coefficient file /Users/ericaspotswoodnielsen/Desktop/PD_stuffies/teaching/MarineGenomics2022/data/Week10_gea/filtered_3699snps_californicus_685inds.recode.snmf/K7/run1/filtered_3699snps_californicus_685inds.recode_r1.7.Q:     OK.
 ## Write ancestral allele frequency coefficient file /Users/ericaspotswoodnielsen/Desktop/PD_stuffies/teaching/MarineGenomics2022/data/Week10_gea/filtered_3699snps_californicus_685inds.recode.snmf/K7/run1/filtered_3699snps_californicus_685inds.recode_r1.7.G:  OK.
 ## 
@@ -860,8 +862,8 @@ And consistes of a vcf file with 3966 Snps from 685 pacific sea cucumbers.</p>
 ##         -i (with masked genotypes)         /Users/ericaspotswoodnielsen/Desktop/PD_stuffies/teaching/MarineGenomics2022/data/Week10_gea/filtered_3699snps_californicus_685inds.recode.snmf/masked/filtered_3699snps_californicus_685inds.recode_I.geno
 ##         - diploid
 ## 
-## Cross-Entropy (all data):     0.321636
-## Cross-Entropy (masked data):  0.340081
+## Cross-Entropy (all data):     0.321145
+## Cross-Entropy (masked data):  0.337266
 ## The project is saved into :
 ##  filtered_3699snps_californicus_685inds.recode.snmfProject 
 ## 
@@ -884,7 +886,7 @@ And consistes of a vcf file with 3966 Snps from 685 pacific sea cucumbers.</p>
 ##         -g (ancestral frequencies file)        /Users/ericaspotswoodnielsen/Desktop/PD_stuffies/teaching/MarineGenomics2022/data/Week10_gea/filtered_3699snps_californicus_685inds.recode.snmf/K8/run1/filtered_3699snps_californicus_685inds.recode_r1.8.G
 ##         -i (number max of iterations)          200
 ##         -a (regularization parameter)          10
-##         -s (seed random init)                  140193617866904
+##         -s (seed random init)                  4304333007
 ##         -e (tolerance error)                   1E-05
 ##         -p (number of processes)               1
 ##         - diploid
@@ -894,10 +896,10 @@ And consistes of a vcf file with 3966 Snps from 685 pacific sea cucumbers.</p>
 ## 
 ## Main algorithm:
 ##  [                                                                           ]
-##  [================================================]
-## Number of iterations: 127
+##  [=============================]
+## Number of iterations: 78
 ## 
-## Least-square error: 456118.741498
+## Least-square error: 456643.205118
 ## Write individual ancestry coefficient file /Users/ericaspotswoodnielsen/Desktop/PD_stuffies/teaching/MarineGenomics2022/data/Week10_gea/filtered_3699snps_californicus_685inds.recode.snmf/K8/run1/filtered_3699snps_californicus_685inds.recode_r1.8.Q:     OK.
 ## Write ancestral allele frequency coefficient file /Users/ericaspotswoodnielsen/Desktop/PD_stuffies/teaching/MarineGenomics2022/data/Week10_gea/filtered_3699snps_californicus_685inds.recode.snmf/K8/run1/filtered_3699snps_californicus_685inds.recode_r1.8.G:  OK.
 ## 
@@ -915,8 +917,8 @@ And consistes of a vcf file with 3966 Snps from 685 pacific sea cucumbers.</p>
 ##         -i (with masked genotypes)         /Users/ericaspotswoodnielsen/Desktop/PD_stuffies/teaching/MarineGenomics2022/data/Week10_gea/filtered_3699snps_californicus_685inds.recode.snmf/masked/filtered_3699snps_californicus_685inds.recode_I.geno
 ##         - diploid
 ## 
-## Cross-Entropy (all data):     0.32038
-## Cross-Entropy (masked data):  0.339037
+## Cross-Entropy (all data):     0.320731
+## Cross-Entropy (masked data):  0.338596
 ## The project is saved into :
 ##  filtered_3699snps_californicus_685inds.recode.snmfProject 
 ## 
@@ -939,7 +941,7 @@ And consistes of a vcf file with 3966 Snps from 685 pacific sea cucumbers.</p>
 ##         -g (ancestral frequencies file)        /Users/ericaspotswoodnielsen/Desktop/PD_stuffies/teaching/MarineGenomics2022/data/Week10_gea/filtered_3699snps_californicus_685inds.recode.snmf/K9/run1/filtered_3699snps_californicus_685inds.recode_r1.9.G
 ##         -i (number max of iterations)          200
 ##         -a (regularization parameter)          10
-##         -s (seed random init)                  140193617866904
+##         -s (seed random init)                  140256461383887
 ##         -e (tolerance error)                   1E-05
 ##         -p (number of processes)               1
 ##         - diploid
@@ -949,10 +951,10 @@ And consistes of a vcf file with 3966 Snps from 685 pacific sea cucumbers.</p>
 ## 
 ## Main algorithm:
 ##  [                                                                           ]
-##  [==========================]
-## Number of iterations: 70
+##  [=====================================]
+## Number of iterations: 98
 ## 
-## Least-square error: 454959.654085
+## Least-square error: 455509.063646
 ## Write individual ancestry coefficient file /Users/ericaspotswoodnielsen/Desktop/PD_stuffies/teaching/MarineGenomics2022/data/Week10_gea/filtered_3699snps_californicus_685inds.recode.snmf/K9/run1/filtered_3699snps_californicus_685inds.recode_r1.9.Q:     OK.
 ## Write ancestral allele frequency coefficient file /Users/ericaspotswoodnielsen/Desktop/PD_stuffies/teaching/MarineGenomics2022/data/Week10_gea/filtered_3699snps_californicus_685inds.recode.snmf/K9/run1/filtered_3699snps_californicus_685inds.recode_r1.9.G:  OK.
 ## 
@@ -970,8 +972,8 @@ And consistes of a vcf file with 3966 Snps from 685 pacific sea cucumbers.</p>
 ##         -i (with masked genotypes)         /Users/ericaspotswoodnielsen/Desktop/PD_stuffies/teaching/MarineGenomics2022/data/Week10_gea/filtered_3699snps_californicus_685inds.recode.snmf/masked/filtered_3699snps_californicus_685inds.recode_I.geno
 ##         - diploid
 ## 
-## Cross-Entropy (all data):     0.319603
-## Cross-Entropy (masked data):  0.340639
+## Cross-Entropy (all data):     0.319932
+## Cross-Entropy (masked data):  0.338699
 ## The project is saved into :
 ##  filtered_3699snps_californicus_685inds.recode.snmfProject 
 ## 
@@ -994,7 +996,7 @@ And consistes of a vcf file with 3966 Snps from 685 pacific sea cucumbers.</p>
 ##         -g (ancestral frequencies file)        /Users/ericaspotswoodnielsen/Desktop/PD_stuffies/teaching/MarineGenomics2022/data/Week10_gea/filtered_3699snps_californicus_685inds.recode.snmf/K10/run1/filtered_3699snps_californicus_685inds.recode_r1.10.G
 ##         -i (number max of iterations)          200
 ##         -a (regularization parameter)          10
-##         -s (seed random init)                  5885325464
+##         -s (seed random init)                  140256461383887
 ##         -e (tolerance error)                   1E-05
 ##         -p (number of processes)               1
 ##         - diploid
@@ -1004,10 +1006,10 @@ And consistes of a vcf file with 3966 Snps from 685 pacific sea cucumbers.</p>
 ## 
 ## Main algorithm:
 ##  [                                                                           ]
-##  [===========================]
-## Number of iterations: 72
+##  [=====================]
+## Number of iterations: 57
 ## 
-## Least-square error: 454054.308663
+## Least-square error: 454026.685956
 ## Write individual ancestry coefficient file /Users/ericaspotswoodnielsen/Desktop/PD_stuffies/teaching/MarineGenomics2022/data/Week10_gea/filtered_3699snps_californicus_685inds.recode.snmf/K10/run1/filtered_3699snps_californicus_685inds.recode_r1.10.Q:       OK.
 ## Write ancestral allele frequency coefficient file /Users/ericaspotswoodnielsen/Desktop/PD_stuffies/teaching/MarineGenomics2022/data/Week10_gea/filtered_3699snps_californicus_685inds.recode.snmf/K10/run1/filtered_3699snps_californicus_685inds.recode_r1.10.G:    OK.
 ## 
@@ -1025,8 +1027,8 @@ And consistes of a vcf file with 3966 Snps from 685 pacific sea cucumbers.</p>
 ##         -i (with masked genotypes)         /Users/ericaspotswoodnielsen/Desktop/PD_stuffies/teaching/MarineGenomics2022/data/Week10_gea/filtered_3699snps_californicus_685inds.recode.snmf/masked/filtered_3699snps_californicus_685inds.recode_I.geno
 ##         - diploid
 ## 
-## Cross-Entropy (all data):     0.318893
-## Cross-Entropy (masked data):  0.340175
+## Cross-Entropy (all data):     0.319108
+## Cross-Entropy (masked data):  0.338616
 ## The project is saved into :
 ##  filtered_3699snps_californicus_685inds.recode.snmfProject 
 ## 
@@ -1042,6 +1044,9 @@ And consistes of a vcf file with 3966 Snps from 685 pacific sea cucumbers.</p>
 <p><img src="10-Week10_files/figure-html/gea1-1.png" width="768" /></p>
 <p>This plot tells us which value of K we should use when running the next analyses. We’re looking for a region where the cross-entropy is lowest and ideally it plateaus. We don’t get a plateau in our case but you can see our lowest value is at 3. So we would use a K of 3 in the next step.</p>
 <p>However, for the purposes of time we’re going to do the next step with a k=1 and a rep=1.</p>
+<div class="sourceCode" id="cb528"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb528-1"><a href="genome-environment-association.html#cb528-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Genome scan for selection using environmental variables </span></span>
+<span id="cb528-2"><a href="genome-environment-association.html#cb528-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb528-3"><a href="genome-environment-association.html#cb528-3" aria-hidden="true" tabindex="-1"></a>sea_cuc_lfmm <span class="ot">&lt;-</span> <span class="fu">lfmm</span>(<span class="st">&quot;filtered_3699snps_californicus_685inds.recode.lfmm&quot;</span>, <span class="st">&quot;sites_environ_matrix.env&quot;</span>, <span class="at">K=</span><span class="dv">1</span>, <span class="at">rep=</span><span class="dv">1</span>, <span class="at">project =</span> <span class="st">&quot;new&quot;</span>)</span></code></pre></div>
 <pre><code>## The project is saved into :
 ##  filtered_3699snps_californicus_685inds.lfmmProject 
 ## 
@@ -1062,7 +1067,7 @@ And consistes of a vcf file with 3966 Snps from 685 pacific sea cucumbers.</p>
 ##         -o (output file)                filtered_3699snps_californicus_685inds.lfmm/K1/run1/filtered_3699snps_californicus_685inds.recode_r1
 ##         -i (number of iterations)       10000
 ##         -b (burnin)                     5000
-##         -s (seed random init)           140194152195806
+##         -s (seed random init)           140257510787376
 ##         -p (number of processes (CPU))  1
 ##         -x (genotype file)              filtered_3699snps_californicus_685inds.recode.lfmm
 ##         -v (variable file)              sites_environ_matrix.env
@@ -1085,7 +1090,7 @@ And consistes of a vcf file with 3966 Snps from 685 pacific sea cucumbers.</p>
 ## 
 ##      End of the Gibbs Sampler algorithm.
 ## 
-##  ED:2533818.05    DIC: 2533819.058 
+##  ED:2533818.074   DIC: 2533819.078 
 ## 
 ##  The statistics for the run are registered in:
 ##          filtered_3699snps_californicus_685inds.lfmm/K1/run1/filtered_3699snps_californicus_685inds.recode_r1_s1.1.dic.
@@ -1118,7 +1123,7 @@ And consistes of a vcf file with 3966 Snps from 685 pacific sea cucumbers.</p>
 ##         -o (output file)                filtered_3699snps_californicus_685inds.lfmm/K1/run2/filtered_3699snps_californicus_685inds.recode_r2
 ##         -i (number of iterations)       10000
 ##         -b (burnin)                     5000
-##         -s (seed random init)           140194152195806
+##         -s (seed random init)           140257510787376
 ##         -p (number of processes (CPU))  1
 ##         -x (genotype file)              filtered_3699snps_californicus_685inds.recode.lfmm
 ##         -v (variable file)              sites_environ_matrix.env
@@ -1141,7 +1146,7 @@ And consistes of a vcf file with 3966 Snps from 685 pacific sea cucumbers.</p>
 ## 
 ##      End of the Gibbs Sampler algorithm.
 ## 
-##  ED:2533818.06    DIC: 2533819.032 
+##  ED:2533817.992   DIC: 2533819.02 
 ## 
 ##  The statistics for the run are registered in:
 ##          filtered_3699snps_californicus_685inds.lfmm/K1/run2/filtered_3699snps_californicus_685inds.recode_r2_s2.1.dic.
@@ -1174,7 +1179,7 @@ And consistes of a vcf file with 3966 Snps from 685 pacific sea cucumbers.</p>
 ##         -o (output file)                filtered_3699snps_californicus_685inds.lfmm/K1/run3/filtered_3699snps_californicus_685inds.recode_r3
 ##         -i (number of iterations)       10000
 ##         -b (burnin)                     5000
-##         -s (seed random init)           140194152195806
+##         -s (seed random init)           140257510787376
 ##         -p (number of processes (CPU))  1
 ##         -x (genotype file)              filtered_3699snps_californicus_685inds.recode.lfmm
 ##         -v (variable file)              sites_environ_matrix.env
@@ -1197,7 +1202,7 @@ And consistes of a vcf file with 3966 Snps from 685 pacific sea cucumbers.</p>
 ## 
 ##      End of the Gibbs Sampler algorithm.
 ## 
-##  ED:2533818.206   DIC: 2533819.214 
+##  ED:2533818.146   DIC: 2533819.144 
 ## 
 ##  The statistics for the run are registered in:
 ##          filtered_3699snps_californicus_685inds.lfmm/K1/run3/filtered_3699snps_californicus_685inds.recode_r3_s3.1.dic.
@@ -1230,7 +1235,7 @@ And consistes of a vcf file with 3966 Snps from 685 pacific sea cucumbers.</p>
 ##         -o (output file)                filtered_3699snps_californicus_685inds.lfmm/K1/run4/filtered_3699snps_californicus_685inds.recode_r4
 ##         -i (number of iterations)       10000
 ##         -b (burnin)                     5000
-##         -s (seed random init)           140194152195806
+##         -s (seed random init)           140257510787376
 ##         -p (number of processes (CPU))  1
 ##         -x (genotype file)              filtered_3699snps_californicus_685inds.recode.lfmm
 ##         -v (variable file)              sites_environ_matrix.env
@@ -1253,7 +1258,7 @@ And consistes of a vcf file with 3966 Snps from 685 pacific sea cucumbers.</p>
 ## 
 ##      End of the Gibbs Sampler algorithm.
 ## 
-##  ED:2533818.032   DIC: 2533819.067 
+##  ED:2533818.175   DIC: 2533819.228 
 ## 
 ##  The statistics for the run are registered in:
 ##          filtered_3699snps_californicus_685inds.lfmm/K1/run4/filtered_3699snps_californicus_685inds.recode_r4_s4.1.dic.
@@ -1286,7 +1291,7 @@ And consistes of a vcf file with 3966 Snps from 685 pacific sea cucumbers.</p>
 ##         -o (output file)                filtered_3699snps_californicus_685inds.lfmm/K1/run5/filtered_3699snps_californicus_685inds.recode_r5
 ##         -i (number of iterations)       10000
 ##         -b (burnin)                     5000
-##         -s (seed random init)           140194152195806
+##         -s (seed random init)           140257510787376
 ##         -p (number of processes (CPU))  1
 ##         -x (genotype file)              filtered_3699snps_californicus_685inds.recode.lfmm
 ##         -v (variable file)              sites_environ_matrix.env
@@ -1309,7 +1314,7 @@ And consistes of a vcf file with 3966 Snps from 685 pacific sea cucumbers.</p>
 ## 
 ##      End of the Gibbs Sampler algorithm.
 ## 
-##  ED:2533817.999   DIC: 2533819.03 
+##  ED:2533818.022   DIC: 2533819.044 
 ## 
 ##  The statistics for the run are registered in:
 ##          filtered_3699snps_californicus_685inds.lfmm/K1/run5/filtered_3699snps_californicus_685inds.recode_r5_s5.1.dic.
@@ -1330,56 +1335,58 @@ And consistes of a vcf file with 3966 Snps from 685 pacific sea cucumbers.</p>
 ## 
 ## To remove the project, use:
 ##  remove.lfmmProject(&quot;filtered_3699snps_californicus_685inds.lfmmProject&quot;)</code></pre>
+<div class="sourceCode" id="cb530"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb530-1"><a href="genome-environment-association.html#cb530-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load project</span></span>
+<span id="cb530-2"><a href="genome-environment-association.html#cb530-2" aria-hidden="true" tabindex="-1"></a>project <span class="ot">=</span> <span class="fu">load.lfmmProject</span>(<span class="st">&quot;filtered_3699snps_californicus_685inds.lfmmProject&quot;</span>)</span></code></pre></div>
 <p>Now we can check and see which of our environmental variables is association with genomic variation</p>
-<div class="sourceCode" id="cb529"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb529-1"><a href="genome-environment-association.html#cb529-1" aria-hidden="true" tabindex="-1"></a><span class="co">#get the z scores from each env variable</span></span>
-<span id="cb529-2"><a href="genome-environment-association.html#cb529-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb529-3"><a href="genome-environment-association.html#cb529-3" aria-hidden="true" tabindex="-1"></a>zs1 <span class="ot">&lt;-</span> <span class="fu">z.scores</span>(sea_cuc_lfmm, <span class="at">K=</span><span class="dv">1</span>, <span class="at">d=</span><span class="dv">1</span>)</span>
-<span id="cb529-4"><a href="genome-environment-association.html#cb529-4" aria-hidden="true" tabindex="-1"></a>zs2 <span class="ot">&lt;-</span> <span class="fu">z.scores</span>(sea_cuc_lfmm, <span class="at">K=</span><span class="dv">1</span>, <span class="at">d=</span><span class="dv">2</span>)</span>
-<span id="cb529-5"><a href="genome-environment-association.html#cb529-5" aria-hidden="true" tabindex="-1"></a>zs3 <span class="ot">&lt;-</span> <span class="fu">z.scores</span>(sea_cuc_lfmm, <span class="at">K=</span><span class="dv">1</span>, <span class="at">d=</span><span class="dv">3</span>)</span>
-<span id="cb529-6"><a href="genome-environment-association.html#cb529-6" aria-hidden="true" tabindex="-1"></a>zs4 <span class="ot">&lt;-</span> <span class="fu">z.scores</span>(sea_cuc_lfmm, <span class="at">K=</span><span class="dv">1</span>, <span class="at">d=</span><span class="dv">4</span>)</span>
-<span id="cb529-7"><a href="genome-environment-association.html#cb529-7" aria-hidden="true" tabindex="-1"></a>zs5 <span class="ot">&lt;-</span> <span class="fu">z.scores</span>(sea_cuc_lfmm, <span class="at">K=</span><span class="dv">1</span>, <span class="at">d=</span><span class="dv">5</span>)</span>
-<span id="cb529-8"><a href="genome-environment-association.html#cb529-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb529-9"><a href="genome-environment-association.html#cb529-9" aria-hidden="true" tabindex="-1"></a><span class="co"># compute the genomic inflation factor lambda</span></span>
-<span id="cb529-10"><a href="genome-environment-association.html#cb529-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb529-11"><a href="genome-environment-association.html#cb529-11" aria-hidden="true" tabindex="-1"></a>lambda1<span class="ot">=</span><span class="fu">median</span>(zs1<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span><span class="fu">qchisq</span>(<span class="fl">0.5</span>, <span class="at">df=</span><span class="dv">1</span>)</span>
-<span id="cb529-12"><a href="genome-environment-association.html#cb529-12" aria-hidden="true" tabindex="-1"></a>lambda2<span class="ot">=</span><span class="fu">median</span>(zs2<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span><span class="fu">qchisq</span>(<span class="fl">0.5</span>, <span class="at">df=</span><span class="dv">1</span>)</span>
-<span id="cb529-13"><a href="genome-environment-association.html#cb529-13" aria-hidden="true" tabindex="-1"></a>lambda3<span class="ot">=</span><span class="fu">median</span>(zs3<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span><span class="fu">qchisq</span>(<span class="fl">0.5</span>, <span class="at">df=</span><span class="dv">1</span>)</span>
-<span id="cb529-14"><a href="genome-environment-association.html#cb529-14" aria-hidden="true" tabindex="-1"></a>lambda4<span class="ot">=</span><span class="fu">median</span>(zs4<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span><span class="fu">qchisq</span>(<span class="fl">0.5</span>, <span class="at">df=</span><span class="dv">1</span>)</span>
-<span id="cb529-15"><a href="genome-environment-association.html#cb529-15" aria-hidden="true" tabindex="-1"></a>lambda5<span class="ot">=</span><span class="fu">median</span>(zs5<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span><span class="fu">qchisq</span>(<span class="fl">0.5</span>, <span class="at">df=</span><span class="dv">1</span>)</span>
-<span id="cb529-16"><a href="genome-environment-association.html#cb529-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb529-17"><a href="genome-environment-association.html#cb529-17" aria-hidden="true" tabindex="-1"></a><span class="co">#then compute adjusted p-values</span></span>
-<span id="cb529-18"><a href="genome-environment-association.html#cb529-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb529-19"><a href="genome-environment-association.html#cb529-19" aria-hidden="true" tabindex="-1"></a>adj.p.val1<span class="ot">&lt;-</span><span class="fu">pchisq</span>(zs1<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>lambda1, <span class="at">df=</span><span class="dv">1</span>, <span class="at">lower=</span>F)</span>
-<span id="cb529-20"><a href="genome-environment-association.html#cb529-20" aria-hidden="true" tabindex="-1"></a>adj.p.val2<span class="ot">&lt;-</span><span class="fu">pchisq</span>(zs2<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>lambda2, <span class="at">df=</span><span class="dv">1</span>, <span class="at">lower=</span>F)</span>
-<span id="cb529-21"><a href="genome-environment-association.html#cb529-21" aria-hidden="true" tabindex="-1"></a>adj.p.val3<span class="ot">&lt;-</span><span class="fu">pchisq</span>(zs3<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>lambda3, <span class="at">df=</span><span class="dv">1</span>, <span class="at">lower=</span>F)</span>
-<span id="cb529-22"><a href="genome-environment-association.html#cb529-22" aria-hidden="true" tabindex="-1"></a>adj.p.val4<span class="ot">&lt;-</span><span class="fu">pchisq</span>(zs4<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>lambda4, <span class="at">df=</span><span class="dv">1</span>, <span class="at">lower=</span>F)</span>
-<span id="cb529-23"><a href="genome-environment-association.html#cb529-23" aria-hidden="true" tabindex="-1"></a>adj.p.val5<span class="ot">&lt;-</span><span class="fu">pchisq</span>(zs5<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>lambda5, <span class="at">df=</span><span class="dv">1</span>, <span class="at">lower=</span>F)</span>
-<span id="cb529-24"><a href="genome-environment-association.html#cb529-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb529-25"><a href="genome-environment-association.html#cb529-25" aria-hidden="true" tabindex="-1"></a><span class="co">#then plot that p-value</span></span>
-<span id="cb529-26"><a href="genome-environment-association.html#cb529-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb529-27"><a href="genome-environment-association.html#cb529-27" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(adj.p.val1, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb531"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb531-1"><a href="genome-environment-association.html#cb531-1" aria-hidden="true" tabindex="-1"></a><span class="co">#get the z scores from each env variable</span></span>
+<span id="cb531-2"><a href="genome-environment-association.html#cb531-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb531-3"><a href="genome-environment-association.html#cb531-3" aria-hidden="true" tabindex="-1"></a>zs1 <span class="ot">&lt;-</span> <span class="fu">z.scores</span>(sea_cuc_lfmm, <span class="at">K=</span><span class="dv">1</span>, <span class="at">d=</span><span class="dv">1</span>)</span>
+<span id="cb531-4"><a href="genome-environment-association.html#cb531-4" aria-hidden="true" tabindex="-1"></a>zs2 <span class="ot">&lt;-</span> <span class="fu">z.scores</span>(sea_cuc_lfmm, <span class="at">K=</span><span class="dv">1</span>, <span class="at">d=</span><span class="dv">2</span>)</span>
+<span id="cb531-5"><a href="genome-environment-association.html#cb531-5" aria-hidden="true" tabindex="-1"></a>zs3 <span class="ot">&lt;-</span> <span class="fu">z.scores</span>(sea_cuc_lfmm, <span class="at">K=</span><span class="dv">1</span>, <span class="at">d=</span><span class="dv">3</span>)</span>
+<span id="cb531-6"><a href="genome-environment-association.html#cb531-6" aria-hidden="true" tabindex="-1"></a>zs4 <span class="ot">&lt;-</span> <span class="fu">z.scores</span>(sea_cuc_lfmm, <span class="at">K=</span><span class="dv">1</span>, <span class="at">d=</span><span class="dv">4</span>)</span>
+<span id="cb531-7"><a href="genome-environment-association.html#cb531-7" aria-hidden="true" tabindex="-1"></a>zs5 <span class="ot">&lt;-</span> <span class="fu">z.scores</span>(sea_cuc_lfmm, <span class="at">K=</span><span class="dv">1</span>, <span class="at">d=</span><span class="dv">5</span>)</span>
+<span id="cb531-8"><a href="genome-environment-association.html#cb531-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb531-9"><a href="genome-environment-association.html#cb531-9" aria-hidden="true" tabindex="-1"></a><span class="co"># compute the genomic inflation factor lambda</span></span>
+<span id="cb531-10"><a href="genome-environment-association.html#cb531-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb531-11"><a href="genome-environment-association.html#cb531-11" aria-hidden="true" tabindex="-1"></a>lambda1<span class="ot">=</span><span class="fu">median</span>(zs1<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span><span class="fu">qchisq</span>(<span class="fl">0.5</span>, <span class="at">df=</span><span class="dv">1</span>)</span>
+<span id="cb531-12"><a href="genome-environment-association.html#cb531-12" aria-hidden="true" tabindex="-1"></a>lambda2<span class="ot">=</span><span class="fu">median</span>(zs2<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span><span class="fu">qchisq</span>(<span class="fl">0.5</span>, <span class="at">df=</span><span class="dv">2</span>)</span>
+<span id="cb531-13"><a href="genome-environment-association.html#cb531-13" aria-hidden="true" tabindex="-1"></a>lambda3<span class="ot">=</span><span class="fu">median</span>(zs3<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span><span class="fu">qchisq</span>(<span class="fl">0.5</span>, <span class="at">df=</span><span class="dv">3</span>)</span>
+<span id="cb531-14"><a href="genome-environment-association.html#cb531-14" aria-hidden="true" tabindex="-1"></a>lambda4<span class="ot">=</span><span class="fu">median</span>(zs4<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span><span class="fu">qchisq</span>(<span class="fl">0.5</span>, <span class="at">df=</span><span class="dv">4</span>)</span>
+<span id="cb531-15"><a href="genome-environment-association.html#cb531-15" aria-hidden="true" tabindex="-1"></a>lambda5<span class="ot">=</span><span class="fu">median</span>(zs5<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span><span class="fu">qchisq</span>(<span class="fl">0.5</span>, <span class="at">df=</span><span class="dv">5</span>)</span>
+<span id="cb531-16"><a href="genome-environment-association.html#cb531-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb531-17"><a href="genome-environment-association.html#cb531-17" aria-hidden="true" tabindex="-1"></a><span class="co">#then compute adjusted p-values</span></span>
+<span id="cb531-18"><a href="genome-environment-association.html#cb531-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb531-19"><a href="genome-environment-association.html#cb531-19" aria-hidden="true" tabindex="-1"></a>adj.p.val1<span class="ot">&lt;-</span><span class="fu">pchisq</span>(zs1<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>lambda1, <span class="at">df=</span><span class="dv">1</span>, <span class="at">lower=</span>F)</span>
+<span id="cb531-20"><a href="genome-environment-association.html#cb531-20" aria-hidden="true" tabindex="-1"></a>adj.p.val2<span class="ot">&lt;-</span><span class="fu">pchisq</span>(zs2<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>lambda2, <span class="at">df=</span><span class="dv">2</span>, <span class="at">lower=</span>F)</span>
+<span id="cb531-21"><a href="genome-environment-association.html#cb531-21" aria-hidden="true" tabindex="-1"></a>adj.p.val3<span class="ot">&lt;-</span><span class="fu">pchisq</span>(zs3<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>lambda3, <span class="at">df=</span><span class="dv">3</span>, <span class="at">lower=</span>F)</span>
+<span id="cb531-22"><a href="genome-environment-association.html#cb531-22" aria-hidden="true" tabindex="-1"></a>adj.p.val4<span class="ot">&lt;-</span><span class="fu">pchisq</span>(zs4<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>lambda4, <span class="at">df=</span><span class="dv">4</span>, <span class="at">lower=</span>F)</span>
+<span id="cb531-23"><a href="genome-environment-association.html#cb531-23" aria-hidden="true" tabindex="-1"></a>adj.p.val5<span class="ot">&lt;-</span><span class="fu">pchisq</span>(zs5<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>lambda5, <span class="at">df=</span><span class="dv">5</span>, <span class="at">lower=</span>F)</span>
+<span id="cb531-24"><a href="genome-environment-association.html#cb531-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb531-25"><a href="genome-environment-association.html#cb531-25" aria-hidden="true" tabindex="-1"></a><span class="co">#then plot that p-value</span></span>
+<span id="cb531-26"><a href="genome-environment-association.html#cb531-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb531-27"><a href="genome-environment-association.html#cb531-27" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(adj.p.val1, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
 <p><img src="10-Week10_files/figure-html/histograms-1.png" width="768" /></p>
-<div class="sourceCode" id="cb530"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb530-1"><a href="genome-environment-association.html#cb530-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(adj.p.val2, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb532"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb532-1"><a href="genome-environment-association.html#cb532-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(adj.p.val2, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
 <p><img src="10-Week10_files/figure-html/histograms-2.png" width="768" /></p>
-<div class="sourceCode" id="cb531"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb531-1"><a href="genome-environment-association.html#cb531-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(adj.p.val3, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb533"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb533-1"><a href="genome-environment-association.html#cb533-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(adj.p.val3, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
 <p><img src="10-Week10_files/figure-html/histograms-3.png" width="768" /></p>
-<div class="sourceCode" id="cb532"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb532-1"><a href="genome-environment-association.html#cb532-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(adj.p.val4, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb534"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb534-1"><a href="genome-environment-association.html#cb534-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(adj.p.val4, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
 <p><img src="10-Week10_files/figure-html/histograms-4.png" width="768" /></p>
-<div class="sourceCode" id="cb533"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb533-1"><a href="genome-environment-association.html#cb533-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(adj.p.val5, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb535"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb535-1"><a href="genome-environment-association.html#cb535-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(adj.p.val5, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
 <p><img src="10-Week10_files/figure-html/histograms-5.png" width="768" /></p>
-<div class="sourceCode" id="cb534"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb534-1"><a href="genome-environment-association.html#cb534-1" aria-hidden="true" tabindex="-1"></a><span class="co"># control of false discoveries</span></span>
-<span id="cb534-2"><a href="genome-environment-association.html#cb534-2" aria-hidden="true" tabindex="-1"></a><span class="co"># to correct for multiple testing, we can apply the Benjamini-Hochberg algorithm</span></span>
-<span id="cb534-3"><a href="genome-environment-association.html#cb534-3" aria-hidden="true" tabindex="-1"></a><span class="co"># L is number of loci</span></span>
-<span id="cb534-4"><a href="genome-environment-association.html#cb534-4" aria-hidden="true" tabindex="-1"></a>L<span class="ot">=</span><span class="dv">3699</span></span>
-<span id="cb534-5"><a href="genome-environment-association.html#cb534-5" aria-hidden="true" tabindex="-1"></a><span class="co">#fdr level q</span></span>
-<span id="cb534-6"><a href="genome-environment-association.html#cb534-6" aria-hidden="true" tabindex="-1"></a>q <span class="ot">=</span> <span class="fl">0.1</span></span>
-<span id="cb534-7"><a href="genome-environment-association.html#cb534-7" aria-hidden="true" tabindex="-1"></a>w <span class="ot">=</span> <span class="fu">which</span>(<span class="fu">sort</span>(adj.p.val1) <span class="sc">&lt;</span> q <span class="sc">*</span> (<span class="dv">1</span><span class="sc">:</span>L)<span class="sc">/</span>L)</span>
-<span id="cb534-8"><a href="genome-environment-association.html#cb534-8" aria-hidden="true" tabindex="-1"></a><span class="co"># candidates are then</span></span>
-<span id="cb534-9"><a href="genome-environment-association.html#cb534-9" aria-hidden="true" tabindex="-1"></a>candidates<span class="fl">.1</span> <span class="ot">=</span> <span class="fu">order</span>(adj.p.val1)[w]</span>
-<span id="cb534-10"><a href="genome-environment-association.html#cb534-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb534-11"><a href="genome-environment-association.html#cb534-11" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(candidates<span class="fl">.1</span>)</span></code></pre></div>
-<pre><code>## [1] 86</code></pre>
-<div class="sourceCode" id="cb536"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb536-1"><a href="genome-environment-association.html#cb536-1" aria-hidden="true" tabindex="-1"></a><span class="co">#These are the candidate loci related to our first variable Mean Chlorphyl</span></span></code></pre></div>
+<div class="sourceCode" id="cb536"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb536-1"><a href="genome-environment-association.html#cb536-1" aria-hidden="true" tabindex="-1"></a><span class="co"># control of false discoveries</span></span>
+<span id="cb536-2"><a href="genome-environment-association.html#cb536-2" aria-hidden="true" tabindex="-1"></a><span class="co"># to correct for multiple testing, we can apply the Benjamini-Hochberg algorithm</span></span>
+<span id="cb536-3"><a href="genome-environment-association.html#cb536-3" aria-hidden="true" tabindex="-1"></a><span class="co"># L is number of loci</span></span>
+<span id="cb536-4"><a href="genome-environment-association.html#cb536-4" aria-hidden="true" tabindex="-1"></a>L<span class="ot">=</span><span class="dv">3699</span></span>
+<span id="cb536-5"><a href="genome-environment-association.html#cb536-5" aria-hidden="true" tabindex="-1"></a><span class="co">#fdr level q</span></span>
+<span id="cb536-6"><a href="genome-environment-association.html#cb536-6" aria-hidden="true" tabindex="-1"></a>q <span class="ot">=</span> <span class="fl">0.1</span></span>
+<span id="cb536-7"><a href="genome-environment-association.html#cb536-7" aria-hidden="true" tabindex="-1"></a>w <span class="ot">=</span> <span class="fu">which</span>(<span class="fu">sort</span>(adj.p.val1) <span class="sc">&lt;</span> q <span class="sc">*</span> (<span class="dv">1</span><span class="sc">:</span>L)<span class="sc">/</span>L)</span>
+<span id="cb536-8"><a href="genome-environment-association.html#cb536-8" aria-hidden="true" tabindex="-1"></a><span class="co"># candidates are then</span></span>
+<span id="cb536-9"><a href="genome-environment-association.html#cb536-9" aria-hidden="true" tabindex="-1"></a>candidates<span class="fl">.1</span> <span class="ot">=</span> <span class="fu">order</span>(adj.p.val1)[w]</span>
+<span id="cb536-10"><a href="genome-environment-association.html#cb536-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb536-11"><a href="genome-environment-association.html#cb536-11" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(candidates<span class="fl">.1</span>)</span></code></pre></div>
+<pre><code>## [1] 90</code></pre>
+<div class="sourceCode" id="cb538"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb538-1"><a href="genome-environment-association.html#cb538-1" aria-hidden="true" tabindex="-1"></a><span class="co">#These are the candidate loci related to our first variable Mean Chlorphyl</span></span></code></pre></div>
 </div>
 <div id="exercises-2" class="section level2 hasAnchor" number="11.8">
 <h2><span class="header-section-number">11.8</span> Exercises<a href="genome-environment-association.html#exercises-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -1394,26 +1401,26 @@ And consistes of a vcf file with 3966 Snps from 685 pacific sea cucumbers.</p>
 <span style="color: DarkCyan;">Solution</span>
 </summary>
 <p>
-<div class="sourceCode" id="cb537"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb537-1"><a href="genome-environment-association.html#cb537-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sdmpredictors)</span>
-<span id="cb537-2"><a href="genome-environment-association.html#cb537-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb537-3"><a href="genome-environment-association.html#cb537-3" aria-hidden="true" tabindex="-1"></a><span class="co">#get env data</span></span>
-<span id="cb537-4"><a href="genome-environment-association.html#cb537-4" aria-hidden="true" tabindex="-1"></a>precip_seasonality<span class="ot">&lt;-</span><span class="fu">load_layers</span>(<span class="st">&quot;WC_bio15&quot;</span>)</span>
-<span id="cb537-5"><a href="genome-environment-association.html#cb537-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb537-6"><a href="genome-environment-association.html#cb537-6" aria-hidden="true" tabindex="-1"></a>precip_wettest<span class="ot">&lt;-</span><span class="fu">load_layers</span>(<span class="st">&quot;WC_bio13&quot;</span>)</span>
-<span id="cb537-7"><a href="genome-environment-association.html#cb537-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb537-8"><a href="genome-environment-association.html#cb537-8" aria-hidden="true" tabindex="-1"></a><span class="co">#make range to crop for california</span></span>
-<span id="cb537-9"><a href="genome-environment-association.html#cb537-9" aria-hidden="true" tabindex="-1"></a>cali<span class="ot">&lt;-</span><span class="fu">extent</span>(<span class="sc">-</span><span class="dv">130</span>, <span class="sc">-</span><span class="dv">116</span>, <span class="dv">30</span>, <span class="dv">40</span>)</span>
-<span id="cb537-10"><a href="genome-environment-association.html#cb537-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb537-11"><a href="genome-environment-association.html#cb537-11" aria-hidden="true" tabindex="-1"></a><span class="co">#crop it</span></span>
-<span id="cb537-12"><a href="genome-environment-association.html#cb537-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb537-13"><a href="genome-environment-association.html#cb537-13" aria-hidden="true" tabindex="-1"></a>precip_w.crop<span class="ot">&lt;-</span><span class="fu">crop</span>(precip_wettest, cali)</span>
-<span id="cb537-14"><a href="genome-environment-association.html#cb537-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb537-15"><a href="genome-environment-association.html#cb537-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb537-16"><a href="genome-environment-association.html#cb537-16" aria-hidden="true" tabindex="-1"></a><span class="co">#plot it</span></span>
-<span id="cb537-17"><a href="genome-environment-association.html#cb537-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb537-18"><a href="genome-environment-association.html#cb537-18" aria-hidden="true" tabindex="-1"></a>my.colors <span class="ot">=</span> <span class="fu">colorRampPalette</span>(<span class="fu">c</span>(<span class="st">&quot;#5E85B8&quot;</span>,<span class="st">&quot;#EDF0C0&quot;</span>,<span class="st">&quot;#C13127&quot;</span>))</span>
-<span id="cb537-19"><a href="genome-environment-association.html#cb537-19" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(precip_w.crop,<span class="at">col=</span><span class="fu">my.colors</span>(<span class="dv">1000</span>),<span class="at">axes=</span><span class="cn">FALSE</span>, <span class="at">box=</span><span class="cn">FALSE</span>)</span>
-<span id="cb537-20"><a href="genome-environment-association.html#cb537-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">title</span>(<span class="at">cex.sub =</span> <span class="fl">1.25</span>, <span class="at">sub =</span> <span class="st">&quot;Precipitation of the Wettest Month&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb539"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb539-1"><a href="genome-environment-association.html#cb539-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sdmpredictors)</span>
+<span id="cb539-2"><a href="genome-environment-association.html#cb539-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb539-3"><a href="genome-environment-association.html#cb539-3" aria-hidden="true" tabindex="-1"></a><span class="co">#get env data</span></span>
+<span id="cb539-4"><a href="genome-environment-association.html#cb539-4" aria-hidden="true" tabindex="-1"></a>precip_seasonality<span class="ot">&lt;-</span><span class="fu">load_layers</span>(<span class="st">&quot;WC_bio15&quot;</span>)</span>
+<span id="cb539-5"><a href="genome-environment-association.html#cb539-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb539-6"><a href="genome-environment-association.html#cb539-6" aria-hidden="true" tabindex="-1"></a>precip_wettest<span class="ot">&lt;-</span><span class="fu">load_layers</span>(<span class="st">&quot;WC_bio13&quot;</span>)</span>
+<span id="cb539-7"><a href="genome-environment-association.html#cb539-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb539-8"><a href="genome-environment-association.html#cb539-8" aria-hidden="true" tabindex="-1"></a><span class="co">#make range to crop for california</span></span>
+<span id="cb539-9"><a href="genome-environment-association.html#cb539-9" aria-hidden="true" tabindex="-1"></a>cali<span class="ot">&lt;-</span><span class="fu">extent</span>(<span class="sc">-</span><span class="dv">130</span>, <span class="sc">-</span><span class="dv">116</span>, <span class="dv">30</span>, <span class="dv">40</span>)</span>
+<span id="cb539-10"><a href="genome-environment-association.html#cb539-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb539-11"><a href="genome-environment-association.html#cb539-11" aria-hidden="true" tabindex="-1"></a><span class="co">#crop it</span></span>
+<span id="cb539-12"><a href="genome-environment-association.html#cb539-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb539-13"><a href="genome-environment-association.html#cb539-13" aria-hidden="true" tabindex="-1"></a>precip_w.crop<span class="ot">&lt;-</span><span class="fu">crop</span>(precip_wettest, cali)</span>
+<span id="cb539-14"><a href="genome-environment-association.html#cb539-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb539-15"><a href="genome-environment-association.html#cb539-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb539-16"><a href="genome-environment-association.html#cb539-16" aria-hidden="true" tabindex="-1"></a><span class="co">#plot it</span></span>
+<span id="cb539-17"><a href="genome-environment-association.html#cb539-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb539-18"><a href="genome-environment-association.html#cb539-18" aria-hidden="true" tabindex="-1"></a>my.colors <span class="ot">=</span> <span class="fu">colorRampPalette</span>(<span class="fu">c</span>(<span class="st">&quot;#5E85B8&quot;</span>,<span class="st">&quot;#EDF0C0&quot;</span>,<span class="st">&quot;#C13127&quot;</span>))</span>
+<span id="cb539-19"><a href="genome-environment-association.html#cb539-19" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(precip_w.crop,<span class="at">col=</span><span class="fu">my.colors</span>(<span class="dv">1000</span>),<span class="at">axes=</span><span class="cn">FALSE</span>, <span class="at">box=</span><span class="cn">FALSE</span>)</span>
+<span id="cb539-20"><a href="genome-environment-association.html#cb539-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">title</span>(<span class="at">cex.sub =</span> <span class="fl">1.25</span>, <span class="at">sub =</span> <span class="st">&quot;Precipitation of the Wettest Month&quot;</span>)</span></code></pre></div>
 <img src="10-Week10_files/figure-html/unnamed-chunk-8-1.png" width="768" />
 </p>
 </details>
@@ -1425,42 +1432,42 @@ And consistes of a vcf file with 3966 Snps from 685 pacific sea cucumbers.</p>
 <span style="color: DarkCyan;">Solution</span>
 </summary>
 <p>
-<div class="sourceCode" id="cb538"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb538-1"><a href="genome-environment-association.html#cb538-1" aria-hidden="true" tabindex="-1"></a><span class="co">#We&#39;ll use this script below</span></span>
-<span id="cb538-2"><a href="genome-environment-association.html#cb538-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb538-3"><a href="genome-environment-association.html#cb538-3" aria-hidden="true" tabindex="-1"></a><span class="co">#for variable 2 (PH)</span></span>
-<span id="cb538-4"><a href="genome-environment-association.html#cb538-4" aria-hidden="true" tabindex="-1"></a><span class="co"># L is number of loci</span></span>
-<span id="cb538-5"><a href="genome-environment-association.html#cb538-5" aria-hidden="true" tabindex="-1"></a>L<span class="ot">=</span><span class="dv">3699</span></span>
-<span id="cb538-6"><a href="genome-environment-association.html#cb538-6" aria-hidden="true" tabindex="-1"></a><span class="co">#fdr level q</span></span>
-<span id="cb538-7"><a href="genome-environment-association.html#cb538-7" aria-hidden="true" tabindex="-1"></a>q <span class="ot">=</span> <span class="fl">0.1</span></span>
-<span id="cb538-8"><a href="genome-environment-association.html#cb538-8" aria-hidden="true" tabindex="-1"></a>w <span class="ot">=</span> <span class="fu">which</span>(<span class="fu">sort</span>(adj.p.val2) <span class="sc">&lt;</span> q <span class="sc">*</span> (<span class="dv">1</span><span class="sc">:</span>L)<span class="sc">/</span>L)</span>
-<span id="cb538-9"><a href="genome-environment-association.html#cb538-9" aria-hidden="true" tabindex="-1"></a><span class="co"># candidates are then</span></span>
-<span id="cb538-10"><a href="genome-environment-association.html#cb538-10" aria-hidden="true" tabindex="-1"></a>candidates<span class="fl">.2</span> <span class="ot">=</span> <span class="fu">order</span>(adj.p.val2)[w]</span>
-<span id="cb538-11"><a href="genome-environment-association.html#cb538-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb538-12"><a href="genome-environment-association.html#cb538-12" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(candidates<span class="fl">.2</span>)</span></code></pre></div>
-<pre><code>## [1] 71</code></pre>
-<div class="sourceCode" id="cb540"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb540-1"><a href="genome-environment-association.html#cb540-1" aria-hidden="true" tabindex="-1"></a><span class="co">#variable 3 </span></span>
-<span id="cb540-2"><a href="genome-environment-association.html#cb540-2" aria-hidden="true" tabindex="-1"></a>w <span class="ot">=</span> <span class="fu">which</span>(<span class="fu">sort</span>(adj.p.val3) <span class="sc">&lt;</span> q <span class="sc">*</span> (<span class="dv">1</span><span class="sc">:</span>L)<span class="sc">/</span>L)</span>
-<span id="cb540-3"><a href="genome-environment-association.html#cb540-3" aria-hidden="true" tabindex="-1"></a><span class="co"># candidates are then</span></span>
-<span id="cb540-4"><a href="genome-environment-association.html#cb540-4" aria-hidden="true" tabindex="-1"></a>candidates<span class="fl">.3</span> <span class="ot">=</span> <span class="fu">order</span>(adj.p.val3)[w]</span>
-<span id="cb540-5"><a href="genome-environment-association.html#cb540-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb540-6"><a href="genome-environment-association.html#cb540-6" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(candidates<span class="fl">.3</span>)</span></code></pre></div>
-<pre><code>## [1] 79</code></pre>
-<div class="sourceCode" id="cb542"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb542-1"><a href="genome-environment-association.html#cb542-1" aria-hidden="true" tabindex="-1"></a><span class="co">#variable 4</span></span>
-<span id="cb542-2"><a href="genome-environment-association.html#cb542-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb542-3"><a href="genome-environment-association.html#cb542-3" aria-hidden="true" tabindex="-1"></a>w <span class="ot">=</span> <span class="fu">which</span>(<span class="fu">sort</span>(adj.p.val4) <span class="sc">&lt;</span> q <span class="sc">*</span> (<span class="dv">1</span><span class="sc">:</span>L)<span class="sc">/</span>L)</span>
-<span id="cb542-4"><a href="genome-environment-association.html#cb542-4" aria-hidden="true" tabindex="-1"></a><span class="co"># candidates are then</span></span>
-<span id="cb542-5"><a href="genome-environment-association.html#cb542-5" aria-hidden="true" tabindex="-1"></a>candidates<span class="fl">.4</span> <span class="ot">=</span> <span class="fu">order</span>(adj.p.val4)[w]</span>
-<span id="cb542-6"><a href="genome-environment-association.html#cb542-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb542-7"><a href="genome-environment-association.html#cb542-7" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(candidates<span class="fl">.4</span>)</span></code></pre></div>
-<pre><code>## [1] 72</code></pre>
-<div class="sourceCode" id="cb544"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb544-1"><a href="genome-environment-association.html#cb544-1" aria-hidden="true" tabindex="-1"></a><span class="co">#variable 5</span></span>
+<div class="sourceCode" id="cb540"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb540-1"><a href="genome-environment-association.html#cb540-1" aria-hidden="true" tabindex="-1"></a><span class="co">#We&#39;ll use this script below</span></span>
+<span id="cb540-2"><a href="genome-environment-association.html#cb540-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb540-3"><a href="genome-environment-association.html#cb540-3" aria-hidden="true" tabindex="-1"></a><span class="co">#for variable 2 (PH)</span></span>
+<span id="cb540-4"><a href="genome-environment-association.html#cb540-4" aria-hidden="true" tabindex="-1"></a><span class="co"># L is number of loci</span></span>
+<span id="cb540-5"><a href="genome-environment-association.html#cb540-5" aria-hidden="true" tabindex="-1"></a>L<span class="ot">=</span><span class="dv">3699</span></span>
+<span id="cb540-6"><a href="genome-environment-association.html#cb540-6" aria-hidden="true" tabindex="-1"></a><span class="co">#fdr level q</span></span>
+<span id="cb540-7"><a href="genome-environment-association.html#cb540-7" aria-hidden="true" tabindex="-1"></a>q <span class="ot">=</span> <span class="fl">0.1</span></span>
+<span id="cb540-8"><a href="genome-environment-association.html#cb540-8" aria-hidden="true" tabindex="-1"></a>w <span class="ot">=</span> <span class="fu">which</span>(<span class="fu">sort</span>(adj.p.val2) <span class="sc">&lt;</span> q <span class="sc">*</span> (<span class="dv">1</span><span class="sc">:</span>L)<span class="sc">/</span>L)</span>
+<span id="cb540-9"><a href="genome-environment-association.html#cb540-9" aria-hidden="true" tabindex="-1"></a><span class="co"># candidates are then</span></span>
+<span id="cb540-10"><a href="genome-environment-association.html#cb540-10" aria-hidden="true" tabindex="-1"></a>candidates<span class="fl">.2</span> <span class="ot">=</span> <span class="fu">order</span>(adj.p.val2)[w]</span>
+<span id="cb540-11"><a href="genome-environment-association.html#cb540-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb540-12"><a href="genome-environment-association.html#cb540-12" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(candidates<span class="fl">.2</span>)</span></code></pre></div>
+<pre><code>## [1] 564</code></pre>
+<div class="sourceCode" id="cb542"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb542-1"><a href="genome-environment-association.html#cb542-1" aria-hidden="true" tabindex="-1"></a><span class="co">#variable 3 </span></span>
+<span id="cb542-2"><a href="genome-environment-association.html#cb542-2" aria-hidden="true" tabindex="-1"></a>w <span class="ot">=</span> <span class="fu">which</span>(<span class="fu">sort</span>(adj.p.val3) <span class="sc">&lt;</span> q <span class="sc">*</span> (<span class="dv">1</span><span class="sc">:</span>L)<span class="sc">/</span>L)</span>
+<span id="cb542-3"><a href="genome-environment-association.html#cb542-3" aria-hidden="true" tabindex="-1"></a><span class="co"># candidates are then</span></span>
+<span id="cb542-4"><a href="genome-environment-association.html#cb542-4" aria-hidden="true" tabindex="-1"></a>candidates<span class="fl">.3</span> <span class="ot">=</span> <span class="fu">order</span>(adj.p.val3)[w]</span>
+<span id="cb542-5"><a href="genome-environment-association.html#cb542-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb542-6"><a href="genome-environment-association.html#cb542-6" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(candidates<span class="fl">.3</span>)</span></code></pre></div>
+<pre><code>## [1] 775</code></pre>
+<div class="sourceCode" id="cb544"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb544-1"><a href="genome-environment-association.html#cb544-1" aria-hidden="true" tabindex="-1"></a><span class="co">#variable 4</span></span>
 <span id="cb544-2"><a href="genome-environment-association.html#cb544-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb544-3"><a href="genome-environment-association.html#cb544-3" aria-hidden="true" tabindex="-1"></a>w <span class="ot">=</span> <span class="fu">which</span>(<span class="fu">sort</span>(adj.p.val5) <span class="sc">&lt;</span> q <span class="sc">*</span> (<span class="dv">1</span><span class="sc">:</span>L)<span class="sc">/</span>L)</span>
+<span id="cb544-3"><a href="genome-environment-association.html#cb544-3" aria-hidden="true" tabindex="-1"></a>w <span class="ot">=</span> <span class="fu">which</span>(<span class="fu">sort</span>(adj.p.val4) <span class="sc">&lt;</span> q <span class="sc">*</span> (<span class="dv">1</span><span class="sc">:</span>L)<span class="sc">/</span>L)</span>
 <span id="cb544-4"><a href="genome-environment-association.html#cb544-4" aria-hidden="true" tabindex="-1"></a><span class="co"># candidates are then</span></span>
-<span id="cb544-5"><a href="genome-environment-association.html#cb544-5" aria-hidden="true" tabindex="-1"></a>candidates<span class="fl">.5</span> <span class="ot">=</span> <span class="fu">order</span>(adj.p.val5)[w]</span>
+<span id="cb544-5"><a href="genome-environment-association.html#cb544-5" aria-hidden="true" tabindex="-1"></a>candidates<span class="fl">.4</span> <span class="ot">=</span> <span class="fu">order</span>(adj.p.val4)[w]</span>
 <span id="cb544-6"><a href="genome-environment-association.html#cb544-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb544-7"><a href="genome-environment-association.html#cb544-7" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(candidates<span class="fl">.5</span>)</span></code></pre></div>
-<pre><code>## [1] 107</code></pre>
+<span id="cb544-7"><a href="genome-environment-association.html#cb544-7" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(candidates<span class="fl">.4</span>)</span></code></pre></div>
+<pre><code>## [1] 1003</code></pre>
+<div class="sourceCode" id="cb546"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb546-1"><a href="genome-environment-association.html#cb546-1" aria-hidden="true" tabindex="-1"></a><span class="co">#variable 5</span></span>
+<span id="cb546-2"><a href="genome-environment-association.html#cb546-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb546-3"><a href="genome-environment-association.html#cb546-3" aria-hidden="true" tabindex="-1"></a>w <span class="ot">=</span> <span class="fu">which</span>(<span class="fu">sort</span>(adj.p.val5) <span class="sc">&lt;</span> q <span class="sc">*</span> (<span class="dv">1</span><span class="sc">:</span>L)<span class="sc">/</span>L)</span>
+<span id="cb546-4"><a href="genome-environment-association.html#cb546-4" aria-hidden="true" tabindex="-1"></a><span class="co"># candidates are then</span></span>
+<span id="cb546-5"><a href="genome-environment-association.html#cb546-5" aria-hidden="true" tabindex="-1"></a>candidates<span class="fl">.5</span> <span class="ot">=</span> <span class="fu">order</span>(adj.p.val5)[w]</span>
+<span id="cb546-6"><a href="genome-environment-association.html#cb546-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb546-7"><a href="genome-environment-association.html#cb546-7" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(candidates<span class="fl">.5</span>)</span></code></pre></div>
+<pre><code>## [1] 1079</code></pre>
 </p>
 </details>
 </div>
@@ -1470,14 +1477,16 @@ And consistes of a vcf file with 3966 Snps from 685 pacific sea cucumbers.</p>
 <div id="download-the-data-4" class="section level2 hasAnchor" number="11.10">
 <h2><span class="header-section-number">11.10</span> Download the data<a href="genome-environment-association.html#download-the-data-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>You’ll download one fasta file that contains the 17 regions in which we found our Fst outlier SNPs.</p>
-<div class="sourceCode" id="cb546"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb546-1"><a href="genome-environment-association.html#cb546-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb546-2"><a href="genome-environment-association.html#cb546-2" aria-hidden="true" tabindex="-1"></a>wget https://raw.githubusercontent.com/BayLab/MarineGenomicsData/main/week10.tar.gz</span>
-<span id="cb546-3"><a href="genome-environment-association.html#cb546-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb546-4"><a href="genome-environment-association.html#cb546-4" aria-hidden="true" tabindex="-1"></a>tar -xzvf week10.tar.gz</span></code></pre></div>
+<div class="sourceCode" id="cb548"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb548-1"><a href="genome-environment-association.html#cb548-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb548-2"><a href="genome-environment-association.html#cb548-2" aria-hidden="true" tabindex="-1"></a>cd</span>
+<span id="cb548-3"><a href="genome-environment-association.html#cb548-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb548-4"><a href="genome-environment-association.html#cb548-4" aria-hidden="true" tabindex="-1"></a>wget https://raw.githubusercontent.com/BayLab/MarineGenomicsData/main/week10.tar.gz</span>
+<span id="cb548-5"><a href="genome-environment-association.html#cb548-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb548-6"><a href="genome-environment-association.html#cb548-6" aria-hidden="true" tabindex="-1"></a>tar -xzvf week10.tar.gz</span></code></pre></div>
 </div>
 <div id="run-ncbi-blast" class="section level2 hasAnchor" number="11.11">
 <h2><span class="header-section-number">11.11</span> Run NCBI-BLAST<a href="genome-environment-association.html#run-ncbi-blast" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>NCBI-BLAST is commonly called “blast” and stands for Basic Local Alignment Search Tool. This program is often a part of the annotation process as it compares your sequences (or query) to those contained in a database. As such blast results are highly dependent on the database in which you search for results and whether your species of interest (or a close relative) is present in that database. This program can be run in the command line, but in my testing I found it to be incredibly slow on jetstream. So We’re going to run our file on the NCBI-BLAST web browser which should only take a few minutes as we only have 14 protein sequences.</p>
+<p>NCBI-BLAST is commonly called “blast” and stands for Basic Local Alignment Search Tool. This program is often a part of the annotation process as it compares your sequences (or query) to those contained in a database. As such blast results are highly dependent on the database in which you search for results and whether your species of interest (or a close relative) is present in that database. This program can be run in the command line, but in my testing I found it to be incredibly slow on jetstream. We’re going to run our file on the NCBI-BLAST web browser which should only take a few minutes.</p>
 <p>Find the fasta file we just downloaded in our Week 10 folder on the desktop and open it (this may take a few seconds). Navigate to the web browser on jetstream (the default is firefox). Search for NCBI-Blast.</p>
 <p>We’ll do a translated nucleotide to protein search (blastx). Copy and paste the nucleotide sequence of our first genomic region of interest. In the organism box, you can filter your search to only match with other sea cucumber sequences.</p>
 </div>
@@ -1488,6 +1497,9 @@ And consistes of a vcf file with 3966 Snps from 685 pacific sea cucumbers.</p>
 <div id="the-importance-of-genomic-architecture" class="section level2 hasAnchor" number="11.13">
 <h2><span class="header-section-number">11.13</span> The importance of Genomic Architecture<a href="genome-environment-association.html#the-importance-of-genomic-architecture" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Even though we often don’t get satisfying answers about which genes are doing what in Marine Genomics, we can learn a lot about trait evolution from using outlier detection tests. These tests give us some idea of the number of genes and their effect on a given trait and that in turn has big implications on how that trait can respond to evolution. And that in turn has implications for climate change, conservation, and biodiversity.</p>
+</div>
+<div id="section" class="section level2" number="11.14">
+<h2><span class="header-section-number">11.14</span> </h2>
 
 </div>
 </div>
