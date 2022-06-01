@@ -260,18 +260,18 @@ zs5 <- z.scores(sea_cuc_lfmm, K=1, d=5)
 # compute the genomic inflation factor lambda
 
 lambda1=median(zs1^2)/qchisq(0.5, df=1)
-lambda2=median(zs2^2)/qchisq(0.5, df=2)
-lambda3=median(zs3^2)/qchisq(0.5, df=3)
-lambda4=median(zs4^2)/qchisq(0.5, df=4)
-lambda5=median(zs5^2)/qchisq(0.5, df=5)
+lambda2=median(zs2^2)/qchisq(0.5, df=1)
+lambda3=median(zs3^2)/qchisq(0.5, df=1)
+lambda4=median(zs4^2)/qchisq(0.5, df=1)
+lambda5=median(zs5^2)/qchisq(0.5, df=1)
 
 #then compute adjusted p-values
 
 adj.p.val1<-pchisq(zs1^2/lambda1, df=1, lower=F)
-adj.p.val2<-pchisq(zs2^2/lambda2, df=2, lower=F)
-adj.p.val3<-pchisq(zs3^2/lambda3, df=3, lower=F)
-adj.p.val4<-pchisq(zs4^2/lambda4, df=4, lower=F)
-adj.p.val5<-pchisq(zs5^2/lambda5, df=5, lower=F)
+adj.p.val2<-pchisq(zs2^2/lambda2, df=1, lower=F)
+adj.p.val3<-pchisq(zs3^2/lambda3, df=1, lower=F)
+adj.p.val4<-pchisq(zs4^2/lambda4, df=1, lower=F)
+adj.p.val5<-pchisq(zs5^2/lambda5, df=1, lower=F)
 
 #then plot that p-value
 
