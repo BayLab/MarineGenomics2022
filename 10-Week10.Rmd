@@ -55,13 +55,17 @@ Make sure to run all of the commands below (without the #) to install and load p
 
 ```{r echo=T, message=FALSE, warning=F}
 
-# devtools::install_github("bcm-uga/lfmm")
+# install.packages('devtools')
 
 # install.packages("sf", dependencies = T)
 
 # install.packages(c('lfmm','vegan','data.table','sdmpredictors', 'rgdal','raster'), dependencies = T)
 
 # install.packages("psych", dependencies = T)
+
+# install.packages('foreach')
+
+# devtools::install_github("bcm-uga/lfmm")
 
 # install.packages("BiocManager")
 
@@ -99,11 +103,11 @@ environ <- load_layers(layercodes = c("BO_chlomean","BO_ph", "BO_salinity","BO_s
 
 #now put each layer into it's own object
 
-chlomean<-load_layers("BO_chlomean")
-ph<-load_layers("BO_ph")
-salinity<-load_layers("BO_salinity")
-sst_max<-load_layers("BO_sstmax")
-sst_mean<-load_layers("BO_sstmean")
+chlomean<-load_layers("BO_chlomean") # mean chlorophyll
+ph<-load_layers("BO_ph") # mean pH
+salinity<-load_layers("BO_salinity") # mean salinity
+sst_max<-load_layers("BO_sstmax") # maximum sea surface temperature
+sst_mean<-load_layers("BO_sstmean") # mean sea surface temperature
 
 
 ```
@@ -242,7 +246,7 @@ project = load.lfmmProject("filtered_3699snps_californicus_685inds.lfmmProject")
 
 ```
 
-Now we can check and see which of our environmental variables is association with genomic variation
+Now we can check and see which of our environmental variables is associated with genomic variation
 
 ```{r, label="histograms", echo=T}
 #get the z scores from each env variable
@@ -395,7 +399,7 @@ length(candidates.5)
 
 ## Download the data
 
-You'll download one fasta file that contains the 17 regions in which we found our Fst outlier SNPs.
+You'll download one fasta file that contains the 17 regions in which we found our Fst outlier SNPs.This will automatically go into the directory called 'MarineGenomicsData'.
 
 ```html
 
@@ -412,7 +416,7 @@ tar -xzvf week10.tar.gz
 
 NCBI-BLAST is commonly called "blast" and stands for Basic Local Alignment Search Tool. This program is often a part of the annotation process as it compares your sequences (or query) to those contained in a database. As such blast results are highly dependent on the database in which you search for results and whether your species of interest (or a close relative) is present in that database. This program can be run in the command line, but in my testing I found it to be incredibly slow on jetstream. We're going to run our file on the NCBI-BLAST web browser which should only take a few minutes.
 
-Find the fasta file we just downloaded in our Week 10 folder on the desktop and open it (this may take a few seconds). Navigate to the web browser on jetstream (the default is firefox). Search for NCBI-Blast. 
+Find the fasta file we just downloaded in our MarineGenomicsData/Week 10 folder on the desktop and open it (this may take a few seconds). Navigate to the web browser on jetstream (the default is firefox). Search for NCBI-Blast. 
 
 We'll do a translated nucleotide to protein search (blastx). Copy and paste the nucleotide sequence of our first genomic region of interest. In the organism box, you can filter your search to only match with other sea cucumber sequences.  
 
@@ -423,6 +427,6 @@ We got some hits! Many of those that found a hit in Blast were for the other sea
 
 ## The importance of Genomic Architecture
 
-Even though we often don't get satisfying answers about which genes are doing what in Marine Genomics, we can learn a lot about trait evolution from using outlier detection tests. These tests give us some idea of the number of genes and their effect on a given trait and that in turn has big implications on how that trait can respond to evolution. And that in turn has implications for climate change, conservation, and biodiversity. 
+Even though we often don't get satisfying answers about which genes are doing what in Marine Genomics, we can learn a lot about trait evolution from using outlier detection tests. These tests give us some idea of the number of genes and their effect on a given trait and that in turn has big implications on how that trait can respond to evolution. And that in turn has implications for climate change, conservation, and biodiversity.
 
-## 
+
