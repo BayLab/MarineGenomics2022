@@ -205,15 +205,16 @@ head(msleep)
 
 ```
 ## # A tibble: 6 × 11
-##   name    genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
-##   <chr>   <chr> <chr> <chr> <chr>              <dbl>     <dbl>       <dbl> <dbl>
-## 1 Cheetah Acin… carni Carn… lc                  12.1      NA        NA      11.9
-## 2 Owl mo… Aotus omni  Prim… <NA>                17         1.8      NA       7  
-## 3 Mounta… Aplo… herbi Rode… nt                  14.4       2.4      NA       9.6
-## 4 Greate… Blar… omni  Sori… lc                  14.9       2.3       0.133   9.1
-## 5 Cow     Bos   herbi Arti… domesticated         4         0.7       0.667  20  
-## 6 Three-… Brad… herbi Pilo… <NA>                14.4       2.2       0.767   9.6
-## # … with 2 more variables: brainwt <dbl>, bodywt <dbl>
+##   name  genus vore  order conse…¹ sleep…² sleep…³ sleep…⁴ awake  brainwt  bodywt
+##   <chr> <chr> <chr> <chr> <chr>     <dbl>   <dbl>   <dbl> <dbl>    <dbl>   <dbl>
+## 1 Chee… Acin… carni Carn… lc         12.1    NA    NA      11.9 NA        50    
+## 2 Owl … Aotus omni  Prim… <NA>       17       1.8  NA       7    0.0155    0.48 
+## 3 Moun… Aplo… herbi Rode… nt         14.4     2.4  NA       9.6 NA         1.35 
+## 4 Grea… Blar… omni  Sori… lc         14.9     2.3   0.133   9.1  0.00029   0.019
+## 5 Cow   Bos   herbi Arti… domest…     4       0.7   0.667  20    0.423   600    
+## 6 Thre… Brad… herbi Pilo… <NA>       14.4     2.2   0.767   9.6 NA         3.85 
+## # … with abbreviated variable names ¹​conservation, ²​sleep_total, ³​sleep_rem,
+## #   ⁴​sleep_cycle
 ```
 
 ```r
@@ -222,15 +223,16 @@ tail(msleep)
 
 ```
 ## # A tibble: 6 × 11
-##   name    genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
-##   <chr>   <chr> <chr> <chr> <chr>              <dbl>     <dbl>       <dbl> <dbl>
-## 1 Tenrec  Tenr… omni  Afro… <NA>                15.6       2.3      NA       8.4
-## 2 Tree s… Tupa… omni  Scan… <NA>                 8.9       2.6       0.233  15.1
-## 3 Bottle… Turs… carni Ceta… <NA>                 5.2      NA        NA      18.8
-## 4 Genet   Gene… carni Carn… <NA>                 6.3       1.3      NA      17.7
-## 5 Arctic… Vulp… carni Carn… <NA>                12.5      NA        NA      11.5
-## 6 Red fox Vulp… carni Carn… <NA>                 9.8       2.4       0.35   14.2
-## # … with 2 more variables: brainwt <dbl>, bodywt <dbl>
+##   name   genus vore  order conse…¹ sleep…² sleep…³ sleep…⁴ awake brainwt  bodywt
+##   <chr>  <chr> <chr> <chr> <chr>     <dbl>   <dbl>   <dbl> <dbl>   <dbl>   <dbl>
+## 1 Tenrec Tenr… omni  Afro… <NA>       15.6     2.3  NA       8.4  0.0026   0.9  
+## 2 Tree … Tupa… omni  Scan… <NA>        8.9     2.6   0.233  15.1  0.0025   0.104
+## 3 Bottl… Turs… carni Ceta… <NA>        5.2    NA    NA      18.8 NA      173.   
+## 4 Genet  Gene… carni Carn… <NA>        6.3     1.3  NA      17.7  0.0175   2    
+## 5 Arcti… Vulp… carni Carn… <NA>       12.5    NA    NA      11.5  0.0445   3.38 
+## 6 Red f… Vulp… carni Carn… <NA>        9.8     2.4   0.35   14.2  0.0504   4.23 
+## # … with abbreviated variable names ¹​conservation, ²​sleep_total, ³​sleep_rem,
+## #   ⁴​sleep_cycle
 ```
 
 ```r
@@ -366,10 +368,11 @@ msleep[3,]
 
 ```
 ## # A tibble: 1 × 11
-##   name    genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
-##   <chr>   <chr> <chr> <chr> <chr>              <dbl>     <dbl>       <dbl> <dbl>
-## 1 Mounta… Aplo… herbi Rode… nt                  14.4       2.4          NA   9.6
-## # … with 2 more variables: brainwt <dbl>, bodywt <dbl>
+##   name    genus vore  order conse…¹ sleep…² sleep…³ sleep…⁴ awake brainwt bodywt
+##   <chr>   <chr> <chr> <chr> <chr>     <dbl>   <dbl>   <dbl> <dbl>   <dbl>  <dbl>
+## 1 Mounta… Aplo… herbi Rode… nt         14.4     2.4      NA   9.6      NA   1.35
+## # … with abbreviated variable names ¹​conservation, ²​sleep_total, ³​sleep_rem,
+## #   ⁴​sleep_cycle
 ```
 
 ```r
@@ -378,10 +381,11 @@ msleep[msleep$name == "Mountain beaver",]
 
 ```
 ## # A tibble: 1 × 11
-##   name    genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
-##   <chr>   <chr> <chr> <chr> <chr>              <dbl>     <dbl>       <dbl> <dbl>
-## 1 Mounta… Aplo… herbi Rode… nt                  14.4       2.4          NA   9.6
-## # … with 2 more variables: brainwt <dbl>, bodywt <dbl>
+##   name    genus vore  order conse…¹ sleep…² sleep…³ sleep…⁴ awake brainwt bodywt
+##   <chr>   <chr> <chr> <chr> <chr>     <dbl>   <dbl>   <dbl> <dbl>   <dbl>  <dbl>
+## 1 Mounta… Aplo… herbi Rode… nt         14.4     2.4      NA   9.6      NA   1.35
+## # … with abbreviated variable names ¹​conservation, ²​sleep_total, ³​sleep_rem,
+## #   ⁴​sleep_cycle
 ```
 
 We can select more than one row or column at a time:
@@ -1049,13 +1053,14 @@ msleep[which(msleep[,"sleep_total"]>18),]
 
 ```
 ## # A tibble: 4 × 12
-##   name    genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
-##   <chr>   <chr> <chr> <chr> <chr>              <dbl>     <dbl>       <dbl> <dbl>
-## 1 Big br… Epte… inse… Chir… lc                  19.7       3.9       0.117   4.3
-## 2 Thick-… Lutr… carni Dide… lc                  19.4       6.6      NA       4.6
-## 3 Little… Myot… inse… Chir… <NA>                19.9       2         0.2     4.1
-## 4 Giant … Prio… inse… Cing… en                  18.1       6.1      NA       5.9
-## # … with 3 more variables: brainwt <dbl>, bodywt <dbl>, total_rem <dbl>
+##   name    genus vore  order conse…¹ sleep…² sleep…³ sleep…⁴ awake brainwt bodywt
+##   <chr>   <chr> <chr> <chr> <chr>     <dbl>   <dbl>   <dbl> <dbl>   <dbl>  <dbl>
+## 1 Big br… Epte… inse… Chir… lc         19.7     3.9   0.117   4.3  3  e-4  0.023
+## 2 Thick-… Lutr… carni Dide… lc         19.4     6.6  NA       4.6 NA       0.37 
+## 3 Little… Myot… inse… Chir… <NA>       19.9     2     0.2     4.1  2.5e-4  0.01 
+## 4 Giant … Prio… inse… Cing… en         18.1     6.1  NA       5.9  8.1e-2 60    
+## # … with 1 more variable: total_rem <dbl>, and abbreviated variable names
+## #   ¹​conservation, ²​sleep_total, ³​sleep_rem, ⁴​sleep_cycle
 ```
 
 ```r
@@ -1066,11 +1071,12 @@ msleep[which(msleep[,"sleep_total"]>18 & msleep[,"order"] == "Chiroptera"),]
 
 ```
 ## # A tibble: 2 × 12
-##   name    genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
-##   <chr>   <chr> <chr> <chr> <chr>              <dbl>     <dbl>       <dbl> <dbl>
-## 1 Big br… Epte… inse… Chir… lc                  19.7       3.9       0.117   4.3
-## 2 Little… Myot… inse… Chir… <NA>                19.9       2         0.2     4.1
-## # … with 3 more variables: brainwt <dbl>, bodywt <dbl>, total_rem <dbl>
+##   name    genus vore  order conse…¹ sleep…² sleep…³ sleep…⁴ awake brainwt bodywt
+##   <chr>   <chr> <chr> <chr> <chr>     <dbl>   <dbl>   <dbl> <dbl>   <dbl>  <dbl>
+## 1 Big br… Epte… inse… Chir… lc         19.7     3.9   0.117   4.3 0.0003   0.023
+## 2 Little… Myot… inse… Chir… <NA>       19.9     2     0.2     4.1 0.00025  0.01 
+## # … with 1 more variable: total_rem <dbl>, and abbreviated variable names
+## #   ¹​conservation, ²​sleep_total, ³​sleep_rem, ⁴​sleep_cycle
 ```
 ## Practice Subsetting datasets/logicals
 

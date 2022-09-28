@@ -17,9 +17,20 @@ knitr::opts_knit$set(root.dir = "/Users/ericaspotswoodnielsen/Desktop/PD_stuffie
 
 This week we're going to show you how to perform a genome wide association study or GWAS.  
 
-## load in the data 
+## Download the data
 
-The data for this week consist of several files in beagle format, a genome index file (.fai), and a few small text files.
+The data for this week consist of several files: our genotypes in an imputed beagle format, a genome index file (.fai), and a few small text files.
+
+Remember we used files that contain each samples genotypes (in .bam format) to generate a genotype likelihood file after we learned to map sample reads to a reference genome.
+
+It is *highly* recommended to "impute" the genotype likelihood files prior to running the GWAS. What does impute mean?
+
+Our genotype file does not contain a single genotype for each sample at every site, but instead has a range of likelihoods for each possible genotype for every site. Imputing this file reduces this range of possibility and also infers the genotype of un-sampled sites. Imputation has been shown to greatly improve the accuracy of GWA studies.
+
+Imputation can be done in beagle version 3, which can be found [here](http://faculty.washington.edu/browning/beagle/b3.html) or a direct link to the [jar file](http://faculty.washington.edu/browning/beagle/beagle.jar)
+
+Instructions to impute the genotype likelihood file can be found [here](https://faculty.washington.edu/browning/beagle/beagle_3.3.2_31Oct11.pdf)
+
 Let's start by downloading the data we will be working with this week:
 
 ```html
